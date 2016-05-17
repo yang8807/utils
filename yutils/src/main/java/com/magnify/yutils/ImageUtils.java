@@ -35,19 +35,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /***
- * @author ÍõÏşÃ÷
+ * @author ç‹æ™“æ˜
  */
 public class ImageUtils {
 
     /***
-     * ¸ù¾İÔ­Ê¼Í¼Æ¬ĞÅÏ¢ºÍÄ¿±êÍ¼Æ¬³ß´ç¼ÆËãÑ¹ËõÂÊ
+     * æ ¹æ®åŸå§‹å›¾ç‰‡ä¿¡æ¯å’Œç›®æ ‡å›¾ç‰‡å°ºå¯¸è®¡ç®—å‹ç¼©ç‡
      *
-     * @param minSideLength  ×îĞ¡±ß³¤¶È
-     * @param maxNumOfPixels ×î´óÃæ»ı
-     * @return Ñ¹ËõÂÊ(¶ÔÓ¦BitmapFactory.Options.inSampleSize)
+     * @param minSideLength  æœ€å°è¾¹é•¿åº¦
+     * @param maxNumOfPixels æœ€å¤§é¢ç§¯
+     * @return å‹ç¼©ç‡(å¯¹åº”BitmapFactory.Options.inSampleSize)
      */
     public static int computeSampleSize(BitmapFactory.Options options, int minSideLength, int maxNumOfPixels) {
-        // ³õÊ¼Ñ¹ËõÂÊ
+        // åˆå§‹å‹ç¼©ç‡
         int initialSize = computeInitialSampleSize(options, minSideLength, maxNumOfPixels);
         int roundedSize;
         if (initialSize <= 8) {
@@ -62,7 +62,7 @@ public class ImageUtils {
     }
 
     /**
-     * ¸ù¾İÔ­Ê¼Í¼Æ¬ĞÅÏ¢ºÍÄ¿±êÍ¼Æ¬³ß´ç¼ÆËã³õÊ¼Ñ¹ËõÂÊ
+     * æ ¹æ®åŸå§‹å›¾ç‰‡ä¿¡æ¯å’Œç›®æ ‡å›¾ç‰‡å°ºå¯¸è®¡ç®—åˆå§‹å‹ç¼©ç‡
      */
     private static int computeInitialSampleSize(BitmapFactory.Options options, int minSideLength, int maxNumOfPixels) {
         double w = options.outWidth;
@@ -82,10 +82,10 @@ public class ImageUtils {
     }
 
     /**
-     * ¸ù¾İ¸ø¶¨µÄ¸ß¿í»ñÈ¡Í¼Æ¬Ëõ·Å±ÈÀı
+     * æ ¹æ®ç»™å®šçš„é«˜å®½è·å–å›¾ç‰‡ç¼©æ”¾æ¯”ä¾‹
      *
-     * @param reqWidth  Ä¿±ê¿í¶È(-1±íÊ¾¸ù¾İ¸ß¶È×Ô¶¯¼ÆËã)
-     * @param reqHeight Ä¿±ê¸ß¶È(-1±êÊ¾¸ù¾İ¿í¶È×Ô¶¯¼ÆËã)
+     * @param reqWidth  ç›®æ ‡å®½åº¦(-1è¡¨ç¤ºæ ¹æ®é«˜åº¦è‡ªåŠ¨è®¡ç®—)
+     * @param reqHeight ç›®æ ‡é«˜åº¦(-1æ ‡ç¤ºæ ¹æ®å®½åº¦è‡ªåŠ¨è®¡ç®—)
      */
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
@@ -102,34 +102,34 @@ public class ImageUtils {
     }
 
     /**
-     * ´´½¨ËõÂÔÍ¼
+     * åˆ›å»ºç¼©ç•¥å›¾
      *
-     * @param largeImagePath Ô­Ê¼Í¼Æ¬Â·¾¶
-     * @param thumbfilePath  ËõÂÔÍ¼±£´æÂ·¾¶
-     * @param reqWidth       ËõÂÔÍ¼Æ¬×î´ó¿í¶È
-     * @param quality        ËõÂÔÍ¼ÇåÎú¶È(0-100)
-     * @return ÊÇ·ñ³É¹¦
+     * @param largeImagePath åŸå§‹å›¾ç‰‡è·¯å¾„
+     * @param thumbfilePath  ç¼©ç•¥å›¾ä¿å­˜è·¯å¾„
+     * @param reqWidth       ç¼©ç•¥å›¾ç‰‡æœ€å¤§å®½åº¦
+     * @param quality        ç¼©ç•¥å›¾æ¸…æ™°åº¦(0-100)
+     * @return æ˜¯å¦æˆåŠŸ
      */
     public static boolean createImageThumbnail(Context context, String largeImagePath, String thumbfilePath, int reqWidth, int quality) {
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        // Ö»»ñÈ¡Í¼Æ¬³¤¿íÊı¾İ,²»¶ÁÈëÄÚ´æ
+        // åªè·å–å›¾ç‰‡é•¿å®½æ•°æ®,ä¸è¯»å…¥å†…å­˜
         bitmapOptions.inJustDecodeBounds = true;
-        // »ñÈ¡Ô­Ê¼Í¼Æ¬¸ß¿í
+        // è·å–åŸå§‹å›¾ç‰‡é«˜å®½
         BitmapFactory.decodeFile(largeImagePath, bitmapOptions);
-        // ¼ÆËãÔ­Ê¼Í¼Æ¬Ëõ·ÅºóµÄ¿í¸ß
+        // è®¡ç®—åŸå§‹å›¾ç‰‡ç¼©æ”¾åçš„å®½é«˜
         // int[] new_img_size = scaleImageSize(new int[] { bitmapOptions.outWidth, bitmapOptions.outHeight }, square_size);
-        // ¼ÆËãËõÍ¼±ÈÀı
+        // è®¡ç®—ç¼©å›¾æ¯”ä¾‹
         int thumbSimpleSize = calculateInSampleSize(bitmapOptions, reqWidth, -1);
         LogUtil.d("thumb", "w:" + bitmapOptions.outWidth + "h:" + bitmapOptions.outHeight + " w2:" + reqWidth + "thumbSimpleSize:" + thumbSimpleSize);
-        // ÉèÖÃËõÍ¼²ÎÊı
+        // è®¾ç½®ç¼©å›¾å‚æ•°
         bitmapOptions.inSampleSize = thumbSimpleSize;
         bitmapOptions.inJustDecodeBounds = false;
         bitmapOptions.inPurgeable = true;
         bitmapOptions.inInputShareable = true;
-        // »ñµÃËõĞ¡ºóµÄBitmap
+        // è·å¾—ç¼©å°åçš„Bitmap
         Bitmap thumbBitmap = BitmapFactory.decodeFile(largeImagePath, bitmapOptions);
 
-        // ±£´æËõĞ¡ºóµÄÍ¼Æ¬
+        // ä¿å­˜ç¼©å°åçš„å›¾ç‰‡
         try {
             saveImageToSD(null, thumbfilePath, thumbBitmap, quality);
         } catch (IOException e) {
@@ -139,11 +139,11 @@ public class ImageUtils {
     }
 
     /**
-     * °´ÕÕÖ¸¶¨¿í¸ß¶ÔÍ¼Æ¬½øĞĞÑ¹Ëõ
+     * æŒ‰ç…§æŒ‡å®šå®½é«˜å¯¹å›¾ç‰‡è¿›è¡Œå‹ç¼©
      *
-     * @param filename  Í¼Æ¬Â·¾¶
-     * @param maxWidth  Í¼Æ¬×î´ó¿í¶È
-     * @param maxHeight Í¼Æ¬×î´ó¸ß¶È
+     * @param filename  å›¾ç‰‡è·¯å¾„
+     * @param maxWidth  å›¾ç‰‡æœ€å¤§å®½åº¦
+     * @param maxHeight å›¾ç‰‡æœ€å¤§é«˜åº¦
      */
     public static Bitmap scalePicture(String filename, int maxWidth, int maxHeight) {
         Bitmap bitmap = null;
@@ -156,7 +156,7 @@ public class ImageUtils {
             int srcHeight = opts.outHeight;
             int desWidth = 0;
             int desHeight = 0;
-            // Ëõ·Å±ÈÀı
+            // ç¼©æ”¾æ¯”ä¾‹
             double ratio = 0.0;
             if (srcWidth > srcHeight) {
                 ratio = srcWidth / maxWidth;
@@ -170,21 +170,21 @@ public class ImageUtils {
 
             File file = new File(filename);
             fis = new FileInputStream(file);
-            // ÉèÖÃÊä³ö¿í¶È¡¢¸ß¶È
+            // è®¾ç½®è¾“å‡ºå®½åº¦ã€é«˜åº¦
             BitmapFactory.Options newOpts = new BitmapFactory.Options();
             newOpts.inSampleSize = (int) (ratio) + 1;
             newOpts.inJustDecodeBounds = false;
             newOpts.outWidth = desWidth;
             newOpts.outHeight = desHeight;
             newOpts.inPreferredConfig = Config.RGB_565;
-            newOpts.inPurgeable = true;// ÔÊĞí¿ÉÇå³ı
-            newOpts.inInputShareable = true;// ÒÔÉÏoptionsµÄÁ½¸öÊôĞÔ±ØĞëÁªºÏÊ¹ÓÃ²Å»áÓĞĞ§¹û
+            newOpts.inPurgeable = true;// å…è®¸å¯æ¸…é™¤
+            newOpts.inInputShareable = true;// ä»¥ä¸Šoptionsçš„ä¸¤ä¸ªå±æ€§å¿…é¡»è”åˆä½¿ç”¨æ‰ä¼šæœ‰æ•ˆæœ
             // bitmap = BitmapFactory.decodeFile(filename, newOpts);
             bitmap = BitmapFactory.decodeStream(fis, null, newOpts);
         } catch (OutOfMemoryError e) {
             System.gc();
         } catch (Exception e) {
-            Log.d("scalePictureµÄÒì³£", e.toString());
+            Log.d("scalePictureçš„å¼‚å¸¸", e.toString());
             // e.printStackTrace();
         } finally {
             try {
@@ -196,7 +196,7 @@ public class ImageUtils {
     }
 
     /**
-     * ·Å´óËõĞ¡Í¼Æ¬
+     * æ”¾å¤§ç¼©å°å›¾ç‰‡
      */
     public static Bitmap zoomBitmap(Bitmap bitmap, int w, int h) {
         Bitmap newbmp = null;
@@ -230,7 +230,7 @@ public class ImageUtils {
     }
 
     /**
-     * ¼ÆËãËõ·ÅÍ¼Æ¬µÄ¿í¸ß
+     * è®¡ç®—ç¼©æ”¾å›¾ç‰‡çš„å®½é«˜
      */
     public static int[] scaleImageSize(int[] img_size, int square_size) {
         double ratio = square_size / (double) img_size[0];
@@ -238,7 +238,7 @@ public class ImageUtils {
     }
 
     /**
-     * Ğ´Í¼Æ¬ÎÄ¼şµ½SD¿¨
+     * å†™å›¾ç‰‡æ–‡ä»¶åˆ°SDå¡
      */
     public static void saveImageToSD(Context ctx, String filePath, Bitmap bitmap, int quality) throws IOException {
         if (bitmap != null) {
@@ -261,7 +261,7 @@ public class ImageUtils {
     }
 
     /**
-     * ÈÃGalleryÉÏÄÜÂíÉÏ¿´µ½¸ÃÍ¼Æ¬
+     * è®©Galleryä¸Šèƒ½é©¬ä¸Šçœ‹åˆ°è¯¥å›¾ç‰‡
      */
     public static void scanPhoto(Context context, String filePath) {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -272,7 +272,7 @@ public class ImageUtils {
     }
 
     /**
-     * ½«drawable ×ª»»³ÉBitmap
+     * å°†drawable è½¬æ¢æˆBitmap
      */
     public static Bitmap drawable2Bitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
@@ -296,16 +296,16 @@ public class ImageUtils {
     }
 
     /**
-     * ½«bitmap×ª»»Îªdrawable
+     * å°†bitmapè½¬æ¢ä¸ºdrawable
      */
     public static Drawable bitmap2Drawable(Bitmap bitmap) {
         BitmapDrawable bd = new BitmapDrawable(bitmap);
-        // ÒòÎªBtimapDrawableÊÇDrawableµÄ×ÓÀà£¬×îÖÕÖ±½ÓÊ¹ÓÃbd¶ÔÏó¼´¿É¡£
+        // å› ä¸ºBtimapDrawableæ˜¯Drawableçš„å­ç±»ï¼Œæœ€ç»ˆç›´æ¥ä½¿ç”¨bdå¯¹è±¡å³å¯ã€‚
         return bd;
     }
 
     /**
-     * ´ÓÏà²áÑ¡È¡Í¼Æ¬»ñµÃµÄuri£¬µÃµ½Í¼Æ¬Â·¾¶
+     * ä»ç›¸å†Œé€‰å–å›¾ç‰‡è·å¾—çš„uriï¼Œå¾—åˆ°å›¾ç‰‡è·¯å¾„
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static String getAlbumPhotoPath(final Context context, final Uri uri) {
@@ -358,7 +358,7 @@ public class ImageUtils {
     }
 
     /**
-     * ÊÇ·ñÀ©Õ¹ÄÚ´æµÄÎÄ¼ş
+     * æ˜¯å¦æ‰©å±•å†…å­˜çš„æ–‡ä»¶
      */
     private static boolean isExternalStorageDocument(Uri uri) {
 
@@ -367,28 +367,28 @@ public class ImageUtils {
     }
 
     /**
-     * ÊÇ·ñÏÂÔØµÄÎÄ¼ş
+     * æ˜¯å¦ä¸‹è½½çš„æ–‡ä»¶
      */
     private static boolean isDownloadDocument(Uri uri) {
         return uri.getAuthority().equals("com.android.providers.downloads.documents");
     }
 
     /**
-     * ÊÇ·ñÃ½ÌåÎÄ¼ş
+     * æ˜¯å¦åª’ä½“æ–‡ä»¶
      */
     private static boolean isMediaDocument(Uri uri) {
         return uri.getAuthority().equals("com.android.providers.media.documents");
     }
 
     /**
-     * ÊÇ·ñ¹È¸èÏà²áÀïµÄÎÄ¼ş
+     * æ˜¯å¦è°·æ­Œç›¸å†Œé‡Œçš„æ–‡ä»¶
      */
     private static boolean isGooglePhotosUri(Uri uri) {
         return uri.getAuthority().equals("com.google.android.apps.photos.content");
     }
 
     /**
-     * 4.3°æ±¾ÏÂµÄÄ¬ÈÏ´Óuri»ñÈ¡Â·¾¶·½·¨
+     * 4.3ç‰ˆæœ¬ä¸‹çš„é»˜è®¤ä»uriè·å–è·¯å¾„æ–¹æ³•
      */
     private static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
         final String[] proj = {MediaStore.MediaColumns.DATA};
@@ -411,7 +411,7 @@ public class ImageUtils {
     }
 
     /**
-     * ¸ù¾İURI»ñÈ¡Í¼Æ¬ÎïÀíÂ·¾¶
+     * æ ¹æ®URIè·å–å›¾ç‰‡ç‰©ç†è·¯å¾„
      */
     public static String getAbsoluteImagePath(Uri uri, Activity activity) {
         String[] proj = {MediaStore.Images.Media.DATA};
@@ -432,11 +432,11 @@ public class ImageUtils {
     }
 
     /**
-     * ¸ù¾İ±¾µØÍ¼Æ¬µÄExifĞÅÏ¢£¬·µ»ØÕıÈ··½ÏòµÄÍ¼Æ¬
+     * æ ¹æ®æœ¬åœ°å›¾ç‰‡çš„Exifä¿¡æ¯ï¼Œè¿”å›æ­£ç¡®æ–¹å‘çš„å›¾ç‰‡
      *
-     * @param input ÊäÈëbitmap
-     * @param path  ±¾µØÂ·¾¶
-     * @return Ğı×ª¹ıµÄÍ¼Æ¬(ÈçÎŞ±ØÒªĞı×ªÔòÊÇ·µ»Øinput)
+     * @param input è¾“å…¥bitmap
+     * @param path  æœ¬åœ°è·¯å¾„
+     * @return æ—‹è½¬è¿‡çš„å›¾ç‰‡(å¦‚æ— å¿…è¦æ—‹è½¬åˆ™æ˜¯è¿”å›input)
      */
     public static Bitmap rotateExifPicture(Bitmap input, String path) {
         int rotation = getExifRotation(path);
@@ -453,10 +453,10 @@ public class ImageUtils {
     }
 
     /**
-     * ·µ»Ø±¾µØExifÍ¼Æ¬µÄĞı×ª½Ç¶È
+     * è¿”å›æœ¬åœ°Exifå›¾ç‰‡çš„æ—‹è½¬è§’åº¦
      *
-     * @param path ±¾µØÂ·¾¶
-     * @return Ğı×ª½Ç¶È
+     * @param path æœ¬åœ°è·¯å¾„
+     * @return æ—‹è½¬è§’åº¦
      */
     public static int getExifRotation(String path) {
         if (path.startsWith("file://"))

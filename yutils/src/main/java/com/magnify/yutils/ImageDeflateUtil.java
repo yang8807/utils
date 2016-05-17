@@ -19,23 +19,23 @@ import java.util.UUID;
 
 
 /**
- * Í¼Æ¬Ëõ¼õ¹¤¾ß<br>
- * ÓÃÓÚÉÏ´«Í¼Æ¬Ê±£¬ËõĞ¡Í¼Æ¬¡¢½µµÍÍ¼Æ¬ÖÊÁ¿¡¢¼õĞ¡ÎÄ¼ş´óĞ¡
+ * å›¾ç‰‡ç¼©å‡å·¥å…·<br>
+ * ç”¨äºä¸Šä¼ å›¾ç‰‡æ—¶ï¼Œç¼©å°å›¾ç‰‡ã€é™ä½å›¾ç‰‡è´¨é‡ã€å‡å°æ–‡ä»¶å¤§å°
  *
- * @author ËÕÌÚ
+ * @author è‹è…¾
  */
 public class ImageDeflateUtil {
 
-	private static final String[] IMAGE_SUFFIXES = new String[] { "bmp", "jpg", "jpeg", "png" }; // ºöÂÔgif
+	private static final String[] IMAGE_SUFFIXES = new String[] { "bmp", "jpg", "jpeg", "png" }; // å¿½ç•¥gif
 
-	/** ¼ì²é¡¢Ñ¹ËõÑ¡Ïî */
+	/** æ£€æŸ¥ã€å‹ç¼©é€‰é¡¹ */
 	private DeflateOptions mOptions;
 
-	/** ÒÑÑ¹ËõÍ¼Æ¬ÁĞ±í */
+	/** å·²å‹ç¼©å›¾ç‰‡åˆ—è¡¨ */
 	private ArrayList<File> mDeflatedImages;
 
 	/**
-	 * ÓÃÄ¬ÈÏÑ¡Ïî¡¢Ñ¹ËõÍ¼Æ¬´æ´¢ÓÚÔ­Í¼Ä¿Â¼
+	 * ç”¨é»˜è®¤é€‰é¡¹ã€å‹ç¼©å›¾ç‰‡å­˜å‚¨äºåŸå›¾ç›®å½•
 	 *
 	 * @see #ImageDeflateUtil(DeflateOptions, File)
 	 */
@@ -44,8 +44,8 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * @param options ¼ì²é¡¢Ñ¹ËõÑ¡Ïî£¬nullÔòÈ¡Ä¬ÈÏÖµ
-	 * @param tempPath Ñ¹ËõÍ¼Æ¬´æ´¢Ä¿Â¼£¬nullÔò±£´æÓÚÍ¼Æ¬Í¬Ä¿Â¼
+	 * @param options æ£€æŸ¥ã€å‹ç¼©é€‰é¡¹ï¼Œnullåˆ™å–é»˜è®¤å€¼
+	 * @param tempPath å‹ç¼©å›¾ç‰‡å­˜å‚¨ç›®å½•ï¼Œnullåˆ™ä¿å­˜äºå›¾ç‰‡åŒç›®å½•
 	 */
 	public ImageDeflateUtil(DeflateOptions options, File tempPath) {
 		mOptions = options == null ? new DeflateOptions() : options;
@@ -60,46 +60,46 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * ¼ì²é¡¢Ñ¹ËõÑ¡Ïî<br>
-	 * ¸÷Ïî¼ì²é½çÏŞ£¬ÔÚÏàÓ¦Öµ´ïµ½Éè¶¨ÖµÊ±ÈÏÎªÊÇ´óÍ¼Æ¬£»¸÷ÏîÖ®¼äÊÇ»òµÄ¹ØÏµ¡£
+	 * æ£€æŸ¥ã€å‹ç¼©é€‰é¡¹<br>
+	 * å„é¡¹æ£€æŸ¥ç•Œé™ï¼Œåœ¨ç›¸åº”å€¼è¾¾åˆ°è®¾å®šå€¼æ—¶è®¤ä¸ºæ˜¯å¤§å›¾ç‰‡ï¼›å„é¡¹ä¹‹é—´æ˜¯æˆ–çš„å…³ç³»ã€‚
 	 */
 	public static class DeflateOptions {
 
-		/** ¼ì²é½çÏŞ£ºÎÄ¼ş´óĞ¡£¬´óÓÚ0²Å¼ì²é */
+		/** æ£€æŸ¥ç•Œé™ï¼šæ–‡ä»¶å¤§å°ï¼Œå¤§äº0æ‰æ£€æŸ¥ */
 		public int inFileSize = 512000;
 
-		/** ¼ì²é½çÏŞ£ºÏñËØÊı£¬´óÓÚ0²Å¼ì²é */
+		/** æ£€æŸ¥ç•Œé™ï¼šåƒç´ æ•°ï¼Œå¤§äº0æ‰æ£€æŸ¥ */
 		public int inPixel = 512000;
 
-		/** ¼ì²é½çÏŞ£º±ß³¤(³¤»ò¿í)£¬´óÓÚ0²Å¼ì²é */
+		/** æ£€æŸ¥ç•Œé™ï¼šè¾¹é•¿(é•¿æˆ–å®½)ï¼Œå¤§äº0æ‰æ£€æŸ¥ */
 		public int inSide = 800;
 
-		/** Ñ¹ËõºóµÄ×î´ó±ß³¤£¬´óÓÚ0²ÅÉúĞ§ */
+		/** å‹ç¼©åçš„æœ€å¤§è¾¹é•¿ï¼Œå¤§äº0æ‰ç”Ÿæ•ˆ */
 		public int outSide = 800;
 
-		/** Ñ¹ËõºóµÄÎ»Í¼Ä£Ê½£¬Èç¹ûÒª¸ü¸ßÑ¹Ëõ±È¿ÉÓÃConfig.RGB_565 */
+		/** å‹ç¼©åçš„ä½å›¾æ¨¡å¼ï¼Œå¦‚æœè¦æ›´é«˜å‹ç¼©æ¯”å¯ç”¨Config.RGB_565 */
 		public Config outConfig = Config.ARGB_8888;
 
-		/** Ñ¹ËõºóµÄÍ¼Æ¬¸ñÊ½ */
+		/** å‹ç¼©åçš„å›¾ç‰‡æ ¼å¼ */
 		public CompressFormat outFormat = CompressFormat.JPEG;
 
-		/** Ñ¹ËõºóµÄÍ¼Æ¬ÖÊÁ¿£¬0-100 */
+		/** å‹ç¼©åçš„å›¾ç‰‡è´¨é‡ï¼Œ0-100 */
 		public int outQuality = 75;
 
-		/** Ñ¹ËõÍ¼Æ¬´æ´¢Â·¾¶ */
+		/** å‹ç¼©å›¾ç‰‡å­˜å‚¨è·¯å¾„ */
 		private File outPath;
 
 	}
 
 	/**
-	 * ·µ»ØÑ¹Ëõ¹ıµÄÍ¼Æ¬
+	 * è¿”å›å‹ç¼©è¿‡çš„å›¾ç‰‡
 	 */
 	public ArrayList<File> getDeflatedImages() {
 		return mDeflatedImages;
 	}
 
 	/**
-	 * É¾³ıÑ¹Ëõ¹ıµÄÍ¼Æ¬
+	 * åˆ é™¤å‹ç¼©è¿‡çš„å›¾ç‰‡
 	 */
 	public void clean() {
 		if (!mDeflatedImages.isEmpty()) {
@@ -111,8 +111,8 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * ÊÇ·ñÍ¼Æ¬ÎÄ¼ş<br>
-	 * ÕâÀïÃ»ÓÃContentResolver£¬ÒòÎªËüÖ»ÈÏÊ¶content://¿ªÍ·µÄuri£»Ò²Ã»ÓÃÎÄ¼şÍ·ĞÅÏ¢ÅĞ¶Ï£¬¼òµ¥Ğ§ÂÊµã¾ÍÓÃºó×ºÁË
+	 * æ˜¯å¦å›¾ç‰‡æ–‡ä»¶<br>
+	 * è¿™é‡Œæ²¡ç”¨ContentResolverï¼Œå› ä¸ºå®ƒåªè®¤è¯†content://å¼€å¤´çš„uriï¼›ä¹Ÿæ²¡ç”¨æ–‡ä»¶å¤´ä¿¡æ¯åˆ¤æ–­ï¼Œç®€å•æ•ˆç‡ç‚¹å°±ç”¨åç¼€äº†
 	 */
 	public boolean isImage(File file) {
 		if (file == null || !file.exists() || !file.isFile())
@@ -131,7 +131,7 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * ¼ì²éÊÇ·ñ´óÍ¼Æ¬<br>
+	 * æ£€æŸ¥æ˜¯å¦å¤§å›¾ç‰‡<br>
 	 */
 	public boolean isLargeImage(File file) {
 		if (!isImage(file))
@@ -155,7 +155,7 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * ¼ì²éÁĞ±íÀïÓĞÃ»ÓĞ´óÍ¼Æ¬
+	 * æ£€æŸ¥åˆ—è¡¨é‡Œæœ‰æ²¡æœ‰å¤§å›¾ç‰‡
 	 *
 	 * @see #isLargeImage(File)
 	 */
@@ -168,7 +168,7 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * ¼ì²éÊı×éÀïÓĞÃ»ÓĞ´óÍ¼Æ¬
+	 * æ£€æŸ¥æ•°ç»„é‡Œæœ‰æ²¡æœ‰å¤§å›¾ç‰‡
 	 *
 	 * @see #isLargeImage(File)
 	 */
@@ -181,7 +181,7 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * FileUploadAsyncTask×¨ÓÃ£¬¼ì²éÉÏ´«Í¼Æ¬ÓĞÃ»ÓĞ´óÍ¼Æ¬
+	 * FileUploadAsyncTaskä¸“ç”¨ï¼Œæ£€æŸ¥ä¸Šä¼ å›¾ç‰‡æœ‰æ²¡æœ‰å¤§å›¾ç‰‡
 	 *
 	 * @see #isLargeImage(File)
 	 */
@@ -208,9 +208,9 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * Ñ¹ËõÍ¼Æ¬¡£´Ë²Ù×÷²»Ó¦·ÅÔÚÖ÷Ïß³Ì<br>
+	 * å‹ç¼©å›¾ç‰‡ã€‚æ­¤æ“ä½œä¸åº”æ”¾åœ¨ä¸»çº¿ç¨‹<br>
 	 *
-	 * @return ·µ»ØÑ¹ËõºóµÄÍ¼Æ¬£¬²»ĞèÑ¹ËõµÄ»°·µ»ØÔ­Í¼£¬Ê§°ÜµÄ»°Ò²·µ»ØÔ­Í¼
+	 * @return è¿”å›å‹ç¼©åçš„å›¾ç‰‡ï¼Œä¸éœ€å‹ç¼©çš„è¯è¿”å›åŸå›¾ï¼Œå¤±è´¥çš„è¯ä¹Ÿè¿”å›åŸå›¾
 	 */
 	public File deflate(File input) {
 		if (!isLargeImage(input))
@@ -220,17 +220,17 @@ public class ImageDeflateUtil {
 		BitmapFactory.decodeFile(input.getAbsolutePath(), options);
 		int w = options.outWidth;
 		int h = options.outHeight;
-		int side = Math.max(w, h); // ×î´ó±ß³¤
+		int side = Math.max(w, h); // æœ€å¤§è¾¹é•¿
 
 		options.inJustDecodeBounds = false;
 		options.inPreferredConfig = mOptions.outConfig;
 
-		// ÏŞÖÆ´óĞ¡
-		boolean zoom = mOptions.outSide > 0 && mOptions.outSide < side; // ĞèËõĞ¡
-		if (zoom) { // ÏÈÓÃSampleSizeÀ´ËõĞ¡ÖÁÄ¿±ê³ß´çµÄ2±¶ÒÔÄÚ£¬·ÀÖ¹Í¼Æ¬Ì«´óÔì³Éoom
+		// é™åˆ¶å¤§å°
+		boolean zoom = mOptions.outSide > 0 && mOptions.outSide < side; // éœ€ç¼©å°
+		if (zoom) { // å…ˆç”¨SampleSizeæ¥ç¼©å°è‡³ç›®æ ‡å°ºå¯¸çš„2å€ä»¥å†…ï¼Œé˜²æ­¢å›¾ç‰‡å¤ªå¤§é€ æˆoom
 			int power = 1;
-			int side2 = mOptions.outSide << 1; // Ä¿±ê³ß´çµÄ2±¶
-			while (side >= side2) { // Èç¹û´óÓÚÄ¿±ê³ß´çµÄ2±¶£¬¾Í¼ÌĞøËõĞ¡
+			int side2 = mOptions.outSide << 1; // ç›®æ ‡å°ºå¯¸çš„2å€
+			while (side >= side2) { // å¦‚æœå¤§äºç›®æ ‡å°ºå¯¸çš„2å€ï¼Œå°±ç»§ç»­ç¼©å°
 				power <<= 1;
 				side >>= 1;
 				w >>= 1;
@@ -241,15 +241,15 @@ public class ImageDeflateUtil {
 		Bitmap bitmap = BitmapFactory.decodeFile(input.getAbsolutePath(), options);
 		if (bitmap == null)
 			return input;
-		if (zoom && side > mOptions.outSide) { // ÓÃ±ÈÀıÀ´ËõĞ¡
+		if (zoom && side > mOptions.outSide) { // ç”¨æ¯”ä¾‹æ¥ç¼©å°
 			float scale = 1F * mOptions.outSide / side;
 			Matrix matrix = new Matrix();
 			matrix.postScale(scale, scale);
 			bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
 		}
 
-		// Ñ¹Ëõ±£´æ
-		String fileName = UUID.randomUUID().toString() + ".jpg"; // ÕÕÆ¬ÃüÃû
+		// å‹ç¼©ä¿å­˜
+		String fileName = UUID.randomUUID().toString() + ".jpg"; // ç…§ç‰‡å‘½å
 		File path = mOptions.outPath;
 		if (path == null)
 			path = input.getParentFile();
@@ -271,9 +271,9 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * Ñ¹ËõÍ¼Æ¬¡£´Ë²Ù×÷²»Ó¦·ÅÔÚÖ÷Ïß³Ì<br>
+	 * å‹ç¼©å›¾ç‰‡ã€‚æ­¤æ“ä½œä¸åº”æ”¾åœ¨ä¸»çº¿ç¨‹<br>
 	 *
-	 * @return ²ÎÊıfiles±¾Éí¡£Èç¹ûÓĞÑ¹ËõÍ¼Æ¬£¬ÔÚfilesÀïÖ±½Ó¸ÄÁË
+	 * @return å‚æ•°filesæœ¬èº«ã€‚å¦‚æœæœ‰å‹ç¼©å›¾ç‰‡ï¼Œåœ¨filesé‡Œç›´æ¥æ”¹äº†
 	 * @see #deflate(File)
 	 */
 	public List<File> deflate(List<File> files) {
@@ -284,9 +284,9 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * Ñ¹ËõÍ¼Æ¬¡£´Ë²Ù×÷²»Ó¦·ÅÔÚÖ÷Ïß³Ì<br>
+	 * å‹ç¼©å›¾ç‰‡ã€‚æ­¤æ“ä½œä¸åº”æ”¾åœ¨ä¸»çº¿ç¨‹<br>
 	 *
-	 * @return files¹¹³ÉµÄÊı×é¡£Èç¹ûÓĞÑ¹ËõÍ¼Æ¬£¬ÔÚÊı×éÀï¾ÍÊÇÑ¹Ëõ¹ıºóµÄÍ¼Æ¬
+	 * @return filesæ„æˆçš„æ•°ç»„ã€‚å¦‚æœæœ‰å‹ç¼©å›¾ç‰‡ï¼Œåœ¨æ•°ç»„é‡Œå°±æ˜¯å‹ç¼©è¿‡åçš„å›¾ç‰‡
 	 * @see #deflate(File)
 	 */
 	public File[] deflate(File... files) {
@@ -297,9 +297,9 @@ public class ImageDeflateUtil {
 	}
 
 	/**
-	 * FileUploadAsyncTask×¨ÓÃ£¬Ñ¹ËõÉÏ´«ÎÄ¼şÀïµÄ´óÍ¼Æ¬¡£´Ë²Ù×÷²»Ó¦·ÅÔÚÖ÷Ïß³Ì
+	 * FileUploadAsyncTaskä¸“ç”¨ï¼Œå‹ç¼©ä¸Šä¼ æ–‡ä»¶é‡Œçš„å¤§å›¾ç‰‡ã€‚æ­¤æ“ä½œä¸åº”æ”¾åœ¨ä¸»çº¿ç¨‹
 	 *
-	 * @return ²ÎÊı±¾Éí
+	 * @return å‚æ•°æœ¬èº«
 	 * @see #deflate(File)
 	 */
 	@SuppressWarnings("unchecked")

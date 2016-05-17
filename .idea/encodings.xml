@@ -2,33 +2,33 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/util/src/main/java/com/magnify/util/RandomCharUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ArithUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ColorUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DateUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DateUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DeviceUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DrawableUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EditUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EmojFilters.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EncryptUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/FileUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/GetFileWebChromeClient.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/IOUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ImageDeflateUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ImageUtils.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/InputUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/IntentUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LoadingWebViewClient.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LogUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/NetworkUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/StorageUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/StringUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/SuffixUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ToastUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ViewHelper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ViewUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/app/NonProguard.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/dialog/BaseLinearPoupWindows.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ArithUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ColorUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DateUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DateUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DeviceUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/DrawableUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EditUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EmojFilters.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/EncryptUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/FileUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/GetFileWebChromeClient.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/IOUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ImageDeflateUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ImageUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/InputUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/IntentUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LoadingWebViewClient.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LogUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/NetworkUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/StorageUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/StringUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/SuffixUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ToastUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ViewHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ViewUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/app/NonProguard.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/dialog/BaseLinearPoupWindows.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

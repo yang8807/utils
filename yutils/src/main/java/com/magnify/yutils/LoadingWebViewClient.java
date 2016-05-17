@@ -11,13 +11,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * WebView¼ÓÔØ¶¯×÷¼àÌıÆ÷
+ * WebViewåŠ è½½åŠ¨ä½œç›‘å¬å™¨
  *
- * @author ËÕÌÚ
+ * @author è‹è…¾
  */
 public class LoadingWebViewClient extends WebViewClient {
 
-	/** Ò³Ãæ¼ÓÔØ³¬Ê±Ê±¼ä */
+	/** é¡µé¢åŠ è½½è¶…æ—¶æ—¶é—´ */
 	public static final int TIMEOUT = 30000;
 
 	protected boolean isError = false;
@@ -42,7 +42,7 @@ public class LoadingWebViewClient extends WebViewClient {
 
 		@Override
 		public void handleMessage(Message msg) {
-			// ³¬Ê±ºó,Ê×ÏÈÅĞ¶ÏÒ³Ãæ¼ÓÔØ½ø¶È,³¬Ê±²¢ÇÒ½ø¶ÈĞ¡ÓÚ100,¾ÍÖ´ĞĞ³¬Ê±ºóµÄ¶¯×÷
+			// è¶…æ—¶å,é¦–å…ˆåˆ¤æ–­é¡µé¢åŠ è½½è¿›åº¦,è¶…æ—¶å¹¶ä¸”è¿›åº¦å°äº100,å°±æ‰§è¡Œè¶…æ—¶åçš„åŠ¨ä½œ
 			if (webView.getProgress() < 100) {
 				webView.stopLoading();
 				onReceivedError(webView, ERROR_TIMEOUT, "", currentUrl);
@@ -51,7 +51,7 @@ public class LoadingWebViewClient extends WebViewClient {
 	};
 
 	/**
-	 * ¸²¸ÇÕâ¸ö·½·¨ÒÔÉè¶¨³¬Ê±Ê±¼ä
+	 * è¦†ç›–è¿™ä¸ªæ–¹æ³•ä»¥è®¾å®šè¶…æ—¶æ—¶é—´
 	 *
 	 * @return
 	 */
@@ -63,7 +63,7 @@ public class LoadingWebViewClient extends WebViewClient {
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
 		super.onPageStarted(view, url, favicon);
 
-		// ³ö´íÖ®ºó¿ÉÄÜ»áÔÙ×ßÒ»´ÎonPageStarted£¬ÔÚ´ËºöÂÔ
+		// å‡ºé”™ä¹‹åå¯èƒ½ä¼šå†èµ°ä¸€æ¬¡onPageStartedï¼Œåœ¨æ­¤å¿½ç•¥
 		if (System.currentTimeMillis() - lastErrorTime < 100) {
 			return;
 		}
@@ -94,25 +94,25 @@ public class LoadingWebViewClient extends WebViewClient {
 			String res = "";
 			switch (errorCode) {
 				case WebViewClient.ERROR_HOST_LOOKUP:
-					res = "¼ÓÔØÊ§°Ü";
+					res = "åŠ è½½å¤±è´¥";
 					break;
 				case WebViewClient.ERROR_CONNECT:
-					res = "ÎŞ·¨Á¬½ÓÖÁ·şÎñÆ÷";
+					res = "æ— æ³•è¿æ¥è‡³æœåŠ¡å™¨";
 					break;
 				case WebViewClient.ERROR_TIMEOUT:
-					res = "Á¬½Ó³¬Ê±";
+					res = "è¿æ¥è¶…æ—¶";
 					break;
 				case WebViewClient.ERROR_REDIRECT_LOOP:
-					res = "¹ı¶àÖØ¶¨Ïò";
+					res = "è¿‡å¤šé‡å®šå‘";
 					break;
 				case WebViewClient.ERROR_BAD_URL:
-					res = "ÍøÖ·´íÎó";
+					res = "ç½‘å€é”™è¯¯";
 					break;
 				default:
-					res = "Á¬½ÓÊ§°Ü(" + errorCode + ")";
+					res = "è¿æ¥å¤±è´¥(" + errorCode + ")";
 					break;
 			}
-			listener.onReceivedError(view, errorCode, description, failingUrl, res + "£¬Çëµã»÷ÖØÊÔ");
+			listener.onReceivedError(view, errorCode, description, failingUrl, res + "ï¼Œè¯·ç‚¹å‡»é‡è¯•");
 		}
 	}
 
@@ -126,7 +126,7 @@ public class LoadingWebViewClient extends WebViewClient {
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°µØÖ·
+	 * è¿”å›å½“å‰åœ°å€
 	 *
 	 * @return
 	 */
@@ -135,7 +135,7 @@ public class LoadingWebViewClient extends WebViewClient {
 	}
 
 	/**
-	 * È¡Ïû¶¨Ê±Æ÷
+	 * å–æ¶ˆå®šæ—¶å™¨
 	 */
 	public synchronized void cancelTimer() {
 		if (timer != null) {
@@ -146,7 +146,7 @@ public class LoadingWebViewClient extends WebViewClient {
 	}
 
 	/**
-	 * ´úÀíWebViewClientµÄÈô¸É·½·¨
+	 * ä»£ç†WebViewClientçš„è‹¥å¹²æ–¹æ³•
 	 */
 	public interface LoadingListener {
 
