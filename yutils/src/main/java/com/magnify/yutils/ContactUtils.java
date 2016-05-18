@@ -102,7 +102,7 @@ public class ContactUtils {
 
 
     /***
-     * @return 对数据进行查询
+     *  对数据进行查询
      */
     public interface onContactSearchListener {
         //对查询的细节进行操作
