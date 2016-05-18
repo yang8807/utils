@@ -19,6 +19,7 @@
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/ImageUtils.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/InputUtil.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/IntentUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/JsonArgUtils.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LoadingWebViewClient.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/LogUtil.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/yutils/src/main/java/com/magnify/yutils/NetworkUtil.java" charset="GBK" />
