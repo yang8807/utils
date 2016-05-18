@@ -29,24 +29,24 @@ import java.util.TimerTask;
 public class DeviceUtil {
 
     /**
-     * åˆ¤æ–­æŒ‡å®šä¸Šä¸‹æ–‡æ‰€åœ¨è¿›ç¨‹æ˜¯å¦åº”ç”¨ä¸»è¿›ç¨‹
+     * ÅĞ¶ÏÖ¸¶¨ÉÏÏÂÎÄËùÔÚ½ø³ÌÊÇ·ñÓ¦ÓÃÖ÷½ø³Ì
      *
-     * @return true:åº”ç”¨ä¸»è¿›ç¨‹ false:å’Œåº”ç”¨ç›¸å…³çš„ç‹¬ç«‹è¿›ç¨‹
+     * @return true:Ó¦ÓÃÖ÷½ø³Ì false:ºÍÓ¦ÓÃÏà¹ØµÄ¶ÀÁ¢½ø³Ì
      */
     public static boolean isAppMainProcess(Context context) {
-        // è·å–åº”ç”¨å½“å‰è¿›ç¨‹å
+        // »ñÈ¡Ó¦ÓÃµ±Ç°½ø³ÌÃû
         String processName = getCurrentProcessName(context.getApplicationContext());
         String appProcessName = context.getApplicationInfo().processName;
-        // å¦‚æœè¿›ç¨‹åå’Œåº”ç”¨çš„ä¸»è¿›ç¨‹å(åº”ç”¨ä¸»è¿›ç¨‹åç”±AndroidManifext.xmlä¸­çš„<appliction
-        // android:process="">å±æ€§å®šä¹‰,é»˜è®¤å’ŒPackageNameåŒ…åç›¸åŒ)ç›¸åŒè¯´æ˜æ˜¯åº”ç”¨ä¸»è¿›ç¨‹,ä¸ç›¸åŒè¯´æ˜æ˜¯ä¸€ä¸ªç‹¬ç«‹çš„åº”ç”¨è¿›ç¨‹(åœ¨AndroidManifext.xmlä¸­è®¾ç½®äº†android:processå±æ€§çš„Activityã€Serviceã€receiverã€provider)
+        // Èç¹û½ø³ÌÃûºÍÓ¦ÓÃµÄÖ÷½ø³ÌÃû(Ó¦ÓÃÖ÷½ø³ÌÃûÓÉAndroidManifext.xmlÖĞµÄ<appliction
+        // android:process="">ÊôĞÔ¶¨Òå,Ä¬ÈÏºÍPackageName°üÃûÏàÍ¬)ÏàÍ¬ËµÃ÷ÊÇÓ¦ÓÃÖ÷½ø³Ì,²»ÏàÍ¬ËµÃ÷ÊÇÒ»¸ö¶ÀÁ¢µÄÓ¦ÓÃ½ø³Ì(ÔÚAndroidManifext.xmlÖĞÉèÖÃÁËandroid:processÊôĞÔµÄActivity¡¢Service¡¢receiver¡¢provider)
         return appProcessName.equals(processName);
     }
 
     /**
-     * è·å–å½“å‰ä¸Šä¸‹æ–‡æ‰€åœ¨è¿›ç¨‹åç§°
+     * »ñÈ¡µ±Ç°ÉÏÏÂÎÄËùÔÚ½ø³ÌÃû³Æ
      */
     public static String getCurrentProcessName(Context context) {
-        // å½“å‰è¿›ç¨‹id
+        // µ±Ç°½ø³Ìid
         int pid = android.os.Process.myPid();
         ActivityManager mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager.getRunningAppProcesses()) {
@@ -58,8 +58,8 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–Activityä¿¡æ¯
-     * @return è·å–å¤±è´¥è¿”å›null
+     * »ñÈ¡ActivityĞÅÏ¢
+     * @return »ñÈ¡Ê§°Ü·µ»Ønull
      */
     public static ActivityInfo getActivityInfo(Context context, String className) {
         ComponentName cn = new ComponentName(context, className);
@@ -71,11 +71,11 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–Activityé…ç½®æ–‡ä»¶labelåç§°
+     * »ñÈ¡ActivityÅäÖÃÎÄ¼şlabelÃû³Æ
      *
-     * @param context ä¸Šä¸‹æ–‡
-     * @param className è¦è·å–çš„Activityç±»å®Œæ•´åç§°
-     * @return è·å–å¤±è´¥è¿”å›null
+     * @param context ÉÏÏÂÎÄ
+     * @param className Òª»ñÈ¡µÄActivityÀàÍêÕûÃû³Æ
+     * @return »ñÈ¡Ê§°Ü·µ»Ønull
      */
     public static String getActivityLabel(Context context, String className) {
         ActivityInfo aInfo = getActivityInfo(context, className);
@@ -83,7 +83,7 @@ public class DeviceUtil {
             return null;
         } else {
             // return aInfo.loadLabel(context.getPackageManager()).toString();
-            // æœ¬æ¥æ˜¯ä¸Šè¾¹ä¸€è¡Œä»£ç æå®šçš„ï¼Œä½†æ˜¯å¦‚æœactivityæ²¡è®¾labelä»–ä¼šè¿”å›applicationçš„labelã€‚ä¸‹è¾¹çš„ä»£ç å‡ºè‡ªloadLabelï¼Œæ²¡æœ‰labelæ—¶è¿”å›className
+            // ±¾À´ÊÇÉÏ±ßÒ»ĞĞ´úÂë¸ã¶¨µÄ£¬µ«ÊÇÈç¹ûactivityÃ»ÉèlabelËû»á·µ»ØapplicationµÄlabel¡£ÏÂ±ßµÄ´úÂë³ö×ÔloadLabel£¬Ã»ÓĞlabelÊ±·µ»ØclassName
             if (aInfo.nonLocalizedLabel != null) {
                 return aInfo.nonLocalizedLabel.toString();
             }
@@ -98,8 +98,8 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–æ‰‹æœºIMEI:
-     * IMEI(International Mobile Equipment Identity)æ˜¯å›½é™…ç§»åŠ¨è®¾å¤‡èº«ä»½ç çš„ç¼©å†™
+     * »ñÈ¡ÊÖ»úIMEI:
+     * IMEI(International Mobile Equipment Identity)ÊÇ¹ú¼ÊÒÆ¶¯Éè±¸Éí·İÂëµÄËõĞ´
      */
     public static String getIMEI(Context appContext) {
 
@@ -108,23 +108,23 @@ public class DeviceUtil {
     }
 
     /**
-     * æ ¹æ®æ‰‹æœºçš„åˆ†è¾¨ç‡ä» dip çš„å•ä½ è½¬æˆä¸ºpx
+     * ¸ù¾İÊÖ»úµÄ·Ö±æÂÊ´Ó dip µÄµ¥Î» ×ª³ÉÎªpx
      */
     public static int dipToPx(Context appContext, float dpValue) {
         return (int) (dpValue * appContext.getResources().getDisplayMetrics().density + 0.5f);
     }
 
     /**
-     * æ ¹æ®æ‰‹æœºçš„åˆ†è¾¨ç‡ä» px çš„å•ä½ è½¬æˆä¸ºdip
+     * ¸ù¾İÊÖ»úµÄ·Ö±æÂÊ´Ó px µÄµ¥Î» ×ª³ÉÎªdip
      */
     public static int px2Dip(Context appContext, float pxValue) {
         return (int) (pxValue / appContext.getResources().getDisplayMetrics().density + 0.5f);
     }
 
     /**
-     * å°†pxå€¼è½¬æ¢ä¸ºspå€¼ï¼Œä¿è¯æ–‡å­—å¤§å°ä¸å˜
+     * ½«pxÖµ×ª»»ÎªspÖµ£¬±£Ö¤ÎÄ×Ö´óĞ¡²»±ä
      *
-     * @param context ï¼ˆDisplayMetricsç±»ä¸­å±æ€§scaledDensityï¼‰
+     * @param context £¨DisplayMetricsÀàÖĞÊôĞÔscaledDensity£©
      */
     public static int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -132,9 +132,9 @@ public class DeviceUtil {
     }
 
     /**
-     * å°†spå€¼è½¬æ¢ä¸ºpxå€¼ï¼Œä¿è¯æ–‡å­—å¤§å°ä¸å˜
+     * ½«spÖµ×ª»»ÎªpxÖµ£¬±£Ö¤ÎÄ×Ö´óĞ¡²»±ä
      *
-     * @param context ï¼ˆDisplayMetricsç±»ä¸­å±æ€§scaledDensityï¼‰
+     * @param context £¨DisplayMetricsÀàÖĞÊôĞÔscaledDensity£©
      */
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -142,7 +142,7 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–æ˜¾ç¤ºå±åƒç´ å¤§å°
+     * »ñÈ¡ÏÔÊ¾ÆÁÏñËØ´óĞ¡
      */
     @SuppressLint("NewApi")
     public static Point getDisplaySize(Context appContext) {
@@ -158,23 +158,23 @@ public class DeviceUtil {
     }
 
     /**
-     * éšè—è¾“å…¥æ³•
+     * Òş²ØÊäÈë·¨
      *
-     * @param context activityçš„context
+     * @param context activityµÄcontext
      */
     public static void hideKeyboard(Context context) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
-            // å¯èƒ½æ²¡æœ‰focus
+            // ¿ÉÄÜÃ»ÓĞfocus
             // imm.hideSoftInputFromWindow(((Activity) context).getCurrentFocus().getWindowToken(), 0);
             imm.hideSoftInputFromWindow(((Activity) context).getWindow().getDecorView().getWindowToken(), 0);
         }
     }
 
     /**
-     * æ˜¾ç¤ºè¾“å…¥æ³•
+     * ÏÔÊ¾ÊäÈë·¨
      *
-     * @param view æ¥æ”¶è¾“å…¥çš„view
+     * @param view ½ÓÊÕÊäÈëµÄview
      */
     public static void showKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -182,7 +182,7 @@ public class DeviceUtil {
     }
 
     /**
-     * è‡ªåŠ¨å»¶æ—¶å¼¹å‡ºè½¯é”®ç›˜
+     * ×Ô¶¯ÑÓÊ±µ¯³öÈí¼üÅÌ
      *
      * @param lateTimer
      */
@@ -199,12 +199,12 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–åº”ç”¨ä¿¡æ¯
+     * »ñÈ¡Ó¦ÓÃĞÅÏ¢
      */
     public static PackageInfo getPackageInfo(Context context) {
-        // è·å–packagemanagerçš„å®ä¾‹
+        // »ñÈ¡packagemanagerµÄÊµÀı
         PackageManager packageManager = context.getPackageManager();
-        // getPackageName()æ˜¯ä½ å½“å‰ç±»çš„åŒ…åï¼Œ0ä»£è¡¨æ˜¯è·å–ç‰ˆæœ¬ä¿¡æ¯
+        // getPackageName()ÊÇÄãµ±Ç°ÀàµÄ°üÃû£¬0´ú±íÊÇ»ñÈ¡°æ±¾ĞÅÏ¢
         PackageInfo packInfo = null;
         try {
             packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
@@ -215,7 +215,7 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–AndroidManifest.xmlä¸­è®¾ç½®çš„åº”ç”¨å
+     * »ñÈ¡AndroidManifest.xmlÖĞÉèÖÃµÄÓ¦ÓÃÃû
      */
     public static String getAppName(Context context) {
         PackageInfo packInfo = getPackageInfo(context);
@@ -226,14 +226,14 @@ public class DeviceUtil {
     }
 
     /**
-     * è·å–å½“å‰SDKçš„ç³»ç»Ÿç‰ˆæœ¬
+     * »ñÈ¡µ±Ç°SDKµÄÏµÍ³°æ±¾
      */
     public static int getSystemVersion() {
         return android.os.Build.VERSION.SDK_INT;
     }
 
     /**
-     * è·å–çŠ¶æ€æ çš„é«˜åº¦
+     * »ñÈ¡×´Ì¬À¸µÄ¸ß¶È
      */
     public static int getStatusBarHeight(Context context) {
         int statusHeight = 0;
@@ -255,7 +255,7 @@ public class DeviceUtil {
     }
 
     /**
-     * ActionBarçš„é«˜åº¦
+     * ActionBarµÄ¸ß¶È
      */
     public static float getActionBarHeight(Context appContext) {
         TypedArray actionbarSizeTypedArray = appContext.obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
@@ -265,7 +265,7 @@ public class DeviceUtil {
     }
 
     /**
-     * æ‹·è´æ–‡æœ¬åˆ°å‰ªåˆ‡æ¿
+     * ¿½±´ÎÄ±¾µ½¼ôÇĞ°å
      */
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
@@ -281,8 +281,8 @@ public class DeviceUtil {
     }
 
     /**
-     * åˆ¤æ–­åº”ç”¨æ˜¯åœ¨å‰å°è¿˜æ˜¯åœ¨åå°è¿è¡Œ
-     * @return åå°true å‰å°false
+     * ÅĞ¶ÏÓ¦ÓÃÊÇÔÚÇ°Ì¨»¹ÊÇÔÚºóÌ¨ÔËĞĞ
+     * @return ºóÌ¨true Ç°Ì¨false
      */
     public static boolean isApplicationBroughtToBackground(final Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -297,7 +297,7 @@ public class DeviceUtil {
     }
 
     /**
-     * TODO::æš‚æ—¶ä¸è¦ä½¿ç”¨æœ¬æ–¹æ³•,æœ¬æ–¹æ³•ä»å‹ç›Ÿå¤åˆ¶è€Œæ¥,ä½œä¸ºå‹ç›Ÿæµ‹è¯•å’Œå‚è€ƒä½¿ç”¨,æ—¥åéœ€è¦æµ‹è¯•æ”¹è¿› è·å–å½“å‰è®¾å¤‡æ ‡ç¤ºä¿¡æ¯json
+     * TODO::ÔİÊ±²»ÒªÊ¹ÓÃ±¾·½·¨,±¾·½·¨´ÓÓÑÃË¸´ÖÆ¶øÀ´,×÷ÎªÓÑÃË²âÊÔºÍ²Î¿¼Ê¹ÓÃ,ÈÕºóĞèÒª²âÊÔ¸Ä½ø »ñÈ¡µ±Ç°Éè±¸±êÊ¾ĞÅÏ¢json
      *
      */
     public static String getDeviceInfo(Context context) {

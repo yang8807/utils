@@ -10,14 +10,14 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
- * è¾“å…¥å·¥å…·ç±»
+ * ÊäÈë¹¤¾ßÀà
  *
- * @author è‹è…¾
+ * @author ËÕÌÚ
  */
 public class InputUtil {
 
 	/**
-	 * ç»™TextViewæ·»åŠ ä¸€ä¸ªInputFilter
+	 * ¸øTextViewÌí¼ÓÒ»¸öInputFilter
 	 *
 	 * @param view
 	 * @param filter
@@ -35,10 +35,10 @@ public class InputUtil {
 	}
 
 	/**
-	 * å­—ç¬¦è¿‡æ»¤å™¨ï¼Œç”¨äºé™åˆ¶TextViewå¯è¾“å…¥çš„å­—ç¬¦<br>
-	 * android:digits å±æ€§å¯¹ç‰©ç†é”®ç›˜æœ‰æ•ˆï¼Œä½†å„ç§è¾“å…¥æ³•çš„è½¯é”®ç›˜ä¸ä¸€å®šä¼šå®ç°<br>
+	 * ×Ö·û¹ıÂËÆ÷£¬ÓÃÓÚÏŞÖÆTextView¿ÉÊäÈëµÄ×Ö·û<br>
+	 * android:digits ÊôĞÔ¶ÔÎïÀí¼üÅÌÓĞĞ§£¬µ«¸÷ÖÖÊäÈë·¨µÄÈí¼üÅÌ²»Ò»¶¨»áÊµÏÖ<br>
 	 *
-	 * @author è‹è…¾
+	 * @author ËÕÌÚ
 	 */
 	public static class DigitsFilter implements InputFilter {
 
@@ -95,8 +95,8 @@ public class InputUtil {
 	}
 
 	/**
-	 * å­—ç¬¦è¿‡æ»¤å™¨ï¼Œé™åˆ¶TextViewä¸èƒ½è¾“å…¥æŸäº›å­—ç¬¦
-	 * @author è‹è…¾
+	 * ×Ö·û¹ıÂËÆ÷£¬ÏŞÖÆTextView²»ÄÜÊäÈëÄ³Ğ©×Ö·û
+	 * @author ËÕÌÚ
 	 */
 	public static class NonDigitsFilter extends DigitsFilter {
 
@@ -112,11 +112,11 @@ public class InputUtil {
 	}
 
 	/**
-	 * æ­£åˆ™è¿‡æ»¤å™¨ï¼Œç”¨æ­£åˆ™è¡¨è¾¾å¼é™åˆ¶å¯è¾“å…¥çš„å†…å®¹<br>
-	 * è¦æ³¨æ„çš„æ˜¯ï¼Œè¾“å…¥æ˜¯é€ä¸ªå­—ç¬¦è¾“å…¥çš„ï¼Œæ¯è¾“å…¥ä¸€ä¸ªå­—ç¬¦éƒ½ä¼šè§¦å‘ä¸€æ¬¡æ£€æµ‹ï¼Œå› æ­¤ç±»ä¼¼ \d{3} è¿™æ ·çš„æ­£åˆ™æ˜¯ä¸èƒ½è¾“å…¥çš„ï¼Œåº”è¯¥å†™æˆ \d{0,3}<br>
-	 * å½“ç²˜è´´æ—¶ï¼Œç²˜è´´å†…å®¹åªè¦ä¸ç¬¦åˆè¦æ±‚ï¼Œä¼šå…¨éƒ¨ä¸¢å¼ƒ
+	 * ÕıÔò¹ıÂËÆ÷£¬ÓÃÕıÔò±í´ïÊ½ÏŞÖÆ¿ÉÊäÈëµÄÄÚÈİ<br>
+	 * Òª×¢ÒâµÄÊÇ£¬ÊäÈëÊÇÖğ¸ö×Ö·ûÊäÈëµÄ£¬Ã¿ÊäÈëÒ»¸ö×Ö·û¶¼»á´¥·¢Ò»´Î¼ì²â£¬Òò´ËÀàËÆ \d{3} ÕâÑùµÄÕıÔòÊÇ²»ÄÜÊäÈëµÄ£¬Ó¦¸ÃĞ´³É \d{0,3}<br>
+	 * µ±Õ³ÌùÊ±£¬Õ³ÌùÄÚÈİÖ»Òª²»·ûºÏÒªÇó£¬»áÈ«²¿¶ªÆú
 	 *
-	 * @author è‹è…¾
+	 * @author ËÕÌÚ
 	 */
 	public static class PattenFilter implements InputFilter {
 
@@ -133,26 +133,26 @@ public class InputUtil {
 		@Override
 		public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 			// Log.wtf("filter","source:" + source + ",start:" + start + ",end:" + end + ",dest:" + dest + ",dstart:" + dstart + ",dend:" + dend);
-			// æ„é€ æ›¿æ¢åçš„å†…å®¹
-			char[] s0 = dest.toString().toCharArray(); // åŸå§‹ä¸²
-			char[] s1 = source.toString().toCharArray(); // æ›¿æ¢ä¸²
-			char[] s2 = new char[s0.length - dend + dstart + end - start]; // æ›¿æ¢å
+			// ¹¹ÔìÌæ»»ºóµÄÄÚÈİ
+			char[] s0 = dest.toString().toCharArray(); // Ô­Ê¼´®
+			char[] s1 = source.toString().toCharArray(); // Ìæ»»´®
+			char[] s2 = new char[s0.length - dend + dstart + end - start]; // Ìæ»»ºó
 			int i, c = 0;
 			for (i = 0; i < dstart; i++)
-				s2[c++] = s0[i]; // å¤´
+				s2[c++] = s0[i]; // Í·
 			for (i = start; i < end; i++)
-				s2[c++] = s1[i]; // æ›¿æ¢éƒ¨åˆ†
+				s2[c++] = s1[i]; // Ìæ»»²¿·Ö
 			for (i = dend; i < s0.length; i++)
-				s2[c++] = s0[i]; // å°¾
+				s2[c++] = s0[i]; // Î²
 			return pattern.matcher(String.valueOf(s2)).matches() ? null : "";
 		}
 
 	}
 
 	/**
-	 * æ­£åˆ™è¿‡æ»¤å™¨çš„ç‰¹ä¾‹ï¼Œæ‰€æä¾›çš„æ­£åˆ™åº”è¯¥æ˜¯ä¸€ä¸ªé›†åˆæ£€æµ‹ï¼Œè¾“å…¥å’Œç²˜è´´æ—¶ä¼šé€ä¸ªå­—ç¬¦åˆ¤æ–­ï¼Œåªç•™ä¸‹ç¬¦åˆè¦æ±‚çš„
+	 * ÕıÔò¹ıÂËÆ÷µÄÌØÀı£¬ËùÌá¹©µÄÕıÔòÓ¦¸ÃÊÇÒ»¸ö¼¯ºÏ¼ì²â£¬ÊäÈëºÍÕ³ÌùÊ±»áÖğ¸ö×Ö·ûÅĞ¶Ï£¬Ö»ÁôÏÂ·ûºÏÒªÇóµÄ
 	 *
-	 * @author è‹è…¾
+	 * @author ËÕÌÚ
 	 */
 	public static class SetPattenFilter extends PattenFilter {
 
@@ -182,10 +182,10 @@ public class InputUtil {
 			return filtered;
 		}
 
-		/** åŠè§’ç¬¦å·ï¼Œå…¨è§’ç¬¦å·ï¼Œæ±‰å­— */
+		/** °ë½Ç·ûºÅ£¬È«½Ç·ûºÅ£¬ºº×Ö */
 		public static final String GENERAL_TEXT = "[\\x20-\\x7f\\u2000-\\u206f\\u3000-\\u303f\\u4e00-\\u9fa5\\uff00-\\uffef]*";
 
-		/** æ”¯ä»˜å¯†ç -æ•°å­—å­—æ¯ç»„åˆ */
+		/** Ö§¸¶ÃÜÂë-Êı×Ö×ÖÄ¸×éºÏ */
 		public static final String PAY_PASSWORD_PATTERN = "([a-z]|[A-Z]|[0-9])*";
 
 	}

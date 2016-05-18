@@ -13,16 +13,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * æ–‡ä»¶æ“ä½œå·¥å…·åŒ…
+ * ÎÄ¼ş²Ù×÷¹¤¾ß°ü
  *
  * @author xubing
  */
 public class FileUtils {
 
 	/**
-	 * è·å–æ–‡ä»¶æ‰©å±•å
+	 * »ñÈ¡ÎÄ¼şÀ©Õ¹Ãû
 	 *
-	 * @return æ‰©å±•åæˆ–null
+	 * @return À©Õ¹Ãû»ònull
 	 */
 	public static String getFileExt(String file) {
 		if (file == null) {
@@ -39,7 +39,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * å‘æ‰‹æœºå†™å›¾ç‰‡
+	 * ÏòÊÖ»úĞ´Í¼Æ¬
 	 */
 	public static void writeFile(byte[] buffer, String filePath) {
 		File file = new File(filePath);
@@ -61,10 +61,10 @@ public class FileUtils {
 	}
 
 	/***
-	 * æ ¹æ®è‡ªå®šä¹‰æ–‡ä»¶å¤¹åã€æ–‡ä»¶ååˆ›å»ºæ–‡ä»¶è·¯å¾„
+	 * ¸ù¾İ×Ô¶¨ÒåÎÄ¼ş¼ĞÃû¡¢ÎÄ¼şÃû´´½¨ÎÄ¼şÂ·¾¶
 	 *
-	 * @param folder è‡ªå®šä¹‰æ–‡ä»¶å¤¹
-	 * @param fileName è‡ªå®šä¹‰æ–‡ä»¶å
+	 * @param folder ×Ô¶¨ÒåÎÄ¼ş¼Ğ
+	 * @param fileName ×Ô¶¨ÒåÎÄ¼şÃû
 	 */
 	public static String getFilePath(Activity mActivity, String folder, String fileName) {
 
@@ -83,7 +83,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * åˆ¤æ–­æ˜¯å¦æœ‰sdcard
+	 * ÅĞ¶ÏÊÇ·ñÓĞsdcard
 	 */
 	public static boolean hasSDCard() {
 		boolean b = false;
@@ -94,7 +94,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * å¾—åˆ°sdcardè·¯å¾„
+	 * µÃµ½sdcardÂ·¾¶
 	 */
 	public static String getExtPath() {
 		if (checkSaveLocationExists()) {
@@ -104,14 +104,14 @@ public class FileUtils {
 	}
 
 	/**
-	 * å¾—åˆ°/data/data/yanbin.imagedownloadç›®å½•
+	 * µÃµ½/data/data/yanbin.imagedownloadÄ¿Â¼
 	 */
 	public static String getPackagePath(Activity mActivity) {
 		return mActivity.getFilesDir().toString();
 	}
 
 	/**
-	 * æ£€æŸ¥æ˜¯å¦å®‰è£…SDå¡
+	 * ¼ì²éÊÇ·ñ°²×°SD¿¨
 	 */
 	public static boolean checkSaveLocationExists() {
 		if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -122,7 +122,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * è·å–æ–‡ä»¶MD5
+	 * »ñÈ¡ÎÄ¼şMD5
 	 */
 	public static String fileMD5(String filename) throws FileNotFoundException, IOException {
 		FileInputStream fis = null;
@@ -144,7 +144,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * åˆ é™¤ç›®å½•é‡Œçš„æ‰€æœ‰æ–‡ä»¶
+	 * É¾³ıÄ¿Â¼ÀïµÄËùÓĞÎÄ¼ş
 	 */
 	public static boolean deleteDirectory(String path) {
 		File file = new File(path);
@@ -160,19 +160,19 @@ public class FileUtils {
 	}
 
 	/**
-	 * è¿”å›å¸¦ file:// å‰ç¼€çš„è·¯å¾„
+	 * ·µ»Ø´ø file:// Ç°×ºµÄÂ·¾¶
 	 */
 	public static String getSchemePath(File file) {
-		// å¯èƒ½æœ‰ä¸­æ–‡ï¼Œæ‰€ä»¥è¦decodeä¸€æ¬¡
+		// ¿ÉÄÜÓĞÖĞÎÄ£¬ËùÒÔÒªdecodeÒ»´Î
 		return Uri.decode(Uri.fromFile(file).toString());
 	}
 
 	/**
-	 * æ‹·è´æ–‡ä»¶
+	 * ¿½±´ÎÄ¼ş
 	 *
-	 * @param source æºæ–‡ä»¶
-	 * @param target ç›®æ ‡åœ°å€
-	 * @return æ˜¯å¦æˆåŠŸ
+	 * @param source Ô´ÎÄ¼ş
+	 * @param target Ä¿±êµØÖ·
+	 * @return ÊÇ·ñ³É¹¦
 	 */
 	public static boolean copyFile(File source, String target) {
 		if (source == null || !source.exists() || !source.isFile() || target == null || target.length() == 0) {
@@ -205,11 +205,11 @@ public class FileUtils {
 	}
 
 	/**
-	 * è®¡ç®—æ–‡ä»¶å¤¹æ€»å¤§å°
+	 * ¼ÆËãÎÄ¼ş¼Ğ×Ü´óĞ¡
 	 *
 	 * @param dir
-	 * @param containsSubDir æ˜¯å¦åŒ…å«å­æ–‡ä»¶å¤¹
-	 * @return å‡ºé”™æˆ–ä¸å­˜åœ¨è¿”å›0
+	 * @param containsSubDir ÊÇ·ñ°üº¬×ÓÎÄ¼ş¼Ğ
+	 * @return ³ö´í»ò²»´æÔÚ·µ»Ø0
 	 */
 	public static long getDirSize(File dir, boolean containsSubDir) {
 		if (dir == null || !dir.exists() || !dir.isDirectory()) {

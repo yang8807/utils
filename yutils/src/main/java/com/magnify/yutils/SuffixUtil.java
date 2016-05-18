@@ -7,9 +7,9 @@ import android.widget.RelativeLayout;
 
 
 /**
- * ä¸‹æ ‡ç§»åŠ¨ç±»ï¼Œé€šè¿‡è°ƒç”¨moveToä¿®æ”¹æ­¤å˜é‡ ,ä¸‹æ ‡çš„çˆ¶å¸ƒå±€è¯·ä½¿ç”¨RelativeLayout
+ * ÏÂ±êÒÆ¶¯Àà£¬Í¨¹ýµ÷ÓÃmoveToÐÞ¸Ä´Ë±äÁ¿ ,ÏÂ±êµÄ¸¸²¼¾ÖÇëÊ¹ÓÃRelativeLayout
  *
- * @author é™ˆå¥
+ * @author ³Â½¡
  */
 public class SuffixUtil {
 
@@ -28,27 +28,27 @@ public class SuffixUtil {
 	private int dividerWidth = 0;
 
 	/**
-	 * @param group éœ€è¦æ·»åŠ ä¸‹æ ‡çš„View(ç¬¬ä¸€ä¸ªå­View),å»ºè®®ä½¿ç”¨LinearLayoutå¸ƒå±€å¹³åˆ†View
-	 * @param slide_view ä¸‹æ ‡View
+	 * @param group ÐèÒªÌí¼ÓÏÂ±êµÄView(µÚÒ»¸ö×ÓView),½¨ÒéÊ¹ÓÃLinearLayout²¼¾ÖÆ½·ÖView
+	 * @param slide_view ÏÂ±êView
 	 */
 	public SuffixUtil(final ViewGroup group, final View slide_view) {
 		this(group, slide_view, 0, 500);
 	}
 
 	/**
-	 * @param group éœ€è¦æ·»åŠ ä¸‹æ ‡çš„View(ç¬¬ä¸€ä¸ªå­View),å»ºè®®ä½¿ç”¨LinearLayoutå¸ƒå±€å¹³åˆ†View
-	 * @param slide_view ä¸‹æ ‡View
-	 * @param delta ä¸‹åˆ’çº¿æ¯”ä¸Šæ–¹æ–‡å­—é•¿å‡ºæ¥çš„é•¿åº¦(å•è¾¹)
+	 * @param group ÐèÒªÌí¼ÓÏÂ±êµÄView(µÚÒ»¸ö×ÓView),½¨ÒéÊ¹ÓÃLinearLayout²¼¾ÖÆ½·ÖView
+	 * @param slide_view ÏÂ±êView
+	 * @param delta ÏÂ»®Ïß±ÈÉÏ·½ÎÄ×Ö³¤³öÀ´µÄ³¤¶È(µ¥±ß)
 	 */
 	public SuffixUtil(final ViewGroup group, final View slide_view, int delta) {
 		this(group, slide_view, delta, 500);
 	}
 
 	/**
-	 * @param group éœ€è¦æ·»åŠ ä¸‹æ ‡çš„View(ç¬¬ä¸€ä¸ªå­View),å»ºè®®ä½¿ç”¨LinearLayoutå¸ƒå±€å¹³åˆ†View
-	 * @param slide_view ä¸‹æ ‡View
-	 * @param delta ä¸‹åˆ’çº¿æ¯”ä¸Šæ–¹æ–‡å­—é•¿å‡ºæ¥çš„é•¿åº¦(å•è¾¹)
-	 * @param duration ç§»åŠ¨æ—¶é—´(æ¯«ç§’)
+	 * @param group ÐèÒªÌí¼ÓÏÂ±êµÄView(µÚÒ»¸ö×ÓView),½¨ÒéÊ¹ÓÃLinearLayout²¼¾ÖÆ½·ÖView
+	 * @param slide_view ÏÂ±êView
+	 * @param delta ÏÂ»®Ïß±ÈÉÏ·½ÎÄ×Ö³¤³öÀ´µÄ³¤¶È(µ¥±ß)
+	 * @param duration ÒÆ¶¯Ê±¼ä(ºÁÃë)
 	 */
 	public SuffixUtil(final ViewGroup group, final View slide_view, final int delta, int duration) {
 		slideView = slide_view;
@@ -83,7 +83,7 @@ public class SuffixUtil {
 	}
 
 	/**
-	 * è®¾ç½®ä¸¤ä¸ªtabä¹‹é—´çš„åˆ†éš”çº¿çš„å®½åº¦ï¼Œä»¥ç²¾ç¡®å®šä½
+	 * ÉèÖÃÁ½¸ötabÖ®¼äµÄ·Ö¸ôÏßµÄ¿í¶È£¬ÒÔ¾«È·¶¨Î»
 	 */
 	public void setDividerWidth(int width) {
 		if (width >= 0)

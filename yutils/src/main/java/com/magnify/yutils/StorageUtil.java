@@ -8,7 +8,7 @@ import java.io.File;
 public class StorageUtil {
 
 	/**
-	 * è·å–ç”¨æˆ·ç›®å½•
+	 * »ñÈ¡ÓÃ»§Ä¿Â¼
 	 *
 	 */
 	static public File getUsesrDir(){
@@ -16,7 +16,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * æ£€æŸ¥å¤–éƒ¨å­˜å‚¨è®¾å¤‡æ˜¯å¦å¯å†™
+	 * ¼ì²éÍâ²¿´æ´¢Éè±¸ÊÇ·ñ¿ÉĞ´
 	 *
 	 */
 	static public boolean externalStorageWriteable(){
@@ -24,8 +24,8 @@ public class StorageUtil {
 	}
 
 	/**
-	 * æ£€æŸ¥å¤–éƒ¨å­˜å‚¨è®¾å¤‡æŒ‡å®šè·¯å¾„æ˜¯å¦å¯å†™
-	 * @param path æ£€æŸ¥è·¯å¾„
+	 * ¼ì²éÍâ²¿´æ´¢Éè±¸Ö¸¶¨Â·¾¶ÊÇ·ñ¿ÉĞ´
+	 * @param path ¼ì²éÂ·¾¶
 	 *
 	 */
 	static public boolean externalStorageWriteable(File path){
@@ -33,7 +33,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è¿”å›å¤–éƒ¨å­˜å‚¨è®¾å¤‡çŠ¶æ€
+	 * ·µ»ØÍâ²¿´æ´¢Éè±¸×´Ì¬
 	 *  one of MEDIA_UNKNOWN, MEDIA_REMOVED, MEDIA_UNMOUNTED, MEDIA_CHECKING, MEDIA_NOFS, MEDIA_MOUNTED, MEDIA_MOUNTED_READ_ONLY, MEDIA_SHARED, MEDIA_BAD_REMOVAL, or MEDIA_UNMOUNTABLE
 	 */
 	static public String getExternalStorageState(){
@@ -41,7 +41,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è¿”å›å¤–éƒ¨å­˜å‚¨è®¾å¤‡æŒ‡å®šè·¯å¾„çŠ¶æ€
+	 * ·µ»ØÍâ²¿´æ´¢Éè±¸Ö¸¶¨Â·¾¶×´Ì¬
 	 *  one of MEDIA_UNKNOWN, MEDIA_REMOVED, MEDIA_UNMOUNTED, MEDIA_CHECKING, MEDIA_NOFS, MEDIA_MOUNTED, MEDIA_MOUNTED_READ_ONLY, MEDIA_SHARED, MEDIA_BAD_REMOVAL, or MEDIA_UNMOUNTABLE
 	 */
 	static public String getExternalStorageState(File path){
@@ -49,7 +49,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è·å–ä¸‹è½½ç¼“å†²ç›®å½•
+	 * »ñÈ¡ÏÂÔØ»º³åÄ¿Â¼
 	 *  {@link File}
 	 */
 	static public File getDownloadCacheDir(){
@@ -57,7 +57,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è·å–å¤–ç½®å­˜å‚¨è®¾å¤‡ç›®å½•,ä¸èƒ½è¢«å…¶ä»–åº”ç”¨è®¿é—®,ä¸ä¼šéšç€åº”ç”¨å¸è½½è€Œåˆ é™¤ (å¤šä¸ªç”¨æˆ·è®¾å¤‡æ¯ä¸ªç”¨æˆ·ç‹¬ç«‹)
+	 * »ñÈ¡ÍâÖÃ´æ´¢Éè±¸Ä¿Â¼,²»ÄÜ±»ÆäËûÓ¦ÓÃ·ÃÎÊ,²»»áËæ×ÅÓ¦ÓÃĞ¶ÔØ¶øÉ¾³ı (¶à¸öÓÃ»§Éè±¸Ã¿¸öÓÃ»§¶ÀÁ¢)
 	 *
 	 */
 	static public File getExternalDir(){
@@ -65,7 +65,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è·å–å¤–ç½®å­˜å‚¨è®¾å¤‡ç›®å½•,ä¸èƒ½è¢«å…¶ä»–åº”ç”¨è®¿é—®,ä¸ä¼šéšç€åº”ç”¨å¸è½½è€Œåˆ é™¤ (å¤šä¸ªç”¨æˆ·è®¾å¤‡æ¯ä¸ªç”¨æˆ·ç‹¬ç«‹)
+	 * »ñÈ¡ÍâÖÃ´æ´¢Éè±¸Ä¿Â¼,²»ÄÜ±»ÆäËûÓ¦ÓÃ·ÃÎÊ,²»»áËæ×ÅÓ¦ÓÃĞ¶ÔØ¶øÉ¾³ı (¶à¸öÓÃ»§Éè±¸Ã¿¸öÓÃ»§¶ÀÁ¢)
 	 *
 	 */
 	static public File getExternalDir(String path){
@@ -73,7 +73,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * è·å–å¤–ç½®å­˜å‚¨è®¾ç½®å…¬å¼€ç›®å½•,å¯è¢«å…¶ä»–åº”ç”¨è®¿é—®ï¼Œä¸ä¼šéšç€åº”ç”¨å¸è½½è€Œåˆ é™¤ (å¤šä¸ªç”¨æˆ·è®¾å¤‡æ¯ä¸ªç”¨æˆ·ç‹¬ç«‹)
+	 * »ñÈ¡ÍâÖÃ´æ´¢ÉèÖÃ¹«¿ªÄ¿Â¼,¿É±»ÆäËûÓ¦ÓÃ·ÃÎÊ£¬²»»áËæ×ÅÓ¦ÓÃĞ¶ÔØ¶øÉ¾³ı (¶à¸öÓÃ»§Éè±¸Ã¿¸öÓÃ»§¶ÀÁ¢)
 	 * @param type
 	 *
 	 */
@@ -82,7 +82,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç³»ç»Ÿæé†’é“ƒå£°å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * ÏµÍ³ÌáĞÑÁåÉù´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirALARMS(){
@@ -90,7 +90,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç›¸æœºæ‹æ‘„ç…§ç‰‡å’Œè§†é¢‘çš„æ ‡å‡†ç›®å½•
+	 * Ïà»úÅÄÉãÕÕÆ¬ºÍÊÓÆµµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirDCIM(){
@@ -98,7 +98,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * éŸ³ä¹å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * ÒôÀÖ´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirMUSIC(){
@@ -106,7 +106,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ä¸‹è½½çš„æ ‡å‡†ç›®å½•
+	 * ÏÂÔØµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirDOWNLOADS(){
@@ -114,7 +114,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * å›¾ç‰‡å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * Í¼Æ¬´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirPICTURES(){
@@ -122,7 +122,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç”µå½±å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * µçÓ°´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirMOVIES(){
@@ -130,7 +130,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç³»ç»Ÿé€šçŸ¥é“ƒå£°å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * ÏµÍ³Í¨ÖªÁåÉù´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirNOTIFICATIONS(){
@@ -138,7 +138,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç³»ç»Ÿå¹¿æ’­å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * ÏµÍ³¹ã²¥´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirPODCASTS(){
@@ -146,7 +146,7 @@ public class StorageUtil {
 	}
 
 	/**
-	 * ç³»ç»Ÿé“ƒå£°å­˜æ”¾çš„æ ‡å‡†ç›®å½•
+	 * ÏµÍ³ÁåÉù´æ·ÅµÄ±ê×¼Ä¿Â¼
 	 *
 	 */
 	static public File getDirRINGTONES(){

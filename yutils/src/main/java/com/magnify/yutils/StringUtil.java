@@ -20,7 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * å­—ç¬¦ä¸²æ“ä½œå·¥å…·åŒ…
+ * ×Ö·û´®²Ù×÷¹¤¾ß°ü
  *
  * @author xubing
  */
@@ -29,31 +29,31 @@ public class StringUtil {
     public static final String RAMDOM_BASE = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
-     * md5ç¼–ç 
+     * md5±àÂë
      */
     public static final String ALGORITHM_MD5 = "MD5";
 
     /**
-     * sha1ç¼–ç 
+     * sha1±àÂë
      */
     public static final String ALGORITHM_SHA1 = "SHA1";
 
     /**
-     * å­—ç¬¦ä¸²æ˜¯å¦ä¸ºç©º(ç©ºå­—ç¬¦ä¸²æˆ–null)
+     * ×Ö·û´®ÊÇ·ñÎª¿Õ(¿Õ×Ö·û´®»ònull)
      */
     public static boolean isEmpty(String s) {
         return s == null || s.length() == 0;
     }
 
     /***
-     * å°†å­—ç¬¦ä¸²è¿›è¡ŒBase64ç¼–ç ã€‚ç¼–ç ç»“æœè¶…è¿‡76å­—ç¬¦ä¼šæ’å…¥æ¢è¡Œç¬¦ï¼Œæœ«å°¾æœ‰æ¢è¡Œç¬¦
+     * ½«×Ö·û´®½øĞĞBase64±àÂë¡£±àÂë½á¹û³¬¹ı76×Ö·û»á²åÈë»»ĞĞ·û£¬Ä©Î²ÓĞ»»ĞĞ·û
      */
     public static String base64Encode(String str) {
         return Base64.encodeToString(str.getBytes(), Base64.DEFAULT);
     }
 
     /***
-     * å°†å­—ç¬¦ä¸²è¿›è¡ŒBase64ç¼–ç ï¼Œå»æ‰å…¶ä¸­æ‰€æœ‰çš„æ¢è¡Œç¬¦
+     * ½«×Ö·û´®½øĞĞBase64±àÂë£¬È¥µôÆäÖĞËùÓĞµÄ»»ĞĞ·û
      *
      * @param str
      */
@@ -62,7 +62,7 @@ public class StringUtil {
     }
 
     /***
-     * å°†å­—ç¬¦ä¸²è¿›è¡ŒBase64è§£ç 
+     * ½«×Ö·û´®½øĞĞBase64½âÂë
      *
      * @param str
      */
@@ -71,12 +71,12 @@ public class StringUtil {
     }
 
     /**
-     * åè¿›åˆ¶è½¬åå…­è¿›åˆ¶å¯¹åº”è¡¨
+     * Ê®½øÖÆ×ªÊ®Áù½øÖÆ¶ÔÓ¦±í
      */
     private static final char HEX_DIGITS[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /**
-     * å­—èŠ‚è½¬åå…­è¿›åˆ¶
+     * ×Ö½Ú×ªÊ®Áù½øÖÆ
      */
     public static String toHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder(bytes.length * 2);
@@ -88,14 +88,14 @@ public class StringUtil {
     }
 
     /**
-     * MD5ç¼–ç ï¼Œå¤§å†™ï¼Œä½¿ç”¨é»˜è®¤charset(UTF-8)
+     * MD5±àÂë£¬´óĞ´£¬Ê¹ÓÃÄ¬ÈÏcharset(UTF-8)
      */
     public static String md5(String str) {
         return encode(str.getBytes(), ALGORITHM_MD5);
     }
 
     /**
-     * MD5ç¼–ç ï¼Œå°å†™ï¼Œä½¿ç”¨é»˜è®¤charset(UTF-8)
+     * MD5±àÂë£¬Ğ¡Ğ´£¬Ê¹ÓÃÄ¬ÈÏcharset(UTF-8)
      */
     public static String md5Lcase(String str) {
         String output = encode(str.getBytes(), ALGORITHM_MD5);
@@ -103,7 +103,7 @@ public class StringUtil {
     }
 
     /**
-     * MD5ç¼–ç ï¼Œå¤§å†™ï¼Œä½¿ç”¨ç‰¹å®šcharset
+     * MD5±àÂë£¬´óĞ´£¬Ê¹ÓÃÌØ¶¨charset
      */
     public static String md5(String str, String charsetName) {
         try {
@@ -115,7 +115,7 @@ public class StringUtil {
     }
 
     /**
-     * MD5ç¼–ç ï¼Œå°å†™ï¼Œä½¿ç”¨ç‰¹å®šcharset
+     * MD5±àÂë£¬Ğ¡Ğ´£¬Ê¹ÓÃÌØ¶¨charset
      */
     public static String md5Lcase(String str, String charsetName) {
         String output = md5(str, charsetName);
@@ -123,7 +123,7 @@ public class StringUtil {
     }
 
     /**
-     * MD5ç¼–ç ï¼Œå°å†™
+     * MD5±àÂë£¬Ğ¡Ğ´
      */
     public static String md5Lcase(byte[] bytes) {
         String output = encode(bytes, ALGORITHM_MD5);
@@ -131,14 +131,14 @@ public class StringUtil {
     }
 
     /**
-     * SHA1ç¼–ç ï¼Œå¤§å†™ï¼Œä½¿ç”¨é»˜è®¤charset(UTF-8)
+     * SHA1±àÂë£¬´óĞ´£¬Ê¹ÓÃÄ¬ÈÏcharset(UTF-8)
      */
     public static String sha1(String str) {
         return encode(str.getBytes(), ALGORITHM_SHA1);
     }
 
     /**
-     * SHA1ç¼–ç ï¼Œå°å†™ï¼Œä½¿ç”¨é»˜è®¤charset(UTF-8)
+     * SHA1±àÂë£¬Ğ¡Ğ´£¬Ê¹ÓÃÄ¬ÈÏcharset(UTF-8)
      */
     public static String sha1Lcase(String str) {
         String output = encode(str.getBytes(), ALGORITHM_SHA1);
@@ -146,7 +146,7 @@ public class StringUtil {
     }
 
     /**
-     * SHA1ç¼–ç ï¼Œå¤§å†™ï¼Œä½¿ç”¨ç‰¹å®šcharset
+     * SHA1±àÂë£¬´óĞ´£¬Ê¹ÓÃÌØ¶¨charset
      */
     public static String sha1(String str, String charsetName) {
         try {
@@ -158,7 +158,7 @@ public class StringUtil {
     }
 
     /**
-     * SHA1ç¼–ç ï¼Œå°å†™ï¼Œä½¿ç”¨ç‰¹å®šcharset
+     * SHA1±àÂë£¬Ğ¡Ğ´£¬Ê¹ÓÃÌØ¶¨charset
      */
     public static String sha1Lcase(String str, String charsetName) {
         String output = sha1(str, charsetName);
@@ -166,7 +166,7 @@ public class StringUtil {
     }
 
     /**
-     * SHA1ç¼–ç ï¼Œå°å†™
+     * SHA1±àÂë£¬Ğ¡Ğ´
      */
     public static String sha1Lcase(byte[] bytes) {
         String output = encode(bytes, ALGORITHM_SHA1);
@@ -174,11 +174,11 @@ public class StringUtil {
     }
 
     /**
-     * SHA1å’ŒMD5ç¼–ç ï¼Œå¤§å†™
+     * SHA1ºÍMD5±àÂë£¬´óĞ´
      *
-     * @param bytes     è¾“å…¥
-     * @param algorithm ç¼–ç ç®—æ³• {@link#ALGORITHM_MD5}, {@link#ALGORITHM_SHA1}
-     *                  è¾“å‡º
+     * @param bytes     ÊäÈë
+     * @param algorithm ±àÂëËã·¨ {@link#ALGORITHM_MD5}, {@link#ALGORITHM_SHA1}
+     *                  Êä³ö
      */
     public static String encode(byte[] bytes, String algorithm) {
         try {
@@ -192,25 +192,25 @@ public class StringUtil {
     }
 
     /**
-     * æŠŠé¢œè‰²æ•°å€¼è½¬ä¸º#RRGGBBå½¢å¼
+     * °ÑÑÕÉ«ÊıÖµ×ªÎª#RRGGBBĞÎÊ½
      */
     public static String getRGBColor(int color) {
         return "#" + Integer.toHexString(color | 0xff000000).substring(2);
     }
 
     /**
-     * æŠŠé¢œè‰²æ•°å€¼è½¬ä¸º#AARRGGBBå½¢å¼
+     * °ÑÑÕÉ«ÊıÖµ×ªÎª#AARRGGBBĞÎÊ½
      */
     public static String getARGBColor(int color) {
         return "#" + Long.toHexString(color | 0xffffffff00000000L).substring(8);
     }
 
     /**
-     * è®¾ç½®åŒä¸€ä¸ªtextviewé‡Œè¾¹æ–‡å­—çš„ä¸åŒé¢œè‰²
+     * ÉèÖÃÍ¬Ò»¸ötextviewÀï±ßÎÄ×ÖµÄ²»Í¬ÑÕÉ«
      *
-     * @param format ä»¥ä¸­æ‹¬å·æ ‡æ˜è¦ä¸Šè‰²çš„æ–‡å­—ï¼Œä¾‹å¦‚ "[12äºº]ç»™äº†[8ç§]å°è±¡"
-     * @param colors ä¾‹å¦‚ "#dd465e"ã€‚å¦‚æœæ•°é‡å°‘äºformaté‡Œçš„æ‹¬å·æ•°ï¼Œä¸è¶³çš„ä¼šå–æœ€åä¸€ä¸ª
-     *               è¿”å›çš„Spannedå¯ä»¥ç›´æ¥ç”¨äºTextView.setText()
+     * @param format ÒÔÖĞÀ¨ºÅ±êÃ÷ÒªÉÏÉ«µÄÎÄ×Ö£¬ÀıÈç "[12ÈË]¸øÁË[8ÖÖ]Ó¡Ïó"
+     * @param colors ÀıÈç "#dd465e"¡£Èç¹ûÊıÁ¿ÉÙÓÚformatÀïµÄÀ¨ºÅÊı£¬²»×ãµÄ»áÈ¡×îºóÒ»¸ö
+     *               ·µ»ØµÄSpanned¿ÉÒÔÖ±½ÓÓÃÓÚTextView.setText()
      */
     public static Spanned formatColor(String format, String... colors) {
         if (colors == null || colors.length == 0)
@@ -231,11 +231,11 @@ public class StringUtil {
     }
 
     /**
-     * è®¾ç½®åŒä¸€ä¸ªtextviewé‡Œè¾¹æ–‡å­—çš„ä¸åŒé¢œè‰²
+     * ÉèÖÃÍ¬Ò»¸ötextviewÀï±ßÎÄ×ÖµÄ²»Í¬ÑÕÉ«
      *
-     * @param format ä»¥ä¸­æ‹¬å·æ ‡æ˜è¦ä¸Šè‰²çš„æ–‡å­—ï¼Œä¾‹å¦‚ "[12äºº]ç»™äº†[8ç§]å°è±¡"
-     * @param colors é¢œè‰²å€¼ï¼Œä¾‹å¦‚ Color.RED, 0xffdd465eï¼Œå¿½ç•¥é€æ˜åº¦ã€‚å¦‚æœæ•°é‡å°‘äºformaté‡Œçš„æ‹¬å·æ•°ï¼Œä¸è¶³çš„ä¼šå–æœ€åä¸€ä¸ª
-     *               è¿”å›çš„Spannedå¯ä»¥ç›´æ¥ç”¨äºTextView.setText()
+     * @param format ÒÔÖĞÀ¨ºÅ±êÃ÷ÒªÉÏÉ«µÄÎÄ×Ö£¬ÀıÈç "[12ÈË]¸øÁË[8ÖÖ]Ó¡Ïó"
+     * @param colors ÑÕÉ«Öµ£¬ÀıÈç Color.RED, 0xffdd465e£¬ºöÂÔÍ¸Ã÷¶È¡£Èç¹ûÊıÁ¿ÉÙÓÚformatÀïµÄÀ¨ºÅÊı£¬²»×ãµÄ»áÈ¡×îºóÒ»¸ö
+     *               ·µ»ØµÄSpanned¿ÉÒÔÖ±½ÓÓÃÓÚTextView.setText()
      */
     public static Spanned formatColor(String format, int... colors) {
         if (colors == null || colors.length == 0)
@@ -248,12 +248,12 @@ public class StringUtil {
     }
 
     /**
-     * è®¾ç½®åŒä¸€ä¸ªtextviewé‡Œè¾¹æ–‡å­—çš„ä¸åŒé¢œè‰²
+     * ÉèÖÃÍ¬Ò»¸ötextviewÀï±ßÎÄ×ÖµÄ²»Í¬ÑÕÉ«
      *
-     * @param format   ä»¥ä¸­æ‹¬å·æ ‡æ˜è¦ä¸Šè‰²çš„æ–‡å­—ï¼Œä¾‹å¦‚ "[12äºº]ç»™äº†[8ç§]å°è±¡"
-     * @param context  ä¸Šä¸‹æ–‡
-     * @param colorIds é¢œè‰²èµ„æºidï¼Œä¾‹å¦‚ R.color.eelly_red ï¼Œå¿½ç•¥é€æ˜åº¦ã€‚å¦‚æœæ•°é‡å°‘äºformaté‡Œçš„æ‹¬å·æ•°ï¼Œä¸è¶³çš„ä¼šå–æœ€åä¸€ä¸ª
-     *                 è¿”å›çš„Spannedå¯ä»¥ç›´æ¥ç”¨äºTextView.setText()
+     * @param format   ÒÔÖĞÀ¨ºÅ±êÃ÷ÒªÉÏÉ«µÄÎÄ×Ö£¬ÀıÈç "[12ÈË]¸øÁË[8ÖÖ]Ó¡Ïó"
+     * @param context  ÉÏÏÂÎÄ
+     * @param colorIds ÑÕÉ«×ÊÔ´id£¬ÀıÈç R.color.eelly_red £¬ºöÂÔÍ¸Ã÷¶È¡£Èç¹ûÊıÁ¿ÉÙÓÚformatÀïµÄÀ¨ºÅÊı£¬²»×ãµÄ»áÈ¡×îºóÒ»¸ö
+     *                 ·µ»ØµÄSpanned¿ÉÒÔÖ±½ÓÓÃÓÚTextView.setText()
      */
     public static Spanned formatColorResource(String format, Context context, int... colorIds) {
         if (colorIds == null || colorIds.length == 0)
@@ -266,7 +266,7 @@ public class StringUtil {
     }
 
     /**
-     * è·å¾—å¸¦é¢œè‰²çš„æ–‡å­—
+     * »ñµÃ´øÑÕÉ«µÄÎÄ×Ö
      *
      * @param text
      * @param color
@@ -292,12 +292,12 @@ public class StringUtil {
     }
 
     /**
-     * åœ¨å­—ç¬¦ä¸²ä¸­æŸ¥æ‰¾ç¬¬ä¸€ä¸ªåŒ¹é…çš„å­—ç¬¦
+     * ÔÚ×Ö·û´®ÖĞ²éÕÒµÚÒ»¸öÆ¥ÅäµÄ×Ö·û
      *
-     * @param source     æºå­—ç¬¦ä¸²
-     * @param target     è¦æŸ¥æ‰¾çš„ç›®æ ‡å­—ç¬¦ä¸²
-     * @param ignoreCase æ˜¯å¦å¿½ç•¥å¤§å°å†™
-     *                   å­—ç¬¦ä¸²æŸ¥æ‰¾ç»“æœ,æ²¡æ‰¾åˆ°æ—¶è¿”å›null
+     * @param source     Ô´×Ö·û´®
+     * @param target     Òª²éÕÒµÄÄ¿±ê×Ö·û´®
+     * @param ignoreCase ÊÇ·ñºöÂÔ´óĞ¡Ğ´
+     *                   ×Ö·û´®²éÕÒ½á¹û,Ã»ÕÒµ½Ê±·µ»Ønull
      */
     public static StringFind find(String source, String target, boolean ignoreCase) {
         Pattern pattern = ignoreCase ? Pattern.compile(target, Pattern.CASE_INSENSITIVE | Pattern.LITERAL) : Pattern.compile(target, Pattern.LITERAL);
@@ -309,24 +309,24 @@ public class StringUtil {
     }
 
     /**
-     * å­—ç¬¦ä¸²æŸ¥æ‰¾ç»“æœå¯¹è±¡
+     * ×Ö·û´®²éÕÒ½á¹û¶ÔÏó
      *
-     * @author ææ¬£
+     * @author ÀîĞÀ
      */
     public static class StringFind {
 
         /**
-         * æŸ¥æ‰¾å­—ç¬¦ä¸²çš„å¼€å§‹ä½ç½®
+         * ²éÕÒ×Ö·û´®µÄ¿ªÊ¼Î»ÖÃ
          */
         public int start;
 
         /**
-         * æŸ¥æ‰¾å­—ç¬¦ä¸²çš„ç»“æŸä½ç½®+1
+         * ²éÕÒ×Ö·û´®µÄ½áÊøÎ»ÖÃ+1
          */
         public int end;
 
         /**
-         * æŸ¥æ‰¾å­—ç¬¦ä¸²åœ¨æºå­—ç¬¦ä¸²ä¸­çš„åŸå§‹å€¼(ä¸»è¦ç”¨äºå­—æ¯å¤§å°å†™çš„æƒ…å†µè·å–åŸå§‹å€¼)
+         * ²éÕÒ×Ö·û´®ÔÚÔ´×Ö·û´®ÖĞµÄÔ­Ê¼Öµ(Ö÷ÒªÓÃÓÚ×ÖÄ¸´óĞ¡Ğ´µÄÇé¿ö»ñÈ¡Ô­Ê¼Öµ)
          */
         public String original;
 
@@ -338,7 +338,7 @@ public class StringUtil {
     }
 
     /**
-     * è®¡ç®—å­—ç¬¦ä¸²çš„å­—èŠ‚é•¿åº¦(åŠè§’ç¬¦å·è®¡1ï¼Œå…¨è§’ç¬¦å·è®¡2)
+     * ¼ÆËã×Ö·û´®µÄ×Ö½Ú³¤¶È(°ë½Ç·ûºÅ¼Æ1£¬È«½Ç·ûºÅ¼Æ2)
      */
     public static int getByteLength(String string) {
         int count = 0;
@@ -349,13 +349,13 @@ public class StringUtil {
     }
 
     /**
-     * æŒ‰æŒ‡å®šé•¿åº¦ï¼Œæˆªæ–­å­—ç¬¦ä¸²ï¼Œè¶…é•¿ä¼šæ·»åŠ æŒ‡å®šåç¼€<br>
-     * åŠè§’ç¬¦å·é•¿åº¦ä¸º1ï¼Œå…¨è§’ç¬¦å·é•¿åº¦ä¸º2
+     * °´Ö¸¶¨³¤¶È£¬½Ø¶Ï×Ö·û´®£¬³¬³¤»áÌí¼ÓÖ¸¶¨ºó×º<br>
+     * °ë½Ç·ûºÅ³¤¶ÈÎª1£¬È«½Ç·ûºÅ³¤¶ÈÎª2
      *
-     * @param string å­—ç¬¦ä¸²
-     * @param length ä¿ç•™å­—ç¬¦ä¸²é•¿åº¦
-     * @param suffix è¶…é•¿æ—¶æ·»åŠ çš„åç¼€
-     *               æˆªæ–­åçš„å­—ç¬¦ä¸²
+     * @param string ×Ö·û´®
+     * @param length ±£Áô×Ö·û´®³¤¶È
+     * @param suffix ³¬³¤Ê±Ìí¼ÓµÄºó×º
+     *               ½Ø¶ÏºóµÄ×Ö·û´®
      */
     public static String trimString(String string, int length, String suffix) {
         if (getByteLength(string) <= length)
@@ -380,20 +380,20 @@ public class StringUtil {
     }
 
     /**
-     * æŒ‰æŒ‡å®šé•¿åº¦ï¼Œæˆªæ–­å­—ç¬¦ä¸²ï¼Œè¶…é•¿ä¼šæ·»åŠ â€¦<br>
-     * åŠè§’ç¬¦å·é•¿åº¦ä¸º1ï¼Œå…¨è§’ç¬¦å·é•¿åº¦ä¸º2
+     * °´Ö¸¶¨³¤¶È£¬½Ø¶Ï×Ö·û´®£¬³¬³¤»áÌí¼Ó¡­<br>
+     * °ë½Ç·ûºÅ³¤¶ÈÎª1£¬È«½Ç·ûºÅ³¤¶ÈÎª2
      *
-     * @param string å­—ç¬¦ä¸²
-     * @param length ä¿ç•™å­—ç¬¦ä¸²é•¿åº¦
-     *               æˆªæ–­åçš„å­—ç¬¦ä¸²
+     * @param string ×Ö·û´®
+     * @param length ±£Áô×Ö·û´®³¤¶È
+     *               ½Ø¶ÏºóµÄ×Ö·û´®
      */
     public static String trimString(String string, int length) {
-        return trimString(string, length, "â€¦");
+        return trimString(string, length, "¡­");
     }
 
     /**
-     * æ ¹æ®åƒç´ å®½åº¦æˆªå–å­—ç¬¦ä¸²<br>
-     * è¿™ä¸ªæ˜¯ä¸ºäº†æŸäº›åœ°æ–¹ä¸éœ€è¦çœç•¥å·ç»“å°¾ï¼Œè€ŒTextViewçš„å®½åº¦ä¸å¤Ÿï¼Œè¿™æ ·æœ€åçš„å­—ä¼š
+     * ¸ù¾İÏñËØ¿í¶È½ØÈ¡×Ö·û´®<br>
+     * Õâ¸öÊÇÎªÁËÄ³Ğ©µØ·½²»ĞèÒªÊ¡ÂÔºÅ½áÎ²£¬¶øTextViewµÄ¿í¶È²»¹»£¬ÕâÑù×îºóµÄ×Ö»á
      */
     public static String trimPixelLength(String str, int pixel, float textSize) {
         if (TextUtils.isEmpty(str)) {
@@ -421,7 +421,7 @@ public class StringUtil {
     }
 
     /**
-     * è¿‡æ»¤Htmlå†…å®¹,å°†Htmlæ ¼å¼çš„å†…å®¹è½¬ä¸ºæ™®é€šæ–‡æœ¬
+     * ¹ıÂËHtmlÄÚÈİ,½«Html¸ñÊ½µÄÄÚÈİ×ªÎªÆÕÍ¨ÎÄ±¾
      *
      * @param source
      */
@@ -430,10 +430,10 @@ public class StringUtil {
     }
 
     /**
-     * é‡‘é’±å•ä½å››èˆäº”å…¥
+     * ½ğÇ®µ¥Î»ËÄÉáÎåÈë
      *
-     * @param money é‡‘é’±
-     *              å››èˆäº”å…¥ä¹‹åçš„é‡‘é’±
+     * @param money ½ğÇ®
+     *              ËÄÉáÎåÈëÖ®ºóµÄ½ğÇ®
      */
     public static String moneyRound(String money) {
         if (money.length() == 0) {
@@ -535,7 +535,7 @@ public class StringUtil {
     }
 
     /**
-     * åˆ¤æ–­å­—ç¬¦æ˜¯å¦ä¸ºæ•°å­—ï¼ŒåŒ…æ‹¬å°æ•°
+     * ÅĞ¶Ï×Ö·ûÊÇ·ñÎªÊı×Ö£¬°üÀ¨Ğ¡Êı
      */
     public static boolean isNumeric(String input) {
         Pattern pattern = Pattern.compile("-?[0-9]*.?[0-9]*");
@@ -544,21 +544,21 @@ public class StringUtil {
     }
 
     /**
-     * è·å–éšæœºå­—ç¬¦ä¸²ï¼Œå­—ç¬¦ç”±æ•°å­—å’Œå¤§å°å†™å­—ç¬¦ç»„æˆ
+     * »ñÈ¡Ëæ»ú×Ö·û´®£¬×Ö·ûÓÉÊı×ÖºÍ´óĞ¡Ğ´×Ö·û×é³É
      *
-     * @param length è·å–çš„å­—ç¬¦ä¸²é•¿åº¦
-     *               ç›¸åº”é•¿åº¦çš„éšæœºå­—ç¬¦ä¸²
+     * @param length »ñÈ¡µÄ×Ö·û´®³¤¶È
+     *               ÏàÓ¦³¤¶ÈµÄËæ»ú×Ö·û´®
      */
     public static String getRandomString(int length) {
         return getRandomString(length, null);
     }
 
     /**
-     * è·å–éšæœºå­—ç¬¦ä¸²ï¼Œå­—ç¬¦ç”±æ•°å­—å’Œå¤§å°å†™å­—ç¬¦ç»„æˆ
+     * »ñÈ¡Ëæ»ú×Ö·û´®£¬×Ö·ûÓÉÊı×ÖºÍ´óĞ¡Ğ´×Ö·û×é³É
      *
-     * @param length è·å–çš„å­—ç¬¦ä¸²é•¿åº¦
-     * @param base   ç»„æˆéšæœºå­—ç¬¦ä¸²çš„å­—ç¬¦ï¼Œä¼ nullæ—¶ï¼Œé»˜è®¤ä½¿ç”¨{@value #RAMDOM_BASE}
-     *               ç›¸åº”é•¿åº¦çš„éšæœºå­—ç¬¦ä¸²
+     * @param length »ñÈ¡µÄ×Ö·û´®³¤¶È
+     * @param base   ×é³ÉËæ»ú×Ö·û´®µÄ×Ö·û£¬´«nullÊ±£¬Ä¬ÈÏÊ¹ÓÃ{@value #RAMDOM_BASE}
+     *               ÏàÓ¦³¤¶ÈµÄËæ»ú×Ö·û´®
      */
     public static String getRandomString(int length, String base) {
         if (TextUtils.isEmpty(base)) {
@@ -574,9 +574,9 @@ public class StringUtil {
     }
 
     /**
-     * å­—ç¬¦ä¸²ç¿»è½¬
+     * ×Ö·û´®·­×ª
      *
-     * @param str è¦ç¿»è½¬çš„å­—ç¬¦ä¸²
+     * @param str Òª·­×ªµÄ×Ö·û´®
      */
     public static String reverseString(String str) {
         if (TextUtils.isEmpty(str)) {

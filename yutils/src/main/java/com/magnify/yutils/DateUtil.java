@@ -17,26 +17,26 @@ public class DateUtil extends DateUtils {
         target.setTime(time);
         int day_sub = Math.abs(now.get(Calendar.DAY_OF_MONTH) - target.get(Calendar.DAY_OF_MONTH));
 
-        if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// å¦‚æœå¹´ä»½ä¸€æ ·
-            if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// å¦‚æœæœˆä»½ä¸€æ ·
-                if (day_sub == 0) {// å¦‚æœæ˜¯åŒä¸€å¤©
-                    // è¿”å›ä»Šå¤©
+        if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// Èç¹ûÄê·İÒ»Ñù
+            if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// Èç¹ûÔÂ·İÒ»Ñù
+                if (day_sub == 0) {// Èç¹ûÊÇÍ¬Ò»Ìì
+                    // ·µ»Ø½ñÌì
                     return dateToString(time, "HH:mm");
                 }
                 // else if (day_sub == 1) { //
-                // // è¿”å›æ˜¨å¤©
-                // return "æ˜¨å¤© " + dateToString(time, "HH:mm");
+                // // ·µ»Ø×òÌì
+                // return "×òÌì " + dateToString(time, "HH:mm");
                 // }
             }
         }
-        return dateToString(time, "MMæœˆddæ—¥ HH:mm");
+        return dateToString(time, "MMÔÂddÈÕ HH:mm");
     }
 
     /**
-     * è·å¾—æœˆä»½
+     * »ñµÃÔÂ·İ
      *
-     * @param timestamp æ—¶é—´æˆ³
-     * @return 1æœˆè¿”å›0ï¼ŒäºŒæœˆåˆ™1ï¼Œä»¥æ­¤ç±»æ¨
+     * @param timestamp Ê±¼ä´Á
+     * @return 1ÔÂ·µ»Ø0£¬¶şÔÂÔò1£¬ÒÔ´ËÀàÍÆ
      */
     public static String getYearAndMonth(long timestamp) {
         Calendar calendar = Calendar.getInstance();
@@ -51,7 +51,7 @@ public class DateUtil extends DateUtils {
     }
 
     /**
-     * æ ¼å¼åŒ–æ—¥æœŸ
+     * ¸ñÊ½»¯ÈÕÆÚ
      */
     public static String formatDate(Date date, String pattern) {
         SimpleDateFormat fm = new SimpleDateFormat(pattern);

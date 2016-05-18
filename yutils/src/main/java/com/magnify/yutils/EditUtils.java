@@ -11,7 +11,7 @@ public class EditUtils {
 	private static final int HINT_SIZE = 14;
 
 	/**
-	 * 鍙敤浜庤缃瓻ditText鐨勬彁绀鸿
+	 * 可用于设置EditText的提示语
 	 */
 	public static SpannedString getSpannedStr(String str) {
 		SpannableString spanStr = new SpannableString(str);

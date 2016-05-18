@@ -3,11 +3,11 @@ package com.magnify.yutils;
 public class ColorUtils {
 
 	/**
-	 * è·å–åŠé€æ˜é¢œè‰²
+	 * »ñÈ¡°ëÍ¸Ã÷ÑÕÉ«
 	 *
-	 * @param alpha é€æ˜åº¦ï¼Œ 0 ~ 1
-	 * @param color éœ€è¦åŠé€æ˜çš„é¢œè‰²
-	 * @return åŠé€æ˜çš„é¢œè‰²
+	 * @param alpha Í¸Ã÷¶È£¬ 0 ~ 1
+	 * @param color ĞèÒª°ëÍ¸Ã÷µÄÑÕÉ«
+	 * @return °ëÍ¸Ã÷µÄÑÕÉ«
 	 */
 	public static int getAlphaColor(float alpha, int color) {
 		int alphaColor = (int) (alpha * 0xff);

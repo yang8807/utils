@@ -13,7 +13,7 @@ import com.magnify.yutils.dialog.BaseLinearPoupWindows;
 
 
 /**
- * @author é»„è‰³æ­¦;Viewæ“ä½œçš„ç®€åŒ–
+ * @author »ÆÑŞÎä;View²Ù×÷µÄ¼ò»¯
  */
 public class ViewHelper {
 
@@ -24,14 +24,14 @@ public class ViewHelper {
     }
 
     /**
-     * å¯»æ‰¾æ§ä»¶
+     * Ñ°ÕÒ¿Ø¼ş
      */
     public <E extends View> E findView(int ids) {
         return (E) activity.findViewById(ids);
     }
 
     /***
-     * ä¸ºPoupWindowsè®¾ç½®ç‚¹å‡»äº‹ä»¶
+     * ÎªPoupWindowsÉèÖÃµã»÷ÊÂ¼ş
      */
     public static void setOnClickListener(BaseLinearPoupWindows windows, OnClickListener listener, int... ids) {
         for (int i = 0; i < ids.length; i++) {
@@ -40,9 +40,9 @@ public class ViewHelper {
     }
 
     /***
-     * @param parentView;çˆ¶VIew
-     * @param listener;ç›‘å¬äº‹ä»¶
-     * @param ids;æ§ä»¶çš„id
+     * @param parentView;¸¸VIew
+     * @param listener;¼àÌıÊÂ¼ş
+     * @param ids;¿Ø¼şµÄid
      */
     public static void setOnClickListener(View parentView, OnClickListener listener, int... ids) {
         for (int i = 0; i < ids.length; i++) {
@@ -51,7 +51,7 @@ public class ViewHelper {
     }
 
     /**
-     * è®¾ç½®æ§ä»¶ä¸å¯è§
+     * ÉèÖÃ¿Ø¼ş²»¿É¼û
      */
     public static void setVisible(boolean isVisible, View... views) {
         int visible;
@@ -67,10 +67,10 @@ public class ViewHelper {
     }
 
     /**
-     * @param b                          æ˜¯å¦å¯è§,æ˜¯:true,å¦:false
-     * @param activity;ä¼ å…¥activity,ç”¨æ¥å¯»æ‰¾æ§ä»¶
-     * @param listener;ç‚¹å‡»äº‹ä»¶
-     * @param viewids                    ;éœ€è¦è®¾ç½®ç‚¹å‡»äº‹ä»¶çš„æŒ‰é’®
+     * @param b                          ÊÇ·ñ¿É¼û,ÊÇ:true,·ñ:false
+     * @param activity;´«Èëactivity,ÓÃÀ´Ñ°ÕÒ¿Ø¼ş
+     * @param listener;µã»÷ÊÂ¼ş
+     * @param viewids                    ;ĞèÒªÉèÖÃµã»÷ÊÂ¼şµÄ°´Å¥
      */
     public static void setOnClickListener(boolean b, Activity activity, OnClickListener listener, int... viewids) {
         for (int i = 0; i < viewids.length; i++) {
@@ -81,9 +81,9 @@ public class ViewHelper {
     }
 
     /**
-     * @param b             æ˜¯å¦å¯è§,æ˜¯:true,å¦:false
-     * @param listener;ç‚¹å‡»äº‹ä»¶
-     * @param viewids       ;éœ€è¦è®¾ç½®ç‚¹å‡»äº‹ä»¶çš„æŒ‰é’®
+     * @param b             ÊÇ·ñ¿É¼û,ÊÇ:true,·ñ:false
+     * @param listener;µã»÷ÊÂ¼ş
+     * @param viewids       ;ĞèÒªÉèÖÃµã»÷ÊÂ¼şµÄ°´Å¥
      */
     public void setOnClickListener(boolean b, OnClickListener listener, int... viewids) {
         for (int i = 0; i < viewids.length; i++) {
@@ -94,7 +94,7 @@ public class ViewHelper {
     }
 
     /**
-     * å¯»æ‰¾æ§ä»¶;å¹¶è®¾ç½®å®ƒçš„å¯è§æ€§
+     * Ñ°ÕÒ¿Ø¼ş;²¢ÉèÖÃËüµÄ¿É¼ûĞÔ
      */
     public <E extends View> E findView(int ids, boolean b) {
 
@@ -108,8 +108,8 @@ public class ViewHelper {
     }
 
     /**
-     * @param textViews:ç»§æ‰¿è‡ªTextVieçš„æ§ä»¶
-     * @param textColor               éœ€è¦è®¾ç½®çš„é¢œè‰²
+     * @param textViews:¼Ì³Ğ×ÔTextVieµÄ¿Ø¼ş
+     * @param textColor               ĞèÒªÉèÖÃµÄÑÕÉ«
      */
     public void setTextColor(int textColor, TextView... textViews) {
         for (int i = 0; i < textViews.length; i++) {
@@ -118,14 +118,14 @@ public class ViewHelper {
     }
 
     /**
-     * å¾—åˆ°å½“å‰çš„é¢œè‰²
+     * µÃµ½µ±Ç°µÄÑÕÉ«
      */
     public int getColor(int color) {
         return activity.getResources().getColor(color);
     }
 
     /**
-     * åˆ›å»ºä¸€ä¸ªTextView,ä¸€èˆ¬ç”¨æ¥Topbarçš„ä¸­çš„æ‰€ç”¨åˆ°çš„TextView
+     * ´´½¨Ò»¸öTextView,Ò»°ãÓÃÀ´TopbarµÄÖĞµÄËùÓÃµ½µÄTextView
      */
     public TextView newTextView(String string, int color) {
         TextView text = new TextView(activity);
@@ -136,8 +136,8 @@ public class ViewHelper {
     }
 
     /**
-     * @param b;æ˜¯å¦å¯è§
-     * @param ids;æ§ä»¶çš„ids
+     * @param b;ÊÇ·ñ¿É¼û
+     * @param ids;¿Ø¼şµÄids
      */
     public void setVisible(boolean b, int... ids) {
         int visible;

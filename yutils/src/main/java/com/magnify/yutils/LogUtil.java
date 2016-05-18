@@ -6,41 +6,41 @@ public class LogUtil {
 
 	public static int DISABLE = 0x0;
 	/**
-	 * æ‰€æœ‰ç­‰çº§æ—¥å¿—
+	 * ËùÓĞµÈ¼¶ÈÕÖ¾
 	 */
 	public static int ALL = 0x3f;
 	/**
-	 * è¯¦ç»†æ—¥å¿—
+	 * ÏêÏ¸ÈÕÖ¾
 	 */
 	public static int VERBOSE = 0x1;
 	/**
-	 * è°ƒè¯•æ—¥å¿—
+	 * µ÷ÊÔÈÕÖ¾
 	 */
 	public static int DEBUG = 0x2;
 	/**
-	 * ä¿¡æ¯æ—¥å¿—
+	 * ĞÅÏ¢ÈÕÖ¾
 	 */
 	public static int INFO = 0x4;
 	/**
-	 * è­¦å‘Šæ—¥å¿—
+	 * ¾¯¸æÈÕÖ¾
 	 */
 	public static int WARN = 0x8;
 	/**
-	 * é”™è¯¯æ—¥å¿—
+	 * ´íÎóÈÕÖ¾
 	 */
 	public static int ERROR = 0x10;
 	/**
-	 * æ–­è¨€æ—¥å¿—
+	 * ¶ÏÑÔÈÕÖ¾
 	 */
 	public static int ASSERT = 0x20;
 
 	/**
-	 * å½“å‰å¯ç”¨çš„æ—¥å¿—ç­‰çº§(é»˜è®¤æ‰“å¼€æ‰€æœ‰)
+	 * µ±Ç°ÆôÓÃµÄÈÕÖ¾µÈ¼¶(Ä¬ÈÏ´ò¿ªËùÓĞ)
 	 */
 	private static int LEVEL = ALL;
 
 	/**
-	 * è®¾ç½®æ—¥å¿—ç­‰çº§ ä¾‹ï¼š LogUtil.setLevel(LogUtil.ALL);
+	 * ÉèÖÃÈÕÖ¾µÈ¼¶ Àı£º LogUtil.setLevel(LogUtil.ALL);
 	 * LogUitl.setLevel(LogUtil.VERBOSE);
 	 *
 	 * @param level

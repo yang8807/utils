@@ -8,9 +8,9 @@ import com.magnify.yutils.app.NonProguard;
 
 
 /**
- * Webviewè·å–æ–‡ä»¶ç›‘å¬å™¨
+ * Webview»ñÈ¡ÎÄ¼ş¼àÌıÆ÷
  *
- * @author è‹è…¾
+ * @author ËÕÌÚ
  */
 public class GetFileWebChromeClient extends WebChromeClient implements NonProguard {
 
@@ -22,17 +22,17 @@ public class GetFileWebChromeClient extends WebChromeClient implements NonProgua
 		mListener = listener;
 	}
 
-	// Android < 3.0 è°ƒç”¨è¿™ä¸ªæ–¹æ³•
+	// Android < 3.0 µ÷ÓÃÕâ¸ö·½·¨
 	public void openFileChooser(ValueCallback<Uri> uploadMsg) {
 		mListener.onGetFile(uploadMsg);
 	}
 
-	// 3.0 + è°ƒç”¨è¿™ä¸ªæ–¹æ³•
+	// 3.0 + µ÷ÓÃÕâ¸ö·½·¨
 	public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
 		mListener.onGetFile(uploadMsg);
 	}
 
-	// Android > 4.1.1 è°ƒç”¨è¿™ä¸ªæ–¹æ³•
+	// Android > 4.1.1 µ÷ÓÃÕâ¸ö·½·¨
 	public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
 		mListener.onGetFile(uploadMsg);
 	}

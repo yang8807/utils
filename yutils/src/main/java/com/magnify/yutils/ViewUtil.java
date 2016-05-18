@@ -22,16 +22,16 @@ import java.lang.reflect.Field;
 public class ViewUtil {
 
 	/**
-	 * è·å–Activityæ ¹è§†å›¾
+	 * »ñÈ¡Activity¸ùÊÓÍ¼
 	 *
-	 * @return Activityæ ¹è§†å›¾
+	 * @return Activity¸ùÊÓÍ¼
 	 */
 	public static ViewGroup getActivityView(Activity activity) {
 		return (ViewGroup) activity.getWindow().findViewById(android.R.id.content);
 	}
 
 	/**
-	 * è®¾ç½®æº¢å‡ºæ»šåŠ¨æ¨¡å¼,ä¸»è¦ç”¨äºå±è”½é­…æ—ç­‰è‡ªå®šä¹‰çš„é˜»å°¼ä¸‹æ‹‰,é¿å…å†²çª
+	 * ÉèÖÃÒç³ö¹ö¶¯Ä£Ê½,Ö÷ÒªÓÃÓÚÆÁ±Î÷È×åµÈ×Ô¶¨ÒåµÄ×èÄáÏÂÀ­,±ÜÃâ³åÍ»
 	 *
 	 *  view
 	 */
@@ -43,55 +43,55 @@ public class ViewUtil {
 	}
 
 	/**
-	 * ä½¿ç”¨è½¯ä»¶åŠ é€Ÿ,åœ¨æ‰“å¼€ç¡¬ä»¶åŠ é€Ÿçš„æƒ…å†µä¸‹,ç”±äºæŸäº›Viewå¹¶ä¸æ”¯æŒç¡¬ä»¶åŠ é€Ÿ,å› æ­¤éœ€è¦è®¾ç½®ä¸ºè½¯ä»¶åŠ é€Ÿ
+	 * Ê¹ÓÃÈí¼ş¼ÓËÙ,ÔÚ´ò¿ªÓ²¼ş¼ÓËÙµÄÇé¿öÏÂ,ÓÉÓÚÄ³Ğ©View²¢²»Ö§³ÖÓ²¼ş¼ÓËÙ,Òò´ËĞèÒªÉèÖÃÎªÈí¼ş¼ÓËÙ
 	 *
 	 *  view
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static void useSoftware(View view, Paint paint) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0å¼€å§‹æœ‰æ­¤æ–¹æ³•
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0¿ªÊ¼ÓĞ´Ë·½·¨
 			view.setLayerType(View.LAYER_TYPE_SOFTWARE, paint);
 		}
 	}
 
 	/**
-	 * æ‰“å¼€å½“å‰Windowçš„ç¡¬ä»¶åŠ é€Ÿ
+	 * ´ò¿ªµ±Ç°WindowµÄÓ²¼ş¼ÓËÙ
 	 *
 	 *  window
 	 */
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	public static void openHardWare(Window window) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {// Android3.0å¼€å§‹æœ‰æ­¤æ–¹æ³•,ä½†åŠ é€Ÿæ•ˆæœå¤ªå·®,æ‰€ä»¥åªåœ¨4.0ä»¥ä¸Šç‰ˆæœ¬å¼€å¯
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {// Android3.0¿ªÊ¼ÓĞ´Ë·½·¨,µ«¼ÓËÙĞ§¹ûÌ«²î,ËùÒÔÖ»ÔÚ4.0ÒÔÉÏ°æ±¾¿ªÆô
 			window.setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		}
 	}
 
 	/**
-	 * è§†å›¾æ˜¯å¦æ”¯æŒç¡¬ä»¶åŠ é€Ÿ
+	 * ÊÓÍ¼ÊÇ·ñÖ§³ÖÓ²¼ş¼ÓËÙ
 	 *
 	 *  view
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static boolean isHardwareAccelerated(View view) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0å¼€å§‹æœ‰æ­¤æ–¹æ³•
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0¿ªÊ¼ÓĞ´Ë·½·¨
 			return view.isHardwareAccelerated();
 		}
 		return false;
 	}
 
 	/**
-	 * Canvasæ˜¯å¦æ”¯æŒç¡¬ä»¶åŠ é€Ÿ
+	 * CanvasÊÇ·ñÖ§³ÖÓ²¼ş¼ÓËÙ
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static boolean isHardwareAccelerated(Canvas canvas) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0å¼€å§‹æœ‰æ­¤æ–¹æ³•
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {// Android3.0¿ªÊ¼ÓĞ´Ë·½·¨
 			return canvas.isHardwareAccelerated();
 		}
 		return false;
 	}
 
 	/**
-	 * è®¾ç½®ViewèƒŒæ™¯
+	 * ÉèÖÃView±³¾°
 	 *
 	 *  view
 	 *  drawable
@@ -106,7 +106,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * å…¨å±€å¸ƒå±€ç›‘å¬å™¨ é€šè¿‡GlobalLayoutListener.onLayout()è¿”å›flaseå°†ä¿æŒç›‘å¬,è¿”å›trueå°†è‡ªåŠ¨ç§»é™¤ç›‘å¬å™¨
+	 * È«¾Ö²¼¾Ö¼àÌıÆ÷ Í¨¹ıGlobalLayoutListener.onLayout()·µ»Øflase½«±£³Ö¼àÌı,·µ»Øtrue½«×Ô¶¯ÒÆ³ı¼àÌıÆ÷
 	 */
 	@SuppressLint("WrongCall")
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -131,7 +131,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * æ·»åŠ å…¨å±€å¸ƒå±€ç›‘å¬å™¨,ä¸»è¦ç”¨äºéœ€è¦åœ¨å¸ƒå±€å®Œæˆåè·å–è§†å›¾é«˜å®½ç­‰ä¿¡æ¯
+	 * Ìí¼ÓÈ«¾Ö²¼¾Ö¼àÌıÆ÷,Ö÷ÒªÓÃÓÚĞèÒªÔÚ²¼¾ÖÍê³Éºó»ñÈ¡ÊÓÍ¼¸ß¿íµÈĞÅÏ¢
 	 *
 	 *  listener
 	 */
@@ -141,7 +141,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * ç”¨äºåœ¨è§†å›¾æœªç¡®å®šé«˜å®½å‰"ä¼°ç®—"è§†å›¾çš„widthä»¥åŠheight,æ³¨æ„æ­¤æ–¹æ³•å¿…é¡»æ˜¯ä½¿ç”¨LayoutInflater.inflate(resid, container, false),å¹¶ä¸”container!=nullçš„æƒ…å†µæ‰æœ‰æ•ˆ
+	 * ÓÃÓÚÔÚÊÓÍ¼Î´È·¶¨¸ß¿íÇ°"¹ÀËã"ÊÓÍ¼µÄwidthÒÔ¼°height,×¢Òâ´Ë·½·¨±ØĞëÊÇÊ¹ÓÃLayoutInflater.inflate(resid, container, false),²¢ÇÒcontainer!=nullµÄÇé¿ö²ÅÓĞĞ§
 	 *
 	 *  child
 	 */
@@ -163,7 +163,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * ä¿®å¤PopupWindowåœ¨Android3.0ä¹‹å‰å› ä¸ºç»‘å®šåˆ°ViewTreeObserver.OnScrollChangedListeneråæ²¡æœ‰åˆ¤æ–­nullå¯¼è‡´çš„é”™è¯¯
+	 * ĞŞ¸´PopupWindowÔÚAndroid3.0Ö®Ç°ÒòÎª°ó¶¨µ½ViewTreeObserver.OnScrollChangedListenerºóÃ»ÓĞÅĞ¶Ïnullµ¼ÖÂµÄ´íÎó
 	 */
 	public static void popupWindowFix(final PopupWindow popupWindow) {
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
@@ -213,7 +213,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * è·å¾—viewçš„åä¸€ä¸ªå…„å¼Ÿview
+	 * »ñµÃviewµÄºóÒ»¸öĞÖµÜview
 	 *
 	 *  view
 	 */
@@ -226,7 +226,7 @@ public class ViewUtil {
 	}
 
 	/**
-	 * è·å¾—viewçš„å‰ä¸€ä¸ªå…„å¼Ÿview
+	 * »ñµÃviewµÄÇ°Ò»¸öĞÖµÜview
 	 *
 	 *  view
 	 */
