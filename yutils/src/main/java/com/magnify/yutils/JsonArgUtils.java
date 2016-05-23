@@ -3,33 +3,26 @@ package com.magnify.yutils;
 import java.util.ArrayList;
 
 /**
- * Created by 洒笑天涯 on 2016/1/1.
+ * Created by With the smile to the end of the world on 2016/1/1.
  */
 public class JsonArgUtils<T> {
 
     private StringBuilder builder = new StringBuilder();
     private String _split = "\"";
 
-    /***
-     * @param parameter 参数的名称
-     * @param args      需要添加的参数
-     * @return 添加参数
-     */
     public JsonArgUtils add(String parameter, T args) {
         builder.append(_split + parameter + _split + ":" + _split + String.valueOf(args) + _split + ",");
         return this;
     }
     /***
-     * @return 添加json数据
+     * @return add json data
      */
     public JsonArgUtils addJson(String parameter,String json) {
         builder.append(_split + parameter + _split + ":" +json+ ",");
         return this;
     }
     /***
-     * @param parameter 参数的名称
-     * @param arrayList  需要添加的参数
-     * @return 添加集合
+     * @return 添加ArrayList
      */
     public JsonArgUtils add(String parameter, ArrayList<T> arrayList) {
         builder.append(_split+parameter+_split+":[");
