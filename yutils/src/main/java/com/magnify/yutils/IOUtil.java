@@ -8,27 +8,27 @@ import java.io.OutputStream;
 import java.io.Writer;
 
 /**
- * IO¹¤¾ßÀà
+ * IOå·¥å…·ç±»
  *
- * @author ÀîĞÀ
+ * @author ææ¬£
  */
 public class IOUtil {
 
 	/**
-	 * »º³åÇø´óĞ¡
+	 * ç¼“å†²åŒºå¤§å°
 	 */
 	private static final int DEFAULT_BUFFER_SIZE = 4096;
 
 	/**
-	 * Ä¬ÈÏ×Ö·û±àÂë
+	 * é»˜è®¤å­—ç¬¦ç¼–ç 
 	 */
 	private static final String DEFAULT_ENCODE = "utf8";
 
 	/**
-	 * ´ÓÊäÈëÁ÷¶ÁÈ¡×Ö·û´®,Ê¹ÓÃutf8±àÂë
+	 * ä»è¾“å…¥æµè¯»å–å­—ç¬¦ä¸²,ä½¿ç”¨utf8ç¼–ç 
 	 *
 	 * @see #toString(InputStream, String)
-	 * @param input ÊäÈëÁ÷
+	 * @param input è¾“å…¥æµ
 	 * @return
 	 * @throws IOException
 	 */
@@ -37,10 +37,10 @@ public class IOUtil {
 	}
 
 	/**
-	 * ´ÓÊäÈëÁ÷¶ÁÈ¡×Ö·û´®
+	 * ä»è¾“å…¥æµè¯»å–å­—ç¬¦ä¸²
 	 *
-	 * @param inputStream ÊäÈëÁ÷
-	 * @param encode ×Ö·û±àÂë
+	 * @param inputStream è¾“å…¥æµ
+	 * @param encode å­—ç¬¦ç¼–ç 
 	 * @return
 	 * @throws IOException
 	 */
@@ -55,10 +55,10 @@ public class IOUtil {
 	}
 
 	/**
-	 * ¿½±´ÊäÈëÁ÷µ½Êä³öÁ÷
-	 * @param input ÊäÈëÁ÷
-	 * @param output Êä³öÁ÷
-	 * @return ¿½±´µÄ×Ö½ÚÊı
+	 * æ‹·è´è¾“å…¥æµåˆ°è¾“å‡ºæµ
+	 * @param input è¾“å…¥æµ
+	 * @param output è¾“å‡ºæµ
+	 * @return æ‹·è´çš„å­—èŠ‚æ•°
 	 * @throws IOException
 	 */
 	public static long copy(InputStream input, OutputStream output) throws IOException {
@@ -73,9 +73,9 @@ public class IOUtil {
 	}
 
 	/**
-	 * ¹Ø±ÕÊäÈëÁ÷,²»Å×³öÒì³£
+	 * å…³é—­è¾“å…¥æµ,ä¸æŠ›å‡ºå¼‚å¸¸
 	 *
-	 * @param input ¿ÉÒÔÎªnull
+	 * @param input å¯ä»¥ä¸ºnull
 	 */
 	public static void closeQuietly(InputStream input) {
 		if (input == null)
@@ -88,9 +88,9 @@ public class IOUtil {
 	}
 
 	/**
-	 * ¹Ø±ÕÊä³öÁ÷,²»Å×³öÒì³£
+	 * å…³é—­è¾“å‡ºæµ,ä¸æŠ›å‡ºå¼‚å¸¸
 	 *
-	 * @param output ¿ÉÒÔÎªnull
+	 * @param output å¯ä»¥ä¸ºnull
 	 */
 	public static void closeQuietly(OutputStream output) {
 		if (output == null)
@@ -103,9 +103,9 @@ public class IOUtil {
 	}
 
 	/**
-	 * ¹Ø±ÕĞ´ÈëÀà,²»Å×³öÒì³£
+	 * å…³é—­å†™å…¥ç±»,ä¸æŠ›å‡ºå¼‚å¸¸
 	 *
-	 ¿ÉÒÔÎªnull
+	 å¯ä»¥ä¸ºnull
 	 */
 	public static void closeQuietly(Writer writer) {
 		if (writer == null)

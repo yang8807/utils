@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 /**
- * Created by »ÆÑŞÎä on 2015/10/19;×îºóÒ»´ÎĞŞ¸ÄÊ±¼ä10/19 20:20 Function:
+ * Created by é»„è‰³æ­¦ on 2015/10/19;æœ€åä¸€æ¬¡ä¿®æ”¹æ—¶é—´10/19 20:20 Function:
  */
 public class BaseLinearPoupWindows extends PopupWindow {
 
@@ -24,7 +24,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
 
     private Context mContext;
     /**
-     * ²¼¾ÖÎÄ¼ş
+     * å¸ƒå±€æ–‡ä»¶
      */
     private FrameLayout fram;
 
@@ -59,7 +59,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ½«½çÃæÌí¼Óµ½ÁíÍâÒ»¸ölayoutÖĞ,ÕâÊÇÎªÁËÈÃÆäÓĞ¸öÊôĞÔ¿ÉÒÔ¿ØÖÆÆäÀëÓÒ±ß¾àÓĞ¶à³¤
+     * å°†ç•Œé¢æ·»åŠ åˆ°å¦å¤–ä¸€ä¸ªlayoutä¸­,è¿™æ˜¯ä¸ºäº†è®©å…¶æœ‰ä¸ªå±æ€§å¯ä»¥æ§åˆ¶å…¶ç¦»å³è¾¹è·æœ‰å¤šé•¿
      */
     @NonNull
     private FrameLayout add2FramLayout(Context context) {
@@ -70,14 +70,14 @@ public class BaseLinearPoupWindows extends PopupWindow {
 
     public BaseLinearPoupWindows(Context context) {
         if (onIniViews() == 0) {
-            throw new IllegalStateException("ÇëÉèÖÃ²¼¾ÖÎÄ¼ş,¸´Ğ´onIniViews()»òÕßµ÷ÓÃgetPoupInstance(Context context, int layoutid)");
+            throw new IllegalStateException("è¯·è®¾ç½®å¸ƒå±€æ–‡ä»¶,å¤å†™onIniViews()æˆ–è€…è°ƒç”¨getPoupInstance(Context context, int layoutid)");
         }
         views = LayoutInflater.from(context).inflate(onIniViews(), null);
         setPoupNormalStyle(context);
     }
 
     /**
-     * ÉèÖÃ²¼¾ÖÎÄ¼şµÄpoupwindowµÄ´óĞ¡
+     * è®¾ç½®å¸ƒå±€æ–‡ä»¶çš„poupwindowçš„å¤§å°
      */
     protected void setPoupWindowsSize() {
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -85,21 +85,21 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ²¼¾ÖÎÄ¼ş£¬R.layout.dialog_xml
+     * å¸ƒå±€æ–‡ä»¶ï¼ŒR.layout.dialog_xml
      */
     protected int onIniViews() {
         return 0;
     }
 
     /**
-     * ¶Ô¿Ø¼ş½øĞĞ³õÊ¼»¯,²¢·µ»Ø¶ÔÓ¦µÄ¿Ø¼ÛÀàĞÍ
+     * å¯¹æ§ä»¶è¿›è¡Œåˆå§‹åŒ–,å¹¶è¿”å›å¯¹åº”çš„æ§ä»·ç±»å‹
      */
     public <E extends View> E findView(int viewid) {
         return (E) views.findViewById(viewid);
     }
 
     /**
-     * ÉèÖÃÀëÓÒ±ß¾àÓĞ¶à³¤
+     * è®¾ç½®ç¦»å³è¾¹è·æœ‰å¤šé•¿
      */
     public BaseLinearPoupWindows setMarginRight(int marginRight) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -109,7 +109,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ÉèÖÃÀë±ß¾àÓĞ¶à³¤
+     * è®¾ç½®ç¦»è¾¹è·æœ‰å¤šé•¿
      */
     public BaseLinearPoupWindows setMargin(int margin) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -119,7 +119,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ÉèÖÃÀë±ß¾àÓĞ¶à³¤
+     * è®¾ç½®ç¦»è¾¹è·æœ‰å¤šé•¿
      */
     public BaseLinearPoupWindows setMargins(int left, int top, int right, int bottom) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -134,7 +134,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
 	}*/
 
     /**
-     * ÉèÖÃ¿Ø¼şµÄ´óĞ¡
+     * è®¾ç½®æ§ä»¶çš„å¤§å°
      */
     public BaseLinearPoupWindows setViewWidth(int width) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -145,7 +145,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * Í¨¹ı¿ØÖÆ²¼¾ÖµÄ´óĞ¡À´¿ØÖÆPoupWindowsµÄ´óĞ¡
+     * é€šè¿‡æ§åˆ¶å¸ƒå±€çš„å¤§å°æ¥æ§åˆ¶PoupWindowsçš„å¤§å°
      */
     public BaseLinearPoupWindows setPoupWindowsSize(int width, int height) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -164,7 +164,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ÉèÖÃ±³¾°ÑÕÉ«»¹ÓĞ,Èç¹ûÊÇÔ²½Ç¾ØĞÎµÄ»°,ÉèÖÃ°ë¾¶µÄ´óĞ¡
+     * è®¾ç½®èƒŒæ™¯é¢œè‰²è¿˜æœ‰,å¦‚æœæ˜¯åœ†è§’çŸ©å½¢çš„è¯,è®¾ç½®åŠå¾„çš„å¤§å°
      */
     public BaseLinearPoupWindows setDrawableNRadius(int color, int radius) {
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -176,7 +176,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ¶¨Ê±¹Ø±Õpoupwindows
+     * å®šæ—¶å…³é—­poupwindows
      */
     public BaseLinearPoupWindows postDelayDismiss(int delaytimes) {
         (new Handler()).postDelayed(new Runnable() {
@@ -190,7 +190,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /***
-     * ¶¨Ê±¹Ø±Õpoupwindows;Ê¹ÓÃÒÑÓĞhandler,¸ü¼Ó½ÚÊ¡×ÊÔ´
+     * å®šæ—¶å…³é—­poupwindows;ä½¿ç”¨å·²æœ‰handler,æ›´åŠ èŠ‚çœèµ„æº
      */
     public BaseLinearPoupWindows postDelayDismiss(final Handler mHandler, int delaytimes) {
         if (runnable == null) {
@@ -212,7 +212,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * ÔÚÆÁÄ»ÖĞ¼äÏÔÊ¾
+     * åœ¨å±å¹•ä¸­é—´æ˜¾ç¤º
      */
     public void showAtScreenCenter(View view) {
         showAtLocation((View) view.getParent(), Gravity.CENTER, 0, 0);

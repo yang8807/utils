@@ -14,14 +14,14 @@ import java.util.List;
 public class IntentUtil {
 
 	/**
-	 * »ñÈ¡·ûºÏIntentÏìÓ¦Ìõ¼şµÄActivityĞÅÏ¢ÁĞ±í
+	 * è·å–ç¬¦åˆIntentå“åº”æ¡ä»¶çš„Activityä¿¡æ¯åˆ—è¡¨
 	 */
 	public static List<ResolveInfo> queryIntentActivities(Context context, Intent intent) {
 		return context.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 	}
 
 	/**
-	 * °²×°Apk
+	 * å®‰è£…Apk
 	 */
 	public static Intent installApk(File apkFile) {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -31,17 +31,17 @@ public class IntentUtil {
 	}
 
 	/**
-	 * µ÷ÓÃÏµÍ³²¦ºÅ¹¦ÄÜ
+	 * è°ƒç”¨ç³»ç»Ÿæ‹¨å·åŠŸèƒ½
 	 *
-	 * @param phoneNumber µç»°ºÅÂë
-	 * @param autoCall ÊÇ·ñ×Ô¶¯¿ªÊ¼²¦ºÅ
-	 *  Èç¹û²»Ö§³Ö´òµç»°·µ»Ønull(Ò»°ãÆ½°å²»Ö§³Ö´òµç»°)
+	 * @param phoneNumber ç”µè¯å·ç 
+	 * @param autoCall æ˜¯å¦è‡ªåŠ¨å¼€å§‹æ‹¨å·
+	 *  å¦‚æœä¸æ”¯æŒæ‰“ç”µè¯è¿”å›null(ä¸€èˆ¬å¹³æ¿ä¸æ”¯æŒæ‰“ç”µè¯)
 	 */
 	public static Intent phoneCall(Context context, String phoneNumber, boolean autoCall) {
 		Intent intent;
-		if (autoCall) {// ×Ô¶¯²¦ºÅ
+		if (autoCall) {// è‡ªåŠ¨æ‹¨å·
 			intent = new Intent(Intent.ACTION_CALL);
-		} else {// ´ò¿ª²¦ºÅ½çÃæ²»×Ô¶¯²¦ºÅ
+		} else {// æ‰“å¼€æ‹¨å·ç•Œé¢ä¸è‡ªåŠ¨æ‹¨å·
 			intent = new Intent(Intent.ACTION_DIAL);
 		}
 		intent.setData(Uri.parse("tel:" + phoneNumber));
@@ -53,15 +53,15 @@ public class IntentUtil {
 	}
 
 	/**
-	 * µ÷ÓÃÏµÍ³·¢¶ÌĞÅ¹¦ÄÜ
+	 * è°ƒç”¨ç³»ç»Ÿå‘çŸ­ä¿¡åŠŸèƒ½
 	 *
-	 * @param phoneNumber µç»°ºÅÂë
+	 * @param phoneNumber ç”µè¯å·ç 
 	 */
 	public static Intent sendSMS(Context context, String phoneNumber) {
 		Intent intent = new Intent();
-		// ÏµÍ³Ä¬ÈÏµÄaction£¬ÓÃÀ´´ò¿ªÄ¬ÈÏµÄ¶ÌĞÅ½çÃæ
+		// ç³»ç»Ÿé»˜è®¤çš„actionï¼Œç”¨æ¥æ‰“å¼€é»˜è®¤çš„çŸ­ä¿¡ç•Œé¢
 		intent.setAction(Intent.ACTION_SENDTO);
-		// ĞèÒª·¢¶ÌÏ¢µÄºÅÂë
+		// éœ€è¦å‘çŸ­æ¯çš„å·ç 
 		intent.setData(Uri.parse("smsto:" + phoneNumber));
 		List<ResolveInfo> list = queryIntentActivities(context, intent);
 		if(list.isEmpty()){
@@ -71,9 +71,9 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ´ò¿ªGoogle PlayÉÏÄ³¸öÓ¦ÓÃµÄÒ³Ãæ
+	 * æ‰“å¼€Google Playä¸ŠæŸä¸ªåº”ç”¨çš„é¡µé¢
 	 *
-	 * @param packageName Ó¦ÓÃ°üÃû
+	 * @param packageName åº”ç”¨åŒ…å
 	 */
 	public static Intent googlePlay(String packageName) {
 		Uri uri = Uri.parse("market://details?id=" + packageName);
@@ -81,12 +81,12 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ·ÖÏíÎÄ×Ö<br>
-	 * ¿ÉÑ¡Ôñ¶à¸öÓ¦ÓÃ£º startActivity(Intent.createChooser(intent, "ÇëÑ¡Ôñ"));<br>
-	 * Ò²¿ÉÒÔÖ¸¶¨Ä³¸öÓ¦ÓÃ£º intent.setPackage(packageName);
+	 * åˆ†äº«æ–‡å­—<br>
+	 * å¯é€‰æ‹©å¤šä¸ªåº”ç”¨ï¼š startActivity(Intent.createChooser(intent, "è¯·é€‰æ‹©"));<br>
+	 * ä¹Ÿå¯ä»¥æŒ‡å®šæŸä¸ªåº”ç”¨ï¼š intent.setPackage(packageName);
 	 *
-	 * @param text ÎÄ×ÖÄÚÈİ
-	 * @param subject Ö÷Ìâ(ÓĞĞ©Ó¦ÓÃ»áºöÂÔ)
+	 * @param text æ–‡å­—å†…å®¹
+	 * @param subject ä¸»é¢˜(æœ‰äº›åº”ç”¨ä¼šå¿½ç•¥)
 	 */
 	public static Intent shareText(String text, String subject) {
 		Intent intent = new Intent(Intent.ACTION_SEND);
@@ -98,9 +98,9 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ·ÖÏíÍ¼Æ¬
+	 * åˆ†äº«å›¾ç‰‡
 	 *
-	 * @param uri ±¾µØÍ¼Æ¬£¬Uri.fromFile(file)»òÓÉContentResolver»ñÈ¡
+	 * @param uri æœ¬åœ°å›¾ç‰‡ï¼ŒUri.fromFile(file)æˆ–ç”±ContentResolverè·å–
 	 */
 	public static Intent shareImage(Uri uri) {
 		Intent intent = new Intent(Intent.ACTION_SEND);
@@ -111,10 +111,10 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ·ÖÏíÍ¼Æ¬ºÍÎÄ×Ö
+	 * åˆ†äº«å›¾ç‰‡å’Œæ–‡å­—
 	 *
-	 * @param uri ±¾µØÍ¼Æ¬£¬Uri.fromFile(file)»òÓÉContentResolver»ñÈ¡
-	 * @param text ´ËÊ±ÓĞĞ©Ó¦ÓÃ»áºöÂÔÎÄ×Ö
+	 * @param uri æœ¬åœ°å›¾ç‰‡ï¼ŒUri.fromFile(file)æˆ–ç”±ContentResolverè·å–
+	 * @param text æ­¤æ—¶æœ‰äº›åº”ç”¨ä¼šå¿½ç•¥æ–‡å­—
 	 */
 	public static Intent shareImage(Uri uri, String text, String subject) {
 		Intent intent = new Intent(Intent.ACTION_SEND);
@@ -127,7 +127,7 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ·ÖÏí¶à¸öÍ¼Æ¬
+	 * åˆ†äº«å¤šä¸ªå›¾ç‰‡
 	 */
 	public static Intent shareImage(ArrayList<Uri> uris) {
 		Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
@@ -138,22 +138,22 @@ public class IntentUtil {
 	}
 
 	/**
-	 * Ñ¡ÔñÏµÍ³Í¼Æ¬
+	 * é€‰æ‹©ç³»ç»Ÿå›¾ç‰‡
 	 */
 	public static Intent imagePick() {
 		return new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 	}
 
 	/**
-	 * µ÷ÓÃÏµÍ³Ïà»ú
+	 * è°ƒç”¨ç³»ç»Ÿç›¸æœº
 	 */
 	public static Intent camera() {
 		return new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 	}
 
 	/**
-	 * µ÷ÓÃÏµÍ³Ïà»ú
-	 *  ÅÄÉãÕÕÆ¬±£´æµÄÎÄ¼şUri
+	 * è°ƒç”¨ç³»ç»Ÿç›¸æœº
+	 *  æ‹æ‘„ç…§ç‰‡ä¿å­˜çš„æ–‡ä»¶Uri
 	 */
 	public static Intent camera(Uri fileUri) {
 		Intent intent = camera();
@@ -162,8 +162,8 @@ public class IntentUtil {
 	}
 
 	/**
-	 * µ÷ÓÃÏµÍ³Ïà»ú
-	 *  ÅÄÉãÕÕÆ¬±£´æµÄÎÄ¼ş
+	 * è°ƒç”¨ç³»ç»Ÿç›¸æœº
+	 *  æ‹æ‘„ç…§ç‰‡ä¿å­˜çš„æ–‡ä»¶
 	 */
 	public static Intent camera(File file) {
 		Intent intent = camera();
@@ -172,7 +172,7 @@ public class IntentUtil {
 	}
 
 	/**
-	 * ·¢ËÍ¹ã²¥ÒÔÍ¨ÖªÏµÍ³Ìí¼ÓÎÄ¼şµ½Ã½Ìå¿â£¬³£ÓÃÓÚÅÄÕÕºóÈÃÕÕÆ¬³öÏÖÔÚÍ¼¿â
+	 * å‘é€å¹¿æ’­ä»¥é€šçŸ¥ç³»ç»Ÿæ·»åŠ æ–‡ä»¶åˆ°åª’ä½“åº“ï¼Œå¸¸ç”¨äºæ‹ç…§åè®©ç…§ç‰‡å‡ºç°åœ¨å›¾åº“
 	 */
 	public static Intent addToAlbum(File file) {
 		Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);

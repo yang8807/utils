@@ -6,37 +6,37 @@ import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.NonNull;
 
 /**
- * Created by »ÆÑŞÎä on 2015/11/10. Function:
+ * Created by é»„è‰³æ­¦ on 2015/11/10. Function:
  */
 public class DrawableUtils {
 
 	/**
-	 * @param radius Ô²½Ç¾ØĞÎµÄ°ë¾¶
-	 * @return µÃµ½´øÓĞÔ²½Ç¾ØĞÎ, ´øÓĞµã»÷Ğ§¹ûµÄ°´Å¥,´«½øÀ´Á½¸öÑÕÉ«, µÃµ½Ò»¸östateDrawable
+	 * @param radius åœ†è§’çŸ©å½¢çš„åŠå¾„
+	 * @return å¾—åˆ°å¸¦æœ‰åœ†è§’çŸ©å½¢, å¸¦æœ‰ç‚¹å‡»æ•ˆæœçš„æŒ‰é’®,ä¼ è¿›æ¥ä¸¤ä¸ªé¢œè‰², å¾—åˆ°ä¸€ä¸ªstateDrawable
 	 */
 	public static StateListDrawable getStateCorRectDrawable(int color, int radius) {
 		return addToStateDrawable(getCorRectDrawable(color, radius), getCorRectDrawable(getPressColor(color), radius));
 	}
 
 	/**
-	 * @return µÃµ½´øÓĞÔ²½Ç¾ØĞÎ, ´øÓĞµã»÷Ğ§¹ûµÄ°´Å¥,´«½øÀ´Á½¸öÑÕÉ«, µÃµ½Ò»¸östateDrawable
+	 * @return å¾—åˆ°å¸¦æœ‰åœ†è§’çŸ©å½¢, å¸¦æœ‰ç‚¹å‡»æ•ˆæœçš„æŒ‰é’®,ä¼ è¿›æ¥ä¸¤ä¸ªé¢œè‰², å¾—åˆ°ä¸€ä¸ªstateDrawable
 	 */
 	public static StateListDrawable getStateCorRectDrawable(int color, int pressColor, int radius) {
 		return addToStateDrawable(getCorRectDrawable(color, radius), getCorRectDrawable(getPressColor(pressColor), radius));
 	}
 
 	/**
-	 * @param color ÆÕÍ¨×´Ì¬µÄÑÕÉ«
-	 * @return µÃµ½´øÓĞÔ²ĞÎ, ´øÓĞµã»÷Ğ§¹ûµÄ°´Å¥,´«½øÀ´Á½¸öÑÕÉ«, µÃµ½Ò»¸östateDrawable
+	 * @param color æ™®é€šçŠ¶æ€çš„é¢œè‰²
+	 * @return å¾—åˆ°å¸¦æœ‰åœ†å½¢, å¸¦æœ‰ç‚¹å‡»æ•ˆæœçš„æŒ‰é’®,ä¼ è¿›æ¥ä¸¤ä¸ªé¢œè‰², å¾—åˆ°ä¸€ä¸ªstateDrawable
 	 */
 	public static StateListDrawable getStateOvalDrawable(int color) {
 		return addToStateDrawable(getOvalDrawable(color), getOvalDrawable(getPressColor(color)));
 	}
 
 	/**
-	 * @param color ÆÕÍ¨×´Ì¬µÄÑÕÉ«
-	 * @param pressColor ½¹µã¸Ä±äµÄÑÕÉ«
-	 * @return µÃµ½´øÓĞÔ²ĞÎ, ´øÓĞµã»÷Ğ§¹ûµÄ°´Å¥,´«½øÀ´Á½¸öÑÕÉ«, µÃµ½Ò»¸östateDrawable
+	 * @param color æ™®é€šçŠ¶æ€çš„é¢œè‰²
+	 * @param pressColor ç„¦ç‚¹æ”¹å˜çš„é¢œè‰²
+	 * @return å¾—åˆ°å¸¦æœ‰åœ†å½¢, å¸¦æœ‰ç‚¹å‡»æ•ˆæœçš„æŒ‰é’®,ä¼ è¿›æ¥ä¸¤ä¸ªé¢œè‰², å¾—åˆ°ä¸€ä¸ªstateDrawable
 	 */
 	public static StateListDrawable getStateOvalDrawable(int color, int pressColor) {
 		return addToStateDrawable(getOvalDrawable(color), getOvalDrawable(getPressColor(pressColor)));
@@ -45,7 +45,7 @@ public class DrawableUtils {
 	/**
 	 * @param color normal color
 	 * @param pressColor pressColor
-	 * @return µÃµ½Ò»¸ö¾ØĞÎµÄ°´Å¥µÄ°´Å¥
+	 * @return å¾—åˆ°ä¸€ä¸ªçŸ©å½¢çš„æŒ‰é’®çš„æŒ‰é’®
 	 */
 	@NonNull
 	public static StateListDrawable getStateRectDrawable(int color, int pressColor) {
@@ -53,8 +53,8 @@ public class DrawableUtils {
 	}
 
 	/**
-	 * @param color ×Ô¶¯Éú³ÉÁíÍâÒ»¸öÑÕÉ«
-	 * @return µÃµ½Ò»¸ö¾ØĞÎµÄ°´Å¥µÄ°´Å¥
+	 * @param color è‡ªåŠ¨ç”Ÿæˆå¦å¤–ä¸€ä¸ªé¢œè‰²
+	 * @return å¾—åˆ°ä¸€ä¸ªçŸ©å½¢çš„æŒ‰é’®çš„æŒ‰é’®
 	 */
 	@NonNull
 	public static StateListDrawable getStateRectDrawable(int color) {
@@ -62,7 +62,7 @@ public class DrawableUtils {
 	}
 
 	/**
-	 * @return ÎªÃ¿¸öµã»÷×´Ì¬Ìí¼ÓDrawable
+	 * @return ä¸ºæ¯ä¸ªç‚¹å‡»çŠ¶æ€æ·»åŠ Drawable
 	 */
 	@NonNull
 	private static StateListDrawable addToStateDrawable(GradientDrawable normalDrawable, GradientDrawable pressDrawable) {
@@ -77,7 +77,7 @@ public class DrawableUtils {
 	}
 
 	/**
-	 * @return ½âÎö´«½øÀ´µÄÒ»¸öÑÕÉ«, µÃµ½Ç³Ò»µãµÄÑÕÉ«
+	 * @return è§£æä¼ è¿›æ¥çš„ä¸€ä¸ªé¢œè‰², å¾—åˆ°æµ…ä¸€ç‚¹çš„é¢œè‰²
 	 */
 	public static int getPressColor(int color) {
 		int alpha = (int) (Color.alpha(color) * 0.8);
@@ -94,28 +94,28 @@ public class DrawableUtils {
 	}
 
 	/***
-	 * @return µÃµ½Ò»¸ö¾ØĞÎµÄ±³¾°
+	 * @return å¾—åˆ°ä¸€ä¸ªçŸ©å½¢çš„èƒŒæ™¯
 	 */
 	public static GradientDrawable getRectDrawable(int color) {
 		return getGradientDrawable(ShapeType.RECT, color, 0);
 	}
 
 	/***
-	 * @return µÃµ½Ò»¸öÔ²ĞÎµÄ±³¾°
+	 * @return å¾—åˆ°ä¸€ä¸ªåœ†å½¢çš„èƒŒæ™¯
 	 */
 	public static GradientDrawable getOvalDrawable(int color) {
 		return getGradientDrawable(ShapeType.OVAL, color, 0);
 	}
 
 	/***
-	 * @return µÃµ½Ò»¸öÔ²½Ç¾ØĞÎµÄ°´Å¥
+	 * @return å¾—åˆ°ä¸€ä¸ªåœ†è§’çŸ©å½¢çš„æŒ‰é’®
 	 */
 	public static GradientDrawable getCorRectDrawable(int color, int radius) {
 		return getGradientDrawable(ShapeType.CORNERRECT, color, radius);
 	}
 
 	/**
-	 * @return ¸ù¾İÑÕÉ«»¹ÓĞ°ë¾¶, µÃµ½Ò»¸ögradientDrawable
+	 * @return æ ¹æ®é¢œè‰²è¿˜æœ‰åŠå¾„, å¾—åˆ°ä¸€ä¸ªgradientDrawable
 	 */
 	@NonNull
 	public static GradientDrawable getGradientDrawable(int shapeType, int color, int radius) {
@@ -134,7 +134,7 @@ public class DrawableUtils {
 		return gradientDrawable;
 	}
 	/**
-	 * RECT Ô²ĞÎ; OVAL Ô²ĞÎ; CORNERRECT Ô²½Ç¾ØĞÎ;
+	 * RECT åœ†å½¢; OVAL åœ†å½¢; CORNERRECT åœ†è§’çŸ©å½¢;
 	 */
 	public static class ShapeType {
 

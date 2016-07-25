@@ -11,8 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Created by »ÆÑŞÎä on 2016/3/8.
- * ÊÖ»úÍ¨Ñ¶Â¼,ÁªÏµÈË²éÑ¯
+ * Created by é»„è‰³æ­¦ on 2016/3/8.
+ * æ‰‹æœºé€šè®¯å½•,è”ç³»äººæŸ¥è¯¢
  */
 public class ContactUtils {
     /***
@@ -23,40 +23,40 @@ public class ContactUtils {
      */
     private onContactSearchListener onContactSearchListener;
 
-    /*²éÑ¯ËùÓĞµÄÁªÏµÈË*/
+    /*æŸ¥è¯¢æ‰€æœ‰çš„è”ç³»äºº*/
     public void queryContacts(Context context, onContactSearchListener onContactSearchListener) {
-        //»ñÈ¡ÓÃÀ´²Ù×÷Êı¾İµÄÀàµÄ¶ÔÏó£¬¶ÔÁªÏµÈËµÄ»ù±¾²Ù×÷¶¼ÊÇÊ¹ÓÃÕâ¸ö¶ÔÏó
+        //è·å–ç”¨æ¥æ“ä½œæ•°æ®çš„ç±»çš„å¯¹è±¡ï¼Œå¯¹è”ç³»äººçš„åŸºæœ¬æ“ä½œéƒ½æ˜¯ä½¿ç”¨è¿™ä¸ªå¯¹è±¡
         ContentResolver cr = context.getContentResolver();
-        //  ²éÑ¯contacts±íµÄËùÓĞ¼ÇÂ¼
+        //  æŸ¥è¯¢contactsè¡¨çš„æ‰€æœ‰è®°å½•
         Cursor cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        // Èç¹û¼ÇÂ¼²»Îª¿Õ
+        // å¦‚æœè®°å½•ä¸ä¸ºç©º
         if (cursor.getCount() > 0) {
-            //ÓÎ±ê³õÊ¼Ö¸Ïò²éÑ¯½á¹ûµÄµÚÒ»Ìõ¼ÇÂ¼µÄÉÏ·½£¬Ö´ĞĞmoveToNextº¯Êı»áÅĞ¶Ï
-            //+ÏÂÒ»Ìõ¼ÇÂ¼ÊÇ·ñ´æÔÚ£¬Èç¹û´æÔÚ£¬Ö¸ÏòÏÂÒ»Ìõ¼ÇÂ¼¡£·ñÔò£¬·µ»Øfalse¡£
+            //æ¸¸æ ‡åˆå§‹æŒ‡å‘æŸ¥è¯¢ç»“æœçš„ç¬¬ä¸€æ¡è®°å½•çš„ä¸Šæ–¹ï¼Œæ‰§è¡ŒmoveToNextå‡½æ•°ä¼šåˆ¤æ–­
+            //+ä¸‹ä¸€æ¡è®°å½•æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœå­˜åœ¨ï¼ŒæŒ‡å‘ä¸‹ä¸€æ¡è®°å½•ã€‚å¦åˆ™ï¼Œè¿”å›falseã€‚
             while (cursor.moveToNext()) {
                 String rawContactId = "";
-                //  ´ÓContacts±íµ±ÖĞÈ¡µÃContactId
+                //  ä»Contactsè¡¨å½“ä¸­å–å¾—ContactId
                 String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
                 Log.v("contactID", id);
-                // »ñÈ¡RawContacts±íµÄÓÎ±ê
+                // è·å–RawContactsè¡¨çš„æ¸¸æ ‡
                 Cursor rawContactCur = cr.query(ContactsContract.RawContacts.CONTENT_URI, null, ContactsContract.RawContacts._ID + "=?", new String[]{id}, null);
-                //¸Ã²éÑ¯½á¹ûÒ»°ãÖ»·µ»ØÒ»Ìõ¼ÇÂ¼£¬ËùÒÔÎÒÃÇÖ±½ÓÈÃÓÎ±êÖ¸ÏòµÚÒ»Ìõ¼ÇÂ¼
+                //è¯¥æŸ¥è¯¢ç»“æœä¸€èˆ¬åªè¿”å›ä¸€æ¡è®°å½•ï¼Œæ‰€ä»¥æˆ‘ä»¬ç›´æ¥è®©æ¸¸æ ‡æŒ‡å‘ç¬¬ä¸€æ¡è®°å½•
                 if (rawContactCur.moveToFirst()) {
-                    //¶ÁÈ¡µÚÒ»Ìõ¼ÇÂ¼µÄRawContacts._IDÁĞµÄÖµ
+                    //è¯»å–ç¬¬ä¸€æ¡è®°å½•çš„RawContacts._IDåˆ—çš„å€¼
                     rawContactId = rawContactCur.getString(rawContactCur.getColumnIndex(ContactsContract.RawContacts._ID));
                     Log.v("rawContactID", rawContactId);
                 }
-                //¹Ø±ÕÓÎ±ê
+                //å…³é—­æ¸¸æ ‡
                 rawContactCur.close();
-                //¶ÁÈ¡ºÅÂë
+                //è¯»å–å·ç 
                 if (Integer.parseInt(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
-                    //¸ù¾İ²éÑ¯RAW_CONTACT_ID²éÑ¯¸ÃÁªÏµÈËµÄºÅÂë
+                    //æ ¹æ®æŸ¥è¯¢RAW_CONTACT_IDæŸ¥è¯¢è¯¥è”ç³»äººçš„å·ç 
                     Cursor phoneCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.RAW_CONTACT_ID + "=?",
                             new String[]{rawContactId}, null);
-                    // ÉÏÃæµÄContactsContract.CommonDataKinds.Phone.CONTENT_URI
-                    //  ¿ÉÒÔÓÃÏÂÃæµÄphoneUri´úÌæ
+                    // ä¸Šé¢çš„ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+                    //  å¯ä»¥ç”¨ä¸‹é¢çš„phoneUriä»£æ›¿
                     Uri phoneUri = Uri.parse("content://com.android.contacts/data/phones");
-                    //Ò»¸öÁªÏµÈË¿ÉÄÜÓĞ¶à¸öºÅÂë£¬ĞèÒª±éÀú
+                    //ä¸€ä¸ªè”ç³»äººå¯èƒ½æœ‰å¤šä¸ªå·ç ï¼Œéœ€è¦éå†
                     while (phoneCur.moveToNext()) {
                         onContactSearchListener.query(phoneCur);
                     }
@@ -68,14 +68,14 @@ public class ContactUtils {
         }
     }
 
-    /*Ìí¼ÓÁªÏµÈË*/
+    /*æ·»åŠ è”ç³»äºº*/
     public void addContact(String name, String phoneNum, Context context) {
         ContentValues values = new ContentValues();
         Uri rawContactUri = context.getContentResolver().insert(ContactsContract.RawContacts.CONTENT_URI, values);
 
         long rawContactId = ContentUris.parseId(rawContactUri);
 
-        //Ïòdata±íÖĞ²åÈëÊı¾İ
+        //å‘dataè¡¨ä¸­æ’å…¥æ•°æ®
         if (!TextUtils.isEmpty(name)) {
             values.clear();
             values.put(ContactsContract.Data.RAW_CONTACT_ID, rawContactId);
@@ -95,25 +95,25 @@ public class ContactUtils {
 
     }
 
-    /*É¾³ıÁªÏµÈË*/
+    /*åˆ é™¤è”ç³»äºº*/
     public void deleteContact(long rawContactId, Context context) {
         context.getContentResolver().delete(ContentUris.withAppendedId(ContactsContract.RawContacts.CONTENT_URI, rawContactId), null, null);
     }
 
 
     /***
-     *  ¶ÔÊı¾İ½øĞĞ²éÑ¯
+     *  å¯¹æ•°æ®è¿›è¡ŒæŸ¥è¯¢
      */
     public interface onContactSearchListener {
-        //¶Ô²éÑ¯µÄÏ¸½Ú½øĞĞ²Ù×÷
+        //å¯¹æŸ¥è¯¢çš„ç»†èŠ‚è¿›è¡Œæ“ä½œ
         void query(Cursor phoneCur);
 
-        //²éÑ¯Íê³É
+        //æŸ¥è¯¢å®Œæˆ
         void queryFinish();
     }
 
 
-    /*¸üĞÂÁªÏµÈË*/
+    /*æ›´æ–°è”ç³»äºº*/
     public void updataCotact(long rawContactId, Context context) {
         ContentValues values = new ContentValues();
         values.put(ContactsContract.CommonDataKinds.Phone.NUMBER, "13800138000");

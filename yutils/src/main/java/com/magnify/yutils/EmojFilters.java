@@ -4,13 +4,13 @@
 package com.magnify.yutils;
 
 /**
- * @author »ÆÑŞÎä
+ * @author é»„è‰³æ­¦
  */
 public class EmojFilters {
 
 	/**
-	 * ÊÇ·ñ°üº¬±íÇé
-	 * @return Èç¹û²»°üº¬ ·µ»Øfalse,°üº¬ Ôò·µ»Øtrue
+	 * æ˜¯å¦åŒ…å«è¡¨æƒ…
+	 * @return å¦‚æœä¸åŒ…å« è¿”å›false,åŒ…å« åˆ™è¿”å›true
 	 */
 
 	public static boolean isEmojiCharacter(char codePoint) {
@@ -19,7 +19,7 @@ public class EmojFilters {
 	}
 
 	/**
-	 * ¹ıÂËemoji »òÕß ÆäËû·ÇÎÄ×ÖÀàĞÍµÄ×Ö·û
+	 * è¿‡æ»¤emoji æˆ–è€… å…¶ä»–éæ–‡å­—ç±»å‹çš„å­—ç¬¦
 	 */
 	public static String filterEmoji(String source) {
 
@@ -30,7 +30,7 @@ public class EmojFilters {
 		for (int i = 0; i < len; i++) {
 			char codePoint = source.charAt(i);
 
-			if (!isEmojiCharacter(codePoint)) {// Èç¹û²»°üº¬ Ôò½«×Ö·ûappend
+			if (!isEmojiCharacter(codePoint)) {// å¦‚æœä¸åŒ…å« åˆ™å°†å­—ç¬¦append
 				if (buf == null) {
 					buf = new StringBuilder(source.length());
 				}
@@ -41,9 +41,9 @@ public class EmojFilters {
 		}
 
 		if (buf == null) {
-			return source;// Èç¹ûÃ»ÓĞÕÒµ½ emoji±íÇé£¬Ôò·µ»ØÔ´×Ö·û´®
+			return source;// å¦‚æœæ²¡æœ‰æ‰¾åˆ° emojiè¡¨æƒ…ï¼Œåˆ™è¿”å›æºå­—ç¬¦ä¸²
 		} else {
-			if (buf.length() == len) {// ÕâÀïµÄÒâÒåÔÚÓÚ¾¡¿ÉÄÜÉÙµÄtoString£¬ÒòÎª»áÖØĞÂÉú³É×Ö·û´®
+			if (buf.length() == len) {// è¿™é‡Œçš„æ„ä¹‰åœ¨äºå°½å¯èƒ½å°‘çš„toStringï¼Œå› ä¸ºä¼šé‡æ–°ç”Ÿæˆå­—ç¬¦ä¸²
 				buf = null;
 				return source;
 			} else {

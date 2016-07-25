@@ -1,18 +1,16 @@
-package com.magnify.util;
+package com.magnify.yutils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
-/**
- * Created by 黄艳武 on 2016/5/17.
- */
 public class RandomCharUtils {
     /**
-     * 生成随机汉字
+     *Generate random Chinese characters
+     * @param encode GBK or utf-8
      *
      * @return
      */
-    public static char getRandomChar() {
+    public static char getRandomChar(String encode) {
         String str = "";
         int hightPos;
         int lowPos;
@@ -26,7 +24,7 @@ public class RandomCharUtils {
         b[1] = (Integer.valueOf(lowPos)).byteValue();
 
         try {
-            str = new String(b, "GBK");
+            str = new String(b, encode);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

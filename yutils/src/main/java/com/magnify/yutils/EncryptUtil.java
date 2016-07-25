@@ -12,21 +12,21 @@ import javax.crypto.spec.IvParameterSpec;
 public class EncryptUtil {
 
 	/**
-	 * ×Ö·û±àÂë
+	 * å­—ç¬¦ç¼–ç 
 	 */
 	public static final String ENCODE = "UTF-8";
 
 	/**
-	 * ¼ÓÃÜÏòÁ¿µÄ³¤¶È
+	 * åŠ å¯†å‘é‡çš„é•¿åº¦
 	 */
 	public static final int IV_LENGTH = 8;
 
 	/**
-	 * 3DES¼ÓÃÜ£¬Ä£Ê½ÎªCBCÄ£Ê½
+	 * 3DESåŠ å¯†ï¼Œæ¨¡å¼ä¸ºCBCæ¨¡å¼
 	 *
-	 * @param key ¼ÓÃÜÃÜÔ¿
-	 * @param iv ¼ÓÃÜÏòÁ¿
-	 * @param data ¼ÓÃÜ×Ö·û´®
+	 * @param key åŠ å¯†å¯†é’¥
+	 * @param iv åŠ å¯†å‘é‡
+	 * @param data åŠ å¯†å­—ç¬¦ä¸²
 	 * @throws Exception
 	 */
 	public static String des3EncodeCBC(String key, String iv, String data) throws Exception {
@@ -36,11 +36,11 @@ public class EncryptUtil {
 	}
 
 	/**
-	 * 3DES¼ÓÃÜ£¬Ä£Ê½ÎªCBCÄ£Ê½
+	 * 3DESåŠ å¯†ï¼Œæ¨¡å¼ä¸ºCBCæ¨¡å¼
 	 *
-	 * @param key ¼ÓÃÜÃÜÔ¿
-	 * @param iv ¼ÓÃÜÏòÁ¿
-	 * @param data ¼ÓÃÜ×Ö·û´®
+	 * @param key åŠ å¯†å¯†é’¥
+	 * @param iv åŠ å¯†å‘é‡
+	 * @param data åŠ å¯†å­—ç¬¦ä¸²
 	 * @throws Exception
 	 */
 	private static byte[] des3EncodeCBC(byte[] key, byte[] iv, byte[] data) throws Exception {
@@ -55,11 +55,11 @@ public class EncryptUtil {
 	}
 
 	/**
-	 * 3DES½âÃÜ£¬Ä£Ê½ÎªCBCÄ£Ê½
+	 * 3DESè§£å¯†ï¼Œæ¨¡å¼ä¸ºCBCæ¨¡å¼
 	 *
-	 * @param key ¼ÓÃÜÃÜÔ¿
-	 * @param iv ¼ÓÃÜÏòÁ¿
-	 * @param data ¼ÓÃÜ×Ö·û´®
+	 * @param key åŠ å¯†å¯†é’¥
+	 * @param iv åŠ å¯†å‘é‡
+	 * @param data åŠ å¯†å­—ç¬¦ä¸²
 	 * @throws Exception
 	 */
 	public static String des3DecodeCBC(String key, String iv, String data) throws Exception {
@@ -69,11 +69,11 @@ public class EncryptUtil {
 	}
 
 	/**
-	 * 3DES½âÃÜ£¬Ä£Ê½ÎªCBCÄ£Ê½
+	 * 3DESè§£å¯†ï¼Œæ¨¡å¼ä¸ºCBCæ¨¡å¼
 	 *
-	 * @param key ¼ÓÃÜÃÜÔ¿
-	 * @param iv ¼ÓÃÜÏòÁ¿
-	 * @param data ¼ÓÃÜ×Ö·û´®
+	 * @param key åŠ å¯†å¯†é’¥
+	 * @param iv åŠ å¯†å‘é‡
+	 * @param data åŠ å¯†å­—ç¬¦ä¸²
 	 * @throws Exception
 	 */
 	private static byte[] des3DecodeCBC(byte[] key, byte[] iv, byte[] data) throws Exception {
@@ -88,7 +88,7 @@ public class EncryptUtil {
 	}
 
 	/**
-	 * ¸ù¾İ×Ö·û´®´´½¨¼ÓÃÜÏòÁ¿
+	 * æ ¹æ®å­—ç¬¦ä¸²åˆ›å»ºåŠ å¯†å‘é‡
 	 * @throws Exception
 	 */
 	public static byte[] createIV(String pIv) throws Exception {

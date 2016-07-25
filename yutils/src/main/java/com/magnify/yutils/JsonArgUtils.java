@@ -22,7 +22,7 @@ public class JsonArgUtils<T> {
         return this;
     }
     /***
-     * @return Ìí¼ÓArrayList
+     * @return æ·»åŠ ArrayList
      */
     public JsonArgUtils add(String parameter, ArrayList<T> arrayList) {
         builder.append(_split+parameter+_split+":[");

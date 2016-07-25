@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Ê±¼äµÄ¹¤¾ßÀà
+ * æ—¶é—´çš„å·¥å…·ç±»
  *
  * @author ldy
  */
@@ -22,13 +22,13 @@ public class DateUtils {
 
 	final public static String FORMAT_STRING_DATE = "yyyy-MM-dd";
 
-	final public static String FORMAT_STRING_DATE_CHINESE = "yyyyÄêMMÔÂddÈÕ";
+	final public static String FORMAT_STRING_DATE_CHINESE = "yyyyå¹´MMæœˆddæ—¥";
 
 	final public static String FORMAT_STRING_DATE_TIME_POINT = "yyyy.MM.dd HH:mm";
 
-	final public static String FORMAT_STRING_DATE_MONTH_DAY = "MMÔÂddÈÕ";
+	final public static String FORMAT_STRING_DATE_MONTH_DAY = "MMæœˆddæ—¥";
 
-	final public static String FORMAT_STRING_DATE_MONTH = "MMÔÂ";
+	final public static String FORMAT_STRING_DATE_MONTH = "MMæœˆ";
 
 	public static Date stringToDate(String dateString, String format) {
 		try {
@@ -78,7 +78,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * °´Ö¸¶¨µÄ¸ñÊ½·µ»Øµ±Ç°±íÊ¾µ±Ç°Ê±¼äµÄ×Ö·û´®
+	 * æŒ‰æŒ‡å®šçš„æ ¼å¼è¿”å›å½“å‰è¡¨ç¤ºå½“å‰æ—¶é—´çš„å­—ç¬¦ä¸²
 	 */
 	public static String nowString(String format) {
 		return new SimpleDateFormat(format).format(new Date());
@@ -89,22 +89,22 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶ÏµÚÒ»¸öÈÕÆÚÊÇ·ñÍíÓÚµÚ¶ş¸öÈÕÆÚ
-	 * @return ÍíÓÚ·µ»Øtrue£¬ÔçÓÚ»òµÈÓÚ·µ»Øfalse
+	 * åˆ¤æ–­ç¬¬ä¸€ä¸ªæ—¥æœŸæ˜¯å¦æ™šäºç¬¬äºŒä¸ªæ—¥æœŸ
+	 * @return æ™šäºè¿”å›trueï¼Œæ—©äºæˆ–ç­‰äºè¿”å›false
 	 */
 	public static boolean isLaterThan(String firstDate, String secondDate) {
 		return stringToCalendar(firstDate).getTimeInMillis() > stringToCalendar(secondDate).getTimeInMillis();
 	}
 
 	/**
-	 * »ñÈ¡Ê±¼ä´Á£¨²»´øÊ±ÇøĞÅÏ¢£©
+	 * è·å–æ—¶é—´æˆ³ï¼ˆä¸å¸¦æ—¶åŒºä¿¡æ¯ï¼‰
 	 */
 	public static long getTimeStamp() {
 		return System.currentTimeMillis();
 	}
 
 	/**
-	 * »ñÈ¡Ê±¼ä´Á£¨²»´øÊ±ÇøĞÅÏ¢£©
+	 * è·å–æ—¶é—´æˆ³ï¼ˆä¸å¸¦æ—¶åŒºä¿¡æ¯ï¼‰
 	 */
 	public static long getTimeStamp(int year, int month, int day) {
 		Calendar calendar = Calendar.getInstance();
@@ -114,48 +114,48 @@ public class DateUtils {
 	}
 
 	/**
-	 * ½«Ê±¼ä´Á×ª»¯Îª¿É¶ÁµÄ×Ö·û´®
+	 * å°†æ—¶é—´æˆ³è½¬åŒ–ä¸ºå¯è¯»çš„å­—ç¬¦ä¸²
 	 */
 	public static String stampToString(long stamp) {
 		return dateToString(new Date(stamp));
 	}
 
 	/**
-	 * ½«Ê±¼ä´Á°´ÕÕÖ¸¶¨¸ñÊ½×ª»¯Îª¿É¶ÁµÄ×Ö·û´®
+	 * å°†æ—¶é—´æˆ³æŒ‰ç…§æŒ‡å®šæ ¼å¼è½¬åŒ–ä¸ºå¯è¯»çš„å­—ç¬¦ä¸²
 	 */
 	public static String stampToString(long stamp, String format) {
 		return dateToString(new Date(stamp), format);
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°ÊÇĞÇÆÚ¼¸¡£
+	 * è¿”å›å½“å‰æ˜¯æ˜ŸæœŸå‡ ã€‚
 	 *
-	 * @return ·µ»ØÒ»¸ö´ú±íµ±ÆÚÈÕÆÚÊÇĞÇÆÚ¼¸¡£
+	 * @return è¿”å›ä¸€ä¸ªä»£è¡¨å½“æœŸæ—¥æœŸæ˜¯æ˜ŸæœŸå‡ ã€‚
 	 */
 	public static String getDayOfWeek() {
 		Calendar cal = Calendar.getInstance();
 		String day = "";
 		switch (cal.get(Calendar.DAY_OF_WEEK)) {
 			case Calendar.MONDAY:
-				day = "ĞÇÆÚÒ»";
+				day = "æ˜ŸæœŸä¸€";
 				break;
 			case Calendar.TUESDAY:
-				day = "ĞÇÆÚ¶ş";
+				day = "æ˜ŸæœŸäºŒ";
 				break;
 			case Calendar.WEDNESDAY:
-				day = "ĞÇÆÚÈı";
+				day = "æ˜ŸæœŸä¸‰";
 				break;
 			case Calendar.THURSDAY:
-				day = "ĞÇÆÚËÄ";
+				day = "æ˜ŸæœŸå››";
 				break;
 			case Calendar.FRIDAY:
-				day = "ĞÇÆÚÎå";
+				day = "æ˜ŸæœŸäº”";
 				break;
 			case Calendar.SATURDAY:
-				day = "ĞÇÆÚÁù";
+				day = "æ˜ŸæœŸå…­";
 				break;
 			case Calendar.SUNDAY:
-				day = "ĞÇÆÚÌì";
+				day = "æ˜ŸæœŸå¤©";
 				break;
 
 			default:
@@ -165,9 +165,9 @@ public class DateUtils {
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°ÊÇĞÇÆÚ¼¸¡£
+	 * è¿”å›å½“å‰æ˜¯æ˜ŸæœŸå‡ ã€‚
 	 *
-	 * @return ·µ»ØÒ»¸ö´ú±íµ±ÆÚÈÕÆÚÊÇĞÇÆÚ¼¸¡£
+	 * @return è¿”å›ä¸€ä¸ªä»£è¡¨å½“æœŸæ—¥æœŸæ˜¯æ˜ŸæœŸå‡ ã€‚
 	 */
 	public static String getDayOfWeekForPickerDialog(int year, int month, int dayOfMonth) {
 		Calendar cal = Calendar.getInstance();
@@ -175,25 +175,25 @@ public class DateUtils {
 		String day = "";
 		switch (cal.get(Calendar.DAY_OF_WEEK)) {
 			case Calendar.MONDAY:
-				day = "ÖÜÒ»";
+				day = "å‘¨ä¸€";
 				break;
 			case Calendar.TUESDAY:
-				day = "ÖÜ¶ş";
+				day = "å‘¨äºŒ";
 				break;
 			case Calendar.WEDNESDAY:
-				day = "ÖÜÈı";
+				day = "å‘¨ä¸‰";
 				break;
 			case Calendar.THURSDAY:
-				day = "ÖÜËÄ";
+				day = "å‘¨å››";
 				break;
 			case Calendar.FRIDAY:
-				day = "ÖÜÎå";
+				day = "å‘¨äº”";
 				break;
 			case Calendar.SATURDAY:
-				day = "ÖÜÁù";
+				day = "å‘¨å…­";
 				break;
 			case Calendar.SUNDAY:
-				day = "ÖÜÈÕ";
+				day = "å‘¨æ—¥";
 				break;
 
 			default:
@@ -203,7 +203,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ·µ»ØÓÑºÃµÄÊ±¼ä¸ñÊ½,Èç¹ûÊÇ½ñÌì£¬Ôò·µ»Ø½ñÌì£¬Èç¹ûÊÇ×òÌì£¬¾Í·µ»Ø×òÌì£¬Èç¹ûÊÇ×òÌìÒÔÇ°µÄ£¬¾Í·µ»Øyyyy-mm-dd
+	 * è¿”å›å‹å¥½çš„æ—¶é—´æ ¼å¼,å¦‚æœæ˜¯ä»Šå¤©ï¼Œåˆ™è¿”å›ä»Šå¤©ï¼Œå¦‚æœæ˜¯æ˜¨å¤©ï¼Œå°±è¿”å›æ˜¨å¤©ï¼Œå¦‚æœæ˜¯æ˜¨å¤©ä»¥å‰çš„ï¼Œå°±è¿”å›yyyy-mm-dd
 	 *
 	 */
 	public static String friendTime(Date time) {
@@ -211,7 +211,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ·µ»ØÓÑºÃµÄÊ±¼ä¸ñÊ½,Èç¹ûÊÇ½ñÌì£¬Ôò·µ»Ø½ñÌì£¬Èç¹ûÊÇ×òÌì£¬¾Í·µ»Ø×òÌì£¬Èç¹ûÊÇ×òÌìÒÔÇ°µÄ£¬¾Í·µ»Ødd
+	 * è¿”å›å‹å¥½çš„æ—¶é—´æ ¼å¼,å¦‚æœæ˜¯ä»Šå¤©ï¼Œåˆ™è¿”å›ä»Šå¤©ï¼Œå¦‚æœæ˜¯æ˜¨å¤©ï¼Œå°±è¿”å›æ˜¨å¤©ï¼Œå¦‚æœæ˜¯æ˜¨å¤©ä»¥å‰çš„ï¼Œå°±è¿”å›dd
 	 */
 	public static String friendTimeForDay(Date time) {
 		return friendTimeBase(time, FORMAT_STRING_DATE_DAY);
@@ -223,14 +223,14 @@ public class DateUtils {
 		target.setTime(time);
 		int day_sub = Math.abs(now.get(Calendar.DAY_OF_MONTH) - target.get(Calendar.DAY_OF_MONTH));
 
-		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// Èç¹ûÄê·İÒ»Ñù
-			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// Èç¹ûÔÂ·İÒ»Ñù
-				if (day_sub == 0) {// Èç¹ûÊÇÍ¬Ò»Ìì
-					// ·µ»Ø½ñÌì
-					return "½ñÌì";
+		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// å¦‚æœå¹´ä»½ä¸€æ ·
+			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// å¦‚æœæœˆä»½ä¸€æ ·
+				if (day_sub == 0) {// å¦‚æœæ˜¯åŒä¸€å¤©
+					// è¿”å›ä»Šå¤©
+					return "ä»Šå¤©";
 				} else if (day_sub == 1) { //
-					// ·µ»Ø×òÌì
-					return "×òÌì";
+					// è¿”å›æ˜¨å¤©
+					return "æ˜¨å¤©";
 				}
 			}
 		}
@@ -246,14 +246,14 @@ public class DateUtils {
 		target.setTime(time);
 		int day_sub = Math.abs(now.get(Calendar.DAY_OF_MONTH) - target.get(Calendar.DAY_OF_MONTH));
 
-		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// Èç¹ûÄê·İÒ»Ñù
-			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// Èç¹ûÔÂ·İÒ»Ñù
-				if (day_sub == 0) {// Èç¹ûÊÇÍ¬Ò»Ìì
-					// ·µ»Ø½ñÌì
-					return "½ñÌì " + dateToString(time, "HH:mm");
+		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// å¦‚æœå¹´ä»½ä¸€æ ·
+			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// å¦‚æœæœˆä»½ä¸€æ ·
+				if (day_sub == 0) {// å¦‚æœæ˜¯åŒä¸€å¤©
+					// è¿”å›ä»Šå¤©
+					return "ä»Šå¤© " + dateToString(time, "HH:mm");
 				} else if (day_sub == 1) { //
-					// ·µ»Ø×òÌì
-					return "×òÌì " + dateToString(time, "HH:mm");
+					// è¿”å›æ˜¨å¤©
+					return "æ˜¨å¤© " + dateToString(time, "HH:mm");
 				}
 			}
 		}
@@ -261,7 +261,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * Èç¹û¿´µÃÏûÏ¢ÊÇ½ñÄêµÄÔòÏÔÊ¾8ÔÂ20ÈÕ,Èç¹û¿´µÄÏûÏ¢ÊÇÈ¥ÄêµÄÔòÏÔÊ¾2013Äê8ÔÂ20ÈÕ
+	 * å¦‚æœçœ‹å¾—æ¶ˆæ¯æ˜¯ä»Šå¹´çš„åˆ™æ˜¾ç¤º8æœˆ20æ—¥,å¦‚æœçœ‹çš„æ¶ˆæ¯æ˜¯å»å¹´çš„åˆ™æ˜¾ç¤º2013å¹´8æœˆ20æ—¥
 	 */
 	public static String friendTimeMMDD(Date time) {
 		Calendar now = Calendar.getInstance();
@@ -275,7 +275,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÒÔÓÑºÃµÄ·½Ê½ÏÔÊ¾Ê±¼ä
+	 * ä»¥å‹å¥½çš„æ–¹å¼æ˜¾ç¤ºæ—¶é—´
 	 */
 	public static String friendly_time(Date time) {
 		if (time == null) {
@@ -284,7 +284,7 @@ public class DateUtils {
 		String ftime = "";
 		Calendar cal = Calendar.getInstance();
 
-		// ÅĞ¶ÏÊÇ·ñÊÇÍ¬Ò»Ìì
+		// åˆ¤æ–­æ˜¯å¦æ˜¯åŒä¸€å¤©
 		String curDate = dateToString(cal.getTime(), FORMAT_STRING_DATE);
 		String paramDate = dateToString(time, FORMAT_STRING_DATE);
 		if (curDate.equals(paramDate)) {
@@ -292,11 +292,11 @@ public class DateUtils {
 			int min = (int) (t / 60000);
 			int hour = (int) (t / 3600000);
 			if (min == 0)
-				ftime = Math.max(t / 1000, 1) + "ÃëÇ°";
+				ftime = Math.max(t / 1000, 1) + "ç§’å‰";
 			else if (hour == 0)
-				ftime = Math.max(min, 1) + "·ÖÖÓÇ°";
+				ftime = Math.max(min, 1) + "åˆ†é’Ÿå‰";
 			else
-				ftime = hour + "Ğ¡Ê±Ç°";
+				ftime = hour + "å°æ—¶å‰";
 			return ftime;
 		}
 
@@ -308,15 +308,15 @@ public class DateUtils {
 			int min = (int) (t / 60000);
 			int hour = (int) (t / 3600000);
 			if (min == 0)
-				ftime = Math.max(t / 1000, 1) + "ÃëÇ°";
+				ftime = Math.max(t / 1000, 1) + "ç§’å‰";
 			else if (hour == 0)
-				ftime = Math.max(min, 1) + "·ÖÖÓÇ°";
+				ftime = Math.max(min, 1) + "åˆ†é’Ÿå‰";
 			else
-				ftime = hour + "Ğ¡Ê±Ç°";
+				ftime = hour + "å°æ—¶å‰";
 		} else if (days == 1) {
-			ftime = "×òÌì";
+			ftime = "æ˜¨å¤©";
 		} else if (days == 2) {
-			ftime = "Ç°Ìì";
+			ftime = "å‰å¤©";
 		} else if (days > 2) {
 			ftime = dateToString(time, FORMAT_STRING_DATE);
 		}
@@ -324,10 +324,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * ·µ»ØÓÑºÃµÄÊ±¼ä¸ñÊ½,Èç¹ûÊÇ±¾ÔÂ£¬¾Í·µ»Ø±¾ÔÂ£¬·ñÔò·µ»Øyyyy-MM¸ñÊ½
+	 * è¿”å›å‹å¥½çš„æ—¶é—´æ ¼å¼,å¦‚æœæ˜¯æœ¬æœˆï¼Œå°±è¿”å›æœ¬æœˆï¼Œå¦åˆ™è¿”å›yyyy-MMæ ¼å¼
 	 *
-	 * @param time Ê±¼ä
-	 * @param type ¸ñÊ½
+	 * @param time æ—¶é—´
+	 * @param type æ ¼å¼
 	 */
 	public static String friendlyMonth(Date time, String type) {
 		Calendar now = Calendar.getInstance();
@@ -336,9 +336,9 @@ public class DateUtils {
 			time = new Date();
 		}
 		target.setTime(time);
-		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// Èç¹ûÄê·İÒ»Ñù
-			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// Èç¹ûÔÂ·İÒ»Ñù
-				return "±¾ÔÂ";
+		if (now.get(Calendar.YEAR) == target.get(Calendar.YEAR)) {// å¦‚æœå¹´ä»½ä¸€æ ·
+			if (now.get(Calendar.MONTH) == target.get(Calendar.MONTH)) {// å¦‚æœæœˆä»½ä¸€æ ·
+				return "æœ¬æœˆ";
 			}
 		}
 		return dateToString(time, type == null ? FORMAT_STRING_DATE_MONTH : type);
@@ -355,8 +355,8 @@ public class DateUtils {
 		}
 		first.setTime(firstTime);
 		second.setTime(secondTime);
-		if (first.get(Calendar.YEAR) == second.get(Calendar.YEAR)) {// Èç¹ûÄê·İÒ»Ñù
-			if (first.get(Calendar.MONTH) == second.get(Calendar.MONTH)) {// Èç¹ûÔÂ·İÒ»Ñù
+		if (first.get(Calendar.YEAR) == second.get(Calendar.YEAR)) {// å¦‚æœå¹´ä»½ä¸€æ ·
+			if (first.get(Calendar.MONTH) == second.get(Calendar.MONTH)) {// å¦‚æœæœˆä»½ä¸€æ ·
 				return true;
 			}
 		}
@@ -371,15 +371,15 @@ public class DateUtils {
 	}
 
 	/**
-	 * ½«ºÁÃë×ªÎªÌì¡¢Ğ¡Ê±¡¢·ÖÖÓ¡¢Ãë,²¢¿É½øĞĞ¼Ó¼õ¼ÆËã¿ÉÒÔÓÃÓÚ¼ÆÊ±ºÍµ¹Êı
+	 * å°†æ¯«ç§’è½¬ä¸ºå¤©ã€å°æ—¶ã€åˆ†é’Ÿã€ç§’,å¹¶å¯è¿›è¡ŒåŠ å‡è®¡ç®—å¯ä»¥ç”¨äºè®¡æ—¶å’Œå€’æ•°
 	 *
 	 * @see DateUtils#getTimeDuring(long)
-	 * @author ÀîĞÀ
+	 * @author ææ¬£
 	 */
 	public static class TimeDuring {
 
 		/**
-		 * Ê±¼ä´Á
+		 * æ—¶é—´æˆ³
 		 */
 		private long mTimestamp;
 
@@ -388,16 +388,16 @@ public class DateUtils {
 		}
 
 		/**
-		 * ½«¸ø¶¨Ê±¼ä¼ÓÈë(¿ÉÍ¨¹ıÕı¸ºÊıĞŞ¸ÄÊ±¼ä)
+		 * å°†ç»™å®šæ—¶é—´åŠ å…¥(å¯é€šè¿‡æ­£è´Ÿæ•°ä¿®æ”¹æ—¶é—´)
 		 *
-		 * @param timestamp ºÁÃë
+		 * @param timestamp æ¯«ç§’
 		 */
 		public void applyTime(long timestamp) {
 			mTimestamp += timestamp;
 		}
 
 		/**
-		 * ·µ»Øµ±Ç°Ê±¼ä´Á
+		 * è¿”å›å½“å‰æ—¶é—´æˆ³
 		 *
 		 * @return
 		 */
@@ -406,7 +406,7 @@ public class DateUtils {
 		}
 
 		/**
-		 * Ìì
+		 * å¤©
 		 *
 		 * @see #days
 		 * @return
@@ -416,7 +416,7 @@ public class DateUtils {
 		}
 
 		/**
-		 * Ğ¡Ê±
+		 * å°æ—¶
 		 *
 		 * @see #hours
 		 * @return
@@ -426,7 +426,7 @@ public class DateUtils {
 		}
 
 		/**
-		 * ·ÖÖÓ
+		 * åˆ†é’Ÿ
 		 *
 		 * @see #minutes
 		 * @return
@@ -436,7 +436,7 @@ public class DateUtils {
 		}
 
 		/**
-		 * Ãë
+		 * ç§’
 		 *
 		 * @see #seconds
 		 * @return

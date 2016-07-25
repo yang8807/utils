@@ -17,10 +17,10 @@ public class ToastUtil {
 	}
 
 	/**
-	 * µ¯³öToastÏûÏ¢
+	 * å¼¹å‡ºToastæ¶ˆæ¯
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param msg ÒªÏÔÊ¾µÄÏûÏ¢
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param msg è¦æ˜¾ç¤ºçš„æ¶ˆæ¯
 	 */
 	public static void show(Context context, String msg) {
 		Toast toast = getToast(context);
@@ -38,11 +38,11 @@ public class ToastUtil {
 	}
 
 	/**
-	 * µ¯³öToastÏûÏ¢
+	 * å¼¹å‡ºToastæ¶ˆæ¯
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param msg ÒªÏÔÊ¾µÄÏûÏ¢
-	 * @param time ÏûÊ§ÏÔÊ¾Ê±¼ä
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param msg è¦æ˜¾ç¤ºçš„æ¶ˆæ¯
+	 * @param time æ¶ˆå¤±æ˜¾ç¤ºæ—¶é—´
 	 */
 	public static void show(Context context, String msg, int time) {
 		Toast toast = getToast(context);

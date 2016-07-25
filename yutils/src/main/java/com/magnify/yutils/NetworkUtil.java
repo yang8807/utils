@@ -10,12 +10,12 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 
 /**
- * ÍøÂç¹¤¾ßÀà
+ * ç½‘ç»œå·¥å…·ç±»
  */
 public class NetworkUtil {
 
 	/**
-	 * »ñµÃµ±Ç°µÄÍøÂçĞÅÏ¢
+	 * è·å¾—å½“å‰çš„ç½‘ç»œä¿¡æ¯
 	 * context
 	 *
 	 */
@@ -25,7 +25,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * »ñµÃµ±Ç°µÄÍøÂçÀàĞÍ,·µ»ØÖµ(0:ÒÆ¶¯ÍøÂç,1:WifiÍøÂç,-1:Ã»ÓĞ¿ÉÓÃÍøÂç)
+	 * è·å¾—å½“å‰çš„ç½‘ç»œç±»å‹,è¿”å›å€¼(0:ç§»åŠ¨ç½‘ç»œ,1:Wifiç½‘ç»œ,-1:æ²¡æœ‰å¯ç”¨ç½‘ç»œ)
 	 * context
 	 *
 	 */
@@ -35,7 +35,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * ÊÇ·ñ¿ÉÒÔ»ñµÃÍøÂç
+	 * æ˜¯å¦å¯ä»¥è·å¾—ç½‘ç»œ
 	 * context
 	 *
 	 */
@@ -45,7 +45,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * ÍøÂçÊÇ·ñÒÑÁ¬½Ó
+	 * ç½‘ç»œæ˜¯å¦å·²è¿æ¥
 	 * context
 	 *
 	 */
@@ -55,7 +55,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * ÍøÂçÊÇ·ñÕıÔÚÁ¬½ÓÖĞ
+	 * ç½‘ç»œæ˜¯å¦æ­£åœ¨è¿æ¥ä¸­
 	 * context
 	 *
 	 */
@@ -65,7 +65,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * µ±Ç°ÕıÔÚÊ¹ÓÃwifi
+	 * å½“å‰æ­£åœ¨ä½¿ç”¨wifi
 	 * context
 	 *
 	 */
@@ -74,7 +74,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * µ±Ç°ÕıÔÚÊ¹ÓÃÒÆ¶¯ÍøÂç(2G,3G)
+	 * å½“å‰æ­£åœ¨ä½¿ç”¨ç§»åŠ¨ç½‘ç»œ(2G,3G)
 	 * context
 	 *
 	 */
@@ -83,7 +83,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * »ñµÃÒÆ¶¯ÍøÂç´úÀí
+	 * è·å¾—ç§»åŠ¨ç½‘ç»œä»£ç†
 	 * context
 	 *
 	 */
@@ -94,7 +94,7 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * »ñµÃÒÆ¶¯ÍøÂçµØÖ·
+	 * è·å¾—ç§»åŠ¨ç½‘ç»œåœ°å€
 	 * context
 	 *
 	 */
