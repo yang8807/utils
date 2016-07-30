@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
-import com.magnify.yutils.PreferencesUtil;
+import com.magnify.yutils.data.PreferencesUtil;
 
 import java.util.ArrayList;
 
@@ -29,16 +29,16 @@ public class MainActivity extends AppCompatActivity {
             userList.add(new People("校长"+i, 17+i, "小章"+i, "男"));
         }
 
-        PreferencesUtil.save(this, FRISTCOMING, true);
-        PreferencesUtil.save(this, INTCOMING, 1);
-        PreferencesUtil.save(this, LONGCOMING, 1.5f);
+        PreferencesUtil.save(this, FRISTCOMING, "");
+        PreferencesUtil.save(this, INTCOMING, 478874);
+        PreferencesUtil.save(this, LONGCOMING, 393);
         PreferencesUtil.save(this, USER, new People("校长", 17, "小章", "男"));
         PreferencesUtil.save(this, USERLIST, userList);
 
 
         boolean value = PreferencesUtil.getBoolean(this, FRISTCOMING);
         int invalue = PreferencesUtil.getInt(this, INTCOMING);
-        Float longvalue = PreferencesUtil.getFloat(this, LONGCOMING);
+        long longvalue = PreferencesUtil.getLong(this, LONGCOMING);
 
         StringBuilder stringBuilder=new StringBuilder();
         ArrayList<People> peoples=PreferencesUtil.getValue(this,USERLIST,new TypeToken<ArrayList<People>>(){});
