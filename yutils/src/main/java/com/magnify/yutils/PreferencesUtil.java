@@ -58,7 +58,7 @@ public class PreferencesUtil {
         }
     }
 
-    /*----------start:这几种类型直接取出,ps:部分如果不这样写的话,会报转换异常---------------*/
+    /*----------start:Part this several types out directly, ps: if you don't like this, will throw Class transfomt Exception--*/
     public static boolean getBoolean(Context context, String keyName) {
         return getValue(context, keyName, new TypeToken<Boolean>() {
         });
@@ -78,5 +78,5 @@ public class PreferencesUtil {
         return getValue(context, keyName, new TypeToken<Double>() {
         });
     }
-    /*----------end:这几种类型取出比较特殊,会报转换异常---------------*/
+    /*----------end:his several types take out a special, will cast exception---------------*/
 }

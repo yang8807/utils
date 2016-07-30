@@ -25,17 +25,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         text = (TextView) findViewById(R.id.text);
-        PreferencesUtil.save(this, FRISTCOMING, true);
-        PreferencesUtil.save(this, INTCOMING, 1);
-        PreferencesUtil.save(this, LONGCOMING, 1.5f);
-
         for (int i=0;i<10;i++){
             userList.add(new People("校长"+i, 17+i, "小章"+i, "男"));
         }
 
-
+        PreferencesUtil.save(this, FRISTCOMING, true);
+        PreferencesUtil.save(this, INTCOMING, 1);
+        PreferencesUtil.save(this, LONGCOMING, 1.5f);
         PreferencesUtil.save(this, USER, new People("校长", 17, "小章", "男"));
         PreferencesUtil.save(this, USERLIST, userList);
+
+
         boolean value = PreferencesUtil.getBoolean(this, FRISTCOMING);
         int invalue = PreferencesUtil.getInt(this, INTCOMING);
         Float longvalue = PreferencesUtil.getFloat(this, LONGCOMING);
