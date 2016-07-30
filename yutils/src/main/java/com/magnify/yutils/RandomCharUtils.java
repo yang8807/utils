@@ -10,6 +10,8 @@ public class RandomCharUtils {
      *
      * @return
      */
+    public static final String GBK="GBK";
+    public static final String UTF_8="UTF-8";
     public static char getRandomChar(String encode) {
         String str = "";
         int hightPos;
@@ -29,5 +31,8 @@ public class RandomCharUtils {
             e.printStackTrace();
         }
         return str.charAt(0);
+    }
+    public static char getRandomChar(){
+        return getRandomChar(GBK);
     }
 }
