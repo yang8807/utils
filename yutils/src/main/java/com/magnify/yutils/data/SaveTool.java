@@ -34,7 +34,7 @@ public class SaveTool {
      * Universal way to save the data
      * Can be used to save a little data, you better don't save larger data such as collection
      */
-    public SaveTool save(Context context, String keyName, Object value) {
+    public SaveTool save(String keyName, Object value) {
         if (value == null || TextUtils.isEmpty(keyName)) return this;
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putString(keyName, mGson.toJson(value));
