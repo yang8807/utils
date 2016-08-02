@@ -36,30 +36,22 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setAdapter() {
-        listView = (ListView) findViewById(R.id.listview);
-        listView.setAdapter(new CommonAdapter<ActivityFunctionsBean>(self, R.layout.item_text_view, arrayLists) {
+        ((ListView) findViewById(R.id.listview)).setAdapter(new CommonAdapter<ActivityFunctionsBean>(self, R.layout.item_text_view, arrayLists) {
             @Override
-            public void convert(ViewHolder holder, ActivityFunctionsBean item) {
-                View.OnClickListener onClickListener = new OnClickListeners(item);
-                holder.setText(R.id.text_name, item.getName()).setText(R.id.text_description, item.getDescription()).setOnClickListener(R.id.text_name, onClickListener).setOnClickListener(R.id.text_description, onClickListener);
+            public void convert(ViewHolder holder, int position, final ActivityFunctionsBean item) {
+                holder.setText(R.id.text_name, item.getName())
+                        .setText(R.id.text_description, item.getDescription())
+                        .setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(self, item.getaClass());
+                                intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
+                                intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
+                                startActivity(intent);
+                            }
+                        }, R.id.text_name, R.id.text_description);
             }
         });
     }
 
-    class OnClickListeners implements View.OnClickListener {
-
-        private ActivityFunctionsBean item;
-
-        public OnClickListeners(ActivityFunctionsBean item) {
-            this.item = item;
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(self, item.getaClass());
-            intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
-            intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
-            startActivity(intent);
-        }
-    }
 }
