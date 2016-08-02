@@ -4,7 +4,7 @@
 package com.magnify.yutils;
 
 /**
- * @author 黄艳武
+ * @author 洒笑天涯
  */
 public class EmojFilters {
 

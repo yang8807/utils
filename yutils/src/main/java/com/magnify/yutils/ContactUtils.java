@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Created by 黄艳武 on 2016/3/8.
+ * Created by 洒笑天涯 on 2016/3/8.
  * 手机通讯录,联系人查询
  */
 public class ContactUtils {

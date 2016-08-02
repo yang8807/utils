@@ -6,7 +6,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.NonNull;
 
 /**
- * Created by 黄艳武 on 2015/11/10. Function:
+ * Created by 洒笑天涯 on 2015/11/10. Function:
  */
 public class DrawableUtils {
 

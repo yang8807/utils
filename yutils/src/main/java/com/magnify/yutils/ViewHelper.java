@@ -13,7 +13,7 @@ import com.magnify.yutils.dialog.BaseLinearPoupWindows;
 
 
 /**
- * @author 黄艳武;View操作的简化
+ * @author 洒笑天涯;View操作的简化
  */
 public class ViewHelper {
 
