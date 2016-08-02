@@ -1,4 +1,4 @@
-package utils;
+package com.magnify.yutils;
 
 import java.util.regex.Pattern;
 
