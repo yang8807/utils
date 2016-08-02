@@ -16,13 +16,6 @@ public class PreferencesUtil {
         mGson = new Gson();
     }
 
-    /**
-     * 获取SharedPreferences实例
-     *
-     * @param context
-     * @param needUserId 保存的信息是否与用户相关
-     * @return
-     */
     private static SharedPreferences getPreferences(Context context, boolean needUserId) {
         String uid = "0";
         /*if (needUserId) {

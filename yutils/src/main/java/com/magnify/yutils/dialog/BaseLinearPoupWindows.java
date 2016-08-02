@@ -15,17 +15,12 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-/**
- * Created by 黄艳武 on 2015/10/19;最后一次修改时间10/19 20:20 Function:
- */
 public class BaseLinearPoupWindows extends PopupWindow {
 
     private View views;
 
     private Context mContext;
-    /**
-     * 布局文件
-     */
+
     private FrameLayout fram;
 
     private int[] screnLocation = new int[2];
@@ -59,7 +54,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 将界面添加到另外一个layout中,这是为了让其有个属性可以控制其离右边距有多长
+     * Add interface to another layout, this is to give it a properties to control how long the distance from the right margin
      */
     @NonNull
     private FrameLayout add2FramLayout(Context context) {
@@ -70,14 +65,14 @@ public class BaseLinearPoupWindows extends PopupWindow {
 
     public BaseLinearPoupWindows(Context context) {
         if (onIniViews() == 0) {
-            throw new IllegalStateException("请设置布局文件,复写onIniViews()或者调用getPoupInstance(Context context, int layoutid)");
+            throw new IllegalStateException("Please set the layout file, copy (onIniViews) or call getPoupInstance (Context context, int layoutid)");
         }
         views = LayoutInflater.from(context).inflate(onIniViews(), null);
         setPoupNormalStyle(context);
     }
 
     /**
-     * 设置布局文件的poupwindow的大小
+     * Set the size of the poupwindow of the layout file
      */
     protected void setPoupWindowsSize() {
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -85,21 +80,21 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 布局文件，R.layout.dialog_xml
+     * Layout file, R.layout.dialog_xml
      */
     protected int onIniViews() {
         return 0;
     }
 
     /**
-     * 对控件进行初始化,并返回对应的控价类型
+     * Initialization of the control, and return to the corresponding type of control
      */
     public <E extends View> E findView(int viewid) {
         return (E) views.findViewById(viewid);
     }
 
     /**
-     * 设置离右边距有多长
+     * How long is the distance from the right
      */
     public BaseLinearPoupWindows setMarginRight(int marginRight) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -109,7 +104,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 设置离边距有多长
+     * How long is the setting from the margin
      */
     public BaseLinearPoupWindows setMargin(int margin) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -119,7 +114,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 设置离边距有多长
+     * How long is the setting from the margin
      */
     public BaseLinearPoupWindows setMargins(int left, int top, int right, int bottom) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -133,9 +128,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
 	    return this;
 	}*/
 
-    /**
-     * 设置控件的大小
-     */
+
     public BaseLinearPoupWindows setViewWidth(int width) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
         lp.width = width;
@@ -145,7 +138,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 通过控制布局的大小来控制PoupWindows的大小
+     * Control the size of the PoupWindows by controlling the size of the layout.
      */
     public BaseLinearPoupWindows setPoupWindowsSize(int width, int height) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -164,7 +157,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 设置背景颜色还有,如果是圆角矩形的话,设置半径的大小
+     * Set the background color as well, if it is rounded rectangle, then set the size of the radius
      */
     public BaseLinearPoupWindows setDrawableNRadius(int color, int radius) {
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -176,7 +169,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 定时关闭poupwindows
+     * Timed shutdown poupwindows
      */
     public BaseLinearPoupWindows postDelayDismiss(int delaytimes) {
         (new Handler()).postDelayed(new Runnable() {
@@ -190,7 +183,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /***
-     * 定时关闭poupwindows;使用已有handler,更加节省资源
+     * Time off poupwindows; use already handler, more saving resources
      */
     public BaseLinearPoupWindows postDelayDismiss(final Handler mHandler, int delaytimes) {
         if (runnable == null) {
@@ -212,7 +205,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * 在屏幕中间显示
+     * Display in the middle of the screen
      */
     public void showAtScreenCenter(View view) {
         showAtLocation((View) view.getParent(), Gravity.CENTER, 0, 0);
