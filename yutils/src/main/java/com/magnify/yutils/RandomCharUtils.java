@@ -5,13 +5,14 @@ import java.util.Random;
 
 public class RandomCharUtils {
     /**
-     *Generate random Chinese characters
-     * @param encode GBK or utf-8
+     * Generate random Chinese characters
      *
+     * @param encode GBK or utf-8
      * @return
      */
-    public static final String GBK="GBK";
-    public static final String UTF_8="UTF-8";
+    public static final String GBK = "GBK";
+    public static final String UTF_8 = "UTF-8";
+
     public static char getRandomChar(String encode) {
         String str = "";
         int hightPos;
@@ -32,7 +33,16 @@ public class RandomCharUtils {
         }
         return str.charAt(0);
     }
-    public static char getRandomChar(){
+
+    public static char getRandomChar() {
         return getRandomChar(GBK);
+    }
+
+    public static String getRandomChar(int count) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            stringBuilder.append(getRandomChar(GBK));
+        }
+        return stringBuilder.toString();
     }
 }
