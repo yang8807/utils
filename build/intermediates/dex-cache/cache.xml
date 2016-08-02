@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.0_4db0ae6e639f0dd01b10d5a41386cc7cd279fe72.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.0_f1cc392457b4f87ddbbb35fc5e6674d6b21b923c.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.0_558a366d69abb000180651c7f94ac04a237bf119.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\gson-2.7_2e85dbf641c4a16c73925139bd4ff50ebb0450dd.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.2.0_875dfef85a8d73d649458dec38a11b1b84613fa9.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.0_838908a72fac57e86c9c5faac31d92f249895736.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\utils\yutils\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="0d702969d16ff6e672fde44690e8c87434beeeb2">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\utils-yutils-unspecified_65109f37d63560fef0c672ef352f2e76c45edfed.jar" />
+    </item>
+    <item
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.0_3d2c0bcc95ca7691dc08539814a4109cb0431c98.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.0_112462671e46e6a3910ee69e67087f394b44c759.jar" />
+    </item>
+    <item
+        jar="E:\github\utils\app\build\intermediates\exploded-aar\heinigger\base_adapter_libaray\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2a23e01796b9b70f9dd90372c03d599306affbce">
+        <dex dex="E:\github\utils\app\build\intermediates\pre-dexed\debug\heinigger-base_adapter_libaray-1.0.0_3588e7f91d2ec7c1d89a769b5dbd6793454bfdf5.jar" />
+    </item>
+
+</items>
