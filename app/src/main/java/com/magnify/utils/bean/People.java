@@ -1,9 +1,14 @@
 package com.magnify.utils.bean;
 
+import com.example.datautils.User;
+
+import java.io.Serializable;
+import java.util.Random;
+
 /**
  * Created by heinigger on 16/7/30.
  */
-public class People {
+public class People implements Serializable{
     /*姓名*/
     private String userName;
     /*年龄*/
@@ -12,6 +17,31 @@ public class People {
     private String nickNamee;
     /*性别*/
     private String sex;
+    /*用户头像*/
+    private String avators;
+    private static long YEAR = 3600 * 24 * 365 * 1000;
+    private String phone;
+
+    public People(User randomUser) {
+        this.userName = randomUser.getUserName();
+        this.age = randAge((int) (randomUser.getBirthdayTimeStamp() / YEAR));
+        this.sex = randomUser.getSex();
+        this.avators = randomUser.getImageAvator();
+        this.phone = randomUser.getPhone();
+    }
+
+    private int randAge(int i) {
+        if (i > 100) return randAge(new Random().nextInt(i));
+        return i;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getUserName() {
         return userName;
@@ -55,13 +85,12 @@ public class People {
         this.sex = sex;
     }
 
-    @Override
-    public String toString() {
-        return "People{" +
-                "userName='" + userName + '\'' +
-                ", age=" + age +
-                ", nickNamee='" + nickNamee + '\'' +
-                ", sex='" + sex + '\'' +
-                '}';
+    public String getAvators() {
+        return avators;
     }
+
+    public void setAvators(String avators) {
+        this.avators = avators;
+    }
+
 }

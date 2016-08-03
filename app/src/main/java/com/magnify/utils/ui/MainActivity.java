@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity {
     private void createData() {
         arrayLists.add(new ActivityFunctionsBean("SaveTool和PreferencesUtil", "万能的文本数据保存工具", SaveToolAndPreferenceActivity.class));
         arrayLists.add(new ActivityFunctionsBean("RandomCharUtils", "随机生成汉字", RandCharActivity.class));
+        arrayLists.add(new ActivityFunctionsBean("RandomUserUtils", "随机生成一个人物", CreateDataUtilsActivity.class));
     }
 
     private void setAdapter() {
