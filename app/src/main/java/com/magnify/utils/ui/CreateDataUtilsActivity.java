@@ -12,6 +12,7 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
+import com.magnify.utils.base.GlideCircleTransform;
 import com.magnify.utils.bean.People;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class CreateDataUtilsActivity extends CurrentBaseActivity {
             public void convert(final ViewHolder holder, final int position, final People people) {
                 holder.setText(R.id.tv_userName, people.getUserName()).setText(R.id.tv_age, people.getAge() + "岁  " + people.getSex()).setText(R.id.tv_phone, people.getPhone());
                 final ImageView image = holder.getView(R.id.img_avators);
-                Glide.with(getApplicationContext()).load(people.getAvators()).placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(getApplicationContext()).load(people.getAvators()).transform(new GlideCircleTransform(getApplicationContext())).placeholder(R.mipmap.ic_launcher).into(image);
                 holder.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
