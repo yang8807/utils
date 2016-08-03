@@ -41,7 +41,7 @@ public class CreateDataUtilsActivity extends CurrentBaseActivity {
                 holder.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        self.startActivity(CreateDetailActivity.getIntent(self, people));
+                        self.startActivity(CreateDetailActivity.getIntent(self, peoples, position));
                     }
                 });
             }

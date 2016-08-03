@@ -11,9 +11,9 @@
         android:layout_height="70dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:scaleType="centerCrop"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="10dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
@@ -23,16 +23,17 @@
         android:layout_alignTop="@id/img_avators"
         android:layout_toRightOf="@id/img_avators"
         android:text="user_name"
-        android:textSize="16sp"
+        android:textColor="#000"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/img_avators"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv_userName"
+        android:layout_alignBottom="@id/img_avators"
+        android:textColor="#999a98"
+        android:layout_toRightOf="@id/img_avators"
         android:text="15岁" />
 
     <TextView
