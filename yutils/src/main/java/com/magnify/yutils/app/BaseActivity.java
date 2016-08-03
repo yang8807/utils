@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
         self = this;
     }
 
-    /*-------------------start:,与整体架构无关------------------------------------------------*/
+    /*-------------------start:------------------------------------------------*/
     public void setOnClickListener(View.OnClickListener clickListener, View... views) {
         for (int i = 0; i < views.length; i++)
             views[i].setOnClickListener(clickListener);
@@ -35,7 +35,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /*
-   * 重置视图大小
    * @param width
    * @param height
    * @param view
@@ -60,7 +59,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 显示提示
      *
      * @param content
      */
@@ -70,20 +68,11 @@ public class BaseActivity extends AppCompatActivity {
         mToast.show();
     }
 
-    /**
-     * @param resId
-     * @see #showToast(CharSequence)
-     */
+
     protected void showToast(int resId) {
         showToast(getString(resId));
     }
 
-    /**
-     * 显示提示
-     *
-     * @param content
-     * @param duration 显示时长
-     */
     protected void showToast(CharSequence content, int duration) {
         mToast.setText(content);
         mToast.setDuration(duration);
@@ -100,7 +89,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 吐司 信息
      *
      * @param s
      */
@@ -115,16 +103,10 @@ public class BaseActivity extends AppCompatActivity {
         toastMessage(getString(resId));
     }
 
-    /**
-     * textview加载文字
-     */
     protected TextView setText(int viewId, CharSequence text) {
         return setText(getWindow().getDecorView(), viewId, text);
     }
 
-    /**
-     * textview加载文字
-     */
     protected TextView setText(View parent, int viewId, CharSequence text) {
         TextView view = (TextView) parent.findViewById(viewId);
         if (view != null) {
@@ -133,16 +115,10 @@ public class BaseActivity extends AppCompatActivity {
         return view;
     }
 
-    /**
-     * imageview加载图片
-     */
     protected ImageView setImage(int viewId, String src) {
         return setImage(getWindow().getDecorView(), viewId, src);
     }
 
-    /**
-     * imageview加载图片
-     */
     protected ImageView setImage(View parent, int viewId, String src) {
         ImageView view = (ImageView) parent.findViewById(viewId);
         if (view != null && src != null && src.length() > 5) {
@@ -151,16 +127,9 @@ public class BaseActivity extends AppCompatActivity {
         return view;
     }
 
-    /**
-     * imageview加载图片
-     */
     protected ImageView setImage(int viewId, int resId) {
         return setImage(getWindow().getDecorView(), viewId, resId);
     }
-
-    /**
-     * imageview加载图片
-     */
     protected ImageView setImage(View parent, int viewId, int resId) {
         ImageView view = (ImageView) parent.findViewById(viewId);
         if (view != null && resId > 0) {
@@ -169,5 +138,5 @@ public class BaseActivity extends AppCompatActivity {
         return view;
     }
 
-    /*-------------------end:Activity中常用的操作,与整体架构无关------------------------------------------------*/
+    /*-------------------end------------------------------------------------*/
 }

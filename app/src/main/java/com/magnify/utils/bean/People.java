@@ -4,9 +4,13 @@ package com.magnify.utils.bean;
  * Created by heinigger on 16/7/30.
  */
 public class People {
+    /*姓名*/
     private String userName;
+    /*年龄*/
     private int age;
+    /*昵称*/
     private String nickNamee;
+    /*性别*/
     private String sex;
 
     public String getUserName() {
