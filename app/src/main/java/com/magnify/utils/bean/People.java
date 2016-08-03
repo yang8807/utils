@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Created by heinigger on 16/7/30.
  */
-public class People implements Serializable{
+public class People implements Serializable {
     /*姓名*/
     private String userName;
     /*年龄*/
@@ -21,18 +21,23 @@ public class People implements Serializable{
     private String avators;
     private static long YEAR = 3600 * 24 * 365 * 1000;
     private String phone;
+    private static transient Random random;
+
+    static {
+        random = new Random();
+    }
 
     public People(User randomUser) {
         this.userName = randomUser.getUserName();
-        this.age = randAge((int) (randomUser.getBirthdayTimeStamp() / YEAR));
+        this.age = randomAge((int) (randomUser.getBirthdayTimeStamp() / YEAR));
         this.sex = randomUser.getSex();
         this.avators = randomUser.getImageAvator();
         this.phone = randomUser.getPhone();
     }
 
-    private int randAge(int i) {
-        if (i > 100) return randAge(new Random().nextInt(i));
-        return i;
+    private int randomAge(int i) {
+        if (i > 100) return randomAge(random.nextInt(i));
+        return i <= 0 ? 1 : i;
     }
 
     public String getPhone() {
@@ -93,4 +98,14 @@ public class People implements Serializable{
         this.avators = avators;
     }
 
+    public String toStrings() {
+        return "People{" +
+                "userName='" + userName + '\'' +
+                ", age=" + age +
+                ", nickNamee='" + nickNamee + '\'' +
+                ", sex='" + sex + '\'' +
+                ", avators='" + avators + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

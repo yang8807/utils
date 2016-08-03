@@ -45,7 +45,7 @@ public class SaveToolAndPreferenceActivity extends CurrentBaseActivity {
         ArrayList<People> peoples = saveTool.getValue(USERLIST, new TypeToken<ArrayList<People>>() {
         });
         for (int i = 0; i < peoples.size(); i++) {
-            stringBuilder.append(peoples.get(i).toString() + "\n");
+            stringBuilder.append(peoples.get(i).toStrings() + "\n");
         }
         ((TextView) findViewById(R.id.text)).setText(value + ":" + invalue + ":" + longvalue + "\n" + saveTool.getValue(USER, new TypeToken<People>() {
         }).toString() + stringBuilder.toString());
