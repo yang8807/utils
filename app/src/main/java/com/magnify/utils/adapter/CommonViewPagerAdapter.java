@@ -12,6 +12,9 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 只解决了但类型复用的问题,多类型复用得重新指定一个好的方案
+ */
 public abstract class CommonViewPagerAdapter<T> extends PagerAdapter {
 
     //显示的数据  

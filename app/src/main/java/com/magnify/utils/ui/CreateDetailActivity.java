@@ -33,7 +33,6 @@ public class CreateDetailActivity extends BaseActivity {
             protected void convert(ViewHolder viewHolder, int position, People people) {
                 viewHolder.setText(R.id.tv_description, people.getUserName() + ":" + people.getAge() + "岁 " + people.getSex() + " " + people.getPhone());
                 Glide.with(getApplicationContext()).load(people.getAvators()).placeholder(R.mipmap.ic_launcher).into((ImageView) viewHolder.getView(R.id.image));
-
             }
         });
 
