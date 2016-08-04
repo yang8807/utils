@@ -1,4 +1,4 @@
-package com.magnify.utils.ui;
+package com.magnify.utils.ui.common;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by heinigger on 16/8/3.
  */
-public class CreateDetailActivity extends BaseActivity {
+public class ImageBrowseActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class CreateDetailActivity extends BaseActivity {
     }
 
     public static Intent getIntent(Context context, ArrayList<People> peoples, int position) {
-        Intent intent = new Intent(context, CreateDetailActivity.class);
+        Intent intent = new Intent(context, ImageBrowseActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("people", peoples);
         intent.putExtra("position", position);

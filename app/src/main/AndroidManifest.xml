@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.magnify.utils">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,8 +16,9 @@
             android:value="GlideModule" />
 
         <activity
-            android:name=".ui.MainActivity"
-            android:label="工具类实用集锦">
+            android:name=".ui.common.MainActivity"
+            android:label="工具类实用集锦"
+            android:theme="@style/MainTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +30,9 @@
         <activity android:name=".ui.RandCharActivity" />
         <activity android:name=".ui.SaveToolAndPreferenceActivity" />
         <activity android:name=".ui.CreateDataUtilsActivity" />
-        <activity android:name=".ui.CreateDetailActivity" />
+        <activity android:name=".ui.common.ImageBrowseActivity" />
+        <activity android:name=".ui.common.CollectingActivity" />
+        <activity android:name=".ui.common.WebViewActivity" />
     </application>
 
 </manifest>

@@ -1,16 +1,20 @@
-package com.magnify.utils.ui;
+package com.magnify.utils.ui.common;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
 
 import com.magnify.basea_dapter_library.ViewHolder;
-import com.magnify.basea_dapter_library.abslistview.CommonAdapter;
+import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.ActivityFunctionsBean;
+import com.magnify.utils.ui.CreateDataUtilsActivity;
+import com.magnify.utils.ui.RandCharActivity;
+import com.magnify.utils.ui.SaveToolAndPreferenceActivity;
 import com.magnify.yutils.app.BaseActivity;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import java.util.ArrayList;
  * Created by heinigger on 16/8/2.
  */
 public class MainActivity extends BaseActivity {
-    private ListView listView;
+    private RecyclerView recyler;
     private ArrayList<ActivityFunctionsBean> arrayLists = new ArrayList<>();
 
     @Override
@@ -31,13 +35,16 @@ public class MainActivity extends BaseActivity {
     }
 
     private void createData() {
+        arrayLists.add(new ActivityFunctionsBean("一些非常有用的github收藏", "切勿忘记积累", CollectingActivity.class));
         arrayLists.add(new ActivityFunctionsBean("SaveTool和PreferencesUtil", "万能的文本数据保存工具", SaveToolAndPreferenceActivity.class));
         arrayLists.add(new ActivityFunctionsBean("RandomCharUtils", "随机生成汉字", RandCharActivity.class));
         arrayLists.add(new ActivityFunctionsBean("RandomUserUtils", "随机生成一个人物", CreateDataUtilsActivity.class));
     }
 
     private void setAdapter() {
-        ((ListView) findViewById(R.id.listview)).setAdapter(new CommonAdapter<ActivityFunctionsBean>(self, R.layout.item_text_view, arrayLists) {
+        RecyclerView recyler = (RecyclerView) findViewById(R.id.recyler);
+        recyler.setLayoutManager(new LinearLayoutManager(this));
+        recyler.setAdapter(new CommonAdapter<ActivityFunctionsBean>(self, R.layout.item_text_view, arrayLists) {
             @Override
             public void convert(ViewHolder holder, int position, final ActivityFunctionsBean item) {
                 holder.setText(R.id.text_name, item.getName())

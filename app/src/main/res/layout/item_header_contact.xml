@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp">
 
-    android:background="#e3e3e2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
 
-    <ImageView
-        android:id="@+id/img_avators"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="10dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:background="#e3e3e2">
 
-    <TextView
-        android:id="@+id/tv_userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/img_avators"
-        android:layout_toRightOf="@id/img_avators"
-        android:text="user_name"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/img_avators"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/img_avators"
-        android:textColor="#999a98"
-        android:layout_toRightOf="@id/img_avators"
-        android:text="15岁" />
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/img_avators"
+            android:layout_toRightOf="@id/img_avators"
+            android:text="user_name"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_userName"
-        android:layout_toRightOf="@id/img_avators" />
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/img_avators"
+            android:layout_toRightOf="@id/img_avators"
+            android:text="15岁"
+            android:textColor="#999a98" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_userName"
+            android:layout_toRightOf="@id/img_avators" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
