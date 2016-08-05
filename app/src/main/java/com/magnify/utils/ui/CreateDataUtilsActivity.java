@@ -5,16 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.datautils.RandomUserUtil;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.basea_dapter_library.recyclerview.DividerItemDecoration;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
-import com.magnify.utils.base.GlideCircleTransform;
 import com.magnify.utils.bean.People;
 import com.magnify.utils.ui.common.ImageBrowseActivity;
 
@@ -43,8 +40,7 @@ public class CreateDataUtilsActivity extends CurrentBaseActivity {
             @Override
             public void convert(final ViewHolder holder, final int position, final People people) {
                 holder.setText(R.id.tv_userName, people.getUserName()).setText(R.id.tv_age, people.getAge() + "岁  " + people.getSex()).setText(R.id.tv_phone, people.getPhone());
-                final ImageView image = holder.getView(R.id.img_avators);
-                Glide.with(getApplicationContext()).load(people.getAvators()).transform(new GlideCircleTransform(getApplicationContext())).placeholder(R.mipmap.ic_launcher).into(image);
+                holder.displayRoundImage(people.getAvators(), R.id.img_avators, R.mipmap.ic_launcher);
                 holder.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

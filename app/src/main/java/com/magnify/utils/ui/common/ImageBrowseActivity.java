@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.magnify.basea_dapter_library.ViewHolder;
+import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
 import com.magnify.utils.R;
-import com.magnify.utils.adapter.CommonViewPagerAdapter;
 import com.magnify.utils.bean.People;
 import com.magnify.yutils.app.BaseActivity;
 
@@ -32,7 +30,7 @@ public class ImageBrowseActivity extends BaseActivity {
             @Override
             protected void convert(ViewHolder viewHolder, int position, People people) {
                 viewHolder.setText(R.id.tv_description, people.getUserName() + ":" + people.getAge() + "岁 " + people.getSex() + " " + people.getPhone());
-                Glide.with(getApplicationContext()).load(people.getAvators()).placeholder(R.mipmap.ic_launcher).into((ImageView) viewHolder.getView(R.id.image));
+                viewHolder.displayImage(people.getAvators(), R.id.image, R.mipmap.ic_launcher);
             }
         });
 

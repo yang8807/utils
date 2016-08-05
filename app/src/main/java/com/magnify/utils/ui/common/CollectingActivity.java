@@ -29,6 +29,7 @@ public class CollectingActivity extends CurrentBaseActivity {
         setContentView(R.layout.activity_collect_activity);
         createData();
         expandableListView = (ExpandableListView) findViewById(R.id.expand_listview);
+        expandableListView.setGroupIndicator(null);
         expandableListView.setAdapter(new BaseExpandableListAdapter() {
             @Override
             public int getGroupCount() {

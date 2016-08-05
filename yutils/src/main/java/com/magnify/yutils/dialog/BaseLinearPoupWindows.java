@@ -7,7 +7,6 @@ import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +55,6 @@ public class BaseLinearPoupWindows extends PopupWindow {
     /**
      * Add interface to another layout, this is to give it a properties to control how long the distance from the right margin
      */
-    @NonNull
     private FrameLayout add2FramLayout(Context context) {
         fram = new FrameLayout(context);
         fram.addView(views);

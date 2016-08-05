@@ -3,7 +3,6 @@ package com.magnify.yutils;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.NonNull;
 
 /**
  * Created by 洒笑天涯 on 2015/11/10. Function:
@@ -47,7 +46,6 @@ public class DrawableUtils {
 	 * @param pressColor pressColor
 	 * @return 得到一个矩形的按钮的按钮
 	 */
-	@NonNull
 	public static StateListDrawable getStateRectDrawable(int color, int pressColor) {
 		return addToStateDrawable(getRectDrawable(color), getRectDrawable(pressColor));
 	}
@@ -56,7 +54,6 @@ public class DrawableUtils {
 	 * @param color 自动生成另外一个颜色
 	 * @return 得到一个矩形的按钮的按钮
 	 */
-	@NonNull
 	public static StateListDrawable getStateRectDrawable(int color) {
 		return addToStateDrawable(getRectDrawable(color), getRectDrawable(getPressColor(color)));
 	}
@@ -64,7 +61,6 @@ public class DrawableUtils {
 	/**
 	 * @return 为每个点击状态添加Drawable
 	 */
-	@NonNull
 	private static StateListDrawable addToStateDrawable(GradientDrawable normalDrawable, GradientDrawable pressDrawable) {
 		StateListDrawable sd = new StateListDrawable();
 		sd.addState(new int[] { android.R.attr.state_enabled, android.R.attr.state_focused }, pressDrawable);
@@ -117,7 +113,6 @@ public class DrawableUtils {
 	/**
 	 * @return 根据颜色还有半径, 得到一个gradientDrawable
 	 */
-	@NonNull
 	public static GradientDrawable getGradientDrawable(int shapeType, int color, int radius) {
 		GradientDrawable gradientDrawable = new GradientDrawable();
 		if (shapeType == ShapeType.RECT) {
