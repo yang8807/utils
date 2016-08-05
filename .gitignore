@@ -23,5 +23,6 @@ gen
 build/
 .gradle/
 gradle/
+.idea/
 *.lock
 *.bin/
