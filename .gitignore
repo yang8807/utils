@@ -23,3 +23,5 @@ gen
 build/
 .gradle/
 gradle/
+*.lock
+*.bin/
