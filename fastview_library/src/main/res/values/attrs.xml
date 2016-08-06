@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="drawable_width" format="dimension" />
+    <attr name="paddingCenter" format="boolean" />
+    <!-- 定义形状 -->
+    <attr name="shapeType" format="integer">
+        <enum name="rect" value="1" />
+        <enum name="oval" value="2" />
+        <enum name="corner_rect" value="3" />
+    </attr>
+    <attr name="p_radius" format="dimension" />
+    <!-- 设置图像和文字居中显示,两边的距离相等,并且是动态测量之后设置-->
+    <declare-styleable name="DrawableEditText">
+        <attr name="drawable_width" />
+        <attr name="paddingCenter" />
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableBottom" />
+        <attr name="android:tint" />
+    </declare-styleable>
+    <!-- 设置左边,右边,顶部,底部的图片的大小-->
+    <attr name="leftDrawableWidth" format="dimension" />
+    <attr name="righDrawableWidth" format="dimension" />
+    <attr name="topDrawableWidth" format="dimension" />
+    <attr name="bottomDrawableWidth" format="dimension" />
+    <declare-styleable name="PowerButton" parent="DrawableEditText">
+        <!-- 背景颜色用来放置颜色,只能是纯色的,然后根据这个颜色,来设置自动生成一个或浅或深的颜色-->
+        <attr name="android:background" />
+        <!--  在指定设置的图片的大小,当设置了可以设置drawableLeft和drawableRight两个图片的,
+        以及大小,其他控件只要是有使用这个属性的,也是类似 -->
+        <attr name="drawable_width" />
+        <!--- 是否居中,默认情况下是居中的-->
+        <attr name="paddingCenter" />
+        <!-- 设置左边,右边,上边,下边的图片 -->
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableBottom" />
+        <!-- 设置图片的渲染颜色 -->
+        <attr name="android:tint" />
+        <!-- 设置按钮背景的形态,可以是圆形,矩形,圆角矩形 -->
+        <attr name="shapeType" />
+        <attr name="p_radius" />
+        <attr name="leftDrawableWidth" />
+        <attr name="righDrawableWidth" />
+        <attr name="topDrawableWidth" />
+        <attr name="bottomDrawableWidth" />
+    </declare-styleable>
+
+    <!-- TagFlowLayout 自定义属性 -->
+    <attr name="isAssaginSpace" format="boolean"></attr>
+    <declare-styleable name="TagFlowLayout">
+        <attr name="isAssaginSpace" />
+    </declare-styleable>
+
+    <declare-styleable name="CenterViewGroup">
+        <attr name="cv_numberColumn" format="integer" />
+        <!-- 4,3,2,1..类似这样传递每一行的个数-->
+        <attr name="cv_numberColumnArray" format="string" />
+        <!--  初值方向的间距-->
+        <attr name="cv_verticalSpacing" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">fastview_library</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="errorMsg">请设置布局文件,复写onIniViews()或者调用getPoupInstance(Context context, int layoutid)</string>
+</resources>

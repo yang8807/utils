@@ -1,1 +1,1 @@
-include ':app', ':yutils', ':datautils', ':base_adapter_library'
+include ':app', ':yutils', ':datautils', ':base_adapter_library', ':fastview_library'
