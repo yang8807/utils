@@ -36,7 +36,7 @@ public class RandomUserUtil {
         return randomUserUtil;
     }
 
-    public User createRandomUser() {
+    public static User createRandomUser() {
         User user = null;
         boolean sex = random.nextInt(1000) % 2 == 0;//随机生成一个性别
         //是不是外国人
@@ -53,7 +53,7 @@ public class RandomUserUtil {
      *
      * @param sex;true为男生,false为女生
      */
-    private User createChinese(boolean sex, String lastName) {
+    private static User createChinese(boolean sex, String lastName) {
         User user = new User(sex, false);
         user.setImageAvator(urls[random.nextInt(urls.length)]);
         //生成姓氏+生成的男生或者女生的名字
@@ -90,7 +90,7 @@ public class RandomUserUtil {
      *
      * @param sex;true为男生,false为女生
      */
-    private User createForeginer(boolean sex) {
+    private static User createForeginer(boolean sex) {
         User user = new User(sex, true);
         user.setImageAvator(urls[random.nextInt(urls.length)]);
         user.setUserName(sex ? boy_foreign[random.nextInt(boy_foreign.length)] : girl_foreign[random.nextInt(girl_foreign.length)]);
@@ -101,14 +101,14 @@ public class RandomUserUtil {
     }
 
     //五十岁的人还活着,最大的人五十岁
-    public long randomTimeStamp() {
+    public static long randomTimeStamp() {
         return (random.nextInt(51) * YEAR + random.nextInt(13) * MONTH + random.nextInt(30) * DAY + random.nextInt(24) * 3600 * 1000);
     }
 
     /***
      * 随机生成11位的手机号码
      */
-    public String createPhoneNumber() {
+    public static String createPhoneNumber() {
         /*/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/*/
         String[] phoneStart = new String[]{"13", "15", "17", "18", "14"};
         int type = random.nextInt(5);
@@ -136,7 +136,7 @@ public class RandomUserUtil {
     /***
      * 根据给定的数字数,随机生成字符串
      */
-    private String getRandomNumber(String digital, int needCount) {
+    private static String getRandomNumber(String digital, int needCount) {
         char[] phone = digital.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < needCount; i++) {

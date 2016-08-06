@@ -50,4 +50,6 @@ public class SaveToolAndPreferenceActivity extends CurrentBaseActivity {
         ((TextView) findViewById(R.id.text)).setText(value + ":" + invalue + ":" + longvalue + "\n" + saveTool.getValue(USER, new TypeToken<People>() {
         }).toString() + stringBuilder.toString());
     }
+
+
 }

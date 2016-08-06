@@ -1,6 +1,7 @@
 package com.magnify.basea_dapter_library.abslistview;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import com.magnify.basea_dapter_library.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by heinigger on 16/8/5.
@@ -41,6 +43,8 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
     private int lastDataSize;
     /*遍历数组开始的位置*/
     private int traveseIndex = 0;
+    //记录header的位置,进行头部导航的时候,可以使用
+    private HashMap<String, Integer> groupPositions = new HashMap<>();
 
 
     public BaseHeaderChildFooterAdapter(Context mContext, ArrayList<HF> groupDatas, int headerLayout, int childLayout, int footerLayout) {
@@ -51,7 +55,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.footerLayout = footerLayout;
         infalter = LayoutInflater.from(mContext);
         if (headerLayout == footerLayout || childLayout == footerLayout || headerLayout == childLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent");
+            throw new IllegalMonitorStateException("you are supported to use diffent layout");
         }
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
@@ -65,7 +69,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
         if (headerLayout == childLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent");
+            throw new IllegalMonitorStateException("you are supported to use diffent layout");
         }
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
@@ -84,7 +88,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
         if (childLayout == footerLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent");
+            throw new IllegalMonitorStateException("you are supported to use diffent layout");
         }
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
@@ -97,6 +101,10 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                 if (headerLayout > 0) {//headerlayout使用的时候
                     //key 存放在的是类型的position,用完再增加
                     positions.put(positionCounter, new PositionInfo(i, TYPE_HEADER));
+
+                    String sortKey = getSortKey(positionCounter, i, groupDatas.get(i));
+                    //sortKey不为空,再这里存储每个头部对应再adapter中的位置
+                    if (TextUtils.isEmpty(sortKey)) groupPositions.put(sortKey, positionCounter);
                     //得到当前组的数量,这里都是存放child的
                     for (int j = 0; j < getChildCount(groupDatas.get(i), i); j++) {
                         positionCounter += 1;
@@ -119,12 +127,20 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         }
     }
 
+    /**
+     * 遍历头部的时候,用这个来存储遍历过的头部,按什么
+     */
+    protected String getSortKey(int position, int groupPosition, HF hf) {
+        return "";
+    }
+
     /*强制重新计算所有位置,保证每个数据返回都是正确的,仅再对数据源做了加和减操作的时候,不然效率有问题,其实也不是什么问题...,比起view嵌套之类的...*/
     public void forceNotifyDataSetChanged() {
         lastDataSize = 0;
         traveseIndex = 0;
         positionCounter = 0;
         positions.clear();
+        groupPositions.clear();
         caculateTypePosition();
         super.notifyDataSetChanged();
     }
@@ -138,6 +154,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
             traveseIndex = 0;
             positionCounter = 0;
             positions.clear();
+            groupPositions.clear();
         } else {//存在的问题,如果使用者先将集合数据删掉一些,再添加一些,那么开始的位置就会出现问题了...,那么可以使用强制刷新,重新将位置计算一遍
             traveseIndex = lastDataSize;
         }
@@ -159,6 +176,12 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
     public int getCount() {
         //头部加尾部+孩子的数量
         return positions.size();
+    }
+
+    /*获取头部在listView的位置,分组的key标志*/
+    public int getHeaderPositionAtListView(String sortKey) {
+        if (groupPositions.containsKey(sortKey)) return groupPositions.get(sortKey);
+        return -1;
     }
 
     @Override

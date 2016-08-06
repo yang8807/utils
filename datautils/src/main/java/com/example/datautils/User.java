@@ -19,6 +19,12 @@ public class User {
     private long birthdayTimeStamp;
     private String phone;
     private String address;
+    private String sortKey;
+
+    public String getSortKey() {
+        this.sortKey = HanziToPinyin.getSortKey(userName).toUpperCase();
+        return sortKey;
+    }
 
     public String getAddress() {
         return address;

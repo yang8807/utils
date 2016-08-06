@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".base.CurrentApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".base.CurrentApp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
@@ -34,6 +34,7 @@
         <activity android:name=".ui.common.ImageBrowseActivity" />
         <activity android:name=".ui.common.CollectingActivity" />
         <activity android:name=".ui.common.WebViewActivity" />
+        <activity android:name=".ui.common.HeaderChildFooterActivity" />
     </application>
 
 </manifest>

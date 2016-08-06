@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity {
         arrayLists.add(new ActivityFunctionsBean("SaveTool和PreferencesUtil", "万能的文本数据保存工具", SaveToolAndPreferenceActivity.class));
         arrayLists.add(new ActivityFunctionsBean("RandomCharUtils", "随机生成汉字", RandCharActivity.class));
         arrayLists.add(new ActivityFunctionsBean("RandomUserUtils", "随机生成一个人物", CreateDataUtilsActivity.class));
+        arrayLists.add(new ActivityFunctionsBean("BaseHeaderChildFooterAdapter", "类似订单效果", HeaderChildFooterActivity.class));
     }
 
     private void setAdapter() {
@@ -61,5 +62,7 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
+
 
 }
