@@ -2,6 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -103,7 +105,7 @@
             android:drawableLeft="@drawable/ic_android_red_400_36dp"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:hint="PowerEditText"
+            android:hint="PowerEditText-drawableWWidht=25dp"
             android:paddingLeft="5dp"
             app:drawable_width="25dp" />
 
@@ -114,9 +116,9 @@
             android:drawableLeft="@drawable/ic_watch_later_blue_grey_700_36dp"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:hint="PowerAutoCompeleteEditText"
+            android:hint="PowerAutoCompeleteEditTextdrawableWWidht=30dp"
             android:paddingLeft="5dp"
-            app:drawable_width="25dp" />
+            app:drawable_width="30dp" />
 
         <com.yan.fastview_library.view.edittext.ClearEditText
             android:layout_width="match_parent"
@@ -125,10 +127,10 @@
             android:drawableLeft="@drawable/ic_https_blue_600_36dp"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:hint="ClearEditText"
+            android:hint="ClearEditText-drawableWWidht=35dp"
             android:paddingLeft="5dp"
             app:clear_tint="#567890"
-            app:drawable_width="25dp" />
+            app:drawable_width="35dp" />
 
         <com.yan.fastview_library.view.edittext.ClearAutoCompleteText
             android:layout_width="match_parent"
@@ -137,10 +139,10 @@
             android:drawableLeft="@drawable/ic_perm_identity_green_500_36dp"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:hint="ClearAutoCompleteText"
+            android:hint="ClearAutoCompleteText-drawableWWidht=40dp"
             android:paddingLeft="5dp"
             app:clear_tint="#ff77"
-            app:drawable_width="25dp" />
+            app:drawable_width="40dp" />
 
         <com.yan.fastview_library.view.PowerTexView
             android:layout_width="match_parent"
