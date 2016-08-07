@@ -2,6 +2,7 @@ package com.example.datautils;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -46,6 +47,14 @@ public class RandomUserUtil {
             user = createChinese(sex, lastNames[random.nextInt(lastNames.length)]);
         }
         return user;
+    }
+
+    public static ArrayList<User> createRandomUser(int count) {
+        ArrayList<User> users = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            users.add(createRandomUser());
+        }
+        return users;
     }
 
     /**
@@ -155,6 +164,15 @@ public class RandomUserUtil {
     public static String getRandomImage() {
         if (urls == null || urls.length == 0) return "";
         return urls[random.nextInt(urls.length)];
+    }
+
+    public static ArrayList<String> getRandomImage(int count) {
+        if (urls == null || urls.length == 0) return null;
+        ArrayList<String> images = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            images.add(urls[random.nextInt(urls.length)]);
+        }
+        return images;
     }
 
 

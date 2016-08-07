@@ -38,6 +38,7 @@
         <activity android:name=".ui.AutoCompeleActivity" />
         <activity android:name=".ui.ui_view.ActivityShowView" />
         <activity android:name=".ui.ui_view.AcitivityTextViewExtendsImp" />
+        <activity android:name=".ui.ui_adapter.ActivityMultiTypeAdapter" />
     </application>
 
 </manifest>

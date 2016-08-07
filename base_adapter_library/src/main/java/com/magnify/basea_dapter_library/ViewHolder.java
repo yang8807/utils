@@ -110,7 +110,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public ViewHolder displayImage(String url, int viewId, int defaultDrawable) {
-        return displayImage(url, (ImageView) getView(viewId), -1);
+        return displayImage(url, (ImageView) getView(viewId), defaultDrawable);
     }
 
     public ViewHolder displayRoundImage(String url, int viewID, int defaultDrawable) {

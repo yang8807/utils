@@ -16,6 +16,7 @@ import com.magnify.utils.ui.CreateDataUtilsActivity;
 import com.magnify.utils.ui.HeaderChildFooterActivity;
 import com.magnify.utils.ui.RandCharActivity;
 import com.magnify.utils.ui.SaveToolAndPreferenceActivity;
+import com.magnify.utils.ui.ui_adapter.ActivityMultiTypeAdapter;
 import com.magnify.utils.ui.ui_view.AcitivityTextViewExtendsImp;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 
@@ -52,6 +53,7 @@ public class MainActivity extends CurrentBaseActivity {
         add("BaseAutoCompleteAdapter", "输入显示匹配的人", AutoCompeleActivity.class);
         add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", AcitivityTextViewExtendsImp.class);
+        add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
     }
 
     private void setAdapter() {
