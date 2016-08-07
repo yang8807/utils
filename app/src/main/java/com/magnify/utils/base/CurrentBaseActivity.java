@@ -1,9 +1,11 @@
 package com.magnify.utils.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.magnify.utils.bean.ActivityBean;
 import com.magnify.yutils.app.BaseActivity;
 
 /**
@@ -35,5 +37,12 @@ public class CurrentBaseActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
+    }
+
+    public void startNewActivity(ActivityBean item) {
+        Intent intent = new Intent(self, item.getaClass());
+        intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
+        intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
+        startActivity(intent);
     }
 }

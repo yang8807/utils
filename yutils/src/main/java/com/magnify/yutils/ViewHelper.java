@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.magnify.yutils.dialog.BaseLinearPoupWindows;
-
 
 /**
  * @author 洒笑天涯;View操作的简化
@@ -30,14 +28,6 @@ public class ViewHelper {
         return (E) activity.findViewById(ids);
     }
 
-    /***
-     * 为PoupWindows设置点击事件
-     */
-    public static void setOnClickListener(BaseLinearPoupWindows windows, OnClickListener listener, int... ids) {
-        for (int i = 0; i < ids.length; i++) {
-            windows.findView(ids[i]).setOnClickListener(listener);
-        }
-    }
 
     /***
      * @param parentView;父VIew

@@ -76,7 +76,7 @@ public class PowerTextView extends TextView {
         super(context, attrs);
         TypedArray typedArray = null;
         try {
-            typedArray = context.obtainStyledAttributes(attrs, R.styleable.PowerButton);
+            typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextViewExtends);
             getProperties(typedArray);
         } finally {
             typedArray.recycle();
@@ -90,37 +90,37 @@ public class PowerTextView extends TextView {
         int count = typedArray.getIndexCount();
         for (int i = 0; i < count; i++) {
             int attr = typedArray.getIndex(i);
-            if (attr == R.styleable.PowerButton_android_background) {
+            if (attr == R.styleable.TextViewExtends_android_background) {
                 backGroundColor = typedArray.getColor(attr, backGroundColor);
-            } else if (attr == R.styleable.PowerButton_shapeType) {
+            } else if (attr == R.styleable.TextViewExtends_shapeType) {
                 shapeType = typedArray.getInteger(attr, 1);
                 getRelativDrawable(shapeType);
-            } else if (attr == R.styleable.PowerButton_drawable_width) {
+            } else if (attr == R.styleable.TextViewExtends_drawable_width) {
                 drawable_width = (int) typedArray.getDimension(attr, dip2Px(60));
-            } else if (attr == R.styleable.PowerButton_paddingCenter) {
+            }/* else if (attr == R.styleable.TextViewExtends_paddingCenter) {
                 paddingCenter = typedArray.getBoolean(attr, true);
-            } else if (attr == R.styleable.PowerButton_android_tint) {
+            } */else if (attr == R.styleable.TextViewExtends_android_tint) {
                 tintColor = typedArray.getColor(attr, tintColor);
-            } else if (attr == R.styleable.PowerButton_android_drawableLeft) {
+            } else if (attr == R.styleable.TextViewExtends_android_drawableLeft) {
                 mOriention = Oriention.left;
                 mPaddDrawable = typedArray.getDrawable(attr);
                 mLeftDrawable = mPaddDrawable;
-            } else if (attr == R.styleable.PowerButton_android_drawableRight) {
+            } else if (attr == R.styleable.TextViewExtends_android_drawableRight) {
                 mOriention = Oriention.right;
                 mPaddDrawable = typedArray.getDrawable(attr);
-            } else if (attr == R.styleable.PowerButton_android_drawableTop) {
+            } else if (attr == R.styleable.TextViewExtends_android_drawableTop) {
                 mOriention = Oriention.top;
                 mPaddDrawable = typedArray.getDrawable(attr);
-            } else if (attr == R.styleable.PowerButton_android_drawableBottom) {
+            } else if (attr == R.styleable.TextViewExtends_android_drawableBottom) {
                 mOriention = Oriention.bottom;
                 mPaddDrawable = typedArray.getDrawable(attr);
-            } else if (attr == R.styleable.PowerButton_leftDrawableWidth) {
+            } else if (attr == R.styleable.TextViewExtends_leftDrawableWidth) {
                 drawableLeftWidth = (int) typedArray.getDimension(attr, drawableLeftWidth);
-            } else if (attr == R.styleable.PowerButton_righDrawableWidth) {
+            } else if (attr == R.styleable.TextViewExtends_righDrawableWidth) {
                 drawableRightWidth = (int) typedArray.getDimension(attr, drawableRightWidth);
-            } else if (attr == R.styleable.PowerButton_topDrawableWidth) {
+            } else if (attr == R.styleable.TextViewExtends_topDrawableWidth) {
                 drawableTopWidth = (int) typedArray.getDimension(attr, drawableTopWidth);
-            } else if (attr == R.styleable.PowerButton_bottomDrawableWidth) {
+            } else if (attr == R.styleable.TextViewExtends_bottomDrawableWidth) {
                 drawableBottomWidth = (int) typedArray.getDimension(attr, drawableBottomWidth);
             }
         }

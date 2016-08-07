@@ -1,6 +1,5 @@
 package com.magnify.utils.ui.common;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,14 +16,13 @@ import com.magnify.utils.ui.CreateDataUtilsActivity;
 import com.magnify.utils.ui.HeaderChildFooterActivity;
 import com.magnify.utils.ui.RandCharActivity;
 import com.magnify.utils.ui.SaveToolAndPreferenceActivity;
-import com.magnify.yutils.app.BaseActivity;
 
 import java.util.ArrayList;
 
 /**
  * Created by heinigger on 16/8/2.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends CurrentBaseActivity {
     private RecyclerView recyler;
     private ArrayList<ActivityBean> arrayLists = new ArrayList<>();
     //直接到最新创建的页面
@@ -34,6 +32,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
         createData();
         setAdapter();
         //直达最新创建的activity
@@ -68,12 +68,6 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    private void startNewActivity(ActivityBean item) {
-        Intent intent = new Intent(self, item.getaClass());
-        intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
-        intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
-        startActivity(intent);
-    }
 
     public void add(String text, String description, Class<?> clazz) {
         arrayLists.add(new ActivityBean(text, description, clazz));
