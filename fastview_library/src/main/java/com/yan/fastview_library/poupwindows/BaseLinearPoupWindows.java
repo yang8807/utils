@@ -4,18 +4,24 @@ import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
-import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import com.yan.fastview_library.R;
 
 public class BaseLinearPoupWindows extends PopupWindow {
+
     private View views;
+
     private Context mContext;
+
     private FrameLayout fram;
+
+    private int[] screnLocation = new int[2];
+
+    private Runnable runnable;
 
     public BaseLinearPoupWindows(Context context, int layoutid) {
         super();
@@ -38,7 +44,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
         setContentView(fram);
         setOutsideTouchable(true);
         setFocusable(true);
-        setBackgroundDrawable(new BitmapDrawable());
+        BaseLinearPoupWindows.this.setBackgroundDrawable(new BitmapDrawable());
 
         update();
     }
@@ -46,7 +52,6 @@ public class BaseLinearPoupWindows extends PopupWindow {
     /**
      * Add interface to another layout, this is to give it a properties to control how long the distance from the right margin
      */
-    @NonNull
     private FrameLayout add2FramLayout(Context context) {
         fram = new FrameLayout(context);
         fram.addView(views);
@@ -55,14 +60,14 @@ public class BaseLinearPoupWindows extends PopupWindow {
 
     public BaseLinearPoupWindows(Context context) {
         if (onIniViews() == 0) {
-            throw new IllegalStateException(context.getString(R.string.errorMsg));
+            throw new IllegalStateException("Please set the layout file, copy (onIniViews) or call getPoupInstance (Context context, int layoutid)");
         }
         views = LayoutInflater.from(context).inflate(onIniViews(), null);
         setPoupNormalStyle(context);
     }
 
     /**
-     * Set the size of the layout file poupwindow
+     * Set the size of the poupwindow of the layout file
      */
     protected void setPoupWindowsSize() {
         setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -70,22 +75,21 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * Layout file, R.l ayout. Dialog_xml
+     * Layout file, R.layout.dialog_xml
      */
     protected int onIniViews() {
         return 0;
     }
 
     /**
-     *To initialize the control, and returns the corresponding type of pricing
-     *
+     * Initialization of the control, and return to the corresponding type of control
      */
-    public <E> E findView(int viewid) {
+    public <E extends View> E findView(int viewid) {
         return (E) views.findViewById(viewid);
     }
 
     /**
-     * How long is set from the right margin
+     * How long is the distance from the right
      */
     public BaseLinearPoupWindows setMarginRight(int marginRight) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -95,7 +99,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * How long is set from the margins
+     * How long is the setting from the margin
      */
     public BaseLinearPoupWindows setMargin(int margin) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -105,7 +109,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * How long is set from the margins
+     * How long is the setting from the margin
      */
     public BaseLinearPoupWindows setMargins(int left, int top, int right, int bottom) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -114,15 +118,12 @@ public class BaseLinearPoupWindows extends PopupWindow {
         return this;
     }
 
+	/*public BaseLinearPoupWindows setBackGroundResoures(int resoures) {
+        fram.setCardBackgroundColor(resoures);
+	    return this;
+	}*/
 
-    public BaseLinearPoupWindows setBackGroundResoures(int resoures) {
-        fram.setBackgroundColor(resoures);
-        return this;
-    }
 
-    /**
-     *Set the size of the controls
-     */
     public BaseLinearPoupWindows setViewWidth(int width) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
         lp.width = width;
@@ -132,7 +133,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * By controlling the size of the layout to control the size of the PoupWindows
+     * Control the size of the PoupWindows by controlling the size of the layout.
      */
     public BaseLinearPoupWindows setPoupWindowsSize(int width, int height) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
@@ -151,7 +152,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /**
-     * Set the background color and, if is rounded rectangle, set the radius size
+     * Set the background color as well, if it is rounded rectangle, then set the size of the radius
      */
     public BaseLinearPoupWindows setDrawableNRadius(int color, int radius) {
         GradientDrawable gradientDrawable = new GradientDrawable();
@@ -162,16 +163,12 @@ public class BaseLinearPoupWindows extends PopupWindow {
         return this;
     }
 
-    public BaseLinearPoupWindows setCardColorNRadius(int color, int radius) {
-        fram.setBackgroundColor(color);
-        return this;
-    }
-
     /**
-     * Timing closure poupwindows
+     * Timed shutdown poupwindows
      */
     public BaseLinearPoupWindows postDelayDismiss(int delaytimes) {
         (new Handler()).postDelayed(new Runnable() {
+
             @Override
             public void run() {
                 BaseLinearPoupWindows.this.dismiss();
@@ -181,17 +178,40 @@ public class BaseLinearPoupWindows extends PopupWindow {
     }
 
     /***
-     * Timing closure poupwindows; Use the existing handler and save resources
+     * Time off poupwindows; use already handler, more saving resources
      */
-    public BaseLinearPoupWindows postDelayDismiss(Handler mHandler, int delaytimes) {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                BaseLinearPoupWindows.this.dismiss();
-            }
-        }, delaytimes);
+    public BaseLinearPoupWindows postDelayDismiss(final Handler mHandler, int delaytimes) {
+        if (runnable == null) {
+            runnable = new Runnable() {
+
+                @Override
+                public void run() {
+                    BaseLinearPoupWindows.this.dismiss();
+                }
+            };
+        }
+        mHandler.postDelayed(runnable, delaytimes);
         return this;
     }
 
+    public void showAtViewTop(View v) {
+        v.getLocationOnScreen(screnLocation);
+        this.showAtLocation(v, Gravity.NO_GRAVITY, (screnLocation[0] + v.getWidth() / 2) - this.getWidth() / 2, screnLocation[1] - this.getHeight());
+    }
 
+    /**
+     * Display in the middle of the screen
+     */
+    public void showAtScreenCenter(View view) {
+        showAtLocation((View) view.getParent(), Gravity.CENTER, 0, 0);
+    }
+
+    public void setBackgroundColor(int color) {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setColor(color);
+        gradientDrawable.setDither(true);
+        BaseLinearPoupWindows.this.setBackgroundDrawable(gradientDrawable);
+        BaseLinearPoupWindows.this.update();
+
+    }
 }

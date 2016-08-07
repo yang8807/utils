@@ -1,7 +1,6 @@
 package com.yan.fastview_library.edittext;
 
 import android.content.Context;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +11,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
 
 import com.yan.fastview_library.R;
 
@@ -19,7 +19,7 @@ import utils.DisplayUtil;
 import utils.LogUtil;
 
 
-public class ClearEditText extends DrawableEditText implements
+public class ClearEditText extends EditText implements
         OnFocusChangeListener, TextWatcher {
     /**
      * clear button
@@ -29,9 +29,11 @@ public class ClearEditText extends DrawableEditText implements
      * widget has focus?
      */
     private boolean hasFoucs;
+
     public ClearEditText(Context context) {
         this(context, null);
     }
+
     public ClearEditText(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.editTextStyle);
     }
@@ -48,7 +50,7 @@ public class ClearEditText extends DrawableEditText implements
             mClearDrawable = getResources().getDrawable(R.drawable.ic_highlight_remove_red_500_36dp);
             //According to the color of the incoming, to render the Drawable
 //            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.MULTIPLY);
-            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
+//            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
             int width = DisplayUtil.dip2px(getContext(), 25);
             mClearDrawable.setBounds(0, 0, width, width);
         }

@@ -3,7 +3,7 @@ package com.magnify.utils.bean;
 /**
  * Created by heinigger on 16/8/2.
  */
-public class ActivityFunctionsBean {
+public class ActivityBean {
     /*工具的名字或者控件名字*/
     private String name;
     /*功能描述*/
@@ -11,7 +11,7 @@ public class ActivityFunctionsBean {
     /*跳转的页面*/
     private Class aClass;
 
-    public ActivityFunctionsBean(String name, String description, Class aClass) {
+    public ActivityBean(String name, String description, Class aClass) {
         this.name = name;
         this.description = description;
         this.aClass = aClass;

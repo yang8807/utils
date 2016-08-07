@@ -22,6 +22,7 @@ public class CurrentBaseActivity extends BaseActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         //拖动左边,结束当前activity的操作帮助助手
         SwipeBackHelper.onCreate(this);
+        showToast("---" + self.getLocalClassName() + "---");
     }
 
     @Override

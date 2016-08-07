@@ -34,7 +34,8 @@
         <activity android:name=".ui.common.ImageBrowseActivity" />
         <activity android:name=".ui.common.CollectingActivity" />
         <activity android:name=".ui.common.WebViewActivity" />
-        <activity android:name=".ui.common.HeaderChildFooterActivity" />
+        <activity android:name=".ui.HeaderChildFooterActivity" />
+        <activity android:name=".ui.AutoCompeleActivity" />
     </application>
 
 </manifest>

@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.AutoCompleteTextView;
 
 import com.yan.fastview_library.R;
 
 import utils.DisplayUtil;
 
-public class ClearAutoCompleteText extends PowerAutoCompleteText implements View.OnFocusChangeListener {
+public class ClearAutoCompleteText extends AutoCompleteTextView implements View.OnFocusChangeListener {
     /**
      * clear button
      */
@@ -28,7 +29,6 @@ public class ClearAutoCompleteText extends PowerAutoCompleteText implements View
     public ClearAutoCompleteText(Context context) {
         super(context, null);
     }
-
 
 
     public ClearAutoCompleteText(Context context, AttributeSet attrs) {
@@ -54,6 +54,7 @@ public class ClearAutoCompleteText extends PowerAutoCompleteText implements View
             }
         });
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -69,6 +70,7 @@ public class ClearAutoCompleteText extends PowerAutoCompleteText implements View
         }
         return super.onTouchEvent(event);
     }
+
     private void init() {
         mClearDrawable = getCompoundDrawables()[2];
         if (mClearDrawable == null) {

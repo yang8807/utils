@@ -1,4 +1,4 @@
-package com.magnify.utils.ui.common;
+package com.magnify.utils.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
