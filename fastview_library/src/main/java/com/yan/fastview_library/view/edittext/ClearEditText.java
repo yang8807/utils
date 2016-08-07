@@ -1,6 +1,8 @@
-package com.yan.fastview_library.edittext;
+package com.yan.fastview_library.view.edittext;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,16 +13,16 @@ import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
 
+import com.magnify.yutils.ImageUtils;
 import com.yan.fastview_library.R;
+import com.yan.fastview_library.view.PowerEditText;
 
 import utils.DisplayUtil;
 import utils.LogUtil;
 
 
-public class ClearEditText extends EditText implements
-        OnFocusChangeListener, TextWatcher {
+public class ClearEditText extends PowerEditText implements OnFocusChangeListener, TextWatcher {
     /**
      * clear button
      */
@@ -40,20 +42,25 @@ public class ClearEditText extends EditText implements
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.ClearAutoCompleteText);
+        init(tp);
+        tp.recycle();
+
     }
 
-    private void init() {
+    private void init(TypedArray tp) {
         mClearDrawable = getCompoundDrawables()[2];
         if (mClearDrawable == null) {
-            //throw new NullPointerException("You can add drawableRight attribute in XML");
             mClearDrawable = getResources().getDrawable(R.drawable.ic_highlight_remove_red_500_36dp);
-            //According to the color of the incoming, to render the Drawable
-//            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.MULTIPLY);
-//            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
-            int width = DisplayUtil.dip2px(getContext(), 25);
-            mClearDrawable.setBounds(0, 0, width, width);
         }
+        int tintColor = -1;
+        tintColor = tp.getColor(R.styleable.ClearAutoCompleteText_clear_tint, -1);
+        mClearDrawable = ImageUtils.bitmap2Drawable(ImageUtils.drawable2Bitmap(mClearDrawable));
+        if (tintColor != -1)
+            mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
+        int width = DisplayUtil.dip2px(getContext(), 25);
+        mClearDrawable.setBounds(0, 0, width, width);
+        setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], mClearDrawable, getCompoundDrawables()[3]);
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
         addTextChangedListener(this);

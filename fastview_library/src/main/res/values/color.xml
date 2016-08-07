@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="loading_1">#82CADA</color>
+    <color name="loading_2">#E3E36B</color>
+    <color name="loading_3">#EA535B</color>
+    <color name="loading_4">#7AE2A2</color>
+    <color name="loading_5">#EA4B8A</color>
+    <color name="loading_6">#DAB26B</color>
+</resources>

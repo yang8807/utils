@@ -14,6 +14,8 @@ import com.magnify.yutils.app.BaseActivity;
 public class CurrentBaseActivity extends BaseActivity {
     public static final String TITLE = "title";
     public static final String SUBTITLE = "subtitle";
+    private static final String OBJETS = "objects";
+    private Object[] object;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class CurrentBaseActivity extends BaseActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         //拖动左边,结束当前activity的操作帮助助手
         SwipeBackHelper.onCreate(this);
+        object = (Object[]) getIntent().getSerializableExtra(OBJETS);
         showToast("---" + self.getLocalClassName() + "---");
     }
 
@@ -43,6 +46,11 @@ public class CurrentBaseActivity extends BaseActivity {
         Intent intent = new Intent(self, item.getaClass());
         intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
         intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
+        intent.putExtra(CurrentBaseActivity.OBJETS, item.getObject());
         startActivity(intent);
+    }
+
+    public Object[] getObjects() {
+        return object;
     }
 }

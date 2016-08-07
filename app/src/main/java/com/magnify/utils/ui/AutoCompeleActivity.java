@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class AutoCompeleActivity extends CurrentBaseActivity {
     private AutoCompleteTextView autoCompleteTextView;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

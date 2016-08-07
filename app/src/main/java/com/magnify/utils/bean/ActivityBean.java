@@ -11,6 +11,20 @@ public class ActivityBean {
     /*跳转的页面*/
     private Class aClass;
 
+    private Object[] object;
+
+    public ActivityBean(String text, String description, Class<?> clazz, Object[] objects) {
+        this.name = text;
+        this.description = description;
+        this.aClass = clazz;
+        object = objects;
+    }
+
+    public Object[] getObject() {
+        return object;
+    }
+
+
     public ActivityBean(String name, String description, Class aClass) {
         this.name = name;
         this.description = description;

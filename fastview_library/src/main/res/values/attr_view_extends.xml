@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="drawable_width" format="dimension" />
+    <attr name="drawable_height" format="dimension" />
+    <!-- drawable全局只有一张图片,当图片被渲染了之后,所有的图片颜色都会改变 -->
+    <attr name="willUseSameDrawable" format="boolean" />
     <!-- 居中 -->
-    <attr name="justifyCenter" format="boolean" />
+    <attr name="forceCenter" format="boolean" />
     <!-- 定义形状 -->
     <attr name="shapeType" format="integer">
         <enum name="rect" value="1" />
@@ -21,8 +24,8 @@
         <attr name="android:background" />
         <!--  使用了这一属性之后,如果其他drawable没有设定,也是使用这一属性 -->
         <attr name="drawable_width" />
-        <!--- 是否居中,默认情况下是居中的-->
-        <attr name="justifyCenter" />
+        <!-- 强制居中,平时会设置drawablePading的,如果设置了这个属性,将会被强制居中-->
+        <attr name="forceCenter" />
         <!-- 设置左边,右边,上边,下边的图片 -->
         <attr name="android:drawableLeft" />
         <attr name="android:drawableRight" />
@@ -37,5 +40,7 @@
         <attr name="righDrawableWidth" />
         <attr name="topDrawableWidth" />
         <attr name="bottomDrawableWidth" />
+        <attr name="drawable_height" />
+        <attr name="willUseSameDrawable" />
     </declare-styleable>
 </resources>

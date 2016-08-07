@@ -16,6 +16,8 @@ import com.magnify.utils.ui.CreateDataUtilsActivity;
 import com.magnify.utils.ui.HeaderChildFooterActivity;
 import com.magnify.utils.ui.RandCharActivity;
 import com.magnify.utils.ui.SaveToolAndPreferenceActivity;
+import com.magnify.utils.ui.ui_view.AcitivityTextViewExtendsImp;
+import com.magnify.utils.ui.ui_view.ActivityShowView;
 
 import java.util.ArrayList;
 
@@ -48,6 +50,8 @@ public class MainActivity extends CurrentBaseActivity {
         add("RandomUserUtils", "随机生成一个人物", CreateDataUtilsActivity.class);
         add("BaseHeaderChildFooterAdapter", "类似订单效果", HeaderChildFooterActivity.class);
         add("BaseAutoCompleteAdapter", "输入显示匹配的人", AutoCompeleActivity.class);
+        add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
+        add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", AcitivityTextViewExtendsImp.class);
     }
 
     private void setAdapter() {
@@ -69,8 +73,8 @@ public class MainActivity extends CurrentBaseActivity {
     }
 
 
-    public void add(String text, String description, Class<?> clazz) {
-        arrayLists.add(new ActivityBean(text, description, clazz));
+    public void add(String text, String description, Class<?> clazz, Object... objects) {
+        arrayLists.add(new ActivityBean(text, description, clazz, objects));
     }
 
 }

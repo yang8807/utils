@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#657689" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#ff1111" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#999999" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="#ff99" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.yan.fastview_library.view.PowerTexView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#09fff2"
+                    android:clickable="true"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/ic_launcher"
+                    android:text="Power"
+                    android:tint="#567899"
+                    app:drawable_width="30dp"
+                    app:forceCenter="true"
+                    app:shapeType="oval" />
+            </FrameLayout>
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@android:color/holo_red_light"
+                android:clickable="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:text="Power"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="oval"
+                app:willUseSameDrawable="false" />
+
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="50dp"
+                android:background="@android:color/holo_red_light"
+                android:drawableBottom="@mipmap/ic_launcher"
+                android:drawablePadding="5dp"
+                android:text="Power"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="oval" />
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@android:color/holo_red_light"
+                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawablePadding="5dp"
+                android:text="Power"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="oval" />
+        </LinearLayout>
+
+        <com.yan.fastview_library.view.PowerEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_android_red_400_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:hint="PowerEditText"
+            android:paddingLeft="5dp"
+            app:drawable_width="25dp" />
+
+        <com.yan.fastview_library.view.PowerAutoCompeleteEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_watch_later_blue_grey_700_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:hint="PowerAutoCompeleteEditText"
+            android:paddingLeft="5dp"
+            app:drawable_width="25dp" />
+
+        <com.yan.fastview_library.view.edittext.ClearEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_https_blue_600_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:hint="ClearEditText"
+            android:paddingLeft="5dp"
+            app:clear_tint="#567890"
+            app:drawable_width="25dp" />
+
+        <com.yan.fastview_library.view.edittext.ClearAutoCompleteText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/ic_perm_identity_green_500_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:hint="ClearAutoCompleteText"
+            android:paddingLeft="5dp"
+            app:clear_tint="#ff77"
+            app:drawable_width="25dp" />
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_blue_light"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_https_blue_600_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:text="PowerTextView"
+            app:drawable_width="30dp"
+            app:forceCenter="true"
+            app:shapeType="corner_rect"
+            app:tv_radius="15dp" />
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_blue_light"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_watch_later_blue_grey_700_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="PowerButton"
+            app:drawable_width="30dp"
+            app:forceCenter="true"
+            app:shapeType="corner_rect"
+            app:tv_radius="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/black"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="corner_rect"
+                app:tv_radius="5dp" />
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/black"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="corner_rect"
+                app:tv_radius="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/black"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp"
+                app:shapeType="corner_rect"
+                app:tv_radius="5dp" />
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#567890"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp"
+                app:forceCenter="true"
+                app:shapeType="corner_rect"
+                app:tv_radius="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#678987"
+                android:clickable="false"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp" />
+
+            <com.yan.fastview_library.view.PowerTexView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="#ff7890"
+                android:clickable="false"
+                android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="漂亮的按钮"
+                android:textColor="#fff"
+                app:drawable_width="30dp" />
+        </LinearLayout>
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+            android:drawablePadding="5dp"
+            android:text="漂亮的按钮"
+            android:textColor="#fff"
+            app:drawable_width="30dp"
+            app:forceCenter="true"
+            app:shapeType="corner_rect"
+            app:tv_radius="5dp" />
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+            android:drawablePadding="5dp"
+            android:text="漂亮的按钮"
+            android:textColor="#fff"
+            app:drawable_width="30dp"
+            app:forceCenter="true"
+            app:shapeType="corner_rect"
+            app:tv_radius="30dp" />
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="漂亮的按钮"
+            android:textColor="#fff"
+            app:drawable_width="30dp"
+            app:shapeType="corner_rect"
+            app:tv_radius="5dp" />
+
+        <com.yan.fastview_library.view.PowerTexView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_chrome_reader_mode_white_36dp"
+            android:drawablePadding="5dp"
+            android:gravity="right|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="漂亮的按钮"
+            android:textColor="#fff"
+            app:drawable_width="30dp"
+            app:shapeType="corner_rect"
+            app:tv_radius="5dp" />
+    </LinearLayout>
+</ScrollView>

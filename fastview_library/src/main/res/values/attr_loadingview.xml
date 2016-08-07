@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingView">
+        <!-- 收拢程度 -->
+        <attr name="surplusRatio" format="float" />
+        <!-- 小圆的大小 -->
+        <attr name="lv_radius" format="dimension" />
+        <!-- 大圆的大小,在某些情况,onMeasure方法不能正常执行,需要手动给其赋值 -->
+        <attr name="lv_diameter" format="dimension" />
+        <!-- 小圆的个数 -->
+        <attr name="lv_count" format="integer" />
+        <!-- 设置颜色的颜色数组，此属性暂不可用 -->
+        <attr name="lv_colorlist" format="color" />
+        <!-- 设置旋转的持续时间-->
+        <attr name="lv_rotation_duration" format="integer" />
+        <!-- 设置半径缩小的持续的时间-->
+        <attr name="lv_radius_duration" format="integer" />
+    </declare-styleable>
+
+</resources>

@@ -13,4 +13,7 @@
         <!--  初值方向的间距-->
         <attr name="cv_verticalSpacing" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="ClearAutoCompleteText">
+        <attr name="clear_tint" format="color" />
+    </declare-styleable>
 </resources>

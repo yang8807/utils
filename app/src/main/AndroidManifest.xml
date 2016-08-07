@@ -36,6 +36,8 @@
         <activity android:name=".ui.common.WebViewActivity" />
         <activity android:name=".ui.HeaderChildFooterActivity" />
         <activity android:name=".ui.AutoCompeleActivity" />
+        <activity android:name=".ui.ui_view.ActivityShowView" />
+        <activity android:name=".ui.ui_view.AcitivityTextViewExtendsImp" />
     </application>
 
 </manifest>
