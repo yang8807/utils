@@ -1,4 +1,4 @@
-package com.yan.fastview_library.view.edittext;
+package com.yan.fastview_library.view.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,7 +16,6 @@ import android.view.animation.TranslateAnimation;
 
 import com.magnify.yutils.ImageUtils;
 import com.yan.fastview_library.R;
-import com.yan.fastview_library.view.PowerEditText;
 
 import utils.DisplayUtil;
 import utils.LogUtil;

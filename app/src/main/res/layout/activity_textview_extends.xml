@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.yan.fastview_library.view.PowerTexView
+                <com.yan.fastview_library.view.text.PowerTexView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="#09fff2"
@@ -60,7 +60,7 @@
                     app:shapeType="oval" />
             </FrameLayout>
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@android:color/holo_red_light"
@@ -74,7 +74,7 @@
                 app:willUseSameDrawable="false" />
 
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="50dp"
@@ -86,7 +86,7 @@
                 app:forceCenter="true"
                 app:shapeType="oval" />
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@android:color/holo_red_light"
@@ -98,7 +98,7 @@
                 app:shapeType="oval" />
         </LinearLayout>
 
-        <com.yan.fastview_library.view.PowerEditText
+        <com.yan.fastview_library.view.text.PowerEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
@@ -109,7 +109,7 @@
             android:paddingLeft="5dp"
             app:drawable_width="25dp" />
 
-        <com.yan.fastview_library.view.PowerAutoCompeleteEditText
+        <com.yan.fastview_library.view.text.PowerAutoCompeleteEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
@@ -120,7 +120,7 @@
             android:paddingLeft="5dp"
             app:drawable_width="30dp" />
 
-        <com.yan.fastview_library.view.edittext.ClearEditText
+        <com.yan.fastview_library.view.text.ClearEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
@@ -132,7 +132,7 @@
             app:clear_tint="#567890"
             app:drawable_width="35dp" />
 
-        <com.yan.fastview_library.view.edittext.ClearAutoCompleteText
+        <com.yan.fastview_library.view.text.ClearAutoCompleteText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
@@ -144,7 +144,7 @@
             app:clear_tint="#ff77"
             app:drawable_width="40dp" />
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -162,7 +162,7 @@
             app:shapeType="corner_rect"
             app:tv_radius="15dp" />
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -185,7 +185,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
@@ -203,7 +203,7 @@
                 app:shapeType="corner_rect"
                 app:tv_radius="5dp" />
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
@@ -227,7 +227,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
@@ -246,7 +246,7 @@
                 app:shapeType="corner_rect"
                 app:tv_radius="5dp" />
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
@@ -270,7 +270,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -287,7 +287,7 @@
                 android:textColor="#fff"
                 app:drawable_width="30dp" />
 
-            <com.yan.fastview_library.view.PowerTexView
+            <com.yan.fastview_library.view.text.PowerTexView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -305,7 +305,7 @@
                 app:drawable_width="30dp" />
         </LinearLayout>
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -322,7 +322,7 @@
             app:shapeType="corner_rect"
             app:tv_radius="5dp" />
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -339,7 +339,7 @@
             app:shapeType="corner_rect"
             app:tv_radius="30dp" />
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -357,7 +357,7 @@
             app:shapeType="corner_rect"
             app:tv_radius="5dp" />
 
-        <com.yan.fastview_library.view.PowerTexView
+        <com.yan.fastview_library.view.text.PowerTexView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

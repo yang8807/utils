@@ -1,9 +1,9 @@
-package com.yan.fastview_library.view;
+package com.yan.fastview_library.view.text;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.TextView;
+import android.widget.AutoCompleteTextView;
 
 import com.yan.fastview_library.R;
 import com.yan.fastview_library.TextViewExtends;
@@ -11,25 +11,25 @@ import com.yan.fastview_library.TextViewExtends;
 /**
  * Created by heinigger on 16/8/7.
  */
-public class PowerTexView extends TextView {
+public class PowerAutoCompeleteEditText extends AutoCompleteTextView {
 
     private TextViewExtends textViewExtends;
 
-    public PowerTexView(Context context) {
+    public PowerAutoCompeleteEditText(Context context) {
         super(context);
         textViewExtends = new TextViewExtends(this, context);
     }
 
-    public PowerTexView(Context context, AttributeSet attrs) {
+    public PowerAutoCompeleteEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.TextViewExtends);
-        textViewExtends = new TextViewExtends(PowerTexView.this, context, tp);
+        textViewExtends = new TextViewExtends(PowerAutoCompeleteEditText.this, context, tp);
     }
 
-    public PowerTexView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PowerAutoCompeleteEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.TextViewExtends);
-        textViewExtends = new TextViewExtends(PowerTexView.this, context, tp);
+        textViewExtends = new TextViewExtends(PowerAutoCompeleteEditText.this, context, tp);
     }
 
     @Override
