@@ -37,7 +37,8 @@ public class ActivityMultiTypeAdapter extends CurrentBaseActivity {
         listView.setAdapter(new BaseMultiTypeAdapter<MultiLayoutBean>(self, MultiLayoutBean.createData(300),
                 R.layout.view_image_view, R.layout.activity_mygridview,
                 R.layout.activity_loadingview, R.layout.item_child_layout,
-                R.layout.text_view, R.layout.activity_mygridview) {
+                R.layout.text_view, R.layout.activity_mygridview,
+                R.layout.activity_mygridview) {
             @Override
             protected int getItemViewType(MultiLayoutBean data) {
                 return data.getType();
@@ -48,32 +49,32 @@ public class ActivityMultiTypeAdapter extends CurrentBaseActivity {
                 switch (itemType) {
                     case 0:
                         final String url = multiLayoutBean.getObject();
-                        viewHolder.displayImage(url, R.id.imageView);
+                        final ImageView imageView = viewHolder.getView(R.id.imageView);
+                        Glide.with(self)//activty
+                                .load(url)
+                                .asBitmap()
+                                .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+
+                                    @Override
+                                    public void onResourceReady(Bitmap bitmap, GlideAnimation glideAnimation) {
+                                        // Do something with bitmap here.
+//                                                bitmap.getHeight(); //获取bitmap信息，可赋值给外部变量操作，也可在此时行操作。
+//                                                bitmap.getWidth();
+                                        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) imageView.getLayoutParams();
+                                        lp.width = DeviceUtil.getScreenWidth(self);
+                                        lp.height = lp.width * bitmap.getHeight() / bitmap.getWidth();
+                                        imageView.requestLayout();
+                                        imageView.setImageBitmap(bitmap);
+                                    }
+
+                                });
                         break;
                     case 1:
                         ArrayList<String> urls = multiLayoutBean.getObject();
                         GridView gridView = viewHolder.getView(R.id.gridView);
                         gridView.setAdapter(new CommonAdapter<String>(self, R.layout.item_gridview, urls) {
                             public void convert(ViewHolder holder, int position, String s) {
-                                final ImageView image = holder.getView(R.id.image_grid);
-                                Glide.with(self)//activty
-                                        .load(s)
-                                        .asBitmap()
-                                        .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
-
-                                            @Override
-                                            public void onResourceReady(Bitmap bitmap, GlideAnimation glideAnimation) {
-                                                // Do something with bitmap here.
-//                                                bitmap.getHeight(); //获取bitmap信息，可赋值给外部变量操作，也可在此时行操作。
-//                                                bitmap.getWidth();
-                                                ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) image.getLayoutParams();
-                                                lp.width = DeviceUtil.getScreenWidth(self);
-                                                lp.height = lp.width * bitmap.getHeight() / bitmap.getWidth();
-                                                image.requestLayout();
-                                            }
-
-                                        });
-
+                                holder.displayRoundImage(s, R.id.image_grid);
                             }
                         });
                         break;
@@ -97,7 +98,26 @@ public class ActivityMultiTypeAdapter extends CurrentBaseActivity {
                         gridView1.setAdapter(new CommonAdapter<User>(self, R.layout.item_image_text, users) {
                             @Override
                             public void convert(ViewHolder holder, int position, User user) {
-                                holder.setText(R.id.tv_user, user.getUserName()).displayImage(user.getImageAvator(), R.id.image_user);
+                                holder.setText(R.id.tv_user, user.getUserName()).displayRoundImage(user.getImageAvator(), R.id.image_user);
+                            }
+                        });
+                        break;
+                    case 6:
+                        ArrayList<User> userss = multiLayoutBean.getObject();
+                        GridView gridView2 = viewHolder.getView(R.id.gridView);
+                        gridView2.setNumColumns(2);
+                        gridView2.setAdapter(new CommonAdapter<User>(self, R.layout.item_doublue_in_grid_view, userss) {
+                            @Override
+                            protected void onPreCreate(ViewHolder holder, int position) {
+                                ImageView imageView = holder.getView(R.id.image_double);
+                                ViewGroup.LayoutParams lp = imageView.getLayoutParams();
+                                lp.width = lp.height = (DeviceUtil.getScreenWidth(self) - DeviceUtil.dipToPx(self, 5 * 4)) / 2;
+                                imageView.requestLayout();
+                            }
+
+                            @Override
+                            public void convert(ViewHolder holder, int position, User user) {
+                                holder.displayRoundImage(user.getImageAvator(), R.id.image_double);
                             }
                         });
                         break;

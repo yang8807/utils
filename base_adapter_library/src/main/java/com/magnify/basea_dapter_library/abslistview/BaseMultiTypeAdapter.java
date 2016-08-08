@@ -63,13 +63,20 @@ public abstract class BaseMultiTypeAdapter<T> extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(layoutids[itemType], null);
             viewHolder[itemType] = new ViewHolder(mContext, convertView, parent, position);
+            onPreCreate(viewHolder[itemType], itemType);
             convertView.setTag(layoutids[itemType], viewHolder[itemType]);
+
         } else {
             viewHolder[itemType] = (ViewHolder) convertView.getTag(layoutids[itemType]);
         }
         converData(viewHolder[itemType], itemType, datas.get(position), position);
 
         return convertView;
+    }
+
+    /*加载之前,先该改变view的大小,一次改变就好,在这里*/
+    protected void onPreCreate(ViewHolder viewHolder, int itemType) {
+
     }
 
     protected abstract void converData(ViewHolder viewHolder, int itemType, T t, int position);

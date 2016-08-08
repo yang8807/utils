@@ -40,10 +40,21 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = ViewHolder.get(mContext, convertView, parent,
-                layoutId, position);
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(mContext).inflate(layoutId, null);
+            holder = new ViewHolder(mContext, convertView, parent, position);
+            onPreCreate(holder, position);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+            holder.updatePosition(position);
+        }
         convert(holder, position, getItem(position));
         return holder.getConvertView();
+    }
+
+    protected void onPreCreate(ViewHolder holder, int position) {
+
     }
 
     public abstract void convert(ViewHolder holder, int position, T t);

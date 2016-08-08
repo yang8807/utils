@@ -13,7 +13,7 @@ public class MultiLayoutBean {
     private int type;
     private Object object;
     private static transient Random random;
-    private static final int TYPECOUNT = 6;
+    private static final int TYPECOUNT = 7;
 
     static {
         random = new Random();
@@ -26,7 +26,7 @@ public class MultiLayoutBean {
                 this.object = RandomUserUtil.getRandomImage();
                 break;
             case 1:
-                this.object = RandomUserUtil.getRandomImage(5);
+                this.object = RandomUserUtil.getRandomImage(random.nextInt(6));
                 break;
             case 2:
                 this.object = null;
@@ -38,7 +38,10 @@ public class MultiLayoutBean {
                 this.object = RandomUserUtil.createPhoneNumber();
                 break;
             case 5:
-                this.object = RandomUserUtil.createRandomUser(15);
+                this.object = RandomUserUtil.createRandomUser(random.nextInt(15));
+                break;
+            case 6:
+                this.object = RandomUserUtil.createRandomUser(random.nextInt(15));
                 break;
         }
     }
