@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.datautils.RandomUserUtil;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.basea_dapter_library.recyclerview.DividerItemDecoration;
@@ -21,18 +20,13 @@ import java.util.ArrayList;
  * Created by heinigger on 16/8/3.
  */
 public class CreateDataUtilsActivity extends CurrentBaseActivity {
-    private ArrayList<People> peoples = new ArrayList<>();
-    private RandomUserUtil randomUserUtils;
+    private ArrayList<People> peoples;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        randomUserUtils = new RandomUserUtil(self);
-        for (int i = 0; i < 150; i++) {
-            peoples.add(new People(randomUserUtils.createRandomUser()));
-        }
-
+        peoples = People.createPeople(200);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyler);
         recyclerView.setLayoutManager(new LinearLayoutManager(self));
         recyclerView.addItemDecoration(new DividerItemDecoration(self, LinearLayoutManager.HORIZONTAL));

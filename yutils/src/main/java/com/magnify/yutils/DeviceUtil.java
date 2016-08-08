@@ -59,6 +59,7 @@ public class DeviceUtil {
 
     /**
      * 获取Activity信息
+     *
      * @return 获取失败返回null
      */
     public static ActivityInfo getActivityInfo(Context context, String className) {
@@ -73,7 +74,7 @@ public class DeviceUtil {
     /**
      * 获取Activity配置文件label名称
      *
-     * @param context 上下文
+     * @param context   上下文
      * @param className 要获取的Activity类完整名称
      * @return 获取失败返回null
      */
@@ -258,7 +259,7 @@ public class DeviceUtil {
      * ActionBar的高度
      */
     public static float getActionBarHeight(Context appContext) {
-        TypedArray actionbarSizeTypedArray = appContext.obtainStyledAttributes(new int[] { android.R.attr.actionBarSize });
+        TypedArray actionbarSizeTypedArray = appContext.obtainStyledAttributes(new int[]{android.R.attr.actionBarSize});
         float height = actionbarSizeTypedArray.getDimension(0, 0);
         actionbarSizeTypedArray.recycle();
         return height;
@@ -282,6 +283,7 @@ public class DeviceUtil {
 
     /**
      * 判断应用是在前台还是在后台运行
+     *
      * @return 后台true 前台false
      */
     public static boolean isApplicationBroughtToBackground(final Context context) {
@@ -298,7 +300,6 @@ public class DeviceUtil {
 
     /**
      * TODO::暂时不要使用本方法,本方法从友盟复制而来,作为友盟测试和参考使用,日后需要测试改进 获取当前设备标示信息json
-     *
      */
     public static String getDeviceInfo(Context context) {
         try {
@@ -328,5 +329,30 @@ public class DeviceUtil {
         }
         return null;
     }
+
+    /**
+     * 得到屏幕的高度
+     *
+     * @param context
+     */
+    public static int getScreenHeight(Context context) {
+        if (context == null) {
+            return -1;
+        }
+        return context.getResources().getDisplayMetrics().heightPixels;
+    }
+
+    /**
+     * 得到屏幕的宽度
+     *
+     * @param context
+     */
+    public static int getScreenWidth(Context context) {
+        if (context == null) {
+            return -1;
+        }
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
 
 }

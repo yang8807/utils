@@ -14,28 +14,19 @@ import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.yutils.StringUtil;
 
-import java.util.ArrayList;
-
 /**
  * Created by heinigger on 16/8/7.
  */
 public class AutoCompeleActivity extends CurrentBaseActivity {
     private AutoCompleteTextView autoCompleteTextView;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actvity_auto_compelete);
-        ArrayList<User> users = new ArrayList<>();
-
-        for (int i = 0; i < 200; i++) {
-            users.add(RandomUserUtil.createRandomUser());
-        }
-
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.auto_textview);
         autoCompleteTextView.setThreshold(0);
-        autoCompleteTextView.setAdapter(new BaseAutoCompleteAdapter<User>(R.layout.item_child_layout, users, 50) {
+        autoCompleteTextView.setAdapter(new BaseAutoCompleteAdapter<User>(R.layout.item_child_layout, RandomUserUtil.createRandomUser(200), 50) {
             @Override
             protected String getFiltString(User user) {
                 return user.getUserName();
