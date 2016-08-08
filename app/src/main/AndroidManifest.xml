@@ -39,6 +39,7 @@
         <activity android:name=".ui.ui_view.ActivityShowView" />
         <activity android:name=".ui.ui_adapter.ActivityMultiTypeAdapter" />
         <activity android:name=".ui.ui_utils.ActivityEncryptUtil" />
+        <activity android:name=".ui.ActivityDialog" />
     </application>
 
 </manifest>

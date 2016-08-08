@@ -11,6 +11,7 @@ import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.ActivityBean;
+import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.ui_adapter.ActivityMultiTypeAdapter;
 import com.magnify.utils.ui.ui_adapter.AutoCompeleActivity;
 import com.magnify.utils.ui.ui_adapter.CreateDataUtilsActivity;
@@ -55,6 +56,7 @@ public class MainActivity extends CurrentBaseActivity {
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
         add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
         add("ActivityEncryptUtil", "加密解密工具类", ActivityEncryptUtil.class);
+        add("ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
     }
 
     @Override

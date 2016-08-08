@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <com.yan.fastview_library.view.text.PowerTexView
+        android:id="@+id/ptv_show_translation_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/black"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="定向运动动画"
+        android:textColor="#fff"
+        android:layout_weight="1"
+        app:shapeType="corner_rect"
+        app:tv_radius="8dp" />
+
+    <com.yan.fastview_library.view.text.PowerTexView
+        android:id="@+id/ptv_show_bound"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/black"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="弹性动画"
+        android:textColor="#fff"
+        app:shapeType="corner_rect"
+        app:tv_radius="8dp" />
+</LinearLayout>
