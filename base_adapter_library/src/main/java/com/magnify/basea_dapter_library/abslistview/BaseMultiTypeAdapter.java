@@ -19,24 +19,15 @@ public abstract class BaseMultiTypeAdapter<T> extends BaseAdapter {
     private int[] layoutids;
 
     private LayoutInflater inflater;
+    private ViewHolder[] viewHolder;
 
     /*typecount不知道的情况下,直接进行数据的遍历*/
     public BaseMultiTypeAdapter(Context context, ArrayList<T> datas, int... layoutids) {
         this.datas = datas;
         this.mContext = context;
         this.layoutids = layoutids;
+        viewHolder = new ViewHolder[layoutids.length];
         inflater = LayoutInflater.from(context);
-
-/*
-        for (int i = 0; i < layoutids.length; i++) {
-            int layoutId = layoutids[i];
-            for (int i1 = i + 1; i1 < layoutids.length; i1++) {
-                if (layoutId == layoutids[i1]) {
-                    throw new IllegalArgumentException("you are supported use diffrent layout");
-                }
-            }
-        }
-*/
     }
 
     @Override
@@ -68,7 +59,6 @@ public abstract class BaseMultiTypeAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder[] viewHolder = new ViewHolder[layoutids.length];
         int itemType = getItemViewType(position);
         if (convertView == null) {
             convertView = inflater.inflate(layoutids[itemType], null);

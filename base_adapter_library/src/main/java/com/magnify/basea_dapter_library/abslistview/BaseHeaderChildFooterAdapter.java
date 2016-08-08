@@ -54,9 +54,9 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.childLayout = childLayout;
         this.footerLayout = footerLayout;
         infalter = LayoutInflater.from(mContext);
-        if (headerLayout == footerLayout || childLayout == footerLayout || headerLayout == childLayout) {
+       /* if (headerLayout == footerLayout || childLayout == footerLayout || headerLayout == childLayout) {
             throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }
+        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
 
@@ -68,9 +68,9 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.headerLayout = headerLayout;
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
-        if (headerLayout == childLayout) {
+       /* if (headerLayout == childLayout) {
             throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }
+        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
     }
@@ -87,9 +87,9 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.footerLayout = footerLayout;
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
-        if (childLayout == footerLayout) {
+      /*  if (childLayout == footerLayout) {
             throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }
+        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
     }
