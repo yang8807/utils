@@ -18,7 +18,6 @@ import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_adapter.RandCharActivity;
 import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
 import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
-import com.magnify.utils.ui.ui_view.AcitivityTextViewExtendsImp;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class MainActivity extends CurrentBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setTitle(R.string.app_name);
         createData();
         setAdapter();
         //直达最新创建的activity
@@ -53,7 +52,7 @@ public class MainActivity extends CurrentBaseActivity {
         add("BaseHeaderChildFooterAdapter", "类似订单效果", HeaderChildFooterActivity.class);
         add("BaseAutoCompleteAdapter", "输入显示匹配的人", AutoCompeleActivity.class);
         add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
-        add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", AcitivityTextViewExtendsImp.class);
+        add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
         add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
         add("ActivityEncryptUtil", "加密解密工具类", ActivityEncryptUtil.class);
     }

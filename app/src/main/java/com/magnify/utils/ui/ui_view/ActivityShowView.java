@@ -12,6 +12,7 @@ import com.magnify.utils.base.CurrentBaseActivity;
 public class ActivityShowView extends CurrentBaseActivity {
     //加载动画
     public static final int TYPE_LOADINGVIEW = 1;
+    public static final int TYPE_TEXTVIEW_EXTENDS = 2;
     private int layout;
 
     @Override
@@ -20,7 +21,8 @@ public class ActivityShowView extends CurrentBaseActivity {
         int type = (int) getObjects()[0];
         if (TYPE_LOADINGVIEW == type)
             layout = R.layout.activity_loadingview;
-
+        else if (TYPE_TEXTVIEW_EXTENDS == type)
+            layout = R.layout.activity_textview_extends;
         setContentView(layout);
     }
 }
