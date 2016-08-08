@@ -1,4 +1,4 @@
-package com.magnify.utils.ui;
+package com.magnify.utils.ui.ui_utils;
 
 import android.os.Bundle;
 import android.widget.TextView;

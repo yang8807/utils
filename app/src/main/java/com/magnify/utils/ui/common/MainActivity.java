@@ -11,12 +11,13 @@ import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.ActivityBean;
-import com.magnify.utils.ui.AutoCompeleActivity;
-import com.magnify.utils.ui.CreateDataUtilsActivity;
-import com.magnify.utils.ui.HeaderChildFooterActivity;
-import com.magnify.utils.ui.RandCharActivity;
-import com.magnify.utils.ui.SaveToolAndPreferenceActivity;
 import com.magnify.utils.ui.ui_adapter.ActivityMultiTypeAdapter;
+import com.magnify.utils.ui.ui_adapter.AutoCompeleActivity;
+import com.magnify.utils.ui.ui_adapter.CreateDataUtilsActivity;
+import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
+import com.magnify.utils.ui.ui_adapter.RandCharActivity;
+import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
+import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
 import com.magnify.utils.ui.ui_view.AcitivityTextViewExtendsImp;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 
@@ -54,10 +55,18 @@ public class MainActivity extends CurrentBaseActivity {
         add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", AcitivityTextViewExtendsImp.class);
         add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
+        add("ActivityEncryptUtil", "加密解密工具类", ActivityEncryptUtil.class);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (recyler != null && arrayLists != null)
+            recyler.scrollToPosition(arrayLists.size() - 1);
     }
 
     private void setAdapter() {
-        RecyclerView recyler = (RecyclerView) findViewById(R.id.recyler);
+        recyler = (RecyclerView) findViewById(R.id.recyler);
         recyler.setLayoutManager(new LinearLayoutManager(this));
         recyler.setAdapter(new CommonAdapter<ActivityBean>(self, R.layout.item_text_view, arrayLists) {
             @Override

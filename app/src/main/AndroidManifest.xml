@@ -28,17 +28,18 @@
         </activity>
 
 
-        <activity android:name=".ui.RandCharActivity" />
-        <activity android:name=".ui.SaveToolAndPreferenceActivity" />
-        <activity android:name=".ui.CreateDataUtilsActivity" />
+        <activity android:name=".ui.ui_adapter.RandCharActivity" />
+        <activity android:name=".ui.ui_utils.SaveToolAndPreferenceActivity" />
+        <activity android:name=".ui.ui_adapter.CreateDataUtilsActivity" />
         <activity android:name=".ui.common.ImageBrowseActivity" />
         <activity android:name=".ui.common.CollectingActivity" />
         <activity android:name=".ui.common.WebViewActivity" />
-        <activity android:name=".ui.HeaderChildFooterActivity" />
-        <activity android:name=".ui.AutoCompeleActivity" />
+        <activity android:name=".ui.ui_adapter.HeaderChildFooterActivity" />
+        <activity android:name=".ui.ui_adapter.AutoCompeleActivity" />
         <activity android:name=".ui.ui_view.ActivityShowView" />
         <activity android:name=".ui.ui_view.AcitivityTextViewExtendsImp" />
         <activity android:name=".ui.ui_adapter.ActivityMultiTypeAdapter" />
+        <activity android:name=".ui.ui_utils.ActivityEncryptUtil" />
     </application>
 
 </manifest>

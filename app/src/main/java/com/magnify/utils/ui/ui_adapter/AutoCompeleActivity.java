@@ -1,4 +1,4 @@
-package com.magnify.utils.ui;
+package com.magnify.utils.ui.ui_adapter;
 
 import android.graphics.Color;
 import android.os.Bundle;
