@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.magnify.yutils.interfaces.ImageLoaderInterface;
+import com.magnify.yutils.interfaces.SingleInstanceManager;
+
 /**
  * Created by heinigger on 16/8/2.
  */
@@ -59,7 +62,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @param content
      */
     protected void showToast(CharSequence content) {
@@ -89,7 +91,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * @param s
      */
     public void toastMessage(CharSequence s) {
@@ -122,7 +123,15 @@ public class BaseActivity extends AppCompatActivity {
     protected ImageView setImage(View parent, int viewId, String src) {
         ImageView view = (ImageView) parent.findViewById(viewId);
         if (view != null && src != null && src.length() > 5) {
-//            ImageLoaderUtil.DisplayImage(src, view);
+            SingleInstanceManager.getImageLoader().displayImage(src, view);
+        }
+        return view;
+    }
+
+    protected ImageView setCircleImage(View parent, int viewId, String src) {
+        ImageView view = (ImageView) parent.findViewById(viewId);
+        if (view != null && src != null && src.length() > 5) {
+            SingleInstanceManager.getImageLoader().displayRoundImage(src, view);
         }
         return view;
     }
@@ -130,6 +139,7 @@ public class BaseActivity extends AppCompatActivity {
     protected ImageView setImage(int viewId, int resId) {
         return setImage(getWindow().getDecorView(), viewId, resId);
     }
+
     protected ImageView setImage(View parent, int viewId, int resId) {
         ImageView view = (ImageView) parent.findViewById(viewId);
         if (view != null && resId > 0) {
