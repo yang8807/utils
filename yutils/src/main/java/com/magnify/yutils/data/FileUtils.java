@@ -1,8 +1,11 @@
-package com.magnify.yutils;
+package com.magnify.yutils.data;
 
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Environment;
+
+import com.magnify.yutils.IOUtil;
+import com.magnify.yutils.data.StringUtil;
 
 import java.io.File;
 import java.io.FileInputStream;

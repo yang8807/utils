@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import com.magnify.yutils.ImageUtils;
+import com.magnify.yutils.data.ImageUtils;
 import com.yan.fastview_library.R;
 
 import utils.DisplayUtil;

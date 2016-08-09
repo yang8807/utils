@@ -11,7 +11,7 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.BaseAutoCompleteAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
-import com.magnify.yutils.StringUtil;
+import com.magnify.yutils.data.StringUtil;
 
 /**
  * Created by heinigger on 16/8/7.

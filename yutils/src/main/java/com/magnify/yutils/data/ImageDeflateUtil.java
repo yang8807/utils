@@ -1,4 +1,4 @@
-package com.magnify.yutils;
+package com.magnify.yutils.data;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -6,6 +6,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
+
+import com.magnify.yutils.IOUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
-import com.magnify.yutils.RandomCharUtils;
+import com.magnify.yutils.data.RandomCharUtils;
 
 /**
  * Created by heinigger on 16/8/2.

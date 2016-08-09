@@ -2,7 +2,7 @@ package com.magnify.utils.bean;
 
 import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
-import com.magnify.yutils.RandomCharUtils;
+import com.magnify.yutils.data.RandomCharUtils;
 
 import java.util.ArrayList;
 import java.util.Random;

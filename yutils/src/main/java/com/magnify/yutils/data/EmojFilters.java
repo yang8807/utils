@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.magnify.yutils;
+package com.magnify.yutils.data;
 
 /**
  * @author 洒笑天涯

@@ -1,4 +1,4 @@
-package com.magnify.yutils;
+package com.magnify.yutils.data;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -27,6 +27,9 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import com.magnify.yutils.IOUtil;
+import com.magnify.yutils.LogUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.magnify.yutils.DeviceUtil;
 import com.magnify.yutils.DrawableUtils;
-import com.magnify.yutils.ImageUtils;
+import com.magnify.yutils.data.ImageUtils;
 import com.yan.fastview_library.static_userful.ShapeType;
 
 /**

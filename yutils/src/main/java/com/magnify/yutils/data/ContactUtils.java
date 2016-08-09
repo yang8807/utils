@@ -1,4 +1,4 @@
-package com.magnify.yutils;
+package com.magnify.yutils.data;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
