@@ -1,0 +1,231 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="DecoratedView"
+            android:textSize="45dp"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+        <com.yan.fastview_library.view.DecoratedView
+
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="@android:color/holo_red_dark" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            app:dev_lineColor="@android:color/holo_red_dark" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="用着不错"
+            android:textColor="#456752"
+            app:dev_lineColor="#b2c5d4b7"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="用着方便"
+            android:textColor="#670002"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="#b2bb00d4"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="paddingCenter:10dp"
+            android:textColor="#116700"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="#b2bb00d4"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="paddingCenter:25dp"
+            android:textColor="#ffd60d"
+            app:dev_lineCap="5dp"
+            app:dev_lineColor="#b2d47100"
+            app:dev_paddingCenter="25dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="不指定线条颜色"
+            android:textColor="#ffd60d"
+            app:dev_lineCap="5dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="paddingCenter:10dp"
+            android:textColor="#116700"
+            app:dev_lineColor="#b2bb00d4"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="paddingCenter:25dp"
+            android:textColor="#ffd60d"
+            app:dev_lineColor="#b2d47100"
+            app:dev_paddingCenter="25dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:text="不指定线条颜色"
+            android:textColor="#ffd60d"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:text="lineHeight"
+            android:textColor="#ffd60d"
+            app:dev_lineHeight="15dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:text="lineHeight"
+            android:textColor="#ffd60d"
+            app:dev_lineCap="50dp"
+            app:dev_lineHeight="50dp"
+            app:dev_lineWidth="50dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="text" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="50dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_lineHeight="50dp"
+            app:dev_lineWidth="50dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="40dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_lineHeight="40dp"
+            app:dev_lineWidth="40dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+
+        <com.yan.fastview_library.view.DecoratedView
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher"
+            app:dev_lineCap="25dp"
+            app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_lineHeight="25dp"
+            app:dev_lineWidth="25dp"
+            app:dev_paddingCenter="10dp"
+            app:dev_type="drawable" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="100">
+
+            <com.yan.fastview_library.view.DecoratedView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:text="末尾处"
+                android:textColor="#ff9c0a"
+                app:dev_lineCap="10dp"
+                app:dev_lineColor="#ff9c0a"
+                app:dev_lineWidth="15dp"
+                app:dev_paddingCenter="10dp"
+                app:dev_type="text" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="列表展示" />
+        <Button
+            android:id="@+id/btn_decoratedback"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="DecoratedBackGround" />
+    </LinearLayout>
+</ScrollView>

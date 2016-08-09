@@ -13,6 +13,7 @@ public class ActivityShowView extends CurrentBaseActivity {
     //加载动画
     public static final int TYPE_LOADINGVIEW = 1;
     public static final int TYPE_TEXTVIEW_EXTENDS = 2;
+    public static final int TYPE_DECORATEEDVIEW = 3;
     private int layout;
 
     @Override
@@ -23,6 +24,8 @@ public class ActivityShowView extends CurrentBaseActivity {
             layout = R.layout.activity_loadingview;
         else if (TYPE_TEXTVIEW_EXTENDS == type)
             layout = R.layout.activity_textview_extends;
+        else if (TYPE_DECORATEEDVIEW == type)
+            layout = R.layout.activity_decorated_view;
         setContentView(layout);
     }
 }
