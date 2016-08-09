@@ -97,12 +97,9 @@ public class CollectingActivity extends CurrentBaseActivity {
                 if (child != null) {
                     viewHolder.setText(R.id.tv_child_description, child.getUsage()).setText(R.id.tv_child_name, child.getGit_hub_url());
                 }
-                convertView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = WebViewActivity.getIntent(self, child.getGit_hub_url(), child.getGit_hub_url(), child.getUsage() + "  " + child.getDescription());
-                        self.startActivity(intent);
-                    }
+                convertView.setOnClickListener((v) -> {
+                    Intent intent = WebViewActivity.getIntent(self, child.getGit_hub_url(), child.getGit_hub_url(), child.getUsage() + "  " + child.getDescription());
+                    self.startActivity(intent);
                 });
 
                 return convertView;
