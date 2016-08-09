@@ -97,6 +97,10 @@ public class CurrentBaseActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (item.getItemId() == android.R.id.home)//左上角返回键按钮
+        {
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
