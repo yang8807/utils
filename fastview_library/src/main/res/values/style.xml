@@ -22,6 +22,17 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <!-- 背景透明 -->
+    </style> <!-- 自定义Dialog样式 -->
+    <style name="WhiteColorDialog">
+
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@color/half_white</item>
+        <!-- 背景透明 -->
     </style>
 
     <style name="DialogAnim" parent="android:Animation">

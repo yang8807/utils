@@ -7,4 +7,5 @@
     <color name="loading_4">#7AE2A2</color>
     <color name="loading_5">#EA4B8A</color>
     <color name="loading_6">#DAB26B</color>
+    <color name="half_white">#dbffffff</color>
 </resources>

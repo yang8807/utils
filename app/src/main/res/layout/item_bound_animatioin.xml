@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rly_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.yan.fastview_library.viewgroup.CenterViewGroup
+        android:id="@+id/ceterViewGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:cv_numberColumn="3">
+
+        <TextView
+            android:id="@+id/tv_movie"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableTop="@mipmap/icon_popups_video"
+            android:gravity="center"
+            android:paddingBottom="100dp"
+            android:paddingTop="50dp"
+            android:text="视频"
+            android:textColor="#567899" />
+
+        <TextView
+            android:id="@+id/tv_camera"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableTop="@mipmap/icon_popups_camera"
+            android:gravity="center"
+            android:paddingBottom="100dp"
+            android:paddingTop="50dp"
+            android:text="拍照"
+            android:textColor="#567899" />
+
+
+        <TextView
+            android:id="@+id/tv_galley"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableTop="@mipmap/icon_popups_pic"
+            android:gravity="center"
+            android:paddingBottom="100dp"
+            android:paddingTop="50dp"
+            android:text="相册"
+            android:textColor="#567899" />
+
+
+        <ImageView
+            android:id="@+id/img_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="60dp"
+            android:src="@mipmap/btn_popups_close_black" />
+    </com.yan.fastview_library.viewgroup.CenterViewGroup>
+
+
+</RelativeLayout>
