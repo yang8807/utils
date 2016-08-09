@@ -54,7 +54,6 @@
                     android:drawablePadding="5dp"
                     android:drawableRight="@mipmap/ic_launcher"
                     android:text="Power"
-                    android:tint="#567899"
                     app:drawable_width="30dp"
                     app:forceCenter="true"
                     app:shapeType="oval" />

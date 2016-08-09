@@ -3,7 +3,6 @@ package com.magnify.utils.ui.ui_adapter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 
 import com.example.datautils.RandomUserUtil;
@@ -43,12 +42,6 @@ public class AutoCompeleActivity extends CurrentBaseActivity {
                         .setText(R.id.tv_age, child.getSex() + "  " + child.getAddress())
                         .setText(R.id.tv_phone, child.getPhone())
                         .displayRoundImage(child.getImageAvator(), R.id.img_avators);
-                holder.getConvertView().setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showToast(prefixString);
-                    }
-                });
             }
         });
     }

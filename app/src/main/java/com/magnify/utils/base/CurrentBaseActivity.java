@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.utils.bean.ActivityBean;
+import com.magnify.yutils.LogUtil;
 import com.magnify.yutils.app.BaseActivity;
 
 /**
@@ -27,7 +28,7 @@ public class CurrentBaseActivity extends BaseActivity {
         //拖动左边,结束当前activity的操作帮助助手
         SwipeBackHelper.onCreate(this);
         object = (Object[]) getIntent().getSerializableExtra(OBJETS);
-        showToast("---" + self.getLocalClassName() + "---");
+        LogUtil.v("AActivity", "---" + self.getLocalClassName() + "---");
     }
 
     @Override
