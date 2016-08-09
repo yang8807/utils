@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.AutoCompleteTextView;
 
-import com.example.datautils.RandomUserUtil;
+import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.BaseAutoCompleteAdapter;
@@ -25,7 +25,7 @@ public class AutoCompeleActivity extends CurrentBaseActivity {
         setContentView(R.layout.actvity_auto_compelete);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.auto_textview);
         autoCompleteTextView.setThreshold(0);
-        autoCompleteTextView.setAdapter(new BaseAutoCompleteAdapter<User>(R.layout.item_child_layout, RandomUserUtil.createRandomUser(200), 50) {
+        autoCompleteTextView.setAdapter(new BaseAutoCompleteAdapter<User>(R.layout.item_child_layout, RandomUtil.createRandomUser(200), 50) {
             @Override
             protected String getFiltString(User user) {
                 return user.getUserName();

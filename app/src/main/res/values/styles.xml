@@ -12,7 +12,12 @@
         <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
     </style>
 
-    <style name="MainTheme" parent="AppTheme">
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MainTheme" parent="AppTheme.NoActionBar">
         <item name="android:windowIsTranslucent">false</item>
     </style>
 

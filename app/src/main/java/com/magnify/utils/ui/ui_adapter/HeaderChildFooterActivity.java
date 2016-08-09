@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.datautils.HanziToPinyin;
-import com.example.datautils.RandomUserUtil;
+import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.BaseHeaderChildFooterAdapter;
@@ -76,7 +76,7 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
         ArrayList<Contact> contacts = new ArrayList<>();
         //创建数据,并将相同key的数据,放进同一个集合中
         for (int i = 0; i < 500; i++) {
-            User user = RandomUserUtil.createRandomUser();
+            User user = RandomUtil.createRandomUser();
             String sortKey = user.getSortKey();
             if (!sortUsers.containsKey(sortKey)) {
                 sortUsers.put(sortKey, new ArrayList<User>());

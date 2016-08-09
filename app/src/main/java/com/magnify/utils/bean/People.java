@@ -1,6 +1,6 @@
 package com.magnify.utils.bean;
 
-import com.example.datautils.RandomUserUtil;
+import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
 
 import java.io.Serializable;
@@ -114,7 +114,7 @@ public class People implements Serializable {
     public static ArrayList<People> createPeople(int count) {
         ArrayList<People> peoples = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            peoples.add(new People(RandomUserUtil.createRandomUser()));
+            peoples.add(new People(RandomUtil.createRandomUser()));
         }
         return peoples;
     }

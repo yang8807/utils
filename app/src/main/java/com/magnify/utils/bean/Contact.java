@@ -1,6 +1,6 @@
 package com.magnify.utils.bean;
 
-import com.example.datautils.RandomUserUtil;
+import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
 import com.magnify.yutils.RandomCharUtils;
 
@@ -22,7 +22,7 @@ public class Contact {
         int nextCount = random.nextInt(50);
         if (peoples == null) peoples = new ArrayList<>();
         for (int i = 0; i < nextCount; i++) {
-            peoples.add(RandomUserUtil.createRandomUser());
+            peoples.add(RandomUtil.createRandomUser());
         }
         this.groupName = RandomCharUtils.getRandomChar(10);
         this.footerName = RandomCharUtils.getRandomChar(20);

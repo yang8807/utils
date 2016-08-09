@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * 随机创建任务的生日,姓名,nickname
  */
-public class RandomUserUtil {
+public class RandomUtil {
     private static Random random = new Random();
     private static String[] lastNames;
     private static String[] boy_china;
@@ -20,9 +20,9 @@ public class RandomUserUtil {
     private static long DAY = 1000 * 24 * 3600;
     private static long MONTH = DAY * 30;
     private static long YEAR = DAY * 365;
-    private static RandomUserUtil randomUserUtil;
+    private static RandomUtil randomUserUtil;
 
-    public RandomUserUtil(Context context) {
+    public RandomUtil(Context context) {
         lastNames = context.getString(R.string.user_frist_name).split(",");
         boy_china = context.getString(R.string.boy_name).split(",");
         girl_china = context.getString(R.string.girl_name).split(",");
@@ -32,8 +32,8 @@ public class RandomUserUtil {
         addresses = context.getString(R.string.road).split(",");
     }
 
-    public static RandomUserUtil init(Context context) {
-        if (randomUserUtil == null) randomUserUtil = new RandomUserUtil(context);
+    public static RandomUtil init(Context context) {
+        if (randomUserUtil == null) randomUserUtil = new RandomUtil(context);
         return randomUserUtil;
     }
 
@@ -173,6 +173,10 @@ public class RandomUserUtil {
             images.add(urls[random.nextInt(urls.length)]);
         }
         return images;
+    }
+
+    public static int randomInt(int size) {
+        return random.nextInt(size);
     }
 
 

@@ -11,7 +11,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="com.magnify.utils.base.GlideConfiguration"
             android:value="GlideModule" />
@@ -22,7 +22,6 @@
             android:theme="@style/MainTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,6 +39,7 @@
         <activity android:name=".ui.ui_adapter.ActivityMultiTypeAdapter" />
         <activity android:name=".ui.ui_utils.ActivityEncryptUtil" />
         <activity android:name=".ui.ActivityDialog" />
+        <activity android:name=".ui.common.CategoryActivity" />
     </application>
 
 </manifest>

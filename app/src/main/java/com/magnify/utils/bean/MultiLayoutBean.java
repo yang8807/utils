@@ -1,6 +1,6 @@
 package com.magnify.utils.bean;
 
-import com.example.datautils.RandomUserUtil;
+import com.example.datautils.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,25 +23,25 @@ public class MultiLayoutBean {
         this.type = random.nextInt(TYPECOUNT);
         switch (type) {
             case 0:
-                this.object = RandomUserUtil.getRandomImage();
+                this.object = RandomUtil.getRandomImage();
                 break;
             case 1:
-                this.object = RandomUserUtil.getRandomImage(random.nextInt(6));
+                this.object = RandomUtil.getRandomImage(random.nextInt(6));
                 break;
             case 2:
                 this.object = null;
                 break;
             case 3:
-                this.object = RandomUserUtil.createRandomUser();
+                this.object = RandomUtil.createRandomUser();
                 break;
             case 4:
-                this.object = RandomUserUtil.createPhoneNumber();
+                this.object = RandomUtil.createPhoneNumber();
                 break;
             case 5:
-                this.object = RandomUserUtil.createRandomUser(random.nextInt(15));
+                this.object = RandomUtil.createRandomUser(random.nextInt(15));
                 break;
             case 6:
-                this.object = RandomUserUtil.createRandomUser(random.nextInt(15));
+                this.object = RandomUtil.createRandomUser(random.nextInt(15));
                 break;
         }
     }
