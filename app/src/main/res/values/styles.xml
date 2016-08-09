@@ -1,6 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
+    <!-- Theme.AppCompat. -->
+    <!--Theme.AppCompat.Light.DarkActionBar -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -10,6 +12,7 @@
         <item name="android:windowIsTranslucent">true</item>
         //set the right in/out animation of Activity,you can change this to yours
         <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
+        <!--        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -28,5 +31,11 @@
         <item name="android:textSize">18sp</item> <!--  搞掂字体大小-->
         <item name="android:textColor">@android:color/white</item> <!--  设置字体颜色-->
     </style>
+
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_perm_identity_green_500_36dp</item>
+        //用来设置右边的按钮的图片
+    </style>
+
 
 </resources>
