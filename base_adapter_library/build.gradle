@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'//添加
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -16,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -23,6 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.2.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 //添加
 publish {
@@ -32,4 +37,7 @@ publish {
     publishVersion = '1.0.1'//版本号
     desc = 'base_adapter_library'//描述，不重要
     website = 'https://github.com/heinigger/base_adapter.git'//网站，不重要
+}
+repositories {
+    mavenCentral()
 }

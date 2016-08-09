@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'//添加
 
 android {
@@ -20,6 +21,9 @@ android {
     lintOptions {
         abortOnError false
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -27,6 +31,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile project(':yutils')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 //添加
 publish {
@@ -36,4 +41,7 @@ publish {
     publishVersion = '1.0.2'//版本号
     desc = 'fastview'//描述，不重要
     website = 'https://github.com/heinigger/fast_view_library.git'//网站，不重要
+}
+repositories {
+    mavenCentral()
 }
