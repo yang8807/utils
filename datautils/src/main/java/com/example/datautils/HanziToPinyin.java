@@ -204,6 +204,7 @@ public class HanziToPinyin {
     }
 
     public static String getSortKey(String text) {
+        if (TextUtils.isEmpty(text)) return "";
         return HanziToPinyin.getInstance()
                 .get(text.substring(0, 1))
                 .get(0).target.substring(0, 1);

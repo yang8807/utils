@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listview"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-</ListView>
+    <com.yan.fastview_library.view.text.PowerEditText
+        android:id="@+id/edit_query"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:drawableLeft="@drawable/ic_perm_identity_green_500_36dp"
+        android:drawablePadding="5dp"
+        android:hint="请输入寻找的联系人"
+        android:paddingLeft="5dp"
+        android:visibility="gone"
+        app:drawable_width="25dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></ListView>
+
+</LinearLayout>

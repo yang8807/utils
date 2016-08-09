@@ -19,9 +19,12 @@ import java.util.HashMap;
  * C:Child
  * 类似淘宝的那种订单效果,
  * 头部显示价钱之类的,中间显示商品,数量不定,尾部显示商品的总计数量和价钱总和;
- * 1.可以头部,中部,尾部使用$link(BaseHeaderChildFooterAdapter(Context mContext, ArrayList<HF> groupDatas, int headerLayout, int childLayout, int footerLayout))
- * 2.可以头部,中部使用#link(BaseHeaderChildFooterAdapter(Context mContext, ArrayList<HF> groupDatas, int headerLayout, int childLayout)
- * 3.中部,尾部使用#link(BaseHeaderChildFooterAdapter(int footerLayout, Context mContext, ArrayList<HF> groupDatas, int childLayout)
+ * #1.可以头部,中部,尾部使用{@link BaseHeaderChildFooterAdapter(Context ,ArrayList<HF> , int , int , int ))}
+ * #2.可以头部,中部使用{@link BaseHeaderChildFooterAdapter(Context , ArrayList<HF> , int , int )}
+ * #3.中部,尾部使用{@link BaseHeaderChildFooterAdapter(int , Context , ArrayList<HF> , int )}
+ * 如果需要分组功能,需要复写,获取每一组每个item的position,则需要
+ * {@link #getGroupSortKey(int, Object)}
+ * {@link #getChildName(int, Object)}}
  */
 public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
 
@@ -54,9 +57,6 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.childLayout = childLayout;
         this.footerLayout = footerLayout;
         infalter = LayoutInflater.from(mContext);
-       /* if (headerLayout == footerLayout || childLayout == footerLayout || headerLayout == childLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
 
@@ -68,9 +68,6 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.headerLayout = headerLayout;
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
-       /* if (headerLayout == childLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
     }
@@ -102,9 +99,9 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                     //key 存放在的是类型的position,用完再增加
                     positions.put(positionCounter, new PositionInfo(i, TYPE_HEADER));
 
-                    String sortKey = getSortKey(positionCounter, i, groupDatas.get(i));
+                    String sortKey = getGroupSortKey(i, groupDatas.get(i));
                     //sortKey不为空,再这里存储每个头部对应再adapter中的位置
-                    if (TextUtils.isEmpty(sortKey)) groupPositions.put(sortKey, positionCounter);
+                    if (!TextUtils.isEmpty(sortKey)) groupPositions.put(sortKey, positionCounter);
                     //得到当前组的数量,这里都是存放child的
                     for (int j = 0; j < getChildCount(groupDatas.get(i), i); j++) {
                         positionCounter += 1;
@@ -130,7 +127,11 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
     /**
      * 遍历头部的时候,用这个来存储遍历过的头部,按什么
      */
-    protected String getSortKey(int position, int groupPosition, HF hf) {
+    protected String getGroupSortKey(int groupPosition, HF hf) {
+        return "";
+    }
+
+    protected String getChildName(int position, C c) {
         return "";
     }
 
@@ -279,6 +280,25 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
 
     /*得到当前组的子类数量*/
     public abstract int getChildCount(HF hf, int groupPosition);
+
+    public int getChildPositionAtListView(String sortKey, String s) {
+        if (TextUtils.isEmpty(sortKey) || TextUtils.isEmpty(s)) return -1;
+        int position = getHeaderPositionAtListView(sortKey);
+        for (int i = 0; i < groupDatas.size(); i++) {
+            HF hf = groupDatas.get(i);
+            if (sortKey.equals(getGroupSortKey(i, hf))) {
+                for (int j = 0; j < getChildCount(hf, i); j++) {
+                    C c = getChild(hf, j);
+                    String childName = getChildName(j, c);
+                    if (childName.contains(s)) {
+                        return (position + j + 1);//找到了该位置的时候,中断循环
+                    }
+                }
+            }
+        }
+
+        return -1;
+    }
 
     /*记录位置信息和类型*/
     private class PositionInfo {

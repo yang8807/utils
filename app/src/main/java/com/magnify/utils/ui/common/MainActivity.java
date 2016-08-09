@@ -30,7 +30,11 @@ public class MainActivity extends CurrentBaseActivity {
     private RecyclerView recyler;
     private ArrayList<ActivityBean> arrayLists = new ArrayList<>();
     //直接到最新创建的页面
-    private boolean directGONewGlass = true;
+    private boolean directGONewGlass = false;
+    //是否跳转到指定页面
+    private boolean goAssignClass = true;
+    //跳转的指定页面
+    private Class aClass = HeaderChildFooterActivity.class;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +47,15 @@ public class MainActivity extends CurrentBaseActivity {
         //直达最新创建的activity
         if (directGONewGlass)
             startNewActivity(arrayLists.get(arrayLists.size() - 1));
+            //到达指定跳转的Activity
+        else if (goAssignClass && aClass != null) {
+            for (int i = 0; i < arrayLists.size(); i++) {
+                if (arrayLists.get(i).getaClass().equals(aClass)) {
+                    startNewActivity(arrayLists.get(i));
+                    break;
+                }
+            }
+        }
     }
 
     private void createData() {

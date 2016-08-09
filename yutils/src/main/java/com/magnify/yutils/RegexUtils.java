@@ -36,11 +36,11 @@ public class RegexUtils {
     }
 
     public static boolean isChinese(String chinese) {
-        return isMatch(REGEX_IS_CHINESE, chinese);
+        return isMatch(REGEX_DBCS, chinese);
     }
 
     private static boolean isMatch(String regex, String text) {
-        return Pattern.compile(REGEX_EMAIL).matcher(text).matches();
+        return Pattern.compile(regex).matcher(text).matches();
     }
 
 }
