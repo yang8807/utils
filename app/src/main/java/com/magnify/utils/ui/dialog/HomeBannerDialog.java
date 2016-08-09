@@ -2,7 +2,6 @@ package com.magnify.utils.ui.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import com.magnify.utils.R;
 import com.yan.fastview_library.dialog.BaseTargetTranslationDialog;
@@ -25,12 +24,9 @@ public class HomeBannerDialog extends BaseTargetTranslationDialog {
         super.onCreate(savedInstanceState);
         setRotationDegreen(1000);
         //why
-        setAnimationView(contentView.findViewById(R.id.lly_animationView)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isAnimatorRunning())
-                    hideDilog();
-            }
+        setAnimationView(contentView.findViewById(R.id.lly_animationView)).setOnClickListener((v) -> {
+            if (!isAnimatorRunning())
+                hideDilog();
         });
     }
 }
