@@ -296,8 +296,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                 }
             }
         }
-
-        return -1;
+        return position;
     }
 
     /*记录位置信息和类型*/
