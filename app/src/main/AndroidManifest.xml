@@ -40,6 +40,7 @@
         <activity android:name=".ui.ui_utils.ActivityEncryptUtil" />
         <activity android:name=".ui.ActivityDialog" />
         <activity android:name=".ui.common.CategoryActivity" />
+        <activity android:name="com.magnify.utils.base.BaseWebViewActivity" />
     </application>
 
 </manifest>

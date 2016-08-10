@@ -11,6 +11,7 @@ import android.widget.ExpandableListView;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.utils.R;
+import com.magnify.utils.base.BaseWebViewActivity;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.CollectionInfo;
 
@@ -98,7 +99,7 @@ public class CollectingActivity extends CurrentBaseActivity {
                     viewHolder.setText(R.id.tv_child_description, child.getUsage()).setText(R.id.tv_child_name, child.getGit_hub_url());
                 }
                 convertView.setOnClickListener((v) -> {
-                    Intent intent = WebViewActivity.getIntent(self, child.getGit_hub_url(), child.getGit_hub_url(), child.getUsage() + "  " + child.getDescription());
+                    Intent intent = BaseWebViewActivity.getIntent(self, child.getGit_hub_url(), child.getGit_hub_url() + child.getUsage() + "  " + child.getDescription());
                     self.startActivity(intent);
                 });
 
