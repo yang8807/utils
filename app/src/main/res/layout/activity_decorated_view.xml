@@ -20,6 +20,7 @@
             android:textSize="45dp"
             app:dev_lineCap="5dp"
             app:dev_lineColor="@android:color/holo_green_light"
+            app:dev_lineHeight="0.25dp"
             app:dev_paddingCenter="10dp"
             app:dev_type="text" />
 
@@ -31,6 +32,7 @@
             app:dev_lineColor="@android:color/holo_green_light"
             app:dev_paddingCenter="10dp"
             app:dev_type="drawable" />
+
         <com.yan.fastview_library.view.DecoratedView
 
             android:layout_width="fill_parent"
@@ -222,6 +224,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="列表展示" />
+
         <Button
             android:id="@+id/btn_decoratedback"
             android:layout_width="fill_parent"

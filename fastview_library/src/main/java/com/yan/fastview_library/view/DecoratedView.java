@@ -94,7 +94,7 @@ public class DecoratedView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setStrokeWidth(mLineHeight/2);
+        mPaint.setStrokeWidth(mLineHeight);
         mLineColor = mLineColor == 0 ? mTextColor : mLineColor;
         mPaint.setColor(mTextColor);
 

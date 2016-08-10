@@ -9,6 +9,9 @@
     tools:context=".base.CurrentBaseActivity"
     tools:showIn="@layout/activity_base_toolbar">
     <!-- android:fitsSystemWindows="true" 加了这个就出现了顶部的空白部分-->
+    <com.yan.fastview_library.view.DecoratedBackGroundView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ImageView
         android:id="@+id/image_dog"
@@ -18,6 +21,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
         android:alpha="0.2"
+        android:scaleType="centerInside"
         android:src="@mipmap/back_for_activity" />
 
     <FrameLayout

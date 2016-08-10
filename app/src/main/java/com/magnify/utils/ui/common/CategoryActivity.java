@@ -73,7 +73,8 @@ public class CategoryActivity extends CurrentBaseActivity {
     private void addViewData() {
         add("ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
         add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
-        add("DecoratedView", "一个专门用于修饰的view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDVIEW );
+        add("DecoratedView", "一个专门用于修饰的view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDVIEW);
+        add("DecoratedBackGround", "随机生成圆的,用于装饰的背景view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDBACK);
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
     }
 

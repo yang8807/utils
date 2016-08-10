@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.datautils.RandomUtil;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
@@ -34,6 +35,8 @@ public class CurrentBaseActivity extends BaseActivity {
 
         fl_parent = (FrameLayout) findViewById(R.id.fl_parent);
         image_dog = (ImageView) findViewById(R.id.image_dog);
+
+        image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.back_for_activity : R.mipmap.duola);
 
         getSupportActionBar().setTitle(getIntent().getStringExtra(TITLE));
         getSupportActionBar().setSubtitle(getIntent().getStringExtra(SUBTITLE));
