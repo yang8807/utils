@@ -2,6 +2,7 @@ package com.magnify.basea_dapter_library.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -31,6 +32,7 @@ public abstract class CommonMultiAdapter<T> extends RecyclerView.Adapter<ViewHol
         ViewHolder viewHolder = ViewHolder.get(mContext, null, parent, mLayoutId[viewType], -1);
         viewHolder.setType(viewType);
         onPreCreate(viewHolder, viewType);
+        Log.v("AActivity", "create time" + viewType);
         return viewHolder;
     }
 

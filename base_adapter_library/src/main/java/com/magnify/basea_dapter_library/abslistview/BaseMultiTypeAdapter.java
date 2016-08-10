@@ -1,6 +1,7 @@
 package com.magnify.basea_dapter_library.abslistview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,7 @@ public abstract class BaseMultiTypeAdapter<T> extends BaseAdapter {
             viewHolder[itemType] = new ViewHolder(mContext, convertView, parent, position);
             onPreCreate(viewHolder[itemType], itemType);
             convertView.setTag(layoutids[itemType], viewHolder[itemType]);
+            Log.v("AActivity", "createtime" + itemType);
 
         } else {
             viewHolder[itemType] = (ViewHolder) convertView.getTag(layoutids[itemType]);
