@@ -12,6 +12,7 @@ import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.ActivityBean;
 import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.ui_adapter.ActivityMultiTypeAdapter;
+import com.magnify.utils.ui.ui_adapter.ActivityRecylerMultiTypeAdapter;
 import com.magnify.utils.ui.ui_adapter.AutoCompeleActivity;
 import com.magnify.utils.ui.ui_adapter.CreateDataUtilsActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
@@ -68,6 +69,7 @@ public class CategoryActivity extends CurrentBaseActivity {
         add("BaseHeaderChildFooterAdapter", "类似订单效果", HeaderChildFooterActivity.class);
         add("BaseAutoCompleteAdapter", "输入显示匹配的人", AutoCompeleActivity.class);
         add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
+        add("ActivityRecylerMultiTypeAdapter", "Recyler上的多布局,多布局,ListView和RecylerView对比发现,ListView会忽略原布局的属性,而RecylerView则保留了之前的布局属性", ActivityRecylerMultiTypeAdapter.class);
     }
 
     private void addViewData() {

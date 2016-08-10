@@ -29,6 +29,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private Context mContext;
     private int mLayoutId;
     private static ImageLoaderInterface imageLoaderInterface;
+    private int type;
 
     public static void setImageLoaderInterface(ImageLoaderInterface imageLoaderInterface) {
         ViewHolder.imageLoaderInterface = imageLoaderInterface;
@@ -305,5 +306,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public int getLayoutId() {
         return mLayoutId;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
     }
 }
