@@ -10,6 +10,7 @@ import android.widget.ExpandableListView;
 import com.magnify.basea_dapter_library.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by heinigger on 16/8/5.
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * C:child
  */
 public abstract class CommonExpandListViewAdapter<P, C> extends BaseExpandableListAdapter {
-    private ArrayList<P> parents;
+    private List<P> parents;
     private Context mContext;
     private ExpandableListView expandableListView;
     //父布局
@@ -75,9 +76,9 @@ public abstract class CommonExpandListViewAdapter<P, C> extends BaseExpandableLi
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(parentLayoutId, null);
             viewHolder = new ViewHolder(mContext, convertView, parent, groupPosition);
-            convertView.setTag(parentLayoutId, viewHolder);
+            convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag(parentLayoutId);
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         convertGroup(viewHolder, groupPosition, isExpanded, getGroup(groupPosition));
         return convertView;
@@ -90,9 +91,9 @@ public abstract class CommonExpandListViewAdapter<P, C> extends BaseExpandableLi
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(childLayout, null);
             viewHolder = new ViewHolder(mContext, convertView, parent, groupPosition);
-            convertView.setTag(childLayout, viewHolder);
+            convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag(childLayout);
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         convertChild(viewHolder, childPosition, isLastChild, getChild(groupPosition, childPosition));
         return convertView;
