@@ -38,6 +38,10 @@ public class CurrentBaseActivity extends BaseActivity {
         image_dog = (ImageView) findViewById(R.id.image_dog);
 
         image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.back_for_activity : R.mipmap.duola);
+        //图片模糊效果已经可以使用了
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.back_for_activity : R.mipmap.duola);
+//        image_dog.setImageBitmap(BitmapBlurHelper.doBlurJniArray(bitmap, 50, false));
+
 
         getSupportActionBar().setTitle(getIntent().getStringExtra(TITLE));
         getSupportActionBar().setSubtitle(getIntent().getStringExtra(SUBTITLE));
