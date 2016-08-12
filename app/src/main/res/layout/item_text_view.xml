@@ -13,7 +13,7 @@
         android:layout_height="85dp"
         android:layout_gravity="right|bottom"
         android:alpha="0.2"
-        android:src="@mipmap/jianbi_back" />
+        android:src="@mipmap/woniu" />
 
     <View
         android:layout_width="match_parent"

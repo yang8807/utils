@@ -14,6 +14,12 @@
         android:layout_height="match_parent" />
 
     <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <ImageView
         android:id="@+id/image_dog"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -22,7 +28,7 @@
         android:layout_marginRight="10dp"
         android:alpha="0.2"
         android:scaleType="centerInside"
-        android:src="@mipmap/back_for_activity" />
+        android:src="@mipmap/woniu" />
 
     <FrameLayout
         android:id="@+id/fl_parent"
