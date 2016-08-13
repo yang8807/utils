@@ -42,6 +42,7 @@
         <activity android:name=".ui.ActivityDialog" />
         <activity android:name=".ui.common.CategoryActivity" />
         <activity android:name="com.magnify.utils.base.BaseWebViewActivity" />
+        <activity android:name=".ui.ui_view.AcitvitiySideBar" />
     </application>
 
 </manifest>

@@ -14,6 +14,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Display;
@@ -355,4 +357,10 @@ public class DeviceUtil {
     }
 
 
+    public static void setBackGroundDrawable(View view, Drawable mBackDrawabwle) {
+        if (Build.VERSION_CODES.JELLY_BEAN >= Build.VERSION.SDK_INT)
+            view.setBackground(mBackDrawabwle);
+        else
+            view.setBackgroundDrawable(mBackDrawabwle);
+    }
 }

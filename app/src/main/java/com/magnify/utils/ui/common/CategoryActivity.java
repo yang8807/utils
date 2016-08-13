@@ -19,6 +19,7 @@ import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_adapter.RandCharActivity;
 import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
 import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
+import com.magnify.utils.ui.ui_view.AcitvitiySideBar;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 
 import java.util.ArrayList;
@@ -78,6 +79,7 @@ public class CategoryActivity extends CurrentBaseActivity {
         add("DecoratedView", "一个专门用于修饰的view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDVIEW);
         add("DecoratedBackGround", "随机生成圆的,用于装饰的背景view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDBACK);
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
+        add("SideBar", "字母导航栏", AcitvitiySideBar.class);
     }
 
     private void setAdapter() {

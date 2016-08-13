@@ -16,4 +16,9 @@
     <declare-styleable name="ClearAutoCompleteText">
         <attr name="clear_tint" format="color" />
     </declare-styleable>
+    <declare-styleable name="SideBar">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:background" />
+    </declare-styleable>
 </resources>
