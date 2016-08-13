@@ -20,5 +20,6 @@
         <attr name="android:textSize" />
         <attr name="android:textColor" />
         <attr name="android:background" />
+        <attr name="android:text" />
     </declare-styleable>
 </resources>
