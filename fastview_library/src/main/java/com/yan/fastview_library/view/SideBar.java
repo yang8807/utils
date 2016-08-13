@@ -18,7 +18,6 @@ import com.yan.fastview_library.R;
 
 /**
  * Created by heinigger on 16/8/12.
- * ps:如果背景色要变,需要设置clickble=true,focusable=true
  */
 public class SideBar extends View {
     private char[] defaultSideData = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'};
