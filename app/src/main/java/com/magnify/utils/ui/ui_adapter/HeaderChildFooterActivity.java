@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.example.datautils.HanziToPinyin;
@@ -17,6 +18,7 @@ import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.Contact;
 import com.magnify.yutils.DeviceUtil;
+import com.yan.fastview_library.view.SideBar;
 import com.yan.fastview_library.view.text.PowerEditText;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import java.util.HashMap;
  */
 public class HeaderChildFooterActivity extends CurrentBaseActivity {
     private ListView listView;
+    private SideBar mSideBar;
     private PowerEditText editText;
     private HashMap<String, ArrayList<User>> sortUsers = new HashMap<>();
     private BaseHeaderChildFooterAdapter<Contact, User> mHeaderFooterAdapter;
@@ -45,6 +48,7 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
     private void findViewNSetTextWatcher() {
         listView = (ListView) findViewById(R.id.listview);
         editText = (PowerEditText) findViewById(R.id.edit_query);
+        mSideBar = (SideBar) findViewById(R.id.sideBar);
         editText.setVisibility(View.VISIBLE);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,13 +62,41 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
                     String sortKey = HanziToPinyin.getSortKey(s.toString()).toUpperCase();
                     int scorllPosition = mHeaderFooterAdapter.getChildPositionAtListView(sortKey, s.toString());
                     if (scorllPosition >= 0)//第二个参数只滚动到该position时,离顶部的偏移量
+                    {
                         listView.smoothScrollToPositionFromTop(scorllPosition, DeviceUtil.dipToPx(self, -10));//算出,并滚动到头顶
+                        mSideBar.setSelectPosition(sortKey);
+                    }
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (mHeaderFooterAdapter != null) {
+                    mSideBar.setSelectPosition(mHeaderFooterAdapter.getSortKeyAtPosition(firstVisibleItem));
+                }
+            }
+        });
+        mSideBar.setOnTouchCharactersListerner(new SideBar.onTouchCharactersListerner() {
+            @Override
+            public boolean onTouchCharacter(int position, String touchText) {
+                int scrollePosition = mHeaderFooterAdapter.getHeaderPositionAtListView(touchText);
+                if (scrollePosition >= 0) {
+                    listView.smoothScrollToPositionFromTop(scrollePosition, 0);
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -89,6 +121,7 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
         }
 
         Collections.sort(contacts, new PinyinComparator());
+        mSideBar.setAvaliableCharacters(sortUsers.keySet());
 
         mHeaderFooterAdapter = new BaseHeaderChildFooterAdapter<Contact, User>(self, contacts, R.layout.item_header_layout, R.layout.item_child_layout, R.layout.item_footer_layout) {
             @Override

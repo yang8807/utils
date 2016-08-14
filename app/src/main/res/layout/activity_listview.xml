@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.yan.fastview_library.view.text.PowerEditText
         android:id="@+id/edit_query"
         android:layout_width="match_parent"
@@ -17,10 +16,29 @@
         android:visibility="gone"
         app:drawable_width="25dp" />
 
-    <ListView
-        android:id="@+id/listview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></ListView>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+        <com.yan.fastview_library.view.SideBar
+            android:id="@+id/sideBar"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:paddingBottom="50dp"
+            android:paddingTop="50dp"
+            android:textColor="@drawable/side_bar_select_color"
+            android:textSize="13sp"
+            android:visibility="visible"
+            app:sb_touch_character_drawable="@drawable/bg_character" />
+    </RelativeLayout>
+
 
 </LinearLayout>

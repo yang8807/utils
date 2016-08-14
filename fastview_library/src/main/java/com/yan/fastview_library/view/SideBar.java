@@ -16,6 +16,10 @@ import android.view.View;
 import com.magnify.yutils.view_utils.TextDrawUtils;
 import com.yan.fastview_library.R;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by heinigger on 16/8/12.
  */
@@ -38,6 +42,10 @@ public class SideBar extends View {
     private int selectPosition = 0;
     private onTouchCharactersListerner onTouchCharactersListerner;
     private Drawable mCharacterTouchDrawable;
+    private List<String> avaliableCharacters;
+    private int mValidTextColor = Color.GRAY;
+    //是否开启无用文本的颜色,如果不开启,则无用文本的颜色跟普通文本颜色一致
+    private boolean validTextColorEnable = true;
 
     public void setOnTouchCharactersListerner(SideBar.onTouchCharactersListerner onTouchCharactersListerner) {
         this.onTouchCharactersListerner = onTouchCharactersListerner;
@@ -48,6 +56,7 @@ public class SideBar extends View {
         iniProperites(context, attrs);
         iniPaint();
     }
+
 
     private void iniProperites(Context context, AttributeSet attrs) {
         TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.SideBar);
@@ -70,6 +79,8 @@ public class SideBar extends View {
                 }
             } else if (attr == R.styleable.SideBar_sb_touch_character_drawable) {
                 mCharacterTouchDrawable = tp.getDrawable(attr);
+            } else if (attr == R.styleable.SideBar_validCharacterTextColor) {
+                mValidTextColor = tp.getColor(attr, mValidTextColor);
             }
         }
 
@@ -108,17 +119,21 @@ public class SideBar extends View {
         //绘制drawable的起点位置
         int startY = (canvas.getHeight() - unitWidth * defaultSideData.length) / 2;
         for (int i = 0; i < defaultSideData.length; i++) {
+            //绘制完背景,再绘制文本,才不会被挡住
+            String drawText = String.valueOf(defaultSideData[i]);
             //绘制字母被选中后的drwable
-            if (selectPosition == i && mCharacterTouchDrawable != null) {
+            if (selectPosition == i && mCharacterTouchDrawable != null) {//选中的
                 mCharacterTouchDrawable.setBounds(0, 0, unitWidth, unitWidth);
                 canvas.save();
                 canvas.translate(startX, startY);
+                mPaint.setColor(selectColor);
                 mCharacterTouchDrawable.draw(canvas);
                 canvas.restore();
+            } else if (avaliableCharacters != null && !avaliableCharacters.contains(drawText) && validTextColorEnable) {//带行数据中不存在的
+                mPaint.setColor(mValidTextColor);
+            } else {//普通的
+                mPaint.setColor(normalColor);
             }
-            //绘制完背景,再绘制文本,才不会被挡住
-            String drawText = String.valueOf(defaultSideData[i]);
-            mPaint.setColor(selectPosition == i ? selectColor : normalColor);
             canvas.drawText(drawText, (pWidth - mPaint.measureText(drawText)) / 2, startTextY, mPaint);
             startTextY += unitWidth;
             startY += unitWidth;
@@ -153,11 +168,47 @@ public class SideBar extends View {
         }
     }
 
+    public void setSelectPosition(int position) {
+        this.selectPosition = position;
+        if (selectPosition <= defaultSideData.length && selectPosition >= 0) invalidate();
+    }
+
+    public void setSelectPosition(String character) {
+        if (TextUtils.isEmpty(character)) return;
+        for (int i = 0; i < defaultSideData.length; i++) {
+            if (character.toUpperCase().equals(String.valueOf(defaultSideData[i]))) {
+                selectPosition = i;
+                invalidate();
+                break;
+            }
+        }
+    }
+
     public void setBackGroundDrawable(Drawable mBackDrawabwle) {
         if (Build.VERSION_CODES.JELLY_BEAN >= Build.VERSION.SDK_INT)
             setBackground(mBackDrawabwle);
         else
             setBackgroundDrawable(mBackDrawabwle);
+    }
+
+    /**
+     * 添加可用的导航栏数据,剩余的就是没有用到的,没有用到的可以设置额外的颜色
+     */
+    public void setAvaliableCharacters(Set<String> avaliableCharacters) {
+        if (avaliableCharacters != null && !avaliableCharacters.isEmpty()) {
+            this.avaliableCharacters = new ArrayList<String>();
+            for (String avaliableCharacter : avaliableCharacters) {
+                this.avaliableCharacters.add(avaliableCharacter);
+            }
+        }
+    }
+
+    public void setAvaliableCharacters(List<String> avaliableCharacters) {
+        this.avaliableCharacters = avaliableCharacters;
+    }
+
+    public void setValidTextColorEnable(boolean validTextColorEnable) {
+        this.validTextColorEnable = validTextColorEnable;
     }
 
     public interface onTouchCharactersListerner {

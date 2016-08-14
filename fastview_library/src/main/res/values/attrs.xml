@@ -23,5 +23,7 @@
         <attr name="android:text" />
         <!-- 设置字母导航栏,字母被选中后的背景 -->
         <attr name="sb_touch_character_drawable" format="reference" />
+        <!-- 没有用到的导航字母的颜色,这里可以额外设定的 -->
+        <attr name="validCharacterTextColor" format="color" />
     </declare-styleable>
 </resources>

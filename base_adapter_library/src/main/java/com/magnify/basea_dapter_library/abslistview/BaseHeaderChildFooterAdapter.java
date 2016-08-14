@@ -290,13 +290,22 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                 for (int j = 0; j < getChildCount(hf, i); j++) {
                     C c = getChild(hf, j);
                     String childName = getChildName(j, c);
-                    if (childName.contains(s)) {
+                    if (childName.toLowerCase().contains(s.toLowerCase())) {
                         return (position + j + 1);//找到了该位置的时候,中断循环
                     }
                 }
             }
         }
         return position;
+    }
+
+    /**
+     * 获取再position上的sortKey
+     */
+    public String getSortKeyAtPosition(int position) {
+        PositionInfo positionInfo = positions.get(position);
+        return getGroupSortKey(position, groupDatas.get(positionInfo.getGroupPosition()));
+
     }
 
     /*记录位置信息和类型*/
