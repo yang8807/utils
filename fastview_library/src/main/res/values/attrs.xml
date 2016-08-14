@@ -21,5 +21,7 @@
         <attr name="android:textColor" />
         <attr name="android:background" />
         <attr name="android:text" />
+        <!-- 设置字母导航栏,字母被选中后的背景 -->
+        <attr name="sb_touch_character_drawable" format="reference" />
     </declare-styleable>
 </resources>

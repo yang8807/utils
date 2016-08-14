@@ -29,7 +29,7 @@ public class SideBar extends View {
     private int pWidth;
     private Paint mPaint;
     //开始绘制的位置
-    private int startY;
+    private int startTextY;
     private int normalColor = Color.BLACK;
     private int selectColor = Color.GREEN;
     private Drawable mBackDrawable;
@@ -37,6 +37,7 @@ public class SideBar extends View {
     //选中的位置
     private int selectPosition = 0;
     private onTouchCharactersListerner onTouchCharactersListerner;
+    private Drawable mCharacterTouchDrawable;
 
     public void setOnTouchCharactersListerner(SideBar.onTouchCharactersListerner onTouchCharactersListerner) {
         this.onTouchCharactersListerner = onTouchCharactersListerner;
@@ -67,6 +68,8 @@ public class SideBar extends View {
                 if (!TextUtils.isEmpty(text)) {
                     defaultSideData = text.trim().toCharArray();
                 }
+            } else if (attr == R.styleable.SideBar_sb_touch_character_drawable) {
+                mCharacterTouchDrawable = tp.getDrawable(attr);
             }
         }
 
@@ -96,12 +99,28 @@ public class SideBar extends View {
     protected void onDraw(Canvas canvas) {
         pHeight = canvas.getHeight() - getPaddingBottom() - getPaddingTop();
         pWidth = canvas.getWidth() - getPaddingLeft() - getPaddingRight();
+        //每个字母的单元大小
         unitWidth = Math.min(pHeight, pWidth * defaultSideData.length) / defaultSideData.length;
-        startY = TextDrawUtils.getBaseLineY(mPaint, unitWidth) + (canvas.getHeight() - unitWidth * defaultSideData.length) / 2;
+        //绘制的起点位置
+        int startX = (pWidth - unitWidth) / 2;
+        //绘制文本的起点位置
+        startTextY = TextDrawUtils.getBaseLineY(mPaint, unitWidth) + (canvas.getHeight() - unitWidth * defaultSideData.length) / 2;
+        //绘制drawable的起点位置
+        int startY = (canvas.getHeight() - unitWidth * defaultSideData.length) / 2;
         for (int i = 0; i < defaultSideData.length; i++) {
+            //绘制字母被选中后的drwable
+            if (selectPosition == i && mCharacterTouchDrawable != null) {
+                mCharacterTouchDrawable.setBounds(0, 0, unitWidth, unitWidth);
+                canvas.save();
+                canvas.translate(startX, startY);
+                mCharacterTouchDrawable.draw(canvas);
+                canvas.restore();
+            }
+            //绘制完背景,再绘制文本,才不会被挡住
             String drawText = String.valueOf(defaultSideData[i]);
             mPaint.setColor(selectPosition == i ? selectColor : normalColor);
-            canvas.drawText(drawText, (pWidth - mPaint.measureText(drawText)) / 2, startY, mPaint);
+            canvas.drawText(drawText, (pWidth - mPaint.measureText(drawText)) / 2, startTextY, mPaint);
+            startTextY += unitWidth;
             startY += unitWidth;
         }
     }
