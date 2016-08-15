@@ -42,7 +42,7 @@ public class BannerLoopView extends ViewPager {
 
     public BannerLoopView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        ViewPagerScroller pagerScroller=new ViewPagerScroller(getContext());
+        ViewPagerScroller pagerScroller = new ViewPagerScroller(getContext());
         pagerScroller.setScrollDuration(1000);
         pagerScroller.initViewPagerScroll(this);
         this.addOnPageChangeListener(new SimpleOnPageChangeListener() {
@@ -51,13 +51,11 @@ public class BannerLoopView extends ViewPager {
                 LogUtil.v("mine", "position运行轨迹" + position);
                 if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
                     position = 1;
-                    index = position;
                 } else if (position == 0) {
                     position = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
                     setCurrentItem(position, false);
-                    index = position;
                 }
-
+                index = position;
             }
 
             @Override
