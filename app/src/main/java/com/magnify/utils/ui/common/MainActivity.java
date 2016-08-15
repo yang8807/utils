@@ -13,7 +13,8 @@ import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.ActivityBean;
 import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
-import com.magnify.utils.ui.ui_view.AcitvitiySideBar;
+import com.magnify.utils.ui.ui_view.ActivityBannerView;
+import com.magnify.utils.ui.ui_view.ActivityShowView;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,8 @@ public class MainActivity extends CurrentBaseActivity {
         add("一些数据安全或者保存工具", "简化数据加密和数据保存的操作", CategoryActivity.class, CategoryActivity.TYPE_DATA);
         add("自定义的视图或者之前为解决一类问题而收集的View", "view,效果...", CategoryActivity.class, CategoryActivity.TYPE_VIEW);
         add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
-        add("SideBar", "字母导航栏", AcitvitiySideBar.class);
+        add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
+        add("BannerLooperView", "广告导航栏效果", ActivityBannerView.class);
     }
 
     @Override

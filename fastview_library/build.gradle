@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'//添加
 
 android {
@@ -31,7 +30,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile project(':yutils')
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile project(':base_adapter_library')
 }
 //添加
 publish {

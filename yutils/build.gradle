@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'//添加
 android {
     compileSdkVersion 24
@@ -31,7 +30,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.google.code.gson:gson:2.7'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 //添加
 publish {
