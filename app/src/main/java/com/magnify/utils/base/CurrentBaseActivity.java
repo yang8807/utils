@@ -2,7 +2,6 @@ package com.magnify.utils.base;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +19,6 @@ import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
 import com.magnify.yutils.LogUtil;
 import com.magnify.yutils.app.BaseActivity;
-import com.magnify.yutils.data.BitmapBlurHelper;
 
 public class CurrentBaseActivity extends BaseActivity {
     public static final String TITLE = "title";
@@ -44,11 +42,11 @@ public class CurrentBaseActivity extends BaseActivity {
 
         image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.dog : R.mipmap.duola);
         //图片模糊效果已经可以使用了
-        if (bitmap == null) {
-            bitmap = BitmapBlurHelper.doBlurJniArray(BitmapFactory.decodeResource(getResources(), R.mipmap.background), 50, false);
-        }
-        img_back.setImageBitmap(bitmap);
-        img_back.setVisibility(RandomUtil.randomInt(100) % 2 == 0 ? View.VISIBLE : View.GONE);
+//        if (bitmap == null) {
+//            bitmap = BitmapBlurHelper.doBlurJniArray(BitmapFactory.decodeResource(getResources(), R.mipmap.background), 50, false);
+//        }
+//        img_back.setImageBitmap(bitmap);
+//        img_back.setVisibility(RandomUtil.randomInt(100) % 2 == 0 ? View.VISIBLE : View.GONE);
 
         getSupportActionBar().setTitle(getIntent().getStringExtra(TITLE));
         getSupportActionBar().setSubtitle(getIntent().getStringExtra(SUBTITLE));

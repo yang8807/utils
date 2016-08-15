@@ -29,7 +29,7 @@ public class BitmapBlurHelper {
         int[] pix = new int[w * h];
         bitmap.getPixels(pix, 0, w, 0, 0, w, h);
         // Jni array calculate
-        ImageBlur.blurIntArray(pix, w, h, radius);
+//        ImageBlur.blurIntArray(pix, w, h, radius);
 
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
 
@@ -51,7 +51,7 @@ public class BitmapBlurHelper {
                 return (null);
             }
             // Jni bitmap calculate
-            ImageBlur.blurBitMap(bitmap, radius);
+//            ImageBlur.blurBitMap(bitmap, radius);
 
             return (bitmap);
         } catch (Exception e) {

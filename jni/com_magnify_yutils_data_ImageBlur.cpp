@@ -1,5 +1,5 @@
 #include "com_magnify_yutils_data_ImageBlur.h"
-#include <ImageBlur.c>
+#include "ImageBlur.c"
 #include <android/log.h>
 #include <android/bitmap.h>
 
