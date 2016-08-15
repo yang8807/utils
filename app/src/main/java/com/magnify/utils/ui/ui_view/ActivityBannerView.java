@@ -20,7 +20,7 @@ public class ActivityBannerView extends CurrentBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_looper_view);
         banner_looper_view = (BannerLoopView) findViewById(R.id.banner_looper_view);
-        ArrayList<String> imageUrls = RandomUtil.getRandomImage(5);
+        ArrayList<String> imageUrls = RandomUtil.getRandomImage(3);
         banner_looper_view.setImageUrls(imageUrls);
 
     }

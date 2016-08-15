@@ -2,7 +2,6 @@ package com.magnify.basea_dapter_library.abslistview;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public abstract class CommonViewPagerAdapter<T> extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        Log.e("test", "instantiateItem " + position);
         ViewHolder viewHolder = null;
         View convertView = null;
         if (mViewCache.size() == 0) {
