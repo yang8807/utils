@@ -9,15 +9,15 @@ import android.support.v4.view.ViewPager;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
 import com.magnify.utils.R;
+import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.bean.People;
-import com.magnify.yutils.app.BaseActivity;
 
 import java.util.ArrayList;
 
 /**
  * Created by heinigger on 16/8/3.
  */
-public class ImageBrowseActivity extends BaseActivity {
+public class ImageBrowseActivity extends CurrentBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,7 @@ public class ImageBrowseActivity extends BaseActivity {
         final ArrayList<People> peoples = ((ArrayList<People>) getIntent().getSerializableExtra("people"));
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPage);
         viewPager.setOffscreenPageLimit(5);
-        viewPager.setAdapter(new CommonViewPagerAdapter<People>(peoples, self, R.layout.item_image_view) {
+        viewPager.setAdapter(new CommonViewPagerAdapter<People>(peoples, self, R.layout.activity_view_pager_details) {
             @Override
             protected void convert(ViewHolder viewHolder, int position, People people) {
                 viewHolder.setText(R.id.tv_description, people.getUserName() + ":" + people.getAge() + "岁 " + people.getSex() + " " + people.getPhone());

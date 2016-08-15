@@ -1,6 +1,5 @@
 package com.magnify.utils.ui.common;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,7 +73,6 @@ public class MainActivity extends CurrentBaseActivity {
 
     private void setAdapter() {
         recyler = (RecyclerView) findViewById(R.id.recyler);
-        recyler.setBackgroundColor(Color.WHITE);
         recyler.setLayoutManager(new LinearLayoutManager(this));
         recyler.setAdapter(new CommonAdapter<ActivityBean>(self, R.layout.item_text_view, arrayLists) {
             @Override
