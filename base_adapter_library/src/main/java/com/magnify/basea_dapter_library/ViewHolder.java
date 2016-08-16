@@ -106,8 +106,23 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public ViewHolder displayImage(int drawableId, ImageView imageView) {
+        if (imageLoaderInterface != null) {
+            imageLoaderInterface.displayImage(drawableId, imageView);
+        } else if (imageLoaderInterface != null) {
+            imageLoaderInterface.displayImage(drawableId, imageView);
+        } else {
+            Log.e("ViewHolder", "请在全局中初始化ImageLoaderInterface");
+        }
+        return this;
+    }
+
     public ViewHolder displayImage(String url, int viewId) {
         return displayImage(url, (ImageView) getView(viewId), -1);
+    }
+
+    public ViewHolder displayImage(int drawableId, int viewId) {
+        return displayImage(drawableId, (ImageView) getView(viewId));
     }
 
     public ViewHolder displayImage(String url, int viewId, int defaultDrawable) {
@@ -118,12 +133,28 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return displayRoundImage(url, (ImageView) getView(viewID), defaultDrawable);
     }
 
+    public ViewHolder displayRoundImage(int url, int viewID) {
+        return displayRoundImage(url, (ImageView) getView(viewID));
+    }
+
     public ViewHolder displayRoundImage(String url, ImageView imageView, int defaultDrawable) {
 
         if (imageLoaderInterface != null && defaultDrawable > 0) {
             imageLoaderInterface.displayRoundImage(url, imageView, defaultDrawable);
         } else if (imageLoaderInterface != null && defaultDrawable < 0) {
             imageLoaderInterface.displayRoundImage(url, imageView);
+        } else {
+            Log.e("ViewHolder", "请在全局中初始化ImageLoaderInterface");
+        }
+        return this;
+    }
+
+    public ViewHolder displayRoundImage(int drawableID, ImageView imageView) {
+
+        if (imageLoaderInterface != null) {
+            imageLoaderInterface.displayRoundImage(drawableID, imageView);
+        } else if (imageLoaderInterface != null) {
+            imageLoaderInterface.displayRoundImage(drawableID, imageView);
         } else {
             Log.e("ViewHolder", "请在全局中初始化ImageLoaderInterface");
         }

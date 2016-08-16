@@ -20,6 +20,11 @@ public class GlideImageLoader implements ImageLoaderInterface {
     }
 
     @Override
+    public void displayImage(int drawableID, ImageView imageView) {
+        Glide.with(CurrentApp.getAppContext()).load(drawableID).into(imageView);
+    }
+
+    @Override
     public void displayRoundImage(String url, ImageView imageView) {
         Glide.with(CurrentApp.getAppContext()).load(url).transform(new GlideCircleTransform(CurrentApp.getAppContext())).into(imageView);
 
@@ -28,5 +33,10 @@ public class GlideImageLoader implements ImageLoaderInterface {
     @Override
     public void displayRoundImage(String url, ImageView imageView, int defaultDrawable) {
         Glide.with(CurrentApp.getAppContext()).load(url).transform(new GlideCircleTransform(CurrentApp.getAppContext())).placeholder(defaultDrawable).into(imageView);
+    }
+
+    @Override
+    public void displayRoundImage(int drawableId, ImageView imageView) {
+        Glide.with(CurrentApp.getAppContext()).load(drawableId).transform(new GlideCircleTransform(CurrentApp.getAppContext())).into(imageView);
     }
 }

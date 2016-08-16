@@ -2,14 +2,15 @@ package com.yan.fastview_library.viewgroup;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
-import com.yan.fastview_library.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import utils.ViewPagerScroller;
@@ -23,14 +24,15 @@ import utils.ViewPagerScroller;
  * 0-1-2为正常的三个图片。2，0  为添加的两个图片view
  * 滑动的顺序：进入页面显示0图片，向右滑动到0时,将0页设置为0，则可以继续向右滑动。同理当向左滑动到  2 时，将2页设置为2。
  */
-public class BannerLoopView extends ViewPager {
+public class BannerLoopView<T> extends ViewPager {
 
-    private BannerAdapter bannerAdapter;
+    private CommonViewPagerAdapter<T> bannerAdapter;
     private Handler mHandler = new Handler();
     //在当前页面停留的时间 TODO:当时间为1000秒的时候,就会出现那种普通的效果,看起来不正常的一样
     private int mDuration = 1500;
+    //定时切换页面的任务
     private SwitchPagerRunnable mSwitchTask;
-    private List<String> mImageUrls;
+    private List<T> mImageUrls;
     //临时无用的数目
     public static final int TMEPCOUNT = 2;
     private int index = 0;
@@ -65,15 +67,32 @@ public class BannerLoopView extends ViewPager {
         });
     }
 
-    public void setImageUrls(List<String> imageUrls) {
+    public void setImageUrls(int layoutid, @NonNull final LoopAdapterListener<T> listener, T... ts) {
+        List<T> list = new ArrayList<>();
+        for (int i = 0; i < ts.length; i++) {
+            list.add(ts[i]);
+        }
+        setImageUrls(layoutid, listener, list);
+    }
+
+    public void setImageUrls(int layoutid, @NonNull final LoopAdapterListener<T> listener, List<T> imageUrls) {
         this.mImageUrls = imageUrls;
         //添加到最后一个
         mImageUrls.add(mImageUrls.get(0));
         //添加最后一个有效的,加入第一个集合
         mImageUrls.add(0, mImageUrls.get(mImageUrls.size() - TMEPCOUNT));
-        bannerAdapter = new BannerAdapter(imageUrls, getContext());
-        this.setAdapter(bannerAdapter);
-        mSwitchTask = new SwitchPagerRunnable();
+        bannerAdapter = new CommonViewPagerAdapter<T>(imageUrls, getContext(), layoutid) {
+            @Override
+            protected void convert(ViewHolder viewHolder, int position, T o) {
+                listener.convert(viewHolder, position, o);
+            }
+        };
+        setAdapter(bannerAdapter);
+        if (mSwitchTask == null) {
+            mSwitchTask = new SwitchPagerRunnable();
+        } else {
+            mHandler.removeCallbacks(mSwitchTask);
+        }
         setCurrentItem(1);
         mHandler.postDelayed(mSwitchTask, mDuration);
     }
@@ -93,17 +112,6 @@ public class BannerLoopView extends ViewPager {
         return super.dispatchTouchEvent(ev);
     }
 
-    private class BannerAdapter extends CommonViewPagerAdapter<String> {
-
-        public BannerAdapter(List<String> datas, Context context) {
-            super(datas, context, R.layout.item_banner_looper);
-        }
-
-        @Override
-        protected void convert(ViewHolder viewHolder, int position, String s) {
-            viewHolder.displayImage(s, R.id.imageView);
-        }
-    }
 
     private class SwitchPagerRunnable implements Runnable {
 
@@ -121,5 +129,12 @@ public class BannerLoopView extends ViewPager {
         mHandler.removeCallbacks(mSwitchTask);
         mHandler = null;
         mSwitchTask = null;
+    }
+
+    /**
+     * 将数据回调的接口
+     */
+    public interface LoopAdapterListener<T> {
+        public void convert(ViewHolder viewHolder, int position, T t);
     }
 }

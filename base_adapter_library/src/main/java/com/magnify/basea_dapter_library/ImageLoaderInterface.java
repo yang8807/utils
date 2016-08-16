@@ -10,7 +10,11 @@ public interface ImageLoaderInterface {
 
     public void displayImage(String url, ImageView imageView, int defaultDrawable);
 
+    public void displayImage(int drawableID, ImageView imageView);
+
     public void displayRoundImage(String url, ImageView imageView);
 
     public void displayRoundImage(String url, ImageView imageView, int defaultDrawable);
+
+    public void displayRoundImage(int drawableId, ImageView imageView);
 }
