@@ -27,8 +27,8 @@ public class BannerLoopView extends ViewPager {
 
     private BannerAdapter bannerAdapter;
     private Handler mHandler = new Handler();
-    //在当前页面停留的时间
-    private int mDuration = 2000;
+    //在当前页面停留的时间 TODO:当时间为1000秒的时候,就会出现那种普通的效果,看起来不正常的一样
+    private int mDuration = 1500;
     private SwitchPagerRunnable mSwitchTask;
     private List<String> mImageUrls;
     //临时无用的数目
@@ -57,7 +57,7 @@ public class BannerLoopView extends ViewPager {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                //拖动状态也进行页面设置,就避免了到末页,不能拖动到下一页的情况
+                //拖动状态也进行页面设置,就避免了到尾部
                 if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
                     setCurrentItem(index, false);
                 }
