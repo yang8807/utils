@@ -16,6 +16,7 @@
     <declare-styleable name="ClearAutoCompleteText">
         <attr name="clear_tint" format="color" />
     </declare-styleable>
+    <!-- 字母导航栏 -->
     <declare-styleable name="SideBar">
         <attr name="android:textSize" />
         <attr name="android:textColor" />
@@ -25,5 +26,12 @@
         <attr name="sb_touch_character_drawable" format="reference" />
         <!-- 没有用到的导航字母的颜色,这里可以额外设定的 -->
         <attr name="validCharacterTextColor" format="color" />
+    </declare-styleable>
+    <!-- 轮动广告栏 -->
+    <declare-styleable name="BannerLoopView">
+        <!--在一个页面的停留时间 -->
+        <attr name="blv_dwell_time" format="integer" />
+        <!--一个页面切换到另一个页面所需要的时间 -->
+        <attr name="blv_switch_time" format="integer" />
     </declare-styleable>
 </resources>

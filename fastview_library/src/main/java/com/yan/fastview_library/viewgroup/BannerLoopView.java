@@ -1,6 +1,7 @@
 package com.yan.fastview_library.viewgroup;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,7 @@ import android.view.MotionEvent;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
+import com.yan.fastview_library.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,9 @@ public class BannerLoopView<T> extends ViewPager {
 
     private CommonViewPagerAdapter<T> bannerAdapter;
     private Handler mHandler = new Handler();
-    //在当前页面停留的时间 TODO:当时间为1000秒的时候,就会出现那种普通的效果,看起来不正常的一样
-    private int mDuration = 1500;
+    //在当前页面停留的时间 TODO:当时间为1000秒的时候,就会出现那种普通的效果,看起来不正常的一样,切换速度也是一样会影响
+    private int mDwellTime = 1500;
+    private int mSwitchTime = 1500;
     //定时切换页面的任务
     private SwitchPagerRunnable mSwitchTask;
     private List<T> mImageUrls;
@@ -43,9 +46,22 @@ public class BannerLoopView<T> extends ViewPager {
 
     public BannerLoopView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.BannerLoopView);
+        mDwellTime = tp.getInt(R.styleable.BannerLoopView_blv_dwell_time, mDwellTime);
+        mSwitchTime = tp.getInt(R.styleable.BannerLoopView_blv_switch_time, mSwitchTime);
+        tp.recycle();
+        //设置页面之间切换的速度
         ViewPagerScroller pagerScroller = new ViewPagerScroller(getContext());
-        pagerScroller.setScrollDuration(1000);
+        pagerScroller.setScrollDuration(mSwitchTime);
         pagerScroller.initViewPagerScroll(this);
+        addOnSelfPagerListener();
+    }
+
+    /**
+     * 为自己添加切换事件
+     */
+    private void addOnSelfPagerListener() {
         this.addOnPageChangeListener(new SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -94,7 +110,7 @@ public class BannerLoopView<T> extends ViewPager {
             mHandler.removeCallbacks(mSwitchTask);
         }
         setCurrentItem(1);
-        mHandler.postDelayed(mSwitchTask, mDuration);
+        mHandler.postDelayed(mSwitchTask, mDwellTime);
     }
 
     @Override
@@ -102,7 +118,7 @@ public class BannerLoopView<T> extends ViewPager {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                mHandler.postDelayed(mSwitchTask, mDuration);
+                mHandler.postDelayed(mSwitchTask, mDwellTime);
                 break;
             default:
                 mHandler.removeCallbacks(mSwitchTask);
@@ -119,7 +135,7 @@ public class BannerLoopView<T> extends ViewPager {
         public void run() {
             ++index;
             setCurrentItem(index);
-            mHandler.postDelayed(this, mDuration);
+            mHandler.postDelayed(this, mDwellTime);
         }
     }
 
