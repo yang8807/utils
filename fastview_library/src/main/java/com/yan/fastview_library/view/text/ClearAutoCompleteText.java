@@ -13,10 +13,9 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
+import com.magnify.yutils.DeviceUtil;
 import com.magnify.yutils.data.ImageUtils;
 import com.yan.fastview_library.R;
-
-import utils.DisplayUtil;
 
 public class ClearAutoCompleteText extends PowerAutoCompeleteEditText implements View.OnFocusChangeListener {
     /**
@@ -89,7 +88,7 @@ public class ClearAutoCompleteText extends PowerAutoCompeleteEditText implements
         mClearDrawable = ImageUtils.bitmap2Drawable(ImageUtils.drawable2Bitmap(mClearDrawable));
         if (tintColor != -1)
             mClearDrawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
-        int width = DisplayUtil.dip2px(getContext(), 25);
+        int width = DeviceUtil.dipToPx(getContext(), 25);
         mClearDrawable.setBounds(0, 0, width, width);
         setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], mClearDrawable, getCompoundDrawables()[3]);
         setClearIconVisible(false);

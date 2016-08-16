@@ -5,12 +5,12 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.magnify.yutils.DeviceUtil;
 import com.yan.fastview_library.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import utils.DisplayUtil;
 
 
 public class TagFlowLayout extends ViewGroup {
@@ -32,8 +32,8 @@ public class TagFlowLayout extends ViewGroup {
     public TagFlowLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        mVetivalSpace = DisplayUtil.dip2px(context, 5);
-        mHorizontalSpace = DisplayUtil.dip2px(context, 5);
+        mVetivalSpace = DeviceUtil.dipToPx(context, 5);
+        mHorizontalSpace = DeviceUtil.dipToPx(context, 5);
 
         TypedArray a = null;
         try {
