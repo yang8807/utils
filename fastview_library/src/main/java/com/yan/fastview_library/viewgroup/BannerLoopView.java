@@ -8,7 +8,6 @@ import android.view.MotionEvent;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
-import com.magnify.yutils.LogUtil;
 import com.yan.fastview_library.R;
 
 import java.util.List;
@@ -48,19 +47,18 @@ public class BannerLoopView extends ViewPager {
         this.addOnPageChangeListener(new SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                LogUtil.v("mine", "position运行轨迹" + position);
                 if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
                     position = 1;
                 } else if (position == 0) {
                     position = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
-                    setCurrentItem(position, false);
                 }
                 index = position;
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == SCROLL_STATE_IDLE && index == 1) {//将任务放在这里执行,就能正常显示动画了
+                //拖动状态也进行页面设置,就避免了到末页,不能拖动到下一页的情况
+                if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
                     setCurrentItem(index, false);
                 }
             }
@@ -73,7 +71,6 @@ public class BannerLoopView extends ViewPager {
         mImageUrls.add(mImageUrls.get(0));
         //添加最后一个有效的,加入第一个集合
         mImageUrls.add(0, mImageUrls.get(mImageUrls.size() - TMEPCOUNT));
-        LogUtil.v("mine", "数量是" + mImageUrls.size());
         bannerAdapter = new BannerAdapter(imageUrls, getContext());
         this.setAdapter(bannerAdapter);
         mSwitchTask = new SwitchPagerRunnable();
@@ -116,5 +113,13 @@ public class BannerLoopView extends ViewPager {
             setCurrentItem(index);
             mHandler.postDelayed(this, mDuration);
         }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mHandler.removeCallbacks(mSwitchTask);
+        mHandler = null;
+        mSwitchTask = null;
     }
 }
