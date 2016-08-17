@@ -65,9 +65,10 @@
 
         <com.yan.fastview_library.indicator.BannerLooperIndicator
             android:id="@+id/baner_indicator_normal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#79000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             app:bli_normal="#ff6c6c"
             app:bli_select="@color/colorPrimary" />
     </RelativeLayout>

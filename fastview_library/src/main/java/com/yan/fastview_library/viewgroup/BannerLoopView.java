@@ -101,7 +101,7 @@ public class BannerLoopView<T> extends ViewPager {
         public void onPageScrollStateChanged(int state) {
             //拖动状态也进行页面设置,就避免了到尾部
             if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
-                setCurrentItem(index, false);
+                BannerLoopView.super.setCurrentItem(index, false);
             }
             if (!externalOnPagerListeners.isEmpty()) {
                 for (int i = 0; i < externalOnPagerListeners.size(); i++) {
@@ -151,7 +151,7 @@ public class BannerLoopView<T> extends ViewPager {
         } else {
             mHandler.removeCallbacks(mSwitchTask);
         }
-        setCurrentItem(1);
+        super.setCurrentItem(1);
         mHandler.postDelayed(mSwitchTask, mDwellTime);
     }
 
@@ -176,7 +176,7 @@ public class BannerLoopView<T> extends ViewPager {
         @Override
         public void run() {
             ++index;
-            setCurrentItem(index);
+            BannerLoopView.super.setCurrentItem(index);
             mHandler.postDelayed(this, mDwellTime);
         }
     }
@@ -187,6 +187,14 @@ public class BannerLoopView<T> extends ViewPager {
         mHandler.removeCallbacks(mSwitchTask);
         mHandler = null;
         mSwitchTask = null;
+    }
+
+    /**
+     * 还要调用这个,外界在使用的使用的时候,才能正常使用
+     */
+    @Override
+    public void setCurrentItem(int item) {
+        super.setCurrentItem(item + 1);
     }
 
     /**

@@ -7,9 +7,11 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.magnify.yutils.DeviceUtil;
+import com.magnify.yutils.LogUtil;
 import com.magnify.yutils.data.ColorUtils;
 import com.yan.fastview_library.R;
 
@@ -18,18 +20,18 @@ import com.yan.fastview_library.R;
  */
 public class BannerLooperIndicator extends View {
     private int mChildCount;
-    private int index;
     private ViewPager externalViewPager;
     //view之间的间距
-    private int mIntervalPadding = DeviceUtil.dipToPx(getContext(), 10);
+    private int mIntervalPadding = DeviceUtil.dipToPx(getContext(), 5);
     //horizontal =0,vertical=1
     private int mOriention;
     private int mPheight, mPwidth;
     private int mScrolleWidth;
     private Drawable mNormalDrawable, mSelectDrawable;
-    private int mDefaultDrawableSize = DeviceUtil.dipToPx(getContext(), 15);
+    private int mDefaultDrawableSize = DeviceUtil.dipToPx(getContext(), 10);
     private int mDrawableSize;
     private int itemSize = 0;
+    private int startX;
 
     public BannerLooperIndicator(Context context) {
         this(context, null);
@@ -43,9 +45,15 @@ public class BannerLooperIndicator extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //获取控件的测量规则:
+//        widthMeasureSpec== MeasureSpec.AT_MOST
+
+
         mPwidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         mPheight = getMeasuredHeight() - getPaddingBottom() - getPaddingTop();
         itemSize = mDrawableSize + mIntervalPadding * 2;
+        startX = (mPwidth - itemSize * mChildCount) / 2;
+        LogUtil.v("mine", "mIntervalPadding:" + mIntervalPadding + " mDrawableSize:" + mDrawableSize);
     }
 
     private void initProperties(TypedArray typedArray) {
@@ -53,7 +61,7 @@ public class BannerLooperIndicator extends View {
         for (int i = 0; i < count; i++) {
             int attr = typedArray.getIndex(i);
             if (attr == R.styleable.BannerLooperIndicator_android_orientation) {
-
+                mOriention = typedArray.getInt(attr, 0);
             } else if (attr == R.styleable.BannerLooperIndicator_bli_interval_padding) {
                 mIntervalPadding = (int) typedArray.getDimension(attr, mIntervalPadding);
             } else if (attr == R.styleable.BannerLooperIndicator_bli_normal) {
@@ -91,6 +99,24 @@ public class BannerLooperIndicator extends View {
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        int mLength = (int) event.getX() - startX;
+        final int index = mLength / itemSize;
+        if (index >= 0 && index <= mChildCount - 1) {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    externalViewPager.setCurrentItem(index);
+                }
+            });
+            LogUtil.v("mine", "点击的位置:" + index);
+        }
+
+        //在这里处理一下点击事件
+        return super.dispatchTouchEvent(event);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         int startY = (mPheight - mDrawableSize) / 2;
         int startX = (mPwidth - itemSize * mChildCount) / 2;
@@ -121,7 +147,7 @@ public class BannerLooperIndicator extends View {
 
             @Override
             public void onPageSelected(int position) {
-                index = position;
+                mScrolleWidth = position * itemSize;
             }
 
             @Override
