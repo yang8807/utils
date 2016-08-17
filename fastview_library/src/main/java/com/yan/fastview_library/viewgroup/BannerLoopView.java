@@ -39,6 +39,10 @@ public class BannerLoopView<T> extends ViewPager {
     //临时无用的数目
     public static final int TMEPCOUNT = 2;
     private int index = 0;
+    //这样所有设置的OnPagerListener都能正常使用了
+    private ArrayList<OnPageChangeListener> externalOnPagerListeners = new ArrayList<>();
+    //上次选中的位置,因为多添加了两个item  的原因,导致部分位置会重复调用,这里处理一下,让其值调用一次
+    private int lastPosition;
 
     public BannerLoopView(Context context) {
         this(context, null);
@@ -55,33 +59,62 @@ public class BannerLoopView<T> extends ViewPager {
         ViewPagerScroller pagerScroller = new ViewPagerScroller(getContext());
         pagerScroller.setScrollDuration(mSwitchTime);
         pagerScroller.initViewPagerScroll(this);
-        addOnSelfPagerListener();
+        super.addOnPageChangeListener(onPagerListener);
+    }
+
+
+    @Override
+    public void addOnPageChangeListener(OnPageChangeListener listener) {
+        //真的是superlistner,将这个添加到OnPagerListenner集合的问题
+        //super.addOnPageChangeListener(listener);
+        this.externalOnPagerListeners.add(listener);
     }
 
     /**
-     * 为自己添加切换事件
+     * pager切换事件
      */
-    private void addOnSelfPagerListener() {
-        this.addOnPageChangeListener(new SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
-                    position = 1;
-                } else if (position == 0) {
-                    position = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
+    private OnPageChangeListener onPagerListener = new OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (!externalOnPagerListeners.isEmpty()) {
+                for (int i = 0; i < externalOnPagerListeners.size(); i++) {
+                    externalOnPagerListeners.get(i).onPageScrolled(position, positionOffset, positionOffsetPixels);
                 }
-                index = position;
             }
+        }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                //拖动状态也进行页面设置,就避免了到尾部
-                if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
-                    setCurrentItem(index, false);
+        @Override
+        public void onPageSelected(int position) {
+            int secondPosition = position;
+            if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
+                secondPosition = 1;
+            } else if (position == 0) {
+                secondPosition = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
+            }
+            index = secondPosition;
+            secondPosition -= 1;
+            if (!externalOnPagerListeners.isEmpty() && lastPosition != secondPosition) {
+                for (int i = 0; i < externalOnPagerListeners.size(); i++) {
+                    externalOnPagerListeners.get(i).onPageSelected(secondPosition);
+                }
+                lastPosition = secondPosition;
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            //拖动状态也进行页面设置,就避免了到尾部
+            if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
+                setCurrentItem(index, false);
+            }
+            if (!externalOnPagerListeners.isEmpty()) {
+                for (int i = 0; i < externalOnPagerListeners.size(); i++) {
+                    externalOnPagerListeners.get(i).onPageScrollStateChanged(state);
                 }
             }
-        });
-    }
+        }
+    };
+
 
     public void setImageUrls(int layoutid, @NonNull final LoopAdapterListener<T> listener, T... ts) {
         List<T> list = new ArrayList<>();
