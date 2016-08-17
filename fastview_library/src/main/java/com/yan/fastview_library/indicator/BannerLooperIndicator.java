@@ -3,6 +3,7 @@ package com.yan.fastview_library.indicator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.view.ViewPager;
@@ -28,10 +29,10 @@ public class BannerLooperIndicator extends View {
     private int mPheight, mPwidth;
     private int mScrolleWidth;
     private Drawable mNormalDrawable, mSelectDrawable;
-    private int mDefaultDrawableSize = DeviceUtil.dipToPx(getContext(), 10);
-    private int mDrawableSize;
     private int itemSize = 0;
     private int startX;
+    private int mNormalSize;
+    private int mSelectSize;
 
     public BannerLooperIndicator(Context context) {
         this(context, null);
@@ -39,6 +40,7 @@ public class BannerLooperIndicator extends View {
 
     public BannerLooperIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mNormalSize = mSelectSize = DeviceUtil.dipToPx(getContext(), 10);
         initProperties(context.obtainStyledAttributes(attrs, R.styleable.BannerLooperIndicator));
     }
 
@@ -51,9 +53,8 @@ public class BannerLooperIndicator extends View {
 
         mPwidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         mPheight = getMeasuredHeight() - getPaddingBottom() - getPaddingTop();
-        itemSize = mDrawableSize + mIntervalPadding * 2;
+        itemSize = mNormalSize + mIntervalPadding * 2;
         startX = (mPwidth - itemSize * mChildCount) / 2;
-        LogUtil.v("mine", "mIntervalPadding:" + mIntervalPadding + " mDrawableSize:" + mDrawableSize);
     }
 
     private void initProperties(TypedArray typedArray) {
@@ -68,24 +69,23 @@ public class BannerLooperIndicator extends View {
                 int color = typedArray.getColor(attr, 0);
                 mNormalDrawable = ColorUtils.isColor(color) ? createGriandDrawable(color) : typedArray.getDrawable(attr);
             } else if (attr == R.styleable.BannerLooperIndicator_bli_select) {
-                int color = typedArray.getColor(attr, 0);
-                mSelectDrawable = ColorUtils.isColor(color) ? createGriandDrawable(color) : typedArray.getDrawable(attr);
-            } else {
-                mDrawableSize = (int) typedArray.getDimension(attr, mDefaultDrawableSize);
+                try {
+                    int color = typedArray.getColor(attr, 0);
+                    mSelectDrawable = ColorUtils.isColor(color) ? createGriandDrawable(color) : typedArray.getDrawable(attr);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    mSelectDrawable = typedArray.getDrawable(attr);
+                }
+            } else if (attr == R.styleable.BannerLooperIndicator_bli_indicator_normal_size) {
+                mNormalSize = (int) typedArray.getDimension(attr, mNormalSize);
+            } else if (attr == R.styleable.BannerLooperIndicator_bli_indicator_select_size) {
+                mSelectSize = (int) typedArray.getDimension(attr, mSelectSize);
             }
         }
-        if (mDrawableSize != 0) {
-            if (mNormalDrawable != null)
-                mNormalDrawable.setBounds(0, 0, mDrawableSize, mDrawableSize * mNormalDrawable.getIntrinsicHeight() / mNormalDrawable.getIntrinsicWidth());
-            if (mSelectDrawable != null)
-                mSelectDrawable.setBounds(0, 0, mDrawableSize, mDrawableSize * mSelectDrawable.getIntrinsicHeight() / mSelectDrawable.getIntrinsicWidth());
-        } else {
-            if (mNormalDrawable != null)
-                mNormalDrawable.setBounds(0, 0, mDefaultDrawableSize, mDefaultDrawableSize);
-            if (mSelectDrawable != null)
-                mSelectDrawable.setBounds(0, 0, mDefaultDrawableSize, mDefaultDrawableSize);
-            mDrawableSize = mDefaultDrawableSize;
-        }
+        if (mNormalDrawable == null) mNormalDrawable = createGriandDrawable(Color.WHITE);
+        if (mSelectDrawable == null) mSelectDrawable = createGriandDrawable(Color.RED);
+        mNormalDrawable.setBounds(0, 0, mNormalSize, mNormalSize * mNormalDrawable.getIntrinsicHeight() / mNormalDrawable.getIntrinsicWidth());
+        mSelectDrawable.setBounds(0, 0, mSelectSize, mSelectSize * mSelectDrawable.getIntrinsicHeight() / mSelectDrawable.getIntrinsicWidth());
         typedArray.recycle();
     }
 
@@ -94,7 +94,7 @@ public class BannerLooperIndicator extends View {
         gradientDrawable.setShape(GradientDrawable.OVAL);
         gradientDrawable.setDither(true);
         gradientDrawable.setColor(color);
-        gradientDrawable.setBounds(0, 0, mDefaultDrawableSize, mDefaultDrawableSize);
+        gradientDrawable.setBounds(0, 0, mNormalSize, mNormalSize);
         return gradientDrawable;
     }
 
@@ -118,16 +118,16 @@ public class BannerLooperIndicator extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int startY = (mPheight - mDrawableSize) / 2;
+        int startY = (mPheight - mNormalSize) / 2;
         int startX = (mPwidth - itemSize * mChildCount) / 2;
         canvas.save();//保存画布的状态
         canvas.translate(startX += mIntervalPadding, startY);
         for (int i = 0; i < mChildCount; i++) {
             mNormalDrawable.draw(canvas);
-            canvas.translate(mIntervalPadding * 2 + mDrawableSize, 0);
+            canvas.translate(mIntervalPadding * 2 + mNormalSize, 0);
         }
         canvas.restore();//恢复画布的状态,原点在位置0
-        canvas.translate(startX += mScrolleWidth, startY);
+        canvas.translate(startX += mScrolleWidth, (mPheight - mSelectSize * mSelectDrawable.getIntrinsicHeight() / mSelectDrawable.getIntrinsicWidth()) / 2);
         mSelectDrawable.draw(canvas);
     }
 
@@ -141,13 +141,13 @@ public class BannerLooperIndicator extends View {
                 if (position == mChildCount - 1 && positionOffset > 0.5) {
                     position = -1;
                 }
-                mScrolleWidth = (int) ((position) * itemSize + positionOffset * itemSize);
+                mScrolleWidth = (int) ((position) * itemSize + positionOffset * itemSize) - (mSelectSize - mNormalSize) / 2;
                 invalidate();
             }
 
             @Override
             public void onPageSelected(int position) {
-                mScrolleWidth = position * itemSize;
+                mScrolleWidth = position * itemSize- (mSelectSize - mNormalSize) / 2;
             }
 
             @Override

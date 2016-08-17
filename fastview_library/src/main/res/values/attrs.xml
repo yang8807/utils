@@ -40,6 +40,7 @@
         <attr name="bli_interval_padding" format="dimension" />
         <attr name="bli_normal" format="reference|color" />
         <attr name="bli_select" format="reference|color" />
-        <attr name="bli_indicator_size" format="dimension" />
+        <attr name="bli_indicator_normal_size" format="dimension" />
+        <attr name="bli_indicator_select_size" format="dimension" />
     </declare-styleable>
 </resources>
