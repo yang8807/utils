@@ -34,4 +34,12 @@
         <!--一个页面切换到另一个页面所需要的时间 -->
         <attr name="blv_switch_time" format="integer" />
     </declare-styleable>
+    <!-- 轮动广告栏的指示器 -->
+    <declare-styleable name="BannerLooperIndicator">
+        <attr name="android:orientation" />
+        <attr name="bli_interval_padding" format="dimension" />
+        <attr name="bli_normal" format="reference|color" />
+        <attr name="bli_select" format="reference|color" />
+        <attr name="bli_indicator_size" format="dimension" />
+    </declare-styleable>
 </resources>

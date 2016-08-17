@@ -15,20 +15,60 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="网络" />
+            android:text="NETWORK" />
 
         <Button
             android:id="@+id/btn_local"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="本地" />
+            android:text="LOCAL" />
+
+        <Button
+            android:id="@+id/btn_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NORMAL_VIEWPAGE" />
     </LinearLayout>
 
-    <com.yan.fastview_library.viewgroup.BannerLoopView
-        android:id="@+id/banner_looper_view"
+    <RelativeLayout
+        android:id="@+id/rly_looper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:blv_dwell_time="3000"
-        app:blv_switch_time="1000" />
+        android:layout_height="match_parent">
+
+        <com.yan.fastview_library.viewgroup.BannerLoopView
+            android:id="@+id/banner_looper_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:blv_dwell_time="3000"
+            app:blv_switch_time="1000" />
+
+        <com.yan.fastview_library.indicator.BannerLooperIndicator
+            android:id="@+id/baner_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#79000000"
+            app:bli_normal="#ff6c6c"
+            app:bli_select="@color/colorPrimary" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rly_normal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.yan.fastview_library.indicator.BannerLooperIndicator
+            android:id="@+id/baner_indicator_normal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#79000000"
+            app:bli_normal="#ff6c6c"
+            app:bli_select="@color/colorPrimary" />
+    </RelativeLayout>
 </LinearLayout>

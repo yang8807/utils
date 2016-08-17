@@ -1,12 +1,15 @@
 package com.magnify.utils.ui.ui_view;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.example.datautils.RandomUtil;
 import com.magnify.basea_dapter_library.ViewHolder;
+import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
+import com.yan.fastview_library.indicator.BannerLooperIndicator;
 import com.yan.fastview_library.viewgroup.BannerLoopView;
 
 /**
@@ -14,14 +17,22 @@ import com.yan.fastview_library.viewgroup.BannerLoopView;
  */
 public class ActivityBannerView extends CurrentBaseActivity implements View.OnClickListener {
     private BannerLoopView banner_looper_view;
+    private ViewPager viewpager_normal;
+    private BannerLooperIndicator baner_indicator, baner_indicator_normal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_looper_view);
-        setOnClickListener(this, R.id.btn_net, R.id.btn_local);
+        setOnClickListener(this, R.id.btn_net, R.id.btn_local,R.id.btn_normal);
         banner_looper_view = (BannerLoopView) findViewById(R.id.banner_looper_view);
+        baner_indicator = (BannerLooperIndicator) findViewById(R.id.baner_indicator);
+        baner_indicator_normal = (BannerLooperIndicator) findViewById(R.id.baner_indicator_normal);
+        viewpager_normal = (ViewPager) findViewById(R.id.viewpager_normal);
         setNetWorkAdapter();
+
+        baner_indicator.setUpViewPager(banner_looper_view, 3);
+        baner_indicator_normal.setUpViewPager(viewpager_normal, 3);
     }
 
     @Override
@@ -29,9 +40,23 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.btn_net://用来加载网络图片
                 setNetWorkAdapter();
+                setVisibility(true, R.id.rly_looper);
+                setVisibility(false, R.id.rly_normal);
                 break;
             case R.id.btn_local://用来加载本地图片
                 setLocalAdapter();
+                setVisibility(true, R.id.rly_looper);
+                setVisibility(false, R.id.rly_normal);
+                break;
+            case R.id.btn_normal:
+                setVisibility(true, R.id.rly_normal);
+                setVisibility(false, R.id.rly_looper);
+                viewpager_normal.setAdapter(new CommonViewPagerAdapter<String>(RandomUtil.getRandomImage(3), self, R.layout.item_banner_looper) {
+                    @Override
+                    protected void convert(ViewHolder viewHolder, int position, String s) {
+                        viewHolder.displayImage(s, R.id.imageView);
+                    }
+                });
                 break;
         }
     }
@@ -61,6 +86,7 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
                         viewHolder.displayImage(s, R.id.imageView);
                     }
                 },
-                RandomUtil.getRandomImage(4));
+                RandomUtil.getRandomImage(3));
+
     }
 }

@@ -75,8 +75,8 @@ public class TagFlowLayout extends ViewGroup {
         childeWidthMode = widthMode == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : widthMode;
         childeHeightMode = heightMode == MeasureSpec.EXACTLY ? MeasureSpec.AT_MOST : heightMode;
 
-        int ChildMeasureWithSpec = MeasureSpec.makeMeasureSpec(childeWidthMode, mParentWidth);
-        int ChildMeasureHeightSpec = MeasureSpec.makeMeasureSpec(childeHeightMode, mParentHeight);
+        int ChildMeasureWithSpec = MeasureSpec.makeMeasureSpec(mParentWidth, childeWidthMode);
+        int ChildMeasureHeightSpec = MeasureSpec.makeMeasureSpec(mParentHeight, childeHeightMode);
 
         parentMeasureDimension(heightMeasureSpec, mParentWidth, ChildMeasureWithSpec, ChildMeasureHeightSpec);
     }
@@ -166,7 +166,7 @@ public class TagFlowLayout extends ViewGroup {
                 View view = ViewList.get(i);
                 view.layout(l, t, l + view.getMeasuredWidth() + sur, t + view.getMeasuredHeight());
                 l += mHorizontalSpace + view.getMeasuredWidth() + sur;
-               view.setPadding(view.getPaddingLeft() + sur / 2, view.getPaddingTop(), view.getPaddingRight() + sur / 2, view.getPaddingBottom());
+                view.setPadding(view.getPaddingLeft() + sur / 2, view.getPaddingTop(), view.getPaddingRight() + sur / 2, view.getPaddingBottom());
             }
         }
 
