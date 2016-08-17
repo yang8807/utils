@@ -76,22 +76,18 @@ public class BannerLoopView<T> extends ViewPager {
     private OnPageChangeListener onPagerListener = new OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            int secondPosition = getNormalPosition(position);
+            secondPosition -= 1;
             if (!externalOnPagerListeners.isEmpty()) {
                 for (int i = 0; i < externalOnPagerListeners.size(); i++) {
-                    externalOnPagerListeners.get(i).onPageScrolled(position, positionOffset, positionOffsetPixels);
+                    externalOnPagerListeners.get(i).onPageScrolled(secondPosition, positionOffset, positionOffsetPixels);
                 }
             }
         }
 
         @Override
         public void onPageSelected(int position) {
-            int secondPosition = position;
-            if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
-                secondPosition = 1;
-            } else if (position == 0) {
-                secondPosition = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
-            }
-            index = secondPosition;
+            int secondPosition = index = getNormalPosition(position);
             secondPosition -= 1;
             if (!externalOnPagerListeners.isEmpty() && lastPosition != secondPosition) {
                 for (int i = 0; i < externalOnPagerListeners.size(); i++) {
@@ -114,6 +110,19 @@ public class BannerLoopView<T> extends ViewPager {
             }
         }
     };
+
+    /**
+     * 获取正常的角标数据
+     */
+    private int getNormalPosition(int position) {
+        int secondPosition = position;
+        if (position == mImageUrls.size() - 1) {//当是最后一个的时候,设置为第二个,之前将事件放在这里执行,两个任务同时执行,导致没有动画
+            secondPosition = 1;
+        } else if (position == 0) {
+            secondPosition = mImageUrls.size() - BannerLoopView.TMEPCOUNT;
+        }
+        return secondPosition;
+    }
 
 
     public void setImageUrls(int layoutid, @NonNull final LoopAdapterListener<T> listener, T... ts) {
