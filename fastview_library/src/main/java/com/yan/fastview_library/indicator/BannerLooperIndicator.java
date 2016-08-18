@@ -53,16 +53,15 @@ public class BannerLooperIndicator extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         //获取控件的测量规则:
-//        widthMeasureSpec== MeasureSpec.AT_MOST
-
-
-        mPwidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-        mPheight = getMeasuredHeight() - getPaddingBottom() - getPaddingTop();
         itemSize = mNormalSize + mIntervalPadding * 2;
+        mPwidth = resolveSize(mChildCount * itemSize + getPaddingRight() + getPaddingLeft(), widthMeasureSpec);
+        mPheight = resolveSize(itemSize + getPaddingBottom() + getPaddingTop(), heightMeasureSpec);
+        setMeasuredDimension(mPwidth, mPheight);
+        mPwidth = mPwidth - getPaddingLeft() - getPaddingRight();
+        mPheight = mPheight - getPaddingBottom() - getPaddingTop();
         startX = (mPwidth - itemSize * mChildCount) / 2;
-//        setMa
+
     }
 
     private void initProperties(TypedArray typedArray) {
