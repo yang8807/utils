@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.support.annotation.ColorRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -154,7 +155,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     /**
      * Set the background color as well, if it is rounded rectangle, then set the size of the radius
      */
-    public BaseLinearPoupWindows setDrawableNRadius(int color, int radius) {
+    public BaseLinearPoupWindows setDrawableNRadius(@ColorRes int color, int radius) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setShape(GradientDrawable.RECTANGLE);
         gradientDrawable.setColor(mContext.getResources().getColor(color));

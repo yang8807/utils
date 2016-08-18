@@ -27,14 +27,15 @@ public class ActivityDialog extends CurrentBaseActivity {
 
         mAnyWherePoupLeft = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
         mAnyWherePoupRight = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
+        mAnyWherePoupRight.setDrawableNRadius(R.color.colorAccent, 10);
         mAnyWherePoupTop = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
         mAnyWherePoupBottom = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
 
         //任意方向的弹窗
         findViewById(R.id.btn_show_anywhere).setOnClickListener(view -> {
-            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT, 50);
-            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT, 50);
-            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP, 50);
+            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
+            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
+            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
             mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
         });
     }
