@@ -59,5 +59,37 @@
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:text="任意方向的弹窗" />
+
+        <Button
+            android:id="@+id/btn_show_anywheres"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="#f12645"
+            android:text="任意方向的弹窗" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_show_bottom"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@color/colorPrimary"
+        android:text="任意方向的弹窗" />
+
+    <Button
+        android:id="@+id/btn_show_bottom_s"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="80dp"
+        android:background="@color/colorPrimary"
+        android:text="任意方向的弹窗" />
 </RelativeLayout>

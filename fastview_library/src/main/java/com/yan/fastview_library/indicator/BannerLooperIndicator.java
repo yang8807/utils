@@ -62,6 +62,7 @@ public class BannerLooperIndicator extends View {
         mPheight = getMeasuredHeight() - getPaddingBottom() - getPaddingTop();
         itemSize = mNormalSize + mIntervalPadding * 2;
         startX = (mPwidth - itemSize * mChildCount) / 2;
+//        setMa
     }
 
     private void initProperties(TypedArray typedArray) {

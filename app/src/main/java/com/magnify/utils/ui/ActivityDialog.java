@@ -38,5 +38,25 @@ public class ActivityDialog extends CurrentBaseActivity {
             mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
             mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
         });
+        findViewById(R.id.btn_show_anywheres).setOnClickListener(view -> {
+            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT,50);
+            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT,50);
+            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP,50);
+            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM,50);
+        });
+
+        findViewById(R.id.btn_show_bottom).setOnClickListener(view -> {
+            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
+            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
+            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
+            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
+        });
+        findViewById(R.id.btn_show_bottom_s).setOnClickListener(view -> {
+            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT,50);
+            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT,50);
+            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP,50);
+            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM,50);
+        });
+
     }
 }
