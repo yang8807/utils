@@ -242,4 +242,13 @@ public class BaseLinearPoupWindows extends PopupWindow {
         BaseLinearPoupWindows.this.setBackgroundDrawable(gradientDrawable);
         BaseLinearPoupWindows.this.update();
     }
+
+    /**
+     * 设置布局文件的poupwindow的大小
+     */
+    public void setMatchPoupWindowsSize() {
+        setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+        setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
+    }
+
 }
