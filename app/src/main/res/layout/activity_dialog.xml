@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-    <com.yan.fastview_library.view.text.PowerTexView
-        android:id="@+id/ptv_show_translation_dialog"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:background="@android:color/black"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="定向抛物线动画"
-        android:textColor="#fff"
-        app:shapeType="corner_rect"
-        app:tv_radius="8dp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <com.yan.fastview_library.view.text.PowerTexView
-        android:id="@+id/ptv_show_bound"
+        <com.yan.fastview_library.view.text.PowerTexView
+            android:id="@+id/ptv_show_translation_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="定向抛物线动画"
+            android:textColor="#fff"
+            app:shapeType="corner_rect"
+            app:tv_radius="8dp" />
+
+        <com.yan.fastview_library.view.text.PowerTexView
+            android:id="@+id/ptv_show_bound"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="弹性动画"
+            android:textColor="#fff"
+            app:shapeType="corner_rect"
+            app:tv_radius="8dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:background="@android:color/black"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="弹性动画"
-        android:textColor="#fff"
-        app:shapeType="corner_rect"
-        app:tv_radius="8dp" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#567808" />
+
+        <Button
+            android:id="@+id/btn_show_anywhere"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="任意方向的弹窗" />
+    </LinearLayout>
+</RelativeLayout>

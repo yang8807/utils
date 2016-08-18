@@ -1,6 +1,7 @@
 package com.yan.fastview_library.poupwindows;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
+import com.magnify.yutils.DeviceUtil;
 
 public class BaseLinearPoupWindows extends PopupWindow {
 
@@ -45,7 +48,10 @@ public class BaseLinearPoupWindows extends PopupWindow {
         setOutsideTouchable(true);
         setFocusable(true);
         BaseLinearPoupWindows.this.setBackgroundDrawable(new BitmapDrawable());
-
+        //手动测量一下view的大小,因为第一次弹出来,大小并未确定,显示存在问题
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        fram.measure(widthSpec, heightSpec);
         update();
     }
 
@@ -118,12 +124,6 @@ public class BaseLinearPoupWindows extends PopupWindow {
         return this;
     }
 
-	/*public BaseLinearPoupWindows setBackGroundResoures(int resoures) {
-        fram.setCardBackgroundColor(resoures);
-	    return this;
-	}*/
-
-
     public BaseLinearPoupWindows setViewWidth(int width) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) views.getLayoutParams();
         lp.width = width;
@@ -194,9 +194,37 @@ public class BaseLinearPoupWindows extends PopupWindow {
         return this;
     }
 
-    public void showAtViewTop(View v) {
-        v.getLocationOnScreen(screnLocation);
-        this.showAtLocation(v, Gravity.NO_GRAVITY, (screnLocation[0] + v.getWidth() / 2) - this.getWidth() / 2, screnLocation[1] - this.getHeight());
+    /**
+     * @param gravity 在指定View的哪一个方向弹出
+     * @param offSet  离要弹出的view的偏移量
+     * @param view    要在哪一view显示
+     *                暂时只能用于在View的中间显示
+     */
+    public void showAtCenter(View view, int gravity, int offSet) {
+        view.getLocationOnScreen(screnLocation);
+        int viewLeft = screnLocation[0];
+        int viewTop = screnLocation[1];
+        Point points = DeviceUtil.getDisplaySize(mContext);
+        switch (gravity) {
+            case Gravity.RIGHT:
+            case Gravity.LEFT:
+                viewLeft = points.x - viewLeft;
+                viewTop = (view.getMeasuredHeight() - fram.getMeasuredHeight()) / 2;
+                showAtLocation(view, gravity, viewLeft + offSet, viewTop);
+                break;
+            case Gravity.TOP:
+                viewTop = viewTop - fram.getMeasuredHeight();
+                viewLeft = 0;
+                showAtLocation(view, gravity, viewLeft, viewTop - offSet);
+                break;
+            case Gravity.BOTTOM:
+                showAsDropDown(view, (view.getMeasuredWidth() - fram.getMeasuredWidth()) / 2, offSet);
+                break;
+        }
+    }
+
+    public void showAtCenter(View view, int gravity) {
+        showAtCenter(view, gravity, 0);
     }
 
     /**
@@ -212,6 +240,5 @@ public class BaseLinearPoupWindows extends PopupWindow {
         gradientDrawable.setDither(true);
         BaseLinearPoupWindows.this.setBackgroundDrawable(gradientDrawable);
         BaseLinearPoupWindows.this.update();
-
     }
 }

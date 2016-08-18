@@ -61,9 +61,9 @@ public class MainActivity extends CurrentBaseActivity {
         add("一些公用Adapter展示效果", "通用的一些adapter基类所创建出来的", CategoryActivity.class, CategoryActivity.TYPE_ADAPTER);
         add("一些数据安全或者保存工具", "简化数据加密和数据保存的操作", CategoryActivity.class, CategoryActivity.TYPE_DATA);
         add("自定义的视图或者之前为解决一类问题而收集的View", "view,效果...", CategoryActivity.class, CategoryActivity.TYPE_VIEW);
-        add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
         add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
         add("BannerLooperView", "广告导航栏效果", ActivityBannerView.class);
+        add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
     }
 
     @Override
