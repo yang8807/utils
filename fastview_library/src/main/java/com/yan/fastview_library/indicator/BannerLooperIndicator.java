@@ -20,18 +20,25 @@ import com.yan.fastview_library.R;
  * Created by heinigger on 16/8/16.
  */
 public class BannerLooperIndicator extends View {
+    //子item的个数
     private int mChildCount;
     private ViewPager externalViewPager;
     //view之间的间距
     private int mIntervalPadding = DeviceUtil.dipToPx(getContext(), 5);
     //horizontal =0,vertical=1
     private int mOriention;
+    //父高度,父宽度
     private int mPheight, mPwidth;
+    //view滚动位置
     private int mScrolleWidth;
+    //常规状态下,选中状态下
     private Drawable mNormalDrawable, mSelectDrawable;
+    //view的大小,包括drawable和他的两个间距
     private int itemSize = 0;
     private int startX;
+    //常规view的大小
     private int mNormalSize;
+    //选中view的大小
     private int mSelectSize;
 
     public BannerLooperIndicator(Context context) {
@@ -66,8 +73,13 @@ public class BannerLooperIndicator extends View {
             } else if (attr == R.styleable.BannerLooperIndicator_bli_interval_padding) {
                 mIntervalPadding = (int) typedArray.getDimension(attr, mIntervalPadding);
             } else if (attr == R.styleable.BannerLooperIndicator_bli_normal) {
-                int color = typedArray.getColor(attr, 0);
-                mNormalDrawable = ColorUtils.isColor(color) ? createGriandDrawable(color) : typedArray.getDrawable(attr);
+                try {
+                    int color = typedArray.getColor(attr, 0);
+                    mNormalDrawable = ColorUtils.isColor(color) ? createGriandDrawable(color) : typedArray.getDrawable(attr);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    mNormalDrawable = typedArray.getDrawable(attr);
+                }
             } else if (attr == R.styleable.BannerLooperIndicator_bli_select) {
                 try {
                     int color = typedArray.getColor(attr, 0);
@@ -147,7 +159,7 @@ public class BannerLooperIndicator extends View {
 
             @Override
             public void onPageSelected(int position) {
-                mScrolleWidth = position * itemSize- (mSelectSize - mNormalSize) / 2;
+                mScrolleWidth = position * itemSize - (mSelectSize - mNormalSize) / 2;
             }
 
             @Override

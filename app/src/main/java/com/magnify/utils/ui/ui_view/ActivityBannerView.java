@@ -18,7 +18,7 @@ import com.yan.fastview_library.viewgroup.BannerLoopView;
 public class ActivityBannerView extends CurrentBaseActivity implements View.OnClickListener {
     private BannerLoopView banner_looper_view;
     private ViewPager viewpager_normal;
-    private BannerLooperIndicator baner_indicator, baner_indicator_normal;
+    private BannerLooperIndicator baner_indicator, baner_indicator2, baner_indicator_retangle_drawable, baner_indicator_ring, baner_indicator_normal, baner_indicator_retangle_corner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,24 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
         setOnClickListener(this, R.id.btn_net, R.id.btn_local, R.id.btn_normal);
         banner_looper_view = (BannerLoopView) findViewById(R.id.banner_looper_view);
         baner_indicator = (BannerLooperIndicator) findViewById(R.id.baner_indicator);
+        baner_indicator2 = (BannerLooperIndicator) findViewById(R.id.baner_indicator2);
+        baner_indicator_ring = (BannerLooperIndicator) findViewById(R.id.baner_indicator_ring);
+        baner_indicator_retangle_corner = (BannerLooperIndicator) findViewById(R.id.baner_indicator_retangle_corner);
+        baner_indicator_retangle_drawable = (BannerLooperIndicator) findViewById(R.id.baner_indicator_retangle_drawable);
         baner_indicator_normal = (BannerLooperIndicator) findViewById(R.id.baner_indicator_normal);
         viewpager_normal = (ViewPager) findViewById(R.id.viewpager_normal);
         setNetWorkAdapter();
 
-        baner_indicator.setUpViewPager(banner_looper_view, 15);
+        setUpWithPager(15);
         baner_indicator_normal.setUpViewPager(viewpager_normal, 15);
+    }
+
+    private void setUpWithPager(int count) {
+        baner_indicator.setUpViewPager(banner_looper_view, count);
+        baner_indicator2.setUpViewPager(banner_looper_view, count);
+        baner_indicator_ring.setUpViewPager(banner_looper_view, count);
+        baner_indicator_retangle_corner.setUpViewPager(banner_looper_view, count);
+        baner_indicator_retangle_drawable.setUpViewPager(banner_looper_view, count);
     }
 
     @Override
@@ -40,7 +52,7 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.btn_net://用来加载网络图片
                 setNetWorkAdapter();
-                baner_indicator_normal.setUpViewPager(viewpager_normal, 15);
+                setUpWithPager(15);
                 setVisibility(true, R.id.rly_looper);
                 setVisibility(false, R.id.rly_normal);
                 break;
@@ -48,7 +60,7 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
                 setLocalAdapter();
                 setVisibility(true, R.id.rly_looper);
                 setVisibility(false, R.id.rly_normal);
-                baner_indicator.setUpViewPager(banner_looper_view, 3);
+                setUpWithPager(3);
                 break;
             case R.id.btn_normal:
                 setVisibility(true, R.id.rly_normal);
@@ -59,6 +71,7 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
                         viewHolder.displayImage(s, R.id.imageView);
                     }
                 });
+                baner_indicator_normal.setUpViewPager(viewpager_normal, 15);
                 break;
         }
     }
