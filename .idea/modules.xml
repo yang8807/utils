@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/base_adapter_library/base_adapter_library.iml" filepath="$PROJECT_DIR$/base_adapter_library/base_adapter_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/datautils/datautils.iml" filepath="$PROJECT_DIR$/datautils/datautils.iml" />
       <module fileurl="file://$PROJECT_DIR$/fastview_library/fastview_library.iml" filepath="$PROJECT_DIR$/fastview_library/fastview_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onekeyshare/onekeyshare.iml" filepath="$PROJECT_DIR$/onekeyshare/onekeyshare.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/yutils/yutils.iml" filepath="$PROJECT_DIR$/yutils/yutils.iml" />
     </modules>
