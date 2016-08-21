@@ -16,7 +16,8 @@ import java.util.List;
 /**
  * Created by heinigger on 16/8/21.
  */
-public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> {
+public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> implements View.OnClickListener {
+
     public ImageAdapter(List<ImageFloder> folders, Context mContext) {
         super(folders, mContext, R.layout.item_images_view);
     }
@@ -37,7 +38,14 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> {
 
     @Override
     protected void convert(ViewHolder viewHolder, View convertView, int position, ImageFloder parent, String child) {
-        viewHolder.displayImage("file://" + parent.getDir() + "/" + child, R.id.image);
+        viewHolder.displayImage("file://" + parent.getDir() + "/" + child, R.id.image)
+                .setOnClickListener(R.id.image, position, ImageAdapter.this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = (int) view.getTag(R.id.image);
+        getmContext().startActivity(BrowseImageActivity.getIntent(getmContext(), position, getParentData()));
     }
 
 }

@@ -29,6 +29,7 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
 
     private SelectFoldersDialogFragment selectFoldersDialogFragment;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,13 +54,12 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
     }
 
     @Override
-    public void onScanImageFinish(List<ImageFloder> mImageFolders) {
+    public void onScanImageFinish(final List<ImageFloder> mImageFolders) {
         mFolders = mImageFolders;
         mAllFolders = mImageFolders;
         tvName.setText(String.format("所有图片 %d 张", getTotalCount()));
         mImageAdapter = new ImageAdapter(mFolders, getContext());
         gridView.setAdapter(mImageAdapter);
-
 
         selectFoldersDialogFragment = new SelectFoldersDialogFragment();
         Bundle bundle = new Bundle();
@@ -87,4 +87,5 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
             selectFoldersDialogFragment.show(getChildFragmentManager(), selectFoldersDialogFragment.getClass().getName());
         }
     }
+
 }

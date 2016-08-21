@@ -134,7 +134,7 @@ public class CurrentBaseActivity extends BaseActivity {
             return true;
         } else if (item.getItemId() == android.R.id.home)//左上角返回键按钮
         {
-            finish();
+            onBackPressed();
             return true;
         }
 

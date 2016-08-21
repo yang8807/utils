@@ -28,4 +28,5 @@ public class PictureSelectActivity extends CurrentBaseActivity {
         findViewById(R.id.btn_camera).setOnClickListener(view -> {
         });
     }
+
 }

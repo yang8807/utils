@@ -1,42 +1,49 @@
 package com.magnify.basea_dapter_library.abslistview;
 
 import android.content.Context;
+import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by heinigger on 16/8/21.
+ * 只解决了但类型复用的问题,多类型复用得重新指定一个好的方案
  */
-public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
-    private List<P> folders;
-    private Context mContext;
+public abstract class CommonShowChildViewPagerAdapter<P, C> extends PagerAdapter {
+
+    //显示的数据
+    private List<P> folders = null;
     private List<C> datas = new ArrayList<>();
-    private ArrayList<PositionInfo> positionInfos = new ArrayList<>();
 
     private int counter;
-    private int layoutID;
+
+    private ArrayList<PositionInfo> positionInfos = new ArrayList<>();
+
+    private LinkedList<View> mViewCache = null;
+
+    private Context mContext;
+
+
+    private LayoutInflater mLayoutInflater = null;
+    private int layoutId;
+
     private int travseCount = 0;
     //
     private boolean hasGoTheDefineMethod = false;
 
-    public BaseShowChildAdapter(List<P> folders, Context mContext, int layoutId) {
-        this.folders = folders;
-        this.mContext = mContext;
-        this.layoutID = layoutId;
-        positionInfos = new ArrayList<>();
-
+    public CommonShowChildViewPagerAdapter(List<P> datas, Context context, int layoutID) {
+        this.folders = datas;
+        this.mContext = context;
+        this.mLayoutInflater = LayoutInflater.from(mContext);
+        this.mViewCache = new LinkedList<>();
+        this.layoutId = layoutID;
         traverseDatas();
-    }
-
-    public List<P> getParentData() {
-        return folders;
     }
 
     /**
@@ -68,36 +75,45 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
     }
 
     @Override
-    public C getItem(int i) {
-        return datas.get(i);
+    public int getItemPosition(Object object) {
+        return super.getItemPosition(object);
     }
 
     @Override
-    public long getItemId(int i) {
-        return i;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public Object instantiateItem(ViewGroup container, int position) {
         ViewHolder viewHolder = null;
-        if (view == null) {
-            view = LayoutInflater.from(mContext).inflate(layoutID, null);
-            viewHolder = new ViewHolder(mContext, view, viewGroup, i);
-            view = viewHolder.getConvertView();
-            onPreCreate(viewHolder, view);
+        View convertView = null;
+        if (mViewCache.size() == 0) {
+            convertView = this.mLayoutInflater.inflate(layoutId, null, false);
+            onPreCreate(viewHolder, convertView);
+            viewHolder = new ViewHolder(mContext, convertView, container, position);
         } else {
-            viewHolder = (ViewHolder) view.getTag();
-            viewHolder.updatePosition(i);
+            convertView = mViewCache.removeFirst();
+            viewHolder = (ViewHolder) convertView.getTag();
+            viewHolder.updatePosition(position);
         }
-        convert(viewHolder, view, i, getParent(i), getItem(i));
-        return viewHolder.getConvertView();
+        convert(viewHolder, position, getParent(position), datas.get(position));
+        container.addView(convertView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        return convertView;
     }
 
-    //当View创建的时候,部分需要动态改变他的大小
     protected void onPreCreate(ViewHolder viewHolder, View convertView) {
     }
 
-    protected abstract void convert(ViewHolder viewHolder, View convertView, int position, P parent, C child);
+    protected abstract void convert(ViewHolder viewHolder, int position, P parent, C child);
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        View contentView = (View) object;
+        container.removeView(contentView);
+        this.mViewCache.add(contentView);
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object o) {
+        return view == o;
+    }
 
     private P getParent(int i) {
         P p = null;
@@ -109,10 +125,6 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
             }
         }
         return p;
-    }
-
-    public Context getmContext() {
-        return mContext;
     }
 
     public void setDatas(List<P> mFolders) {
@@ -144,8 +156,6 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
         if (!hasGoTheDefineMethod) travseCount = 0;//如果用户没有调用给的方法,只能强制重新遍历一遍
         traverseDatas();
         super.notifyDataSetChanged();
-
     }
 
-
-}
+}  
