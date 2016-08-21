@@ -1,4 +1,4 @@
-package com.magnify.yutils.app;
+package com.yan.fastview_library.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.magnify.yutils.interfaces.ImageLoaderInterface;
-import com.magnify.yutils.interfaces.SingleInstanceManager;
 
 /**
  * Created by heinigger on 16/8/2.

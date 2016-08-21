@@ -1,4 +1,4 @@
-package com.magnify.yutils.app;
+package com.yan.fastview_library.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;

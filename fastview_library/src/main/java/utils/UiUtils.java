@@ -1,11 +1,11 @@
-package com.magnify.yutils.view_utils;
+package utils;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.magnify.yutils.app.BaseApplication;
+import com.yan.fastview_library.base.BaseApplication;
 
 
 public class UiUtils {

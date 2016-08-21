@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonShowChildViewPagerAdapter;
-import com.magnify.yutils.app.BaseActivity;
+import com.yan.fastview_library.base.BaseActivity;
 import com.yan.bean.ImageFloder;
 import com.yan.fastview_library.R;
 

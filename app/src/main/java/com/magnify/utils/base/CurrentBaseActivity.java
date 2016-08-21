@@ -18,7 +18,7 @@ import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
 import com.magnify.yutils.LogUtil;
-import com.magnify.yutils.app.BaseActivity;
+import com.yan.fastview_library.base.BaseActivity;
 
 public class CurrentBaseActivity extends BaseActivity {
     public static final String TITLE = "title";
