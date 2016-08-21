@@ -25,8 +25,8 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> {
     protected void onPreCreate(ViewHolder viewHolder, View convertView) {
         ImageView imageView = viewHolder.getView(R.id.image);
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-        int spacing = DeviceUtil.dipToPx(getmContext(), ImagePickerConfiguration.SPACING);
-        layoutParams.width = layoutParams.height = (DeviceUtil.getScreenWidth(getmContext()) - spacing * (ImagePickerConfiguration.NUMCOLUMNS - 1)) / ImagePickerConfiguration.NUMCOLUMNS;
+        int spacing = DeviceUtil.dipToPx(getmContext(), ImagePickerConfiguration.getInstance().getSpaciing());
+        layoutParams.width = layoutParams.height = (DeviceUtil.getScreenWidth(getmContext()) - spacing * (ImagePickerConfiguration.getInstance().getNumcloumns() - 1)) / ImagePickerConfiguration.getInstance().getNumcloumns();
         imageView.requestLayout();
     }
 

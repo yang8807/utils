@@ -29,10 +29,10 @@ public class SelectFoldersDialogFragment extends BaseDialogFragment {
     private List<ImageFloder> imageFolders = new ArrayList<>();
     private int lastSelect = 0;
     private CommonAdapter<ImageFloder> mFoldersAdapter;
-    private OnFloderSelectListener onFloderSelectListener;
+    private OnFolderSelectListener onFloderSelectListener;
     public static String FOLDER_KEY = "folder_values";
 
-    public void setOnFloderSelectListener(OnFloderSelectListener onFloderSelectListener) {
+    public void setOnFloderSelectListener(OnFolderSelectListener onFloderSelectListener) {
         this.onFloderSelectListener = onFloderSelectListener;
     }
 
@@ -53,7 +53,7 @@ public class SelectFoldersDialogFragment extends BaseDialogFragment {
         mRecyler = (RecyclerView) parentView.findViewById(R.id.recylers);
         mRecyler.setLayoutManager(new LinearLayoutManager(getContext()));
         ViewGroup.LayoutParams layoutParams = mRecyler.getLayoutParams();
-        layoutParams.height = (int) (DeviceUtil.getScreenHeight(getContext()) * ImagePickerConfiguration.DIALOG_RATIO);
+        layoutParams.height = (int) (DeviceUtil.getScreenHeight(getContext()) * ImagePickerConfiguration.getInstance().getDialogRatio());
         mRecyler.requestLayout();
 
         setImageFolders();
@@ -68,7 +68,7 @@ public class SelectFoldersDialogFragment extends BaseDialogFragment {
                     @Override
                     protected void onPreCreate(ViewHolder viewHolder, View convertView) {
                         ImageView imageView = viewHolder.getView(R.id.image_select_tag);
-                        imageView.setBackgroundDrawable(DrawableUtils.getOvalDrawable(ImagePickerConfiguration.STYLE_COLOR));
+                        imageView.setBackgroundDrawable(DrawableUtils.getOvalDrawable(ImagePickerConfiguration.getInstance().getStyle_color()));
                     }
 
                     @Override
@@ -95,7 +95,7 @@ public class SelectFoldersDialogFragment extends BaseDialogFragment {
         }
     }
 
-    public static interface OnFloderSelectListener {
+    public static interface OnFolderSelectListener {
         public void onSelectFolders(int position);
     }
 

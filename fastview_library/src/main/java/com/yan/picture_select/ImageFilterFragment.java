@@ -45,11 +45,11 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
     //改变gridView的布局布局属性
     private void changeViewPropeties() {
         //初始化这个的默认颜色
-        gridView.setNumColumns(ImagePickerConfiguration.NUMCOLUMNS);
-        int SPACING = DeviceUtil.dipToPx(getContext(), ImagePickerConfiguration.SPACING);
+        gridView.setNumColumns(ImagePickerConfiguration.getInstance().getNumcloumns());
+        int SPACING = DeviceUtil.dipToPx(getContext(), ImagePickerConfiguration.getInstance().getSpaciing());
         gridView.setHorizontalSpacing(SPACING);
         gridView.setVerticalSpacing(SPACING);
-        rly_parent.setBackgroundColor(ImagePickerConfiguration.STYLE_COLOR);
+        rly_parent.setBackgroundColor(ImagePickerConfiguration.getInstance().getStyle_color());
     }
 
     @Override
@@ -65,7 +65,7 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
         Bundle bundle = new Bundle();
         bundle.putSerializable(SelectFoldersDialogFragment.FOLDER_KEY, (Serializable) mAllFolders);
         selectFoldersDialogFragment.setArguments(bundle);
-        selectFoldersDialogFragment.setOnFloderSelectListener(new SelectFoldersDialogFragment.OnFloderSelectListener() {
+        selectFoldersDialogFragment.setOnFloderSelectListener(new SelectFoldersDialogFragment.OnFolderSelectListener() {
             @Override
             public void onSelectFolders(int position) {
                 if (position < 0) {
