@@ -58,6 +58,22 @@ public class CurrentBaseActivity extends BaseActivity {
         LogUtil.v("AActivity", "---" + self.getLocalClassName() + "---");
     }
 
+    public void setTopTitle(String text) {
+        getSupportActionBar().setTitle(text);
+    }
+
+    public void setTopTitle(int resID) {
+        getSupportActionBar().setTitle(resID);
+    }
+
+    public void setSubtitle(String text) {
+        getSupportActionBar().setSubtitle(text);
+    }
+
+    public void setSubtitle(int text) {
+        getSupportActionBar().setSubtitle(text);
+    }
+
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         fl_parent.addView(LayoutInflater.from(self).inflate(layoutResID, null));

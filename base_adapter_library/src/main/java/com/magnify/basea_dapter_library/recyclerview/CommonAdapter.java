@@ -33,7 +33,11 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         ViewHolder viewHolder = ViewHolder.get(mContext, null, parent, mLayoutId, -1);
         setListener(parent, viewHolder, viewType);
+        onPreCreate(viewHolder, viewHolder.getConvertView());
         return viewHolder;
+    }
+
+    protected void onPreCreate(ViewHolder viewHolder, View convertView) {
     }
 
     protected int getPosition(RecyclerView.ViewHolder viewHolder) {

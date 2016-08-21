@@ -1,8 +1,11 @@
 package com.yan.bean;
 
+import android.text.TextUtils;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class ImageFloder {
+public class ImageFloder implements Serializable {
 
     private String dir;
 
@@ -11,6 +14,7 @@ public class ImageFloder {
     private int count;
     //目录下面所有的图片
     private List<String> allImages;
+    private String fristImage;
 
     public List<String> getAllImages() {
         return allImages;
@@ -18,6 +22,11 @@ public class ImageFloder {
 
     public ImageFloder(String dirPath) {
         this.dir = dirPath;
+    }
+
+    public ImageFloder(String fristImage, String dirPath) {
+        this.dir = dirPath;
+        this.fristImage = fristImage;
     }
 
     public String getDir() {
@@ -42,6 +51,10 @@ public class ImageFloder {
         this.count = count;
     }
 
+    public String getFristImage() {
+        return TextUtils.isEmpty(fristImage) ? "file://" + dir + "/" + allImages.get(0) : fristImage;
+
+    }
 
     public void setAllImages(List<String> allImages) {
         this.allImages = allImages;

@@ -22,7 +22,7 @@ public class PictureSelectActivity extends CurrentBaseActivity {
         });
         //多选
         findViewById(R.id.btn_multi_select).setOnClickListener(view -> {
-            startActivity(new Intent(self, ActivityPicture2Activity.class));
+            startActivity(new Intent(self, ActivityPictureActivity.class));
         });
         //照相机
         findViewById(R.id.btn_camera).setOnClickListener(view -> {
