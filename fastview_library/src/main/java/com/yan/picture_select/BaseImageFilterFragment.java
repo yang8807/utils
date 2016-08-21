@@ -28,7 +28,7 @@ public abstract class BaseImageFilterFragment extends Fragment {
     private HashSet<String> mDirPaths = new HashSet<>();
     //所有有图片的文件夹
     protected List<ImageFloder> mImageFloders = new ArrayList<>();
-    private String[] defaultFilters = new String[]{"jpg", "png", "jpeg", "gif"};
+    private String[] defaultFilters = new String[]{"jpeg", "png", "gif"};
 
     //所有图片的数量
     private int totalCount;
@@ -99,7 +99,8 @@ public abstract class BaseImageFilterFragment extends Fragment {
         List<String> mImgs = Arrays.asList(mImgDir.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String filename) {
-                return isImage(filename);
+                return filename.endsWith(".jpg") || filename.endsWith(".png") || filename.endsWith("jpeg") || filename.endsWith(".gif");
+//                return isImage(filename);
             }
         }));
         return mImgs;
@@ -125,19 +126,6 @@ public abstract class BaseImageFilterFragment extends Fragment {
         }
 
         return types;
-    }
-
-    /**
-     * 简单判断是不是图片
-     */
-    private boolean isImage(String fileName) {
-        String[] imageTypes = getImagesTypes();
-        for (int i = 0; i < imageTypes.length; i++) {
-            if (fileName.endsWith("." + imageTypes[i])) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
