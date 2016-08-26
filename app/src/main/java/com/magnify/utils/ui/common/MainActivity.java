@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.basea_dapter_library.ViewHolder;
@@ -87,7 +88,12 @@ public class MainActivity extends CurrentBaseActivity {
             public void convert(ViewHolder holder, int position, final ActivityBean item) {
                 holder.setText(R.id.text_name, item.getName())
                         .setText(R.id.text_description, item.getDescription())
-                        .getConvertView().setOnClickListener((v) -> startNewActivity(item));
+                        .getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startNewActivity(item);
+                    }
+                });
             }
         });
     }

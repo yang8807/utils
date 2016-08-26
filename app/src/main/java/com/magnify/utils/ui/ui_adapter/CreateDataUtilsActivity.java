@@ -3,6 +3,7 @@ package com.magnify.utils.ui.ui_adapter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
@@ -33,8 +34,11 @@ public class CreateDataUtilsActivity extends CurrentBaseActivity {
             public void convert(final ViewHolder holder, final int position, final People people) {
                 holder.setText(R.id.tv_userName, people.getUserName()).setText(R.id.tv_age, people.getAge() + "岁  " + people.getSex()).setText(R.id.tv_phone, people.getPhone());
                 holder.displayRoundImage(people.getAvators(), R.id.img_avators, R.mipmap.ic_launcher);
-                holder.getConvertView().setOnClickListener((v) -> {
-                    self.startActivity(ImageBrowseActivity.getIntent(self, peoples, position));
+                holder.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        self.startActivity(ImageBrowseActivity.getIntent(self, peoples, position));
+                    }
                 });
             }
         });

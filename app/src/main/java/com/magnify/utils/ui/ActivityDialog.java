@@ -3,6 +3,7 @@ package com.magnify.utils.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
+import android.view.View;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
@@ -24,9 +25,19 @@ public class ActivityDialog extends CurrentBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
         //定向运动的弹窗
-        findViewById(R.id.ptv_show_translation_dialog).setOnClickListener(v -> new HomeBannerDialog(self).setTarget(v).show());
+        findViewById(R.id.ptv_show_translation_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new HomeBannerDialog(self).setTarget(view).show();
+            }
+        });
         //弹性弹窗
-        findViewById(R.id.ptv_show_bound).setOnClickListener(v -> new BoundsAnimationDialog(self).show());
+        findViewById(R.id.ptv_show_bound).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new BoundsAnimationDialog(self).show();
+            }
+        });
 
         mAnyWherePoupLeft = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
         mAnyWherePoupRight = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
@@ -35,30 +46,42 @@ public class ActivityDialog extends CurrentBaseActivity {
         mAnyWherePoupBottom = new BaseLinearPoupWindows(self, R.layout.item_poup_image);
 
         //任意方向的弹窗
-        findViewById(R.id.btn_show_anywhere).setOnClickListener(view -> {
-            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
-            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
-            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
-            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
+        findViewById(R.id.btn_show_anywhere).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
+                mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
+                mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
+                mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
+            }
         });
-        findViewById(R.id.btn_show_anywheres).setOnClickListener(view -> {
-            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT, 50);
-            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT, 50);
-            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP, 50);
-            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM, 50);
+        findViewById(R.id.btn_show_anywheres).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT, 50);
+                mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT, 50);
+                mAnyWherePoupTop.showAtCenter(view, Gravity.TOP, 50);
+                mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM, 50);
+            }
         });
 
-        findViewById(R.id.btn_show_bottom).setOnClickListener(view -> {
-            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
-            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
-            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
-            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
+        findViewById(R.id.btn_show_bottom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT);
+                mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT);
+                mAnyWherePoupTop.showAtCenter(view, Gravity.TOP);
+                mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM);
+            }
         });
-        findViewById(R.id.btn_show_bottom_s).setOnClickListener(view -> {
-            mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT, 50);
-            mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT, 50);
-            mAnyWherePoupTop.showAtCenter(view, Gravity.TOP, 50);
-            mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM, 50);
+        findViewById(R.id.btn_show_bottom_s).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAnyWherePoupRight.showAtCenter(view, Gravity.RIGHT, 50);
+                mAnyWherePoupLeft.showAtCenter(view, Gravity.LEFT, 50);
+                mAnyWherePoupTop.showAtCenter(view, Gravity.TOP, 50);
+                mAnyWherePoupBottom.showAtCenter(view, Gravity.BOTTOM, 50);
+            }
         });
     }
 

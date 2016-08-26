@@ -2,6 +2,7 @@ package com.magnify.utils.ui.component;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
@@ -17,16 +18,20 @@ public class PictureSelectActivity extends CurrentBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_picture);
         //单选
-        findViewById(R.id.btn_single_select).setOnClickListener(view -> {
-            startActivity(new Intent(self, ActivityPictureActivity.class));
+        findViewById(R.id.btn_single_select).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(self, ActivityPictureActivity.class));
+            }
         });
         //多选
-        findViewById(R.id.btn_multi_select).setOnClickListener(view -> {
-            startActivity(new Intent(self, ActivityPictureActivity.class));
+        findViewById(R.id.btn_multi_select).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(self, ActivityPictureActivity.class));
+            }
         });
-        //照相机
-        findViewById(R.id.btn_camera).setOnClickListener(view -> {
-        });
+
     }
 
 }
