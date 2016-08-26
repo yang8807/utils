@@ -87,8 +87,10 @@
         <activity android:name=".ui.common.CategoryActivity" />
         <activity android:name="com.magnify.utils.base.BaseWebViewActivity" />
         <activity android:name=".ui.ui_view.ActivityBannerView" />
+        <activity android:name=".ui.ui_view.AdaptTextViewActivity" />
         <activity android:name=".ui.component.ActivityPictureActivity" />
         <activity android:name=".ui.component.PictureSelectActivity" />
+        <activity android:name=".ui.ui_animation.ViewAnimationActivity" />
     </application>
 
 </manifest>

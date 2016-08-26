@@ -2,7 +2,9 @@ package com.magnify.yutils;
 
 import android.util.Log;
 
-public class LogUtil {
+import com.google.gson.Gson;
+
+public class LogUtils {
 
     public static int DISABLE = 0x0;
     /**
@@ -38,6 +40,11 @@ public class LogUtil {
      * 当前启用的日志等级(默认打开所有)
      */
     private static int LEVEL = ALL;
+    private static Gson mGson;
+
+    static {
+        mGson = new Gson();
+    }
 
     /**
      * 设置日志等级 例： LogUtil.setLevel(LogUtil.ALL);
@@ -49,41 +56,37 @@ public class LogUtil {
         LEVEL = level;
     }
 
-    public static void v(String tag, String msg, Object... args) {
+    public static void v(String tag, Object... args) {
         if ((LEVEL & VERBOSE) > 0)
-            log(Log.VERBOSE, tag, msg, args);
+            log(Log.VERBOSE, tag, args);
     }
 
-    public static void d(String tag, String msg, Object... args) {
+    public static void d(String tag, Object... args) {
         if ((LEVEL & DEBUG) > 0)
-            log(Log.DEBUG, tag, msg, args);
+            log(Log.DEBUG, tag, args);
     }
 
-    public static void i(String tag, String msg, Object... args) {
+    public static void i(String tag, Object... args) {
         if ((LEVEL & INFO) > 0)
-            log(Log.INFO, tag, msg, args);
+            log(Log.INFO, tag, args);
     }
 
-    public static void w(String tag, String msg, Object... args) {
+    public static void w(String tag, Object... args) {
         if ((LEVEL & WARN) > 0)
-            log(Log.WARN, tag, msg, args);
+            log(Log.WARN, tag, args);
     }
 
-    public static void e(String tag, String msg, Object... args) {
+    public static void e(String tag, Object... args) {
         if ((LEVEL & ERROR) > 0)
-            log(Log.ERROR, tag, msg, args);
+            log(Log.ERROR, tag, args);
     }
 
-    public static void a(String tag, String msg, Object... args) {
+    public static void a(String tag, Object... args) {
         if ((LEVEL & ASSERT) > 0)
-            log(Log.ASSERT, tag, msg, args);
+            log(Log.ASSERT, tag, args);
     }
 
-    private static void log(int priority, String tag, String message, Object... args) {
-        if (args.length > 0) {
-            message = String.format(message, args);
-        }
-
-        Log.println(priority, tag, message);
+    private static void log(int priority, String tag, Object... args) {
+        Log.println(priority, tag, mGson.toJson(args));
     }
 }
