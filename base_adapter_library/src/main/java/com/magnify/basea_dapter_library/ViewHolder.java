@@ -61,6 +61,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         }
     }
 
+    public static ImageLoaderInterface getImageLoaderInterface() {
+        return imageLoaderInterface;
+    }
+
 
     /**
      * 通过viewId获取控件
@@ -320,8 +324,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public ViewHolder setOnLongClickListener(int viewId,
-                                             View.OnLongClickListener listener) {
+    public ViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
         View view = getView(viewId);
         view.setOnLongClickListener(listener);
         return this;
@@ -348,8 +351,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setOnClickListener(int imageid, int position, View.OnClickListener onClickListener) {
-        ImageView imageView=getView(imageid);
-        imageView.setTag(imageid,position);
+        ImageView imageView = getView(imageid);
+        imageView.setTag(imageid, position);
         imageView.setOnClickListener(onClickListener);
     }
 }

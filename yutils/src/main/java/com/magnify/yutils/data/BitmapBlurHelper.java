@@ -10,6 +10,7 @@ public class BitmapBlurHelper {
 
     public static Bitmap doBlurJniArray(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
 
+        if (sentBitmap == null) return null;
         long startTime = System.currentTimeMillis();
 
         Bitmap bitmap;
@@ -38,6 +39,7 @@ public class BitmapBlurHelper {
 
     public static Bitmap doBlurJniBitMap(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
         Bitmap bitmap;
+        if (sentBitmap == null) return null;
         try {
             long startTime = System.currentTimeMillis();
 

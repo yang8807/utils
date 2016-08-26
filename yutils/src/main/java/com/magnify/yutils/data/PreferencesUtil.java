@@ -101,5 +101,15 @@ public class PreferencesUtil {
         }
         return 0.0;
     }
+
+    public static String getString(Context context, String keyName) {
+        try {
+            return getValue(context, keyName, new TypeToken<String>() {
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
     /*----------end:his several types take out a special, will cast exception---------------*/
 }
