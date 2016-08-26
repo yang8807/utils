@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonShowChildViewPagerAdapter;
 import com.yan.fastview_library.base.BaseActivity;
-import com.yan.bean.ImageFloder;
+import com.magnify.yutils.bean.ImageFloder;
 import com.yan.fastview_library.R;
 
 import java.io.Serializable;
@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by heinigger on 16/8/21.
+ * 用于图片浏览的页面
  */
 public class BrowseImageActivity extends BaseActivity {
     private ViewPager viewPager;

@@ -14,7 +14,7 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.yutils.DeviceUtil;
 import com.magnify.yutils.DrawableUtils;
-import com.yan.bean.ImageFloder;
+import com.magnify.yutils.bean.ImageFloder;
 import com.yan.fastview_library.R;
 import com.yan.fastview_library.fragment.BaseDialogFragment;
 

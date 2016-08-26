@@ -1,16 +1,15 @@
-package com.yan.picture_select;
+package com.magnify.yutils.data;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.annotation.NonNull;
 
-import com.yan.bean.ImageFloder;
+import com.magnify.yutils.bean.ImageFloder;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -20,32 +19,33 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Created by heinigger on 16/8/20.
+ * Created by heinigger on 16/8/26.
+ * <p>
+ * 搜索本地的工具
  */
-public abstract class BaseImageFilterFragment extends Fragment {
-
+public class ImageScanner {
     //存放图片文件夹
     private HashSet<String> mDirPaths = new HashSet<>();
     //所有有图片的文件夹
     protected List<ImageFloder> mImageFloders = new ArrayList<>();
-    private String[] defaultFilters = new String[]{"jpeg", "png", "gif"};
+    private Context mContext;
+    private OnScanImageListener onScanImageListener;
 
     //所有图片的数量
     private int totalCount;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            onScanImageFinish(mImageFloders);
+            if (onScanImageListener != null)
+                onScanImageListener.onScanFinish(mImageFloders, totalCount);
         }
     };
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public ImageScanner(Context mContext, @NonNull OnScanImageListener onScanImageListener) {
+        this.mContext = mContext;
+        this.onScanImageListener = onScanImageListener;
         scansImages();
     }
-
-    public abstract void onScanImageFinish(List<ImageFloder> mImageFolders);
 
     /**
      * 遍历获取本地的数据
@@ -55,10 +55,10 @@ public abstract class BaseImageFilterFragment extends Fragment {
             @Override
             public void run() {
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                ContentResolver mContentResolver = getActivity().getContentResolver();
-                Cursor mCursor = mContentResolver.query(mImageUri, null, MediaStore.Images.Media.MIME_TYPE + "=? or "
-                                + MediaStore.Images.Media.MIME_TYPE + "=?", getFilterImageTypes()/*new String[]{"image/jpeg", "image/png"}*/,//这里表示要查询的类型,需要查什么,就传入什么进来
-                        MediaStore.Images.Media.DATE_MODIFIED);//按什么时候来进行排序,这里是按照修改的是假来进行排序
+                ContentResolver mContentResolver = mContext.getContentResolver();
+                Cursor mCursor = mContentResolver.query(mImageUri, null, null, null, null/* MediaStore.Images.Media.MIME_TYPE + "=? or "
+                                + MediaStore.Images.Media.MIME_TYPE + "=?", getFilterImageTypes()*//*new String[]{"image/jpeg", "image/png"}*//*,//这里表示要查询的类型,需要查什么,就传入什么进来
+                        MediaStore.Images.Media.DATE_MODIFIED*/);//按什么时候来进行排序,这里是按照修改的是假来进行排序
                 while (mCursor.moveToNext()) {
                     String path = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
                     File parentFile = new File(path).getParentFile();
@@ -100,38 +100,12 @@ public abstract class BaseImageFilterFragment extends Fragment {
             @Override
             public boolean accept(File dir, String filename) {
                 return filename.endsWith(".jpg") || filename.endsWith(".png") || filename.endsWith("jpeg") || filename.endsWith(".gif");
-//                return isImage(filename);
             }
         }));
         return mImgs;
     }
 
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    /**
-     * 拼接成去ContentResolver检索的条件
-     */
-    private String[] getFilterImageTypes() {
-        String[] imagesTypes = getImagesTypes();
-
-        if (imagesTypes == null || imagesTypes.length == 0) {
-            imagesTypes = defaultFilters;
-        }
-        String[] types = new String[2];//只能有两个参数,进行查询的时候
-        for (int i = 0; i < imagesTypes.length; i++) {
-            if (i >= 2) break;
-            types[i] = "image/" + imagesTypes[i];
-        }
-
-        return types;
-    }
-
-    /**
-     * 可以重新定义过滤图片的类型
-     */
-    protected String[] getImagesTypes() {
-        return defaultFilters;
+    public static interface OnScanImageListener {
+        public void onScanFinish(List<ImageFloder> mImageFloder, int totalCount);
     }
 }

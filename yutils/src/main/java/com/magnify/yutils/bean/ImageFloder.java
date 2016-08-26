@@ -1,4 +1,4 @@
-package com.yan.bean;
+package com.magnify.yutils.bean;
 
 import android.text.TextUtils;
 

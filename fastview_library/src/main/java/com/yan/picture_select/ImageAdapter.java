@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.BaseShowChildAdapter;
 import com.magnify.yutils.DeviceUtil;
-import com.yan.bean.ImageFloder;
+import com.magnify.yutils.bean.ImageFloder;
 import com.yan.fastview_library.R;
 
 import java.util.List;

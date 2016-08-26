@@ -2,6 +2,7 @@ package com.yan.picture_select;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.magnify.yutils.DeviceUtil;
-import com.yan.bean.ImageFloder;
+import com.magnify.yutils.bean.ImageFloder;
+import com.magnify.yutils.data.ImageScanner;
 import com.yan.fastview_library.R;
 
 import java.io.Serializable;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by heinigger on 16/8/20.
  */
-public class ImageFilterFragment extends BaseImageFilterFragment implements View.OnClickListener {
+public class ImageFilterFragment extends Fragment implements View.OnClickListener {
 
     private GridView gridView;
     private TextView tvName;
@@ -33,6 +35,13 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        new ImageScanner(getActivity(), new ImageScanner.OnScanImageListener() {
+            @Override
+            public void onScanFinish(List<ImageFloder> mImageFloder, int totalCount) {
+                onScanImageFinish(mImageFloder, totalCount);
+            }
+        });
 
         View parentView = inflater.inflate(R.layout.grid_show, null);
         gridView = (GridView) parentView.findViewById(R.id.grid_view);
@@ -53,11 +62,10 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
         rly_parent.setBackgroundColor(ImagePickerConfiguration.getInstance().getStyle_color());
     }
 
-    @Override
-    public void onScanImageFinish(final List<ImageFloder> mImageFolders) {
+    public void onScanImageFinish(final List<ImageFloder> mImageFolders, final int totalCount) {
         mFolders = mImageFolders;
         mAllFolders = mImageFolders;
-        tvName.setText(String.format("所有图片 %d 张", getTotalCount()));
+        tvName.setText(String.format("所有图片 %d 张", totalCount));
         mImageAdapter = new ImageAdapter(mFolders, getContext());
         gridView.setAdapter(mImageAdapter);
 
@@ -70,7 +78,7 @@ public class ImageFilterFragment extends BaseImageFilterFragment implements View
             public void onSelectFolders(int position) {
                 if (position < 0) {
                     mImageAdapter.setDatas(mAllFolders);
-                    tvName.setText(String.format("所有图片 %d 张", getTotalCount()));
+                    tvName.setText(String.format("所有图片 %d 张", totalCount));
                 } else {
                     ImageFloder imageFloder = mAllFolders.get(position);
                     mImageAdapter.setDatas(imageFloder);
