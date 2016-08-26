@@ -1,7 +1,9 @@
 package com.magnify.yutils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -13,6 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntentUtil {
+
+
+    /**
+     * 微信包名
+     */
+    private static final String WEIXIN_PACKAGE = "com.tencent.mm";
+    private static final String QQ_PACKAGE = "com.tencent.mobileqq";
+
+    /**
+     * 微信分享到朋友圈
+     */
+    private static final String WEIXIN_SHARE_TIME_LINE_COMPONENT = "com.tencent.mm.ui.tools.ShareToTimeLineUI";
+    /**
+     * 微信分享给朋友
+     */
+    private static final String WEIXIN_SHARE_FRIENDS_COMPONENT = "com.tencent.mm.ui.tools.ShareImgUI";
+
 
     /**
      * 获取符合Intent响应条件的Activity信息列表
@@ -203,4 +222,96 @@ public class IntentUtil {
             ToastUtil.show(context, "请先安装应用市场");
         }
     }
+
+    /**
+     * 分享图片到朋友圈
+     */
+    public static boolean share2WeChatCircle(Context context, File file) {
+        boolean isAvliable = isAvailable(context, WEIXIN_PACKAGE);
+        if (isAvliable) {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(WEIXIN_PACKAGE, WEIXIN_SHARE_TIME_LINE_COMPONENT));
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_SEND);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+            context.startActivity(intent);
+        } else {
+            ToastUtil.show(context, "请安装微信");
+        }
+        return isAvliable;
+    }
+
+    /**
+     * 分享多张图片到朋友圈
+     */
+    public static boolean share2WeChatCircle(Context context, ArrayList<File> files) {
+        boolean isAvliable = isAvailable(context, WEIXIN_PACKAGE);
+        if (isAvliable) {
+            ArrayList<Uri> uris = new ArrayList<>();
+            for (File image : files) {
+                Uri uri = Uri.fromFile(image);
+                uris.add(uri);
+            }
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(WEIXIN_PACKAGE, WEIXIN_SHARE_TIME_LINE_COMPONENT));
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+            context.startActivity(intent);
+        } else {
+            ToastUtil.show(context, "请安装微信");
+        }
+        return isAvliable;
+    }
+    /**
+     * 直接分享图片给好友
+     * */
+    public static boolean share2WeChatFriend(Context context, File file) {
+        boolean isAvliable = isAvailable(context, WEIXIN_PACKAGE);
+        if (isAvliable) {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(WEIXIN_PACKAGE, WEIXIN_SHARE_FRIENDS_COMPONENT));
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setAction("android.intent.action.SEND");
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+            context.startActivity(intent);
+        } else {
+            ToastUtil.show(context, "请安装微信");
+        }
+        return isAvliable;
+    }
+
+    public static boolean share2QQ(Context context, File file) {
+        boolean isAvaliable = isAvailable(context, QQ_PACKAGE);
+        if (isAvaliable) {
+            Intent shareIntent = IntentUtil.shareImage(Uri.fromFile(file));
+            shareIntent.setPackage("com.tencent.mobileqq");
+            ResolveInfo ri = context.getPackageManager().resolveActivity(shareIntent, 0);
+            context.startActivity(shareIntent);
+        }
+        return isAvaliable;
+    }
+
+    /**
+     * 判断是否有这个包名
+     *
+     * @param packageName
+     * @return
+     */
+    public static boolean isAvailable(Context context, String packageName) {
+        PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> pInfo = packageManager.getInstalledPackages(0);
+        for (int i = 0; i < pInfo.size(); i++) {
+            if (pInfo.get(i).packageName.equalsIgnoreCase(packageName))
+                return true;
+        }
+        return false;
+    }
+
 }
