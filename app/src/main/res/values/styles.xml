@@ -25,19 +25,6 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
-    <!-- ToolBar菜单样式 -->
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-        <item name="actionMenuTextColor">@android:color/white</item> <!--  敲定颜色-->
-        <item name="android:textSize">18sp</item> <!--  搞掂字体大小-->
-        <item name="android:textColor">@android:color/white</item> <!--  设置字体颜色-->
-    </style>
 
-    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_perm_identity_green_500_36dp</item>
-        //用来设置右边的按钮的图片
-    </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
