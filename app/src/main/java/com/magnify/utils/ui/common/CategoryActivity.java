@@ -18,6 +18,7 @@ import com.magnify.utils.ui.ui_adapter.AutoCompeleActivity;
 import com.magnify.utils.ui.ui_adapter.CreateDataUtilsActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_adapter.RandCharActivity;
+import com.magnify.utils.ui.ui_animation.ViewAnimationActivity;
 import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
 import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
@@ -35,6 +36,8 @@ public class CategoryActivity extends CurrentBaseActivity {
     public final static int TYPE_DATA = 2;
     //分装的Adapter
     public final static int TYPE_ADAPTER = 3;
+    //动画
+    public final static int TYPE_ANIMATION = 4;
     private int type;
     private RecyclerView recyler;
     private List<ActivityBean> arrayLists = new ArrayList<>();
@@ -56,7 +59,13 @@ public class CategoryActivity extends CurrentBaseActivity {
             addAdapterData();
         } else if (type == TYPE_DATA) {
             addDataData();
+        }else if (type==TYPE_ANIMATION){
+            addAnimationData();
         }
+    }
+
+    private void addAnimationData() {
+        add("View Animations", "在view的底部弹出动画", ViewAnimationActivity.class);
     }
 
     private void addDataData() {

@@ -87,7 +87,7 @@ public class ImageScanner {
         int count = mimages == null ? 0 : mimages.size();
         imageFloder.setCount(count);
         totalCount += count;
-        imageFloder.setAllImages(mimages);
+        imageFloder.setAllImages(new ArrayList<String>(mimages));
         if (count > 0) mImageFloders.add(imageFloder);
     }
 

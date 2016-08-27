@@ -350,9 +350,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return type;
     }
 
-    public void setOnClickListener(int imageid, int position, View.OnClickListener onClickListener) {
+    public ViewHolder setOnClickListener(int imageid, int position, View.OnClickListener onClickListener) {
         ImageView imageView = getView(imageid);
         imageView.setTag(imageid, position);
         imageView.setOnClickListener(onClickListener);
+        return this;
     }
 }

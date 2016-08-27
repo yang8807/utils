@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.BaseShowChildAdapter;
 import com.magnify.yutils.DeviceUtil;
+import com.magnify.yutils.ToastUtil;
 import com.magnify.yutils.bean.ImageFloder;
 import com.yan.fastview_library.R;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -37,8 +39,19 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> impl
     }
 
     @Override
-    protected void convert(ViewHolder viewHolder, View convertView, int position, ImageFloder parent, String child) {
+    protected void convert(ViewHolder viewHolder, View convertView, int position, final ImageFloder parent, final String child) {
         viewHolder.displayImage("file://" + parent.getDir() + "/" + child, R.id.image)
+                .setOnLongClickListener(R.id.image, new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        File file = new File(parent.getDir() + "/" + child);
+                        if (file.exists()) file.delete();
+                        parent.getAllImages().remove(child);
+                        notifyDataSetChanged();
+                        ToastUtil.show(getmContext(),"删除图片成功");
+                        return false;
+                    }
+                })
                 .setOnClickListener(R.id.image, position, ImageAdapter.this);
     }
 

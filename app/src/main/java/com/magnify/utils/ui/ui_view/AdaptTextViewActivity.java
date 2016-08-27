@@ -3,11 +3,14 @@ package com.magnify.utils.ui.ui_view;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
+import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.ToastUtil;
 import com.yan.fastview_library.view.text.AdaptTextView;
 
@@ -24,6 +27,14 @@ public class AdaptTextViewActivity extends CurrentBaseActivity {
         setContentView(R.layout.activity_adaptext_view);
         adaptTextView = (AdaptTextView) findViewById(R.id.adapt_textview);
         mEditText = (EditText) findViewById(R.id.edit_text);
+        mEditText.setFocusable(true);
+        mEditText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                LogUtils.v("mine", "还不出来", ((EditText) view).getText());
+                return false;
+            }
+        });
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -3,7 +3,7 @@ package com.magnify.yutils.bean;
 import android.text.TextUtils;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ImageFloder implements Serializable {
 
@@ -13,10 +13,10 @@ public class ImageFloder implements Serializable {
 
     private int count;
     //目录下面所有的图片
-    private List<String> allImages;
+    private ArrayList<String> allImages;
     private String fristImage;
 
-    public List<String> getAllImages() {
+    public ArrayList<String> getAllImages() {
         return allImages;
     }
 
@@ -56,7 +56,7 @@ public class ImageFloder implements Serializable {
 
     }
 
-    public void setAllImages(List<String> allImages) {
+    public void setAllImages(ArrayList<String> allImages) {
         this.allImages = allImages;
     }
 }

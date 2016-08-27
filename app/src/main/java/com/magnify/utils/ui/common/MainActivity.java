@@ -15,8 +15,8 @@ import com.magnify.utils.bean.ActivityBean;
 import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.component.PictureSelectActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
-import com.magnify.utils.ui.ui_animation.ViewAnimationActivity;
 import com.magnify.utils.ui.ui_view.ActivityBannerView;
+import com.magnify.utils.ui.ui_view.ActivityEditTextAtListView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 import com.magnify.utils.ui.ui_view.AdaptTextViewActivity;
 
@@ -65,12 +65,13 @@ public class MainActivity extends CurrentBaseActivity {
         add("一些公用Adapter展示效果", "通用的一些adapter基类所创建出来的", CategoryActivity.class, CategoryActivity.TYPE_ADAPTER);
         add("一些数据安全或者保存工具", "简化数据加密和数据保存的操作", CategoryActivity.class, CategoryActivity.TYPE_DATA);
         add("自定义的视图或者之前为解决一类问题而收集的View", "view,效果...", CategoryActivity.class, CategoryActivity.TYPE_VIEW);
+        add("一些常见的动画总结和收集", "动画效果", CategoryActivity.class, CategoryActivity.TYPE_ANIMATION);
         add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
         add("BannerLooperView", "广告导航栏效果", ActivityBannerView.class);
         add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
         add("BaseFilterFragment", "图片选择组件,设法让其支持自定义", PictureSelectActivity.class);
         add("AdaptTextView", "自适应文本宽度,字体变小", AdaptTextViewActivity.class);
-        add("View Animations", "在view的底部弹出动画", ViewAnimationActivity.class);
+        add("EditText在ListView中", "EditText在ListView中", ActivityEditTextAtListView.class);
     }
 
     @Override
