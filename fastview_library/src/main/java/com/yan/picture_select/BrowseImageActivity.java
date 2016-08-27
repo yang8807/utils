@@ -16,6 +16,7 @@ import com.magnify.yutils.data.PreferencesUtil;
 import com.yan.constants.Constants;
 import com.yan.fastview_library.R;
 import com.yan.fastview_library.base.BaseActivity;
+import com.yan.fastview_library.base.SingleInstanceManager;
 
 import java.io.Serializable;
 import java.util.List;
@@ -39,7 +40,8 @@ public class BrowseImageActivity extends BaseActivity {
 
         if (!TextUtils.isEmpty(localPaths)) {
             imageView = (ImageView) findViewById(R.id.image_blur);
-            ViewHolder.getImageLoaderInterface().displayImage(localPaths, imageView);
+            SingleInstanceManager.getImageLoader().displayImage(localPaths, imageView);
+            //oom
 //            Bitmap mBitmap = BitmapBlurHelper.doBlurJniArray(BitmapFactory.decodeFile(localPaths), 50, false);
 //            if (mBitmap != null) imageView.setImageBitmap(mBitmap);
         }
