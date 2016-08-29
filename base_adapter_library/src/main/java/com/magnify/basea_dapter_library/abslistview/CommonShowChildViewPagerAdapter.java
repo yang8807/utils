@@ -60,7 +60,7 @@ public abstract class CommonShowChildViewPagerAdapter<P, C> extends PagerAdapter
         for (int i = travseCount; i < folders.size(); i++) {
             List<C> mImages = getChild(folders.get(i));
             if (mImages != null && !mImages.isEmpty()) {
-                positionInfos.add(new PositionInfo(mImages.size(), counter));
+                positionInfos.add(new PositionInfo(mImages.size(), counter, i));
                 counter += mImages.size();
                 datas.addAll(mImages);
             }

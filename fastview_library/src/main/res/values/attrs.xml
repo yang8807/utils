@@ -43,7 +43,7 @@
         <attr name="bli_indicator_normal_size" format="dimension" />
         <attr name="bli_indicator_select_size" format="dimension" />
     </declare-styleable>
-
+    <!-- 选择行圆角 -->
     <declare-styleable name="SelectableRoundedImageView">
         <attr name="sriv_left_top_corner_radius" format="dimension" />
         <attr name="sriv_right_top_corner_radius" format="dimension" />
@@ -53,5 +53,9 @@
         <attr name="sriv_border_color" format="color" />
         <attr name="sriv_oval" format="boolean" />
         <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <declare-styleable name="StickyGridHeadersGridView">
+        <attr name="mAreHeadersSticky" format="boolean" />
     </declare-styleable>
 </resources>
