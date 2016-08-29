@@ -25,7 +25,7 @@ public class ActivityPictureActivity extends CurrentBaseActivity {
         int fragmetType = getIntent().getIntExtra(FRAGMENT_TYPE, 0);
         if (fragmetType == 0)
             switchFragment(ImageFilterFragment.class);
-        else
+        else if (fragmetType == 1)
             switchFragment(ImageStickFragment.class);
     }
 }

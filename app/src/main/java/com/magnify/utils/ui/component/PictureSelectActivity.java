@@ -30,7 +30,9 @@ public class PictureSelectActivity extends CurrentBaseActivity {
         findViewById(R.id.btn_multi_select).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(self, ActivityPictureActivity.class));
+                Intent intent = new Intent(self, ActivityPictureActivity.class);
+                intent.putExtra(ActivityPictureActivity.FRAGMENT_TYPE, 1);
+                startActivity(intent);
             }
         });
 
