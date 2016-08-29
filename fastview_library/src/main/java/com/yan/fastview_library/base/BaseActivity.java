@@ -2,6 +2,9 @@ package com.yan.fastview_library.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 /**
  * Created by heinigger on 16/8/2.
  */
 public class BaseActivity extends AppCompatActivity {
     private Toast mToast;
     protected BaseActivity self;
+    private int mContentId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         self = this;
+    }
+
+    public void setContentId(int mContentId) {
+        this.mContentId = mContentId;
     }
 
     /*-------------------start:------------------------------------------------*/
@@ -144,6 +154,35 @@ public class BaseActivity extends AppCompatActivity {
         }
         return view;
     }
+
+    public void switchFragment(Class<?> cls) {
+        if (mContentId == 0)
+            throw new IllegalArgumentException("please set ContentID for Fragment");
+
+        String mClassName = cls.getName();
+        FragmentManager fm = getSupportFragmentManager();
+        //先将其他的fagment进行隐藏
+
+        FragmentTransaction ft = fm.beginTransaction();
+        List<Fragment> fragments = fm.getFragments();
+        if (fragments != null && !fragments.isEmpty())
+            for (int i = 0; i < fragments.size(); i++) {
+                Fragment fragmentNow = fragments.get(i);
+                if (fragmentNow != null && !mClassName.equals(fragmentNow.getTag()) && !fragmentNow.isHidden()) {
+                    ft.hide(fragmentNow);
+                }
+            }
+
+        Fragment fragmentShow = fm.findFragmentByTag(mClassName);
+        if (fragmentShow == null) {
+            fragmentShow = Fragment.instantiate(self, mClassName);
+            ft.add(mContentId, fragmentShow, mClassName);
+        } else {
+            ft.show(fragmentShow);
+        }
+        ft.commitAllowingStateLoss();
+    }
+
 
     /*-------------------end------------------------------------------------*/
 }
