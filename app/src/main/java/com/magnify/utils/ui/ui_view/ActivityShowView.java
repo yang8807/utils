@@ -15,6 +15,7 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_TEXTVIEW_EXTENDS = 2;
     public static final int TYPE_DECORATEEDVIEW = 3;
     public static final int TYPE_SIDEBAR = 5;
+    public static final int TYPE_RIPPLE = 6;
     private int layout;
 
     @Override
@@ -29,6 +30,9 @@ public class ActivityShowView extends CurrentBaseActivity {
             layout = R.layout.activity_decorated_view;
         else if (TYPE_SIDEBAR == type)
             layout = R.layout.activity_sidebar;
+        else if (TYPE_RIPPLE == type) {
+            layout = R.layout.activity_ripple_view;
+        }
 
         if (layout != 0)
             setContentView(layout);

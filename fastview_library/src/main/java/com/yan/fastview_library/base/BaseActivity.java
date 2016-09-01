@@ -1,11 +1,17 @@
 package com.yan.fastview_library.base;
 
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +24,7 @@ import java.util.List;
  * Created by heinigger on 16/8/2.
  */
 public class BaseActivity extends AppCompatActivity {
+    private SparseArray<View> mViews = new SparseArray<>();
     private Toast mToast;
     protected BaseActivity self;
     private int mContentId;
@@ -27,6 +34,15 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         self = this;
+    }
+
+    public <E extends View> E getView(@IdRes int viewId) {
+        View view = mViews.get(viewId);
+        if (view == null) {
+            view = findViewById(viewId);
+            mViews.put(viewId, view);
+        }
+        return (E) view;
     }
 
     public void setContentId(int mContentId) {
@@ -41,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setOnClickListener(View.OnClickListener clickListener, int... ids) {
         for (int i = 0; i < ids.length; i++)
-            findViewById(ids[i]).setOnClickListener(clickListener);
+            getView(ids[i]).setOnClickListener(clickListener);
     }
 
     /*
@@ -64,7 +80,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setVisibility(boolean isVisibility, int... views) {
         for (int i = 0; i < views.length; i++) {
-            findViewById(views[i]).setVisibility(isVisibility ? View.VISIBLE : View.GONE);
+            getView(views[i]).setVisibility(isVisibility ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -107,58 +123,50 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void toastMessage(int resId) {
+    public void toastMessage(@StringRes int resId) {
         toastMessage(getString(resId));
     }
 
-    protected TextView setText(int viewId, CharSequence text) {
+    protected TextView setText(@IdRes int viewId, CharSequence text) {
         return setText(getWindow().getDecorView(), viewId, text);
     }
 
-    protected TextView setText(View parent, int viewId, CharSequence text) {
-        TextView view = (TextView) parent.findViewById(viewId);
+    protected TextView setText(View parent, @IdRes int viewId, CharSequence text) {
+        TextView view = getView(viewId);
         if (view != null) {
             view.setText(text);
         }
         return view;
     }
 
-    protected ImageView setImage(int viewId, String src) {
-        return setImage(getWindow().getDecorView(), viewId, src);
-    }
-
-    protected ImageView setImage(View parent, int viewId, String src) {
-        ImageView view = (ImageView) parent.findViewById(viewId);
-        if (view != null && src != null && src.length() > 5) {
-            SingleInstanceManager.getImageLoader().displayImage(src, view);
+    protected ImageView displayImage(@IdRes int viewId, String url) {
+        ImageView view = getView(viewId);
+        if (view != null && !TextUtils.isEmpty(url)) {
+            SingleInstanceManager.getImageLoader().displayImage(url, view);
         }
         return view;
     }
 
-    protected ImageView setCircleImage(View parent, int viewId, String src) {
-        ImageView view = (ImageView) parent.findViewById(viewId);
-        if (view != null && src != null && src.length() > 5) {
+    protected ImageView displayRoundImage(@IdRes int viewId, String src) {
+        ImageView view = getView(viewId);
+        if (view != null && !TextUtils.isEmpty(src)) {
             SingleInstanceManager.getImageLoader().displayRoundImage(src, view);
         }
         return view;
     }
 
-    protected ImageView setImage(int viewId, int resId) {
-        return setImage(getWindow().getDecorView(), viewId, resId);
-    }
-
-    protected ImageView setImage(View parent, int viewId, int resId) {
-        ImageView view = (ImageView) parent.findViewById(viewId);
+    protected ImageView setImage(@IdRes int viewId, @DrawableRes int resId) {
+        ImageView view = getView(viewId);
         if (view != null && resId > 0) {
             view.setImageResource(resId);
         }
         return view;
     }
 
+    /**
+     * 用来方便fagment的使用,fagment是一种简便的,activity代替品
+     */
     public void switchFragment(Class<?> cls) {
-        if (mContentId == 0)
-            throw new IllegalArgumentException("please set ContentID for Fragment");
-
         String mClassName = cls.getName();
         FragmentManager fm = getSupportFragmentManager();
         //先将其他的fagment进行隐藏
@@ -176,11 +184,37 @@ public class BaseActivity extends AppCompatActivity {
         Fragment fragmentShow = fm.findFragmentByTag(mClassName);
         if (fragmentShow == null) {
             fragmentShow = Fragment.instantiate(self, mClassName);
-            ft.add(mContentId, fragmentShow, mClassName);
+            try {
+                ft.add(mContentId, fragmentShow, mClassName);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("please set ContentID for Fragment");
+            }
         } else {
             ft.show(fragmentShow);
         }
         ft.commitAllowingStateLoss();
+    }
+
+    public void showDialogFragment(Class<?> clazz) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        String clsName = clazz.getName();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        for (int i = 0; i < fragments.size(); i++) {
+            Fragment fragment = fragments.get(i);
+            if (fragment != null && fragment instanceof DialogFragment) {
+                DialogFragment dialogFragment = (DialogFragment) fragment;
+                if (dialogFragment.isVisible()) dialogFragment.dismiss();
+            }
+        }
+        Fragment fragmentShow = fragmentManager.findFragmentByTag(clsName);
+        DialogFragment dialogFragment = null;
+        if (fragmentShow != null && fragmentShow instanceof DialogFragment) {
+            dialogFragment = (DialogFragment) fragmentShow;
+        } else {
+            dialogFragment = (DialogFragment) DialogFragment.instantiate(self, clsName);
+        }
+        dialogFragment.show(getSupportFragmentManager(), clsName);
+
     }
 
 

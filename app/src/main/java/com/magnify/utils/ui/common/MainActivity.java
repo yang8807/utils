@@ -72,6 +72,7 @@ public class MainActivity extends CurrentBaseActivity {
         add("BaseFilterFragment", "图片选择组件,设法让其支持自定义", PictureSelectActivity.class);
         add("AdaptTextView", "自适应文本宽度,字体变小", AdaptTextViewActivity.class);
         add("EditText在ListView中", "EditText在ListView中", ActivityEditTextAtListView.class);
+        add("ActivityBanner", "水波纹效果的动画", ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
     }
 
     @Override
