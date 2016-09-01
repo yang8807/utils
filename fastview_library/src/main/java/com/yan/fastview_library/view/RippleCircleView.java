@@ -88,7 +88,7 @@ public class RippleCircleView extends View {
         for (int i = 0; i < valueAnimators.length; i++) {
             valueAnimators[i].setIntValues(0, mRadius);
         }
-        if (!animatorSet.isRunning()) animatorSet.start();
+        if (!animatorSet.isRunning() && mRadius != 0) animatorSet.start();
     }
 
 
