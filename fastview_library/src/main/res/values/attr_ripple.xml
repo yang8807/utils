@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleCircleView">
+        <attr name="mRippleColor" format="color" />
+        <attr name="mRippleStorkWidth" format="dimension" />
+        //所需要绘制的圆环数量
+        <attr name="mRippleCount" format="integer" />
+        //绘制的最小半径
+        <attr name="minRippleRadius" format="dimension" />
+        <attr name="mRippleDuration" format="integer" />
+    </declare-styleable>
+</resources>

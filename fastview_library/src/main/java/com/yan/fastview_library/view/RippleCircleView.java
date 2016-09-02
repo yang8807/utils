@@ -3,6 +3,7 @@ package com.yan.fastview_library.view;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,7 +11,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
+import com.magnify.yutils.DeviceUtil;
 import com.magnify.yutils.LogUtil;
+import com.yan.fastview_library.R;
 
 /**
  * Created by heinigger on 16/9/1.
@@ -23,13 +26,17 @@ public class RippleCircleView extends View {
     private int mCenterY;
     //绘制的画笔
     private Paint[] mPaints;
-    private int mRippleColor = Color.BLUE;
+    private int mRippleColor = Color.RED;
     private int mRippleStorkWidth = 10;
     private ValueAnimator[] valueAnimators;
     //所需要绘制的圆环数量
     private int mRippleCount = 5;
     private int[] mdrawabRadius;
     private AnimatorSet animatorSet;
+    //绘制的最小半径
+    private int minRippleRadius;
+    //执行一圈动画需要的时间
+    private int mRippleDuration = 1000;
 
 
     public RippleCircleView(Context context) {
@@ -39,13 +46,14 @@ public class RippleCircleView extends View {
     public RippleCircleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         iniPaint();
+        iniPropeties(context, attrs);
         valueAnimators = new ValueAnimator[mRippleCount];
         mPaints = new Paint[mRippleCount];
         mdrawabRadius = new int[mRippleCount];
 
         for (int i = 0; i < valueAnimators.length; i++) {
             mPaints[i] = iniPaint();
-            ValueAnimator valueAnimator = ValueAnimator.ofInt(0, mRadius).setDuration(5000);
+            ValueAnimator valueAnimator = ValueAnimator.ofInt(minRippleRadius, mRadius).setDuration(mRippleCount * mRippleDuration);
             valueAnimator.setInterpolator(new DecelerateInterpolator());
             valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
             valueAnimator.setStartDelay(i * 1000);
@@ -67,6 +75,30 @@ public class RippleCircleView extends View {
         animatorSet.playTogether(valueAnimators);
     }
 
+    /**
+     * 初始化属性
+     */
+    private void iniPropeties(Context context, AttributeSet attrs) {
+        TypedArray tps = context.obtainStyledAttributes(attrs, R.styleable.RippleCircleView);
+        int count = tps.getIndexCount();
+        for (int i = 0; i < count; i++) {
+            int attr = tps.getIndex(i);
+            if (attr == R.styleable.RippleCircleView_minRippleRadius) {
+                minRippleRadius = (int) tps.getDimension(attr, DeviceUtil.dipToPx(getContext(), 5));
+            } else if (attr == R.styleable.RippleCircleView_mRippleColor) {
+                mRippleColor = tps.getColor(attr, Color.RED);
+            } else if (attr == R.styleable.RippleCircleView_mRippleStorkWidth) {
+                mRippleStorkWidth = (int) tps.getDimension(attr, DeviceUtil.dipToPx(getContext(), 5));
+            } else if (attr == R.styleable.RippleCircleView_mRippleCount) {
+                mRippleCount = tps.getInt(attr, 4);
+            } else if (attr == R.styleable.RippleCircleView_mRippleDuration) {
+                mRippleDuration = tps.getInt(attr, 1000);
+            }
+        }
+
+    }
+
+
     private Paint iniPaint() {
         Paint mPaint = new Paint();
         mPaint.setColor(mRippleColor);
@@ -86,7 +118,7 @@ public class RippleCircleView extends View {
         mCenterX = getMeasuredWidth() / 2;
         mCenterY = getMeasuredHeight() / 2;
         for (int i = 0; i < valueAnimators.length; i++) {
-            valueAnimators[i].setIntValues(0, mRadius);
+            valueAnimators[i].setIntValues(minRippleRadius, mRadius);
         }
         if (!animatorSet.isRunning() && mRadius != 0) animatorSet.start();
     }
