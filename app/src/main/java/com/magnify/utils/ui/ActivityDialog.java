@@ -11,9 +11,6 @@ import com.magnify.utils.ui.dialog.BoundsAnimationDialog;
 import com.magnify.utils.ui.dialog.HomeBannerDialog;
 import com.yan.fastview_library.poupwindows.BaseLinearPoupWindows;
 
-import cn.sharesdk.framework.ShareSDK;
-import cn.sharesdk.onekeyshare.OnekeyShare;
-
 /**
  * Created by heinigger on 16/8/8.
  */
@@ -85,7 +82,7 @@ public class ActivityDialog extends CurrentBaseActivity {
         });
     }
 
-    private void showShare() {
+/*    private void showShare() {
         ShareSDK.initSDK(this);
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
@@ -110,5 +107,5 @@ public class ActivityDialog extends CurrentBaseActivity {
         oks.setSiteUrl("http://sharesdk.cn");
         // 启动分享GUI
         oks.show(this);
-    }
+    }*/
 }
