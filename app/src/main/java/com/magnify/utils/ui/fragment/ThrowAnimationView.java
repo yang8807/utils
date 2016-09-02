@@ -22,8 +22,6 @@ public class ThrowAnimationView extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_throw_animtion_view, container, false);
-        btn_end = (Button) view.findViewById(R.id.btn_end);
-        btn_start = (Button) view.findViewById(R.id.btn_start);
         return view;
     }
 }

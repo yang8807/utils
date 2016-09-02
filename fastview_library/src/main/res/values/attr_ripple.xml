@@ -12,4 +12,10 @@
     <declare-styleable name="ThrowAnimationView">
         <attr name="android:src" />
     </declare-styleable>
+    <declare-styleable name="ThrowAnimationLayout">
+        <attr name="beizier">
+            <enum name="_2beizier" value="0" />
+            <enum name="_3beizier" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

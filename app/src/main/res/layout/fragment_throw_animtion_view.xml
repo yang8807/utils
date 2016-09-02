@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="ma   tch_parent"
+    android:layout_height="match_parent">
 
     <com.yan.fastview_library.view.ThrowAnimationView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:src="@mipmap/ic_launcher" />
 
-    <Button
-        android:id="@+id/btn_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="End" />
-
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="Start" />
-
-    <com.yan.fastview_library.view.ThrowAnimationLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#7cb6b7b8"
-        android:layout_alignParentBottom="true">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_launcher" />
-    </com.yan.fastview_library.view.ThrowAnimationLayout>
+            android:gravity="center"
+            android:text="两倍贝塞尔" />
+
+        <com.yan.fastview_library.view.ThrowAnimationLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#7cb6b7b8"
+            app:beizier="_2beizier">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher" />
+        </com.yan.fastview_library.view.ThrowAnimationLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="三倍贝塞尔" />
+
+        <com.yan.fastview_library.view.ThrowAnimationLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#7cb6b7b8"
+            app:beizier="_3beizier">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher" />
+        </com.yan.fastview_library.view.ThrowAnimationLayout>
+    </LinearLayout>
 </RelativeLayout>
