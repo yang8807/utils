@@ -1,7 +1,6 @@
 package com.yan.fastview_library.poupwindows;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
@@ -12,9 +11,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
-import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
 
 public class BaseLinearPoupWindows extends PopupWindow {
 
@@ -204,27 +200,16 @@ public class BaseLinearPoupWindows extends PopupWindow {
      */
     public void showAtCenter(View view, int gravity, int offSet) {
         view.getLocationOnScreen(screnLocation);
-        //获取的是不包含ActionBar的
-        int viewLeft = screnLocation[0];
-        int viewTop = screnLocation[1];
-        Point points = DeviceUtil.getDisplaySize(mContext);
-        LogUtil.v("mine", "viewLeft:" + viewLeft + "  viewTop:" + viewTop + ":" + points.x + ":" + points.y);
         switch (gravity) {
 
             case Gravity.LEFT:
-                viewLeft = viewLeft - fram.getMeasuredWidth();
-                int actionBarHeight = (int) DeviceUtil.getActionBarHeight(mContext);
-                viewTop = (viewTop - (points.y - actionBarHeight) / 2);
-                showAtLocation(view, gravity, viewLeft - offSet, viewTop);
+                showAtLocation(view, Gravity.NO_GRAVITY, screnLocation[0] - fram.getMeasuredWidth() - offSet, screnLocation[1] - (fram.getMeasuredHeight() - view.getMeasuredHeight()) / 2);
                 break;
             case Gravity.RIGHT:
-                viewLeft = points.x - viewLeft - view.getMeasuredWidth() - fram.getMeasuredWidth();
-                int actionBarHeights = (int) DeviceUtil.getActionBarHeight(mContext);
-                viewTop = (viewTop - (points.y - actionBarHeights) / 2);
-                showAtLocation(view, gravity, viewLeft - offSet, viewTop);
+                showAtLocation(view, Gravity.NO_GRAVITY, screnLocation[0] + view.getWidth() + offSet, screnLocation[1] - (fram.getMeasuredHeight() - view.getMeasuredHeight()) / 2);
                 break;
             case Gravity.TOP:
-                showAsDropDown(view, (view.getMeasuredWidth() - fram.getMeasuredWidth()) / 2, -view.getMeasuredHeight() - offSet - fram.getMeasuredHeight());
+                showAtLocation(view, Gravity.NO_GRAVITY, screnLocation[0] + (view.getMeasuredWidth() - fram.getMeasuredWidth()) / 2, screnLocation[1] - fram.getMeasuredHeight() - offSet);
                 break;
             case Gravity.BOTTOM:
                 showAsDropDown(view, (view.getMeasuredWidth() - fram.getMeasuredWidth()) / 2, offSet);

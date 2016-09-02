@@ -24,4 +24,16 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:text="Start" />
+
+    <com.yan.fastview_library.view.ThrowAnimationLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_launcher" />
+    </com.yan.fastview_library.view.ThrowAnimationLayout>
 </RelativeLayout>

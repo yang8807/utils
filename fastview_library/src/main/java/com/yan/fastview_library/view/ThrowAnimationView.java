@@ -11,10 +11,9 @@ import android.graphics.PathMeasure;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
 import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
 import com.magnify.yutils.data.ImageUtils;
 import com.yan.fastview_library.R;
 
@@ -23,16 +22,24 @@ import com.yan.fastview_library.R;
  * 抛物线动画,贝赛尔曲线
  */
 public class ThrowAnimationView extends View {
+    //绘制的画笔
     private Paint mPaint;
+    //绘制的图片
     private Bitmap mDrawable;
-    private float[] mLastPosition = new float[2];
+    //绘制的位置
     private float[] mDrawPosition = new float[2];
-
     //动画效果差值器
     ValueAnimator mValueAnimator;
     private PathMeasure mPathMeasure = new PathMeasure();
     //绘制的运动路劲
     private Path mPath = new Path();
+    //动画执行时间
+    private int mDuration = 5000;
+    //控制图片的大小
+    private int mDrawableSize = DeviceUtil.dipToPx(getContext(), 10);
+    //放大的比例
+    private float scale;
+
 
     public ThrowAnimationView(Context context) {
         this(context, null);
@@ -47,16 +54,16 @@ public class ThrowAnimationView extends View {
         iniProperties(attrs, context);
         iniPaint();
         mValueAnimator = ValueAnimator.ofFloat(0, 0);
-        mValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        mValueAnimator.setInterpolator(new DecelerateInterpolator());
         mValueAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        mValueAnimator.setDuration(1000);
+        mValueAnimator.setDuration(mDuration);
         mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float value = (float) valueAnimator.getAnimatedValue();
                 if (value == 0) return;
+                scale = value / mPathMeasure.getLength();
                 mPathMeasure.getPosTan(value, mDrawPosition, null);
-                LogUtil.v("mine", value + "");
                 invalidate();
             }
         });
@@ -67,11 +74,11 @@ public class ThrowAnimationView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mPath.reset();
-        mPath.moveTo(0, getMeasuredHeight() / 2);
-        mPath.quadTo(getMeasuredWidth() / 2, getMeasuredHeight() / 2 - DeviceUtil.dipToPx(getContext(), 30), getMeasuredWidth(), getMeasuredHeight() / 2);
+        mPath.moveTo(0, getMeasuredHeight());
+        mPath.quadTo(getMeasuredWidth() * 2 / 3, getMeasuredHeight() / 10, getMeasuredWidth(), getMeasuredHeight());
         mPathMeasure.setPath(mPath, true);
         int length = (int) mPathMeasure.getLength();
-        mValueAnimator.setFloatValues(0, length);
+        mValueAnimator.setFloatValues(length, 0);
         if (length > 0)
             mValueAnimator.start();
     }
@@ -79,11 +86,13 @@ public class ThrowAnimationView extends View {
     private void iniProperties(AttributeSet attrs, Context context) {
         TypedArray tps = context.obtainStyledAttributes(attrs, R.styleable.ThrowAnimationView);
         int count = tps.getIndexCount();
+//        ObjectAnimator.ofMultiFloat()
         for (int i = 0; i < count; i++) {
             int attr = tps.getIndex(i);
             if (attr == R.styleable.ThrowAnimationView_android_src) {
                 Drawable drawable = tps.getDrawable(attr);
-                mDrawable = ImageUtils.drawable2Bitmap(drawable);
+                mDrawable = ImageUtils.zoomBitmap(ImageUtils.drawable2Bitmap(drawable), mDrawableSize, mDrawableSize);
+//                mDrawable = ImageUtils.drawable2Bitmap(drawable);
             }
         }
     }
@@ -91,10 +100,7 @@ public class ThrowAnimationView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawPath(mPath, mPaint);
-//        canvas.translate(mDrawPosition[0] - mLastPosition[0] , mDrawPosition[1] - mLastPosition[1] - mDrawable.getIntrinsicHeight() / 2);
         canvas.drawBitmap(mDrawable, mDrawPosition[0] - mDrawable.getWidth() / 2, mDrawPosition[1] - mDrawable.getHeight() / 2, mPaint);
-
-
     }
 
     private void iniPaint() {
