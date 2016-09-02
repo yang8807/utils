@@ -9,4 +9,7 @@
         <attr name="minRippleRadius" format="dimension" />
         <attr name="mRippleDuration" format="integer" />
     </declare-styleable>
+    <declare-styleable name="ThrowAnimationView">
+        <attr name="android:src" />
+    </declare-styleable>
 </resources>

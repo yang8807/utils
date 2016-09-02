@@ -101,6 +101,8 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
 
     private P getParent(int i) {
         P p = null;
+
+//        count = positionInfos.size() % 2 == 0 ? positionInfos.size() / 2 : positionInfos.size() + 1;
         for (int i1 = 0; i1 < positionInfos.size(); i1++) {
             PositionInfo positionInfo = positionInfos.get(i1);
             if (positionInfo.isRange(i)) {

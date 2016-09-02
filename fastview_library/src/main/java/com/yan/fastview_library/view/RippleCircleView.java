@@ -95,6 +95,7 @@ public class RippleCircleView extends View {
                 mRippleDuration = tps.getInt(attr, 1000);
             }
         }
+        tps.recycle();
 
     }
 

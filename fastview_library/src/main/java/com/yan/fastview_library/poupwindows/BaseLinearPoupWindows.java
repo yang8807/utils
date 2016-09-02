@@ -18,7 +18,7 @@ import com.magnify.yutils.LogUtil;
 
 public class BaseLinearPoupWindows extends PopupWindow {
 
-    private View views;
+    protected View views;
 
     private Context mContext;
 
