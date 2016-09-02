@@ -9,10 +9,8 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.PathInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-
-import com.magnify.yutils.DeviceUtil;
 
 /**
  * Created by heinigger on 16/9/2.
@@ -35,27 +33,34 @@ public class ThrowAnimationLayout extends RelativeLayout {
 
     public ThrowAnimationLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mPaint=new Paint();
+        mPaint = new Paint();
         mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(10);
         setTopPoint(100, 100);
-        start();
     }
 
     public void setTopPoint(float x, float y) {
-        mPath.reset();
-//        mPath.moveTo(0, getMeasuredHeight());
-//        mPath.quadTo(x, y, getMeasuredWidth(), getMeasuredHeight());
-        mPath.moveTo(0, DeviceUtil.dipToPx(getContext(), 50));
-        mPath.quadTo(x, y, DeviceUtil.dipToPx(getContext(), 50), DeviceUtil.dipToPx(getContext(), 50));
-        mPathMeasure.setPath(mPath, true);
+
         invalidate();
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        mPath.reset();
+//        mPath.moveTo(0, getMeasuredHeight());
+//        mPath.quadTo(x, y, getMeasuredWidth(), getMeasuredHeight());
+        mPath.moveTo(0, getMeasuredHeight()*2/3);
+        mPath.quadTo(getMeasuredWidth() / 2, 0, getMeasuredWidth(), getMeasuredHeight()*2/3);
+        mPathMeasure.setPath(mPath, true);
+        start();
+
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawPath(mPath,mPaint);
+        canvas.drawPath(mPath, mPaint);
     }
 
     public void start() {
@@ -63,11 +68,10 @@ public class ThrowAnimationLayout extends RelativeLayout {
             if (mObjectAnimator == null) {
                 mObjectAnimator = ObjectAnimator.ofFloat(getChildAt(0), View.X, View.Y, mPath);
                 mObjectAnimator.setRepeatCount(-1);
-                mObjectAnimator.setInterpolator(new PathInterpolator(mPath));
-                mObjectAnimator.setDuration(5000);
+                mObjectAnimator.setInterpolator(new DecelerateInterpolator());
+                mObjectAnimator.setDuration(1500);
             } else {
                 mObjectAnimator.ofFloat(getChildAt(0), View.X, View.Y, mPath);
-                mObjectAnimator.setInterpolator(new PathInterpolator(mPath));
             }
             mObjectAnimator.start();
         }
