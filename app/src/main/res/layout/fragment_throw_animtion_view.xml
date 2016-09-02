@@ -28,6 +28,7 @@
     <com.yan.fastview_library.view.ThrowAnimationLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="#7cb6b7b8"
         android:layout_alignParentBottom="true">
 
         <ImageView

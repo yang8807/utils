@@ -46,6 +46,14 @@ public class BaseLinearPoupWindows extends PopupWindow {
         setOutsideTouchable(true);
         setFocusable(true);
         BaseLinearPoupWindows.this.setBackgroundDrawable(new BitmapDrawable());
+        onMeasure();
+
+    }
+
+    /**
+     * 进行后动测量
+     */
+    private void onMeasure() {
         //手动测量一下view的大小,因为第一次弹出来,大小并未确定,显示存在问题
         int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
@@ -201,7 +209,6 @@ public class BaseLinearPoupWindows extends PopupWindow {
     public void showAtCenter(View view, int gravity, int offSet) {
         view.getLocationOnScreen(screnLocation);
         switch (gravity) {
-
             case Gravity.LEFT:
                 showAtLocation(view, Gravity.NO_GRAVITY, screnLocation[0] - fram.getMeasuredWidth() - offSet, screnLocation[1] - (fram.getMeasuredHeight() - view.getMeasuredHeight()) / 2);
                 break;
