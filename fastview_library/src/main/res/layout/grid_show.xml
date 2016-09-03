@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="100"
-        android:horizontalSpacing="4dp"
-        android:verticalSpacing="4dp" />
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp" />
 
     <RelativeLayout
         android:id="@+id/rly_parent"
