@@ -19,6 +19,7 @@ import utils.ViewPagerScroller;
 
 /**
  * Created by heinigger on 16/8/15.
+ * 当页面同时要出现三个tab的时候,就会出现问题
  * 广告栏轮播效果:2-0-1-2-0:实现无线循环的一种方法:
  * 实现原理 ：
  * 有三张图片，实现无限循环。在viewpager中设置5个view，第一个为三张图片的最后一张，第五张为三张图片的第一张。图片顺序如下数字：
@@ -43,6 +44,7 @@ public class BannerLoopView<T> extends ViewPager {
     private ArrayList<OnPageChangeListener> externalOnPagerListeners = new ArrayList<>();
     //上次选中的位置,因为多添加了两个item  的原因,导致部分位置会重复调用,这里处理一下,让其值调用一次
     private int lastPosition;
+    //是否开启自动播放
     private boolean willAutoScroll = true;
 
     public BannerLoopView(Context context) {
@@ -105,8 +107,12 @@ public class BannerLoopView<T> extends ViewPager {
         @Override
         public void onPageScrollStateChanged(int state) {
             //拖动状态也进行页面设置,就避免了到尾部
-            if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING) && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {//将任务放在这里执行,就能正常显示动画了
-                BannerLoopView.super.setCurrentItem(index, false);
+            int currentPosition = getCurrentItem();
+            //将任务放在这里执行,就能正常显示动画了
+            if (currentPosition != index && (index == 1 || index == mImageUrls.size() - BannerLoopView.TMEPCOUNT)) {
+                if ((state == SCROLL_STATE_IDLE || state == SCROLL_STATE_DRAGGING)) {
+                    BannerLoopView.super.setCurrentItem(index, false);
+                }
             }
             if (!externalOnPagerListeners.isEmpty()) {
                 for (int i = 0; i < externalOnPagerListeners.size(); i++) {
@@ -145,6 +151,11 @@ public class BannerLoopView<T> extends ViewPager {
         //添加最后一个有效的,加入第一个集合
         mImageUrls.add(0, mImageUrls.get(mImageUrls.size() - TMEPCOUNT));
         bannerAdapter = new CommonViewPagerAdapter<T>(imageUrls, getContext(), layoutid) {
+            @Override
+            protected void onPreCreate(ViewHolder viewHolder) {
+                listener.onPreCreate(viewHolder);
+            }
+
             @Override
             protected void convert(ViewHolder viewHolder, int position, T o) {
                 listener.convert(viewHolder, position, o);
@@ -209,5 +220,7 @@ public class BannerLoopView<T> extends ViewPager {
      */
     public interface LoopAdapterListener<T> {
         public void convert(ViewHolder viewHolder, int position, T t);
+
+        public void onPreCreate(ViewHolder viewHolder);
     }
 }

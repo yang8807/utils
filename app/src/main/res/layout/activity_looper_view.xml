@@ -41,7 +41,6 @@
             android:id="@+id/banner_looper_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:blv_dwell_time="3000"
             app:blv_switch_time="1000" />
 
         <com.yan.fastview_library.indicator.BannerLooperIndicator

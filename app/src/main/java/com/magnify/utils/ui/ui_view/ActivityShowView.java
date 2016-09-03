@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
+import com.magnify.utils.ui.fragment.ExactlyPagerAnimationFragmenmt;
+import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
 
 /**
  * Created by heinigger on 16/8/7.
@@ -22,6 +24,9 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_RIPPLE = 6;
     //抛向购物车的动效
     public static final int TYPE_SHOPCAR = 7;
+    //ViewPager Animation
+    public static final int TYPE_VIEW_PAGER_ANIMATION =8;
+    public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER =9;
     private int layout;
 
     @Override
@@ -44,6 +49,10 @@ public class ActivityShowView extends CurrentBaseActivity {
             layout = R.layout.activity_ripple_view;
         } else if (TYPE_SHOPCAR == type) {
            layout=R.layout.fragment_throw_animtion_view;
+        }else if (TYPE_VIEW_PAGER_ANIMATION==type){
+            switchFragment(ExactlyPagerAnimationFragmenmt.class);
+        }else if (TYPE_INFINITE_VIEWPAGER_ADAPTER==type){
+            switchFragment(InfiniteAdapterFragment.class);
         }
 
         setContentView(layout);

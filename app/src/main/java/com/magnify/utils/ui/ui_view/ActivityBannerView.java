@@ -35,8 +35,8 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
         viewpager_normal = (ViewPager) findViewById(R.id.viewpager_normal);
         setNetWorkAdapter();
 
-        setUpWithPager(15);
-        baner_indicator_normal.setUpViewPager(viewpager_normal, 15);
+        setUpWithPager(5);
+        baner_indicator_normal.setUpViewPager(viewpager_normal, 5);
     }
 
     private void setUpWithPager(int count) {
@@ -85,6 +85,11 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
                     public void convert(ViewHolder viewHolder, int position, Integer s) {
                         viewHolder.displayImage(s, R.id.imageView);
                     }
+
+                    @Override
+                    public void onPreCreate(ViewHolder viewHolder) {
+
+                    }
                 },
                 R.drawable.ic_watch_later_blue_grey_700_36dp,
                 R.drawable.ic_perm_identity_green_500_36dp,
@@ -100,8 +105,13 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
                     public void convert(ViewHolder viewHolder, int position, String s) {
                         viewHolder.displayImage(s, R.id.imageView);
                     }
+
+                    @Override
+                    public void onPreCreate(ViewHolder viewHolder) {
+
+                    }
                 },
-                RandomUtil.getRandomImage(15));
+                RandomUtil.getRandomImage(5));
 
     }
 }
