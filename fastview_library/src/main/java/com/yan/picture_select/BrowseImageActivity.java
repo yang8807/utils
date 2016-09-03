@@ -2,6 +2,7 @@ package com.yan.picture_select;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonShowChildViewPagerAdapter;
 import com.magnify.yutils.bean.ImageFloder;
+import com.magnify.yutils.data.BitmapBlurHelper;
+import com.magnify.yutils.data.ImageUtils;
 import com.magnify.yutils.data.PreferencesUtil;
 import com.yan.constants.Constants;
 import com.yan.fastview_library.R;
@@ -40,10 +43,12 @@ public class BrowseImageActivity extends BaseActivity {
 
         if (!TextUtils.isEmpty(localPaths)) {
             imageView = (ImageView) findViewById(R.id.image_blur);
-            SingleInstanceManager.getImageLoader().displayImage(localPaths, imageView);
-            //oom
-//            Bitmap mBitmap = BitmapBlurHelper.doBlurJniArray(BitmapFactory.decodeFile(localPaths), 50, false);
-//            if (mBitmap != null) imageView.setImageBitmap(mBitmap);
+            Bitmap mBitmap = BitmapBlurHelper.doBlurJniArray(ImageUtils.scalePicture(localPaths, 200, 200), 3, false);
+            if (mBitmap != null) {
+                imageView.setImageBitmap(mBitmap);
+            } else {
+                SingleInstanceManager.getImageLoader().displayImage("file://" + localPaths, imageView);
+            }
         }
 
 
@@ -59,7 +64,7 @@ public class BrowseImageActivity extends BaseActivity {
             @Override
             protected void convert(ViewHolder viewHolder, int position, final ImageFloder parent, final String child) {
                 viewHolder.displayImage("file://" + parent.getDir() + "/" + child, R.id.photoView)
-                        .setTag(R.id.image_save, "file://" + parent.getDir() + "/" + child).setOnClickListener(R.id.image_save, new View.OnClickListener() {
+                        .setTag(R.id.image_save, parent.getDir() + "/" + child).setOnClickListener(R.id.image_save, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String localPath = (String) view.getTag();
@@ -69,7 +74,6 @@ public class BrowseImageActivity extends BaseActivity {
                 });
             }
         });
-
         viewPager.setCurrentItem(getIntent().getIntExtra(IMAGE_POSITION, 0));
     }
 

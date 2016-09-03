@@ -16,9 +16,8 @@ import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.component.PictureSelectActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_view.ActivityBannerView;
-import com.magnify.utils.ui.ui_view.ActivityEditTextAtListView;
+import com.magnify.utils.ui.ui_view.ActivityFragmentTrasnsfomer;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
-import com.magnify.utils.ui.ui_view.AdaptTextViewActivity;
 
 import java.util.ArrayList;
 
@@ -70,10 +69,7 @@ public class MainActivity extends CurrentBaseActivity {
         add("BannerLooperView", "广告导航栏效果", ActivityBannerView.class);
         add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
         add("BaseFilterFragment", "图片选择组件,设法让其支持自定义", PictureSelectActivity.class);
-        add("AdaptTextView", "自适应文本宽度,字体变小", AdaptTextViewActivity.class);
-        add("EditText在ListView中", "EditText在ListView中", ActivityEditTextAtListView.class);
-        add("RippleView", "水波纹效果的动画", ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
-        add("ThrowAnimationView", "抛向购物车的动画", ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);
+        add("ViewPager中的切换动画", "ViewPager切换动画", ActivityFragmentTrasnsfomer.class);
     }
 
     @Override

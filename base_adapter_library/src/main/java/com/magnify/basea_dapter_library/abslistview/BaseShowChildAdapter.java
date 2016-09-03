@@ -100,23 +100,23 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
     protected abstract void convert(ViewHolder viewHolder, View convertView, int position, P parent, C child);
 
     private P getParent(int i) {
-
-//        PositionInfo positionInfo = positionInfos.get(i1);
-//        if (positionInfo.isRange(i)) {
-//            p = folders.get(i1);
-//            break;
-//        }
-
         P p = null;
-        //进行双向遍历
-        int count = positionInfos.size() % 2 == 0 ? positionInfos.size() / 2 : positionInfos.size() / 2 + 1;
-        int allCount = positionInfos.size();
-        for (int i1 = 0; i1 < count; i1++) {
-            p = getP(i1);
-            if (p != null) break;
-            p = getP(allCount - i1);
-            if (p != null) break;
+        for (int i1 = 0; i1 < positionInfos.size(); i1++) {
+            PositionInfo positionInfo = positionInfos.get(i1);
+            if (positionInfo.isRange(i)) {
+                p = folders.get(i1);
+                break;
+            }
         }
+//        //进行双向遍历
+//        int count = positionInfos.size() % 2 == 0 ? positionInfos.size() / 2 : positionInfos.size() / 2 + 1;
+//        int allCount = positionInfos.size();
+//        for (int i1 = 0; i1 < count; i1++) {
+//            p = getP(i1);
+//            if (p != null) break;
+//            p = getP(allCount - i1);
+//            if (p != null) break;
+//        }
         return p;
     }
 
@@ -130,7 +130,7 @@ public abstract class BaseShowChildAdapter<P, C> extends BaseAdapter {
         return p;
     }
 
-    public Context getmContext() {
+    public Context getContext() {
         return mContext;
     }
 

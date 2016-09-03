@@ -21,7 +21,9 @@ import com.magnify.utils.ui.ui_adapter.RandCharActivity;
 import com.magnify.utils.ui.ui_animation.ViewAnimationActivity;
 import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
 import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
+import com.magnify.utils.ui.ui_view.ActivityEditTextAtListView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
+import com.magnify.utils.ui.ui_view.AdaptTextViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +91,10 @@ public class CategoryActivity extends CurrentBaseActivity {
         add("DecoratedBackGround", "随机生成圆的,用于装饰的背景view", ActivityShowView.class, 4);
         add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
         add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
+        add("AdaptTextView", "自适应文本宽度,字体变小", AdaptTextViewActivity.class);
+        add("EditText在ListView中", "EditText在ListView中", ActivityEditTextAtListView.class);
+        add("RippleView", "水波纹效果的动画", ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
+        add("ThrowAnimationLayout", "抛向购物车的动画", ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);
     }
 
     private void setAdapter() {

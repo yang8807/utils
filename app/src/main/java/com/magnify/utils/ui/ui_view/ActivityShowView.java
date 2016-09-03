@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
-import com.magnify.utils.ui.fragment.ThrowAnimationView;
 
 /**
  * Created by heinigger on 16/8/7.
@@ -44,7 +43,7 @@ public class ActivityShowView extends CurrentBaseActivity {
         else if (TYPE_RIPPLE == type) {
             layout = R.layout.activity_ripple_view;
         } else if (TYPE_SHOPCAR == type) {
-            switchFragment(ThrowAnimationView.class);
+           layout=R.layout.fragment_throw_animtion_view;
         }
 
         setContentView(layout);

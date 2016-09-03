@@ -28,8 +28,8 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> impl
     protected void onPreCreate(ViewHolder viewHolder, View convertView) {
         ImageView imageView = viewHolder.getView(R.id.image);
         ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-        int spacing = DeviceUtil.dipToPx(getmContext(), ImagePickerConfiguration.getInstance().getSpaciing());
-        layoutParams.width = layoutParams.height = (DeviceUtil.getScreenWidth(getmContext()) - spacing * (ImagePickerConfiguration.getInstance().getNumcloumns() - 1)) / ImagePickerConfiguration.getInstance().getNumcloumns();
+        int spacing = DeviceUtil.dipToPx(getContext(), ImagePickerConfiguration.getInstance().getSpaciing());
+        layoutParams.width = layoutParams.height = (DeviceUtil.getScreenWidth(getContext()) - spacing * (ImagePickerConfiguration.getInstance().getNumcloumns() - 1)) / ImagePickerConfiguration.getInstance().getNumcloumns();
         imageView.requestLayout();
     }
 
@@ -48,7 +48,7 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> impl
                         if (file.exists()) file.delete();
                         parent.getAllImages().remove(child);
                         notifyDataSetChanged();
-                        ToastUtil.show(getmContext(),"删除图片成功");
+                        ToastUtil.show(getContext(),"删除图片成功");
                         return false;
                     }
                 })
@@ -58,7 +58,7 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> impl
     @Override
     public void onClick(View view) {
         int position = (int) view.getTag(R.id.image);
-        getmContext().startActivity(BrowseImageActivity.getIntent(getmContext(), position, getParentData()));
+        getContext().startActivity(BrowseImageActivity.getIntent(getContext(), position, getParentData()));
     }
 
 }

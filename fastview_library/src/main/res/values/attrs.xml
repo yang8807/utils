@@ -33,6 +33,7 @@
         <attr name="blv_dwell_time" format="integer" />
         <!--一个页面切换到另一个页面所需要的时间 -->
         <attr name="blv_switch_time" format="integer" />
+        <attr name="blv_willAutoScroll" format="boolean" />
     </declare-styleable>
     <!-- 轮动广告栏的指示器 -->
     <declare-styleable name="BannerLooperIndicator">

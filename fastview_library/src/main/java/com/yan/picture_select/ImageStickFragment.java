@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.yutils.DeviceUtil;
+import com.magnify.yutils.ToastUtil;
 import com.magnify.yutils.bean.ImageFloder;
 import com.magnify.yutils.data.ImageScanner;
 import com.yan.fastview_library.R;
@@ -16,13 +17,15 @@ import com.yan.fastview_library.fragment.BaseFragment;
 import com.yan.fastview_library.viewgroup.sticky_gridview.BaseStickAdapter;
 import com.yan.fastview_library.viewgroup.sticky_gridview.StickyGridHeadersGridView;
 
+import java.io.File;
 import java.util.List;
 
 /**
  * Created by heinigger on 16/8/29.
  */
-public class ImageStickFragment extends BaseFragment {
+public class ImageStickFragment extends BaseFragment implements View.OnClickListener {
     private StickyGridHeadersGridView mStickyGridView;
+    private List<ImageFloder> datas;
 
     @Nullable
     @Override
@@ -32,6 +35,7 @@ public class ImageStickFragment extends BaseFragment {
         new ImageScanner(getActivity(), new ImageScanner.OnScanImageListener() {
             @Override
             public void onScanFinish(List<ImageFloder> mImageFloder, int totalCount) {
+                datas = mImageFloder;
                 mStickyGridView.setAdapter(new BaseStickAdapter<ImageFloder, String>(mImageFloder, getActivity(), R.layout.stick_grid_header, R.layout.item_images_view) {
                     @Override
                     protected void convertHeaderView(ViewHolder mHeaderViewHolder, ImageFloder imageFloder, int position) {
@@ -39,8 +43,19 @@ public class ImageStickFragment extends BaseFragment {
                     }
 
                     @Override
-                    protected void convertChildView(ViewHolder mChildHolder, ImageFloder parent, String mChild, int position) {
-                        mChildHolder.displayImage("file://" + parent.getDir() + "/" + mChild, R.id.image);
+                    protected void convertChildView(ViewHolder mChildHolder, final ImageFloder parent, final String mChild, int position) {
+                        mChildHolder.displayImage("file://" + parent.getDir() + "/" + mChild, R.id.image)
+                                .setOnClickListener(R.id.image, position, ImageStickFragment.this) .setOnLongClickListener(R.id.image, new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View view) {
+                                File file = new File(parent.getDir() + "/" + mChild);
+                                if (file.exists()) file.delete();
+                                parent.getAllImages().remove(mChild);
+                                notifyDataSetChanged();
+                                ToastUtil.show(getContext(),"删除图片成功");
+                                return false;
+                            }
+                        });
                     }
 
                     @Override
@@ -59,5 +74,12 @@ public class ImageStickFragment extends BaseFragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = (int) view.getTag(R.id.image);
+        getContext().startActivity(BrowseImageActivity.getIntent(getContext(), position, datas));
+
     }
 }

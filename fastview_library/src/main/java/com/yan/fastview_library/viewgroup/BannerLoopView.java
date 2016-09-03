@@ -32,7 +32,7 @@ public class BannerLoopView<T> extends ViewPager {
     private Handler mHandler = new Handler();
     //在当前页面停留的时间 TODO:当时间为1000秒的时候,就会出现那种普通的效果,看起来不正常的一样,切换速度也是一样会影响
     private int mDwellTime = 1500;
-    private int mSwitchTime = 1500;
+    private int mSwitchTime = 1000;
     //定时切换页面的任务
     private SwitchPagerRunnable mSwitchTask;
     private List<T> mImageUrls;
@@ -43,6 +43,7 @@ public class BannerLoopView<T> extends ViewPager {
     private ArrayList<OnPageChangeListener> externalOnPagerListeners = new ArrayList<>();
     //上次选中的位置,因为多添加了两个item  的原因,导致部分位置会重复调用,这里处理一下,让其值调用一次
     private int lastPosition;
+    private boolean willAutoScroll = true;
 
     public BannerLoopView(Context context) {
         this(context, null);
@@ -54,11 +55,15 @@ public class BannerLoopView<T> extends ViewPager {
         TypedArray tp = context.obtainStyledAttributes(attrs, R.styleable.BannerLoopView);
         mDwellTime = tp.getInt(R.styleable.BannerLoopView_blv_dwell_time, mDwellTime);
         mSwitchTime = tp.getInt(R.styleable.BannerLoopView_blv_switch_time, mSwitchTime);
+        willAutoScroll = tp.getBoolean(R.styleable.BannerLoopView_blv_willAutoScroll, willAutoScroll);
         tp.recycle();
-        //设置页面之间切换的速度
-        ViewPagerScroller pagerScroller = new ViewPagerScroller(getContext());
-        pagerScroller.setScrollDuration(mSwitchTime);
-        pagerScroller.initViewPagerScroll(this);
+
+        if (willAutoScroll) {//如果不需要自动切换，就不需要设置自动切换的速度了
+            //设置页面之间切换的速度
+            ViewPagerScroller pagerScroller = new ViewPagerScroller(getContext());
+            pagerScroller.setScrollDuration(mSwitchTime);
+            pagerScroller.initViewPagerScroll(this);
+        }
         super.addOnPageChangeListener(onPagerListener);
     }
 
@@ -146,13 +151,15 @@ public class BannerLoopView<T> extends ViewPager {
             }
         };
         setAdapter(bannerAdapter);
-        if (mSwitchTask == null) {
-            mSwitchTask = new SwitchPagerRunnable();
-        } else {
-            mHandler.removeCallbacks(mSwitchTask);
-        }
         super.setCurrentItem(1);
-        mHandler.postDelayed(mSwitchTask, mDwellTime);
+        if (willAutoScroll) {//需要的时候才需要开启定时切换的任务
+            if (mSwitchTask == null) {
+                mSwitchTask = new SwitchPagerRunnable();
+            } else {
+                mHandler.removeCallbacks(mSwitchTask);
+            }
+            mHandler.postDelayed(mSwitchTask, mDwellTime);
+        }
     }
 
     @Override

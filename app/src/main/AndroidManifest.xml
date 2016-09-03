@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <!--###########################################share SDk ###########################################-->
-        <activity
+     <!--   <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
@@ -53,20 +53,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            &lt;!&ndash; 调用新浪原生SDK，需要注册的回调activity &ndash;&gt;
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <!--微信分享回调 -->
+        &lt;!&ndash;微信分享回调 &ndash;&gt;
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->share
 
         <!--###########################################share SDk ###########################################-->
         <activity android:name=".ui.ui_adapter.RandCharActivity" />
@@ -91,6 +91,7 @@
         <activity android:name=".ui.component.ActivityPictureActivity" />
         <activity android:name=".ui.component.PictureSelectActivity" />
         <activity android:name=".ui.ui_animation.ViewAnimationActivity" />
+        <activity android:name=".ui.ui_view.ActivityFragmentTrasnsfomer" />
         <activity
             android:name=".ui.ui_view.ActivityEditTextAtListView"
             android:windowSoftInputMode="adjustPan" />
