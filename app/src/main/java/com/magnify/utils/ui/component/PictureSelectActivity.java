@@ -1,6 +1,7 @@
 package com.magnify.utils.ui.component;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +10,11 @@ import android.widget.ImageView;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.yutils.IntentUtil;
-import com.magnify.yutils.LogUtil;
-import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.StorageUtil;
-import com.yan.fastview_library.base.SingleInstanceManager;
+import com.magnify.yutils.data.ImageUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by heinigger on 16/8/20.
@@ -23,7 +23,6 @@ public class PictureSelectActivity extends CurrentBaseActivity {
 
     //    file:///mnt/sdcard/external_sd/test.txt
     private Uri uri;
-    private File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +50,7 @@ public class PictureSelectActivity extends CurrentBaseActivity {
 
             @Override
             public void onClick(View view) {
-
-                file = new File(StorageUtil.getDirDCIM(), "yanwu/" + "yanwu" + System.currentTimeMillis() + ".jpg");
+                uri = Uri.parse("file://" + StorageUtil.getDirDCIM() + "/yanwu/" + "yanwu" + System.currentTimeMillis() + ".jpg");
                 startActivityForResult(IntentUtil.camera(), 11);
             }
         });
@@ -60,12 +58,15 @@ public class PictureSelectActivity extends CurrentBaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentUtil.addToAlbum(file);
-        LogUtils.v("mine", file.exists() ? "文件存在" : "文件不存在");
-        uri = Uri.fromFile(file);
-        SingleInstanceManager.getImageLoader().displayImage(uri.toString(), (ImageView) getView(R.id.cameraFile));
         if (requestCode == 11) {
-            LogUtil.v("mine", "it's ok" + uri);
+            try {
+                ImageUtils.saveImageToSD(self, uri.getPath(), (Bitmap) data.getParcelableExtra("data"), 100);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            IntentUtil.addToAlbum(new File(uri.getPath()));
+            this.<ImageView>getView(R.id.cameraFile).setImageBitmap((Bitmap) data.getParcelableExtra("data"));
+//            SingleInstanceManager.getImageLoader().displayImage(uri.toString(), this.<ImageView>getView(R.id.cameraFile));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
