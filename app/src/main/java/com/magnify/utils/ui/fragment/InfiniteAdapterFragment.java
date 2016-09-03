@@ -33,9 +33,9 @@ public class InfiniteAdapterFragment extends BaseFragment {
             public void onPreCreate(ViewHolder viewHolder) {
 
             }
-        }, RandomUtil.getRandomImage(5));
+        }, RandomUtil.getRandomImage(10));
 
-        bannerLooperIndicator.setUpViewPager(mViewPager, 5);
+        bannerLooperIndicator.setUpViewPager(mViewPager, 10);
         return view;
     }
 }

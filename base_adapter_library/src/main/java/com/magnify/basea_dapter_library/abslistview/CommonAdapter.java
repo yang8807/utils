@@ -23,6 +23,10 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         this.layoutId = layoutId;
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
     @Override
     public int getCount() {
         return mDatas.size();

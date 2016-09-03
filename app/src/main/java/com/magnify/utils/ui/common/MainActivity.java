@@ -17,6 +17,7 @@ import com.magnify.utils.ui.component.PictureSelectActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_view.ActivityBannerView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
+import com.magnify.utils.ui.ui_view.FileActivity;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,8 @@ public class MainActivity extends CurrentBaseActivity {
         add("BaseFilterFragment", "图片选择组件,设法让其支持自定义", PictureSelectActivity.class);
         add("ViewPager中的切换动画", "ViewPager切换动画", ActivityShowView.class, ActivityShowView.TYPE_VIEW_PAGER_ANIMATION);
         add("无限循环的适配器", "无限循环的适配器", ActivityShowView.class, ActivityShowView.TYPE_INFINITE_VIEWPAGER_ADAPTER);
+        add("遍历获取文件路径", "获取文件路劲", ActivityShowView.class, ActivityShowView.TYPE_FILE_PATH);
+        add("文件浏览器", "文件浏览器", FileActivity.class);
     }
 
     @Override

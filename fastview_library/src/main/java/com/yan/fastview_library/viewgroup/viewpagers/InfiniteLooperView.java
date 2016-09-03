@@ -35,6 +35,8 @@ public class InfiniteLooperView<T> extends ViewPager {
     //这样所有设置的OnPagerListener都能正常使用了
     private ArrayList<OnPageChangeListener> externalOnPagerListeners = new ArrayList<>();
     private List<T> imageUrls = new ArrayList<>();
+    //需要设置的item
+    private int switchItem;
 
     public InfiniteLooperView(Context context) {
         this(context, null);
@@ -156,9 +158,22 @@ public class InfiniteLooperView<T> extends ViewPager {
 
         @Override
         public void run() {
-            ++index;
-            InfiniteLooperView.super.setCurrentItem(index);
-            mHandler.postDelayed(this, mDwellTime);
+            mHandler.removeCallbacks(mSwitchTask);
+            if (switchItem != 0) {
+                if (switchItem > 0) {
+                    --switchItem;
+                    ++index;
+                } else if (switchItem < 0) {
+                    ++switchItem;
+                    --index;
+                }
+                InfiniteLooperView.super.setCurrentItem(index);
+                mHandler.postDelayed(this, mSwitchTime / 5);
+            } else {
+                ++index;
+                InfiniteLooperView.super.setCurrentItem(index);
+                mHandler.postDelayed(this, mDwellTime);
+            }
         }
     }
 
@@ -172,13 +187,10 @@ public class InfiniteLooperView<T> extends ViewPager {
 
     @Override
     public void setCurrentItem(int item) {
-        if (item > imageUrls.size() - 1 || item < 0 && imageUrls != null && !imageUrls.isEmpty())
+        if ( switchItem != 0)
             return;
-        mHandler.removeCallbacks(mSwitchTask);
-        int position = index - index % imageUrls.size() + item;
-        if (index == position) return;
-        InfiniteLooperView.super.setCurrentItem(position);
-        mHandler.postDelayed(mSwitchTask, mSwitchTime);
+        this.switchItem = item - index % imageUrls.size();
+        mHandler.post(mSwitchTask);
     }
 
     /**

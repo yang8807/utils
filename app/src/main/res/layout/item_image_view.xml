@@ -18,6 +18,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#79ffffff"
+        android:focusable="true"
         android:gravity="center"
         android:textColor="#fff" />
 

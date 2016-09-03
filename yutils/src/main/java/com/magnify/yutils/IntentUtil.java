@@ -190,6 +190,20 @@ public class IntentUtil {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         return intent;
     }
+    public static Intent CropIntent(Uri uri) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 250);
+        intent.putExtra("outputY", 250);
+
+        intent.putExtra("outputFormat", "JPEG");
+        intent.putExtra("noFaceDetection", true);
+        intent.putExtra("return-data", true);
+        return intent;
+    }
 
     /**
      * 发送广播以通知系统添加文件到媒体库，常用于拍照后让照片出现在图库

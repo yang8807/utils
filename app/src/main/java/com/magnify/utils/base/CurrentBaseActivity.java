@@ -128,7 +128,6 @@ public class CurrentBaseActivity extends BaseActivity {
         intent.putExtra(CurrentBaseActivity.OBJETS, item.getObject());
         startActivity(intent);
     }
-
     public Object[] getObjects() {
         return object;
     }

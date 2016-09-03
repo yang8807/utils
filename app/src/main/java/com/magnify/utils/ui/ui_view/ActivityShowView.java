@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.ui.fragment.ExactlyPagerAnimationFragmenmt;
+import com.magnify.utils.ui.fragment.FilePathFragment;
 import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
 
 /**
@@ -25,8 +26,10 @@ public class ActivityShowView extends CurrentBaseActivity {
     //抛向购物车的动效
     public static final int TYPE_SHOPCAR = 7;
     //ViewPager Animation
-    public static final int TYPE_VIEW_PAGER_ANIMATION =8;
-    public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER =9;
+    public static final int TYPE_VIEW_PAGER_ANIMATION = 8;
+    public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER = 9;
+    //file path
+    public static final int TYPE_FILE_PATH = 10;
     private int layout;
 
     @Override
@@ -48,11 +51,13 @@ public class ActivityShowView extends CurrentBaseActivity {
         else if (TYPE_RIPPLE == type) {
             layout = R.layout.activity_ripple_view;
         } else if (TYPE_SHOPCAR == type) {
-           layout=R.layout.fragment_throw_animtion_view;
-        }else if (TYPE_VIEW_PAGER_ANIMATION==type){
+            layout = R.layout.fragment_throw_animtion_view;
+        } else if (TYPE_VIEW_PAGER_ANIMATION == type) {
             switchFragment(ExactlyPagerAnimationFragmenmt.class);
-        }else if (TYPE_INFINITE_VIEWPAGER_ADAPTER==type){
+        } else if (TYPE_INFINITE_VIEWPAGER_ADAPTER == type) {
             switchFragment(InfiniteAdapterFragment.class);
+        } else if (TYPE_FILE_PATH == type) {
+            switchFragment(FilePathFragment.class);
         }
 
         setContentView(layout);
