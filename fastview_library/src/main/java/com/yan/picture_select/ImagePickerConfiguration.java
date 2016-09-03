@@ -9,7 +9,7 @@ public class ImagePickerConfiguration {
     //每行显示的个数
     private int numcloumns = 4;
     //每个item之间的间距
-    private int spaciing = 4;
+    private int spaciing =1;
     //整体的风格
     private int style_color = Color.GREEN;
     //弹出框的占屏幕的比例
