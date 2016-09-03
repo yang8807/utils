@@ -21,11 +21,12 @@ public class ActivityPictureActivity extends CurrentBaseActivity {
         setContentView(R.layout.framlayout);
         setTopTitle("图片选择");
         setContentId(R.id.fragment_container);
-        ImagePickerConfiguration.getInstance().setStyleColor(getColor(R.color.colorPrimary));
+        ImagePickerConfiguration.getInstance().setStyleColor(getColors(R.color.colorPrimary));
         int fragmetType = getIntent().getIntExtra(FRAGMENT_TYPE, 0);
         if (fragmetType == 0)
             switchFragment(ImageFilterFragment.class);
         else if (fragmetType == 1)
             switchFragment(ImageStickFragment.class);
     }
+
 }

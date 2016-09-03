@@ -2,10 +2,10 @@ package com.magnify.utils.base;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +20,11 @@ import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
 import com.magnify.yutils.LogUtil;
 import com.magnify.yutils.data.BitmapBlurHelper;
+import com.magnify.yutils.data.ImageUtils;
+import com.magnify.yutils.data.PreferencesUtil;
+import com.yan.constants.Constants;
 import com.yan.fastview_library.base.BaseActivity;
+import com.yan.fastview_library.base.SingleInstanceManager;
 
 public class CurrentBaseActivity extends BaseActivity {
     public static final String TITLE = "title";
@@ -42,13 +46,7 @@ public class CurrentBaseActivity extends BaseActivity {
         image_dog = (ImageView) findViewById(R.id.image_dog);
         img_back = (ImageView) findViewById(R.id.img_back);
 
-        image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.dog : R.mipmap.duola);
-        //图片模糊效果已经可以使用了
-        if (bitmap == null) {
-            bitmap = BitmapBlurHelper.doBlurJniArray(BitmapFactory.decodeResource(getResources(), R.mipmap.background), 50, false);
-        }
-        img_back.setImageBitmap(bitmap);
-        img_back.setVisibility(RandomUtil.randomInt(100) % 2 == 0 ? View.VISIBLE : View.GONE);
+        showBackground();
 
         getSupportActionBar().setTitle(getIntent().getStringExtra(TITLE));
         getSupportActionBar().setSubtitle(getIntent().getStringExtra(SUBTITLE));
@@ -58,6 +56,25 @@ public class CurrentBaseActivity extends BaseActivity {
         SwipeBackHelper.onCreate(this);
         object = (Object[]) getIntent().getSerializableExtra(OBJETS);
         LogUtil.v("AActivity", "---" + self.getLocalClassName() + "---");
+    }
+
+    /**
+     * 设置图片背景
+     */
+    private void showBackground() {
+        image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.dog : R.mipmap.duola);
+        //图片模糊效果已经可以使用了
+        if (bitmap == null) {
+            String localPaths = PreferencesUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
+            if (!TextUtils.isEmpty(localPaths)) {
+                bitmap = BitmapBlurHelper.doBlurJniArray(ImageUtils.scalePicture(localPaths, 500, 500), 3, false);
+                if (bitmap == null) {
+                    SingleInstanceManager.getImageLoader().displayImage("file://" + localPaths, img_back);
+                }
+            }
+        } else
+            img_back.setImageBitmap(bitmap);
+        img_back.setVisibility(RandomUtil.randomInt(100) % 2 == 0 ? View.VISIBLE : View.GONE);
     }
 
     public void setTopTitle(String text) {

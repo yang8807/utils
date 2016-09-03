@@ -216,7 +216,9 @@ public class BaseActivity extends AppCompatActivity {
         dialogFragment.show(getSupportFragmentManager(), clsName);
 
     }
-
+    public int getColors(int colorPrimary) {
+        return getResources().getColor(colorPrimary);
+    }
 
     /*-------------------end------------------------------------------------*/
 }
