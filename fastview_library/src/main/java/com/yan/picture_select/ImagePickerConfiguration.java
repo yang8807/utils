@@ -9,7 +9,7 @@ public class ImagePickerConfiguration {
     //每行显示的个数
     private int numcloumns = 4;
     //每个item之间的间距
-    private int spaciing =1;
+    private int spaciing = 1;
     //整体的风格
     private int style_color = Color.GREEN;
     //弹出框的占屏幕的比例
@@ -17,9 +17,9 @@ public class ImagePickerConfiguration {
     //选择的类型
     private ImageType type = ImageType.multi;
     //多选选择的数量
-    private int selectCount;
+    private int selectCount = 9;
 
-    enum ImageType {
+    public enum ImageType {
         multi, single
     }
 

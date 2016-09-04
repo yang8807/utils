@@ -1,55 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_single_select"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="SINGLESELECT" />
-
-            <Button
-                android:id="@+id/btn_multi_select"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="MULTISELECT" />
-
-            <Button
-                android:id="@+id/btn_camera"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="CAMERA" />
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/cameraFile"
-            android:layout_width="match_parent"
-            android:src="@drawable/ic_android_red_400_36dp"
-            android:layout_height="match_parent"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyler"
+        <Button
+            android:id="@+id/btn_single_select"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" />
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="单选" />
+
+        <Button
+            android:id="@+id/btn_multi_select"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="多选" />
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="相机" />
+
+
     </LinearLayout>
-</ScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+</LinearLayout>

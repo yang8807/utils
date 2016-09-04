@@ -195,6 +195,18 @@ public class BaseActivity extends AppCompatActivity {
         ft.commitAllowingStateLoss();
     }
 
+    public void switchFragment(Fragment fragment) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment currentFragment = fm.findFragmentByTag(fragment.getClass().getName());
+        if (currentFragment != null) {
+            ft.show(fragment);
+        } else {
+            ft.add(mContentId, fragment, fragment.getClass().getName());
+        }
+        ft.commitAllowingStateLoss();
+    }
+
     public void showDialogFragment(Class<?> clazz) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         String clsName = clazz.getName();
@@ -216,6 +228,7 @@ public class BaseActivity extends AppCompatActivity {
         dialogFragment.show(getSupportFragmentManager(), clsName);
 
     }
+
     public int getColors(int colorPrimary) {
         return getResources().getColor(colorPrimary);
     }

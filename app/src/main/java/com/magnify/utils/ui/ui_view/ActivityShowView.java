@@ -8,6 +8,7 @@ import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.ui.fragment.ExactlyPagerAnimationFragmenmt;
 import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
 import com.magnify.utils.ui.fragment.SideBarFragment;
+import com.yan.picture_select.ImageStickFragment;
 
 /**
  * Created by heinigger on 16/8/7.
@@ -29,7 +30,7 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_VIEW_PAGER_ANIMATION = 8;
     public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER = 9;
     //file path
-    public static final int TYPE_FILE_PATH = 10;
+    public static final int TYPE_STICK_GRID_VIEW = 10;
     private int layout;
 
     @Override
@@ -56,7 +57,10 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(ExactlyPagerAnimationFragmenmt.class);
         } else if (TYPE_INFINITE_VIEWPAGER_ADAPTER == type) {
             switchFragment(InfiniteAdapterFragment.class);
+        } else if (TYPE_STICK_GRID_VIEW == type) {
+            switchFragment(ImageStickFragment.class);
         }
+
 
         setContentView(layout);
     }

@@ -13,8 +13,10 @@ import com.magnify.yutils.DeviceUtil;
 import com.magnify.yutils.bean.ImageFloder;
 import com.magnify.yutils.data.ImageScanner;
 import com.yan.fastview_library.R;
+import com.yan.picture_select.listeners.OnSelectPictureListener;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,9 +30,8 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
     private List<ImageFloder> mAllFolders;
     private View rly_parent;
     private ImageAdapter mImageAdapter;
-
+    private OnSelectPictureListener onSelectPictureListener;
     private SelectFoldersDialogFragment selectFoldersDialogFragment;
-
 
     @Nullable
     @Override
@@ -67,6 +68,8 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
         mAllFolders = mImageFolders;
         tvName.setText(String.format("所有图片 %d 张", totalCount));
         mImageAdapter = new ImageAdapter(mFolders, getContext());
+        if (onSelectPictureListener != null)
+            mImageAdapter.setOnSelectPictureListner(onSelectPictureListener);
         gridView.setAdapter(mImageAdapter);
 
         selectFoldersDialogFragment = new SelectFoldersDialogFragment();
@@ -96,4 +99,16 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
         }
     }
 
+    public ArrayList<String> getSelectList() {
+        if (mImageAdapter != null) {
+            return mImageAdapter.getSelectList();
+        }
+        return null;
+    }
+
+    public void setOnSelectPictureListener(OnSelectPictureListener onSelectPictureListener) {
+        this.onSelectPictureListener = onSelectPictureListener;
+        if (mImageAdapter != null)
+            mImageAdapter.setOnSelectPictureListner(onSelectPictureListener);
+    }
 }

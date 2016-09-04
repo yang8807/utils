@@ -70,7 +70,6 @@ public class ThrowAnimationLayout extends RelativeLayout {
             mPath.cubicTo(getMeasuredWidth() / 10, -height, getMeasuredWidth() / 10 * 9, -height, getMeasuredWidth(), getMeasuredHeight() * 2 / 3);
         }
         start();
-
     }
 
     @Override

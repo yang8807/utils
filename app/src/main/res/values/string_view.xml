@@ -38,4 +38,8 @@
     <string name="title_banner_looper_view">BannerLooperView</string>
     <string name="title_banner_looper_view_description">广告导航栏效果</string>
 
+
+    <string name="sticky_grid_view">StickyGridView</string>
+    <string name="sticky_grid_view_description">GridView嵌套头部</string>
+
 </resources>
