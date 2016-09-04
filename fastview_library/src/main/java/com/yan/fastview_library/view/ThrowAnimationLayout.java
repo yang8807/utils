@@ -7,25 +7,25 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 
+import com.magnify.yutils.DeviceUtil;
 import com.yan.fastview_library.R;
 
 /**
  * Created by heinigger on 16/9/2.
+ * 设置clipChildrn,设置的动画就可以超出父控件进行运动
  */
 public class ThrowAnimationLayout extends RelativeLayout {
 
     private Path mPath = new Path();
-    private PathMeasure mPathMeasure = new PathMeasure();
-
     private ObjectAnimator mObjectAnimator;
     private Paint mPaint;
     private int type = 0;
+    private int height;
 
     public ThrowAnimationLayout(Context context) {
         this(context, null);
@@ -37,6 +37,7 @@ public class ThrowAnimationLayout extends RelativeLayout {
 
     public ThrowAnimationLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        height = DeviceUtil.dipToPx(getContext(), 400);
         mPaint = new Paint();
         mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Paint.Style.STROKE);
@@ -66,7 +67,7 @@ public class ThrowAnimationLayout extends RelativeLayout {
         } else {
             //塞次贝塞尔曲线
             mPath.moveTo(0, getMeasuredHeight() * 2 / 3);
-            mPath.cubicTo(getMeasuredWidth() / 3, 0, getMeasuredWidth() / 3 * 2, 0, getMeasuredWidth(), getMeasuredHeight() * 2 / 3);
+            mPath.cubicTo(getMeasuredWidth() / 10, -height, getMeasuredWidth() / 10 * 9, -height, getMeasuredWidth(), getMeasuredHeight() * 2 / 3);
         }
         start();
 
