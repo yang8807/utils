@@ -53,7 +53,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
     /**
      * 进行后动测量
      */
-    private void onMeasure() {
+    public void onMeasure() {
         //手动测量一下view的大小,因为第一次弹出来,大小并未确定,显示存在问题
         int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

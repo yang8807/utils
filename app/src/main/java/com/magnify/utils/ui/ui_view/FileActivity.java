@@ -47,7 +47,7 @@ public class FileActivity extends CurrentBaseActivity {
         setContentView(R.layout.grid_show);
         setVisibility(false, R.id.rly_parent);
         mGridView = (GridView) findViewById(R.id.grid_view);
-        mGridView.setNumColumns(3);
+        mGridView.setNumColumns(4);
         getSupportActionBar().setTitle(getIntent().getStringExtra(FILE_PATH));
         ThreadManager.getInstance().createLongPool().execute(new Runnable() {
             @Override
