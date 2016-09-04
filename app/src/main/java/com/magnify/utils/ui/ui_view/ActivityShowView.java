@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.ui.fragment.ExactlyPagerAnimationFragmenmt;
-import com.magnify.utils.ui.fragment.FilePathFragment;
 import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
+import com.magnify.utils.ui.fragment.SideBarFragment;
 
 /**
  * Created by heinigger on 16/8/7.
@@ -47,7 +47,7 @@ public class ActivityShowView extends CurrentBaseActivity {
         else if (TYPE_DECORATEEDVIEW == type)
             layout = R.layout.activity_decorated_view;
         else if (TYPE_SIDEBAR == type)
-            layout = R.layout.activity_sidebar;
+            switchFragment(SideBarFragment.class);
         else if (TYPE_RIPPLE == type) {
             layout = R.layout.activity_ripple_view;
         } else if (TYPE_SHOPCAR == type) {
@@ -56,8 +56,6 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(ExactlyPagerAnimationFragmenmt.class);
         } else if (TYPE_INFINITE_VIEWPAGER_ADAPTER == type) {
             switchFragment(InfiniteAdapterFragment.class);
-        } else if (TYPE_FILE_PATH == type) {
-            switchFragment(FilePathFragment.class);
         }
 
         setContentView(layout);

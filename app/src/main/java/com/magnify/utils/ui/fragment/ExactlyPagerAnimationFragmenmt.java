@@ -35,8 +35,6 @@ public class ExactlyPagerAnimationFragmenmt extends BaseFragment {
         findView(R.id.banner_looper_view4, view, "RotateUpPageTransformer", new RotateUpPageTransformer());
         findView(R.id.banner_looper_view5, view, "RotateYTransformer", new RotateYTransformer());
         findView(R.id.banner_looper_view6, view, "AlphaPageTransformer", new AlphaPageTransformer());
-
-
         return view;
     }
 

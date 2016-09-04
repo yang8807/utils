@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spanned;
 import android.text.util.Linkify;
@@ -125,7 +126,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return displayImage(url, (ImageView) getView(viewId), -1);
     }
 
-    public ViewHolder displayImage(int drawableId, int viewId) {
+    public ViewHolder displayImage(int drawableId, @IdRes int viewId) {
         return displayImage(drawableId, (ImageView) getView(viewId));
     }
 

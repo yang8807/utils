@@ -48,7 +48,7 @@ public class FileActivity extends CurrentBaseActivity {
         setVisibility(false, R.id.rly_parent);
         mGridView = (GridView) findViewById(R.id.grid_view);
         mGridView.setNumColumns(4);
-        getSupportActionBar().setTitle(getIntent().getStringExtra(FILE_PATH));
+        setTopTiltls();
         ThreadManager.getInstance().createLongPool().execute(new Runnable() {
             @Override
             public void run() {
@@ -62,6 +62,18 @@ public class FileActivity extends CurrentBaseActivity {
                 mHandler.sendMessage(message);
             }
         });
+    }
+
+    /**
+     * 设置每个开启页面的标题
+     */
+    private void setTopTiltls() {
+        String tilts = getIntent().getStringExtra(FILE_PATH);
+        if (!TextUtils.isEmpty(tilts)) {
+            String[] names = tilts.split("/");
+            if (names != null && names.length > 0)
+                getSupportActionBar().setTitle(names[names.length - 1]);
+        }
     }
 
     public static Intent getIntent(String path, Context mContext) {

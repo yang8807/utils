@@ -24,7 +24,7 @@ import java.util.Set;
  * Created by heinigger on 16/8/12.
  */
 public class SideBar extends View {
-    private char[] defaultSideData = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'};
+    private char[] defaultSideData = new char[]{'★', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'};
     //绘制的单位高度
     private int unitWidth;
     //画布的高度
@@ -113,7 +113,7 @@ public class SideBar extends View {
         //每个字母的单元大小
         unitWidth = Math.min(pHeight, pWidth * defaultSideData.length) / defaultSideData.length;
         //绘制的起点位置
-        int startX = (pWidth - unitWidth) / 2;
+        int startX = (pWidth - unitWidth) / 2 + getPaddingLeft();
         //绘制文本的起点位置
         startTextY = TextDrawUtils.getBaseLineY(mPaint, unitWidth) + (canvas.getHeight() - unitWidth * defaultSideData.length) / 2;
         //绘制drawable的起点位置
@@ -134,7 +134,7 @@ public class SideBar extends View {
             } else {//普通的
                 mPaint.setColor(normalColor);
             }
-            canvas.drawText(drawText, (pWidth - mPaint.measureText(drawText)) / 2, startTextY, mPaint);
+            canvas.drawText(drawText, (pWidth - mPaint.measureText(drawText)) / 2 + getPaddingLeft(), startTextY, mPaint);
             startTextY += unitWidth;
             startY += unitWidth;
         }
@@ -143,8 +143,11 @@ public class SideBar extends View {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         float downY = event.getY();
-        if (downY > getPaddingTop() && downY < getMeasuredHeight() - getPaddingBottom()) {//设置了paddingTop和paddingBootom的处理,没设置,就是0了
-            selectPosition = (int) ((downY - getPaddingTop()) / pHeight * defaultSideData.length);
+        //如果是以宽度居中的话,就需要改变偏差,是点击事件能正常响应
+        int offSet = (pHeight - defaultSideData.length * unitWidth) / 2;
+        int height = offSet > 10 ? pHeight - offSet * 2 : pHeight;
+        if (downY > getPaddingTop() && downY < getMeasuredHeight() - getPaddingBottom() - offSet) {//设置了paddingTop和paddingBootom的处理,没设置,就是0了
+            selectPosition = (int) ((downY - getPaddingTop() - offSet) / height * defaultSideData.length);
             switch (event.getAction()) {
                 default:
                     willInvalidate();
