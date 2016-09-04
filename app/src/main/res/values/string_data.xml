@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="title_data">一些数据安全或者保存工具</string>
+    <string name="title_data_description">简化数据加密和数据保存的操作</string>
+
+
+    <string name="title_encryptutil">ActivityEncryptUtil</string>
+    <string name="title_encryptutil_description">加密解密工具类</string>
+
+    <string name="title_savetool_preferencesutil">SaveTool和PreferencesUtil</string>
+    <string name="title_savetool_preferencesutil_description">万能的文本数据保存工具</string>
+
+    <string name="titile_randomcharutils">RandomCharUtils</string>
+    <string name="titile_randomcharutils_description">随机生成汉字</string>
+    <string name="titile_randomcharutils_create_people_description">随机生成一个人物</string>
+
+</resources>

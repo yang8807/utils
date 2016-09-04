@@ -117,7 +117,6 @@ public class CollectingActivity extends CurrentBaseActivity {
     }
 
     private void createData() {
-
         collectionInfos.add(new CollectionInfo("utils", "一些经常使用到的:跳转到网络设置页面...")
                 .addChild("https://github.com/Blankj/AndroidUtilCode")
                 .addChild("https://github.com/Jude95/SwipeBackHelper", "compile 'com.jude:swipebackhelper:3.1.2'")

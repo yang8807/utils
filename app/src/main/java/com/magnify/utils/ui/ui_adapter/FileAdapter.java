@@ -43,6 +43,8 @@ public class FileAdapter extends CommonAdapter<File> implements View.OnClickList
         mTextView.setTextColor(Color.WHITE);
         mTextView.setBackgroundDrawable(DrawableUtils.getCorRectDrawable(UiUtils.getColors(R.color.colorPrimary), 30));
         mTextView.requestLayout();
+        mPoup.setAnimationStyle(R.style.popwin_anim_style);
+        mPoup.update();
     }
 
     @Override

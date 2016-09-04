@@ -58,7 +58,7 @@ public class PictureSelectActivity extends CurrentBaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 11) {
+        if (requestCode == 11 && resultCode == RESULT_OK) {
             try {
                 ImageUtils.saveImageToSD(self, uri.getPath(), (Bitmap) data.getParcelableExtra("data"), 100);
             } catch (IOException e) {
@@ -66,7 +66,6 @@ public class PictureSelectActivity extends CurrentBaseActivity {
             }
             IntentUtil.addToAlbum(new File(uri.getPath()));
             this.<ImageView>getView(R.id.cameraFile).setImageBitmap((Bitmap) data.getParcelableExtra("data"));
-//            SingleInstanceManager.getImageLoader().displayImage(uri.toString(), this.<ImageView>getView(R.id.cameraFile));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

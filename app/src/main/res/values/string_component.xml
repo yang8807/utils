@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_file_expore">文件浏览器</string>
+    <string name="title_file_expore_decription">文件浏览器的简单实现</string>
+
+    <string name="title_picture_component">BaseFilterFragment</string>
+    <string name="title_picture_component_decription">图片选择组件,设法让其支持自定义</string>
+</resources>

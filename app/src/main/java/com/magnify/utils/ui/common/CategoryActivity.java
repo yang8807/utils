@@ -2,6 +2,7 @@ package com.magnify.utils.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.magnify.utils.ui.ui_adapter.RandCharActivity;
 import com.magnify.utils.ui.ui_animation.ViewAnimationActivity;
 import com.magnify.utils.ui.ui_utils.ActivityEncryptUtil;
 import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
+import com.magnify.utils.ui.ui_view.ActivityBannerView;
 import com.magnify.utils.ui.ui_view.ActivityEditTextAtListView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 import com.magnify.utils.ui.ui_view.AdaptTextViewActivity;
@@ -54,47 +56,48 @@ public class CategoryActivity extends CurrentBaseActivity {
     }
 
     private void createData() {
-        add("一些非常有用的github收藏", "切勿忘记积累", CollectingActivity.class);
+        add(R.string.title_github_collection, R.string.title_github_collection_description, CollectingActivity.class);
         if (type == TYPE_VIEW) {
             addViewData();
         } else if (type == TYPE_ADAPTER) {
             addAdapterData();
         } else if (type == TYPE_DATA) {
             addDataData();
-        }else if (type==TYPE_ANIMATION){
+        } else if (type == TYPE_ANIMATION) {
             addAnimationData();
         }
     }
 
     private void addAnimationData() {
-        add("View Animations", "在view的底部弹出动画", ViewAnimationActivity.class);
+        add(R.string.title_view_animation, R.string.title_view_animation_description, ViewAnimationActivity.class);
     }
 
     private void addDataData() {
-        add("ActivityEncryptUtil", "加密解密工具类", ActivityEncryptUtil.class);
-        add("SaveTool和PreferencesUtil", "万能的文本数据保存工具", SaveToolAndPreferenceActivity.class);
-        add("RandomCharUtils", "随机生成汉字", RandCharActivity.class);
-        add("RandomUserUtils", "随机生成一个人物", CreateDataUtilsActivity.class);
+        add(R.string.title_encryptutil, R.string.title_encryptutil_description, ActivityEncryptUtil.class);
+        add(R.string.title_savetool_preferencesutil, R.string.title_savetool_preferencesutil_description, SaveToolAndPreferenceActivity.class);
+        add(R.string.titile_randomcharutils, R.string.titile_randomcharutils_description, RandCharActivity.class);
+        add(R.string.titile_randomcharutils, R.string.titile_randomcharutils_create_people_description, CreateDataUtilsActivity.class);
     }
 
     private void addAdapterData() {
-        add("BaseHeaderChildFooterAdapter", "类似订单效果", HeaderChildFooterActivity.class);
-        add("BaseAutoCompleteAdapter", "输入显示匹配的人", AutoCompeleActivity.class);
-        add("BaseMultiTypeAdapter", "ActivityMultiTypeAdapter,多布局...", ActivityMultiTypeAdapter.class);
-        add("ActivityRecylerMultiTypeAdapter", "Recyler上的多布局,多布局,ListView和RecylerView对比发现,ListView会忽略原布局的属性,而RecylerView则保留了之前的布局属性", ActivityRecylerMultiTypeAdapter.class);
+        add(R.string.titile_baseheaderchildfooteradapter, R.string.titile_baseheaderchildfooteradapter_decription, HeaderChildFooterActivity.class);
+        add(R.string.titile_baseautocompleteadapter, R.string.titile_baseautocompleteadapter_decription, AutoCompeleActivity.class);
+        add(R.string.titile_basemultitypeadapter, R.string.titile_basemultitypeadapter_decription, ActivityMultiTypeAdapter.class);
+        add(R.string.titile_activityrecylermultitypeadapter, R.string.titile_activityrecylermultitypeadapter_decription, ActivityRecylerMultiTypeAdapter.class);
     }
 
     private void addViewData() {
-        add("ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
-        add("LoadingView", "加载动画", ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
-        add("DecoratedView", "一个专门用于修饰的view", ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDVIEW);
-        add("DecoratedBackGround", "随机生成圆的,用于装饰的背景view", ActivityShowView.class, 4);
-        add("TextViewExtends", "textview一些扩展属性:一个textView搞定这些...", ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
-        add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
-        add("AdaptTextView", "自适应文本宽度,字体变小", AdaptTextViewActivity.class);
-        add("EditText在ListView中", "EditText在ListView中", ActivityEditTextAtListView.class);
-        add("RippleView", "水波纹效果的动画", ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
-        add("ThrowAnimationLayout", "抛向购物车的动画", ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);
+        add(R.string.title_dialog, R.string.title_dialog_description, ActivityDialog.class);
+        add(R.string.title_loadingview, R.string.title_loadingview_description, ActivityShowView.class, ActivityShowView.TYPE_LOADINGVIEW);
+        add(R.string.title_decorated_background, R.string.title_title_decorated_background_description, ActivityShowView.class, ActivityShowView.TYPE_DECORATEEDVIEW);
+        add(R.string.title_decorated_background, R.string.title_title_decorated_background_description, ActivityShowView.class, 4);
+        add(R.string.title_textview_extends, R.string.title_textview_extends_description, ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
+        add(R.string.title_sidebar, R.string.title_sidebar_description, ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
+        add(R.string.title_adapte_textview, R.string.title_adapte_textviewdescription, AdaptTextViewActivity.class);
+        add(R.string.title_edittext_at_listview, R.string.title_edittext_at_listview_description, ActivityEditTextAtListView.class);
+        add(R.string.title_ripple_view, R.string.title_ripple_view_description, ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
+        add(R.string.title_throw_animation_layout, R.string.title_throw_animation_layout_description, ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);
+        add(R.string.title_banner_looper_view, R.string.title_banner_looper_view_description, ActivityBannerView.class);
     }
 
     private void setAdapter() {
@@ -119,4 +122,9 @@ public class CategoryActivity extends CurrentBaseActivity {
     public void add(String text, String description, Class<?> clazz, Object... objects) {
         arrayLists.add(new ActivityBean(text, description, clazz, objects));
     }
+
+    public void add(@StringRes int text, @StringRes int description, Class<?> clazz, Object... objects) {
+        arrayLists.add(new ActivityBean(getString(text), getString(description), clazz, objects));
+    }
+
 }

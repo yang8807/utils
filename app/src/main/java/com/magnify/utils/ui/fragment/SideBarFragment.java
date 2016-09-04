@@ -50,7 +50,7 @@ public class SideBarFragment extends BaseFragment implements SideBar.onTouchChar
         getObjeAnimator().reverse();
         getObjeAnimator().start();
         mTouchText.setText(touchText);
-        return false;
+        return true;
     }
 
     public ObjectAnimator getObjeAnimator() {

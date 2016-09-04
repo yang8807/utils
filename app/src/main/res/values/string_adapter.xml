@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <string name="titile_adapter">一些公用Adapter展示效果</string>
+    <string name="titile_adapter_decription">通用的一些adapter基类所创建出来的</string>
+
+    <string name="titile_baseheaderchildfooteradapter">BaseHeaderChildFooterAdapter</string>
+    <string name="titile_baseheaderchildfooteradapter_decription">类似订单效果</string>
+
+    <string name="titile_baseautocompleteadapter">BaseAutoCompleteAdapter</string>
+    <string name="titile_baseautocompleteadapter_decription">输入显示匹配的人</string>
+
+    <string name="titile_basemultitypeadapter">BaseMultiTypeAdapter</string>
+    <string name="titile_basemultitypeadapter_decription">ActivityMultiTypeAdapter,多布局...</string>
+
+    <string name="titile_activityrecylermultitypeadapter">ActivityRecylerMultiTypeAdapter</string>
+    <string name="titile_activityrecylermultitypeadapter_decription">Recyler上的多布局,多布局,ListView和RecylerView对比发现,ListView会忽略原布局的属性,而RecylerView则保留了之前的布局属性</string>
+    add("", "", ActivityShowView.class, ActivityShowView.TYPE_INFINITE_VIEWPAGER_ADAPTER);
+
+    <string name="titile_infinite_adapter">无限循环的适配器</string>
+    <string name="titile_infinite_adapter_decription">还存在的问题,点击indicator的时候,反应有问题,主要是因为适配器是用Integer.NAX_VALUE,导致不能正常切换</string>
+
+
+</resources>

@@ -62,7 +62,8 @@ public class CurrentBaseActivity extends BaseActivity {
      * 设置图片背景
      */
     private void showBackground() {
-        image_dog.setImageResource(RandomUtil.randomInt(100) % 2 == 0 ? R.mipmap.dog : R.mipmap.duola);
+        image_dog.setImageResource(RandomUtil.randomInt(2) % 2 == 0 ? R.mipmap.dog : R.mipmap.duola);
+        image_dog.setVisibility(RandomUtil.randomInt(2) % 2 == 0 ? View.VISIBLE : View.GONE);
         //图片模糊效果已经可以使用了
         if (bitmap == null) {
             String localPaths = PreferencesUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
@@ -74,7 +75,7 @@ public class CurrentBaseActivity extends BaseActivity {
             }
         } else
             img_back.setImageBitmap(bitmap);
-        img_back.setVisibility(RandomUtil.randomInt(100) % 2 == 0 ? View.VISIBLE : View.GONE);
+        img_back.setVisibility(RandomUtil.randomInt(2) % 2 == 0 ? View.VISIBLE : View.GONE);
     }
 
     public void setTopTitle(String text) {
@@ -128,6 +129,7 @@ public class CurrentBaseActivity extends BaseActivity {
         intent.putExtra(CurrentBaseActivity.OBJETS, item.getObject());
         startActivity(intent);
     }
+
     public Object[] getObjects() {
         return object;
     }

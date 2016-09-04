@@ -46,6 +46,7 @@ public class BaseLinearPoupWindows extends PopupWindow {
         setOutsideTouchable(true);
         setFocusable(true);
         BaseLinearPoupWindows.this.setBackgroundDrawable(new BitmapDrawable());
+//        setAnimationStyle(R.style.popwin_anim_style);
         onMeasure();
 
     }

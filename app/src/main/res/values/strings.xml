@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Android工具宝典</string>
     <string name="frist_title">不积跬步,无以至千里</string>
+
+    <string name="title_github_collection">一些非常有用的github收藏</string>
+    <string name="title_github_collection_description">切勿忘记积累</string>
 </resources>

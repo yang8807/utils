@@ -9,6 +9,7 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
+import com.magnify.yutils.app.ThreadManager;
 import com.magnify.yutils.bean.ImageFloder;
 
 import java.io.File;
@@ -20,7 +21,7 @@ import java.util.List;
 
 /**
  * Created by heinigger on 16/8/26.
- * <p>
+ * <p/>
  * 搜索本地的工具
  */
 public class ImageScanner {
@@ -51,7 +52,7 @@ public class ImageScanner {
      * 遍历获取本地的数据
      */
     public void scansImages() {
-        new Thread(new Runnable() {
+        ThreadManager.getInstance().createLongPool().execute(new Runnable() {
             @Override
             public void run() {
                 Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
@@ -76,7 +77,7 @@ public class ImageScanner {
                 mDirPaths = null;
                 mHandler.sendEmptyMessage(0x110);
             }
-        }).start();
+        });
     }
 
     /**

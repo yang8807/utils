@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_animation">一些常见的动画总结和收集</string>
+    <string name="title_animation_description">动画效果</string>
+
+    <string name="title_view_animation">View Animations</string>
+    <string name="title_view_animation_description">在view的底部弹出动画</string>
+
+    <string name="title_viewpager_animation">ViewPager中的切换动画</string>
+    <string name="title_viewpager_animation_description">ViewPager切换动画</string>
+</resources>

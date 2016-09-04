@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_view">自定义的视图或者之前为解决一类问题而收集的View</string>
+    <string name="title_view_description">view,效果...</string>
+
+    <string name="title_dialog">ActivityDialog</string>
+    <string name="title_dialog_description">一些常用的dialog动画</string>
+
+
+    <string name="title_loadingview">LoadingView</string>
+    <string name="title_loadingview_description">DecoratedView</string>
+
+    <string name="title_decorated_view">加载动画</string>
+    <string name="title_decorated_view_description">一个专门用于修饰的view</string>
+
+    <string name="title_decorated_background">DecoratedBackGround</string>
+    <string name="title_title_decorated_background_description">随机生成圆的,用于装饰的背景view</string>
+
+    <string name="title_textview_extends">TextViewExtends</string>
+    <string name="title_textview_extends_description">textview一些扩展属性:一个textView搞定这些...</string>
+
+    <string name="title_sidebar">SideBar</string>
+    <string name="title_sidebar_description">字母导航栏</string>
+
+    <string name="title_adapte_textview">AdaptTextView</string>
+    <string name="title_adapte_textviewdescription">字母导航栏</string>
+
+    <string name="title_edittext_at_listview">EditText在ListView中</string>
+    <string name="title_edittext_at_listview_description">EditText在ListView中</string>
+
+    <string name="title_ripple_view">RippleView</string>
+    <string name="title_ripple_view_description">水波纹效果的动画</string>
+
+    <string name="title_throw_animation_layout">ThrowAnimationLayout</string>
+    <string name="title_throw_animation_layout_description">抛向购物车的动画</string>
+
+    <string name="title_banner_looper_view">BannerLooperView</string>
+    <string name="title_banner_looper_view_description">广告导航栏效果</string>
+
+</resources>

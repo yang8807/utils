@@ -2,6 +2,7 @@ package com.magnify.utils.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,7 +16,6 @@ import com.magnify.utils.bean.ActivityBean;
 import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.component.PictureSelectActivity;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
-import com.magnify.utils.ui.ui_view.ActivityBannerView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 import com.magnify.utils.ui.ui_view.FileActivity;
 
@@ -60,18 +60,16 @@ public class MainActivity extends CurrentBaseActivity {
     }
 
     private void createData() {
-        add("一些非常有用的github收藏", "切勿忘记积累", CollectingActivity.class);
-        add("一些公用Adapter展示效果", "通用的一些adapter基类所创建出来的", CategoryActivity.class, CategoryActivity.TYPE_ADAPTER);
-        add("一些数据安全或者保存工具", "简化数据加密和数据保存的操作", CategoryActivity.class, CategoryActivity.TYPE_DATA);
-        add("自定义的视图或者之前为解决一类问题而收集的View", "view,效果...", CategoryActivity.class, CategoryActivity.TYPE_VIEW);
-        add("一些常见的动画总结和收集", "动画效果", CategoryActivity.class, CategoryActivity.TYPE_ANIMATION);
-        add("SideBar", "字母导航栏", ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
-        add("BannerLooperView", "广告导航栏效果", ActivityBannerView.class);
-        add("案例展示:ActivityDialog", "一些常用的dialog动画", ActivityDialog.class);
-        add("BaseFilterFragment", "图片选择组件,设法让其支持自定义", PictureSelectActivity.class);
-        add("ViewPager中的切换动画", "ViewPager切换动画", ActivityShowView.class, ActivityShowView.TYPE_VIEW_PAGER_ANIMATION);
-        add("无限循环的适配器", "无限循环的适配器", ActivityShowView.class, ActivityShowView.TYPE_INFINITE_VIEWPAGER_ADAPTER);
-        add("文件浏览器", "文件浏览器的简单实现", FileActivity.class);
+        add(R.string.title_github_collection, R.string.title_github_collection_description, CollectingActivity.class);
+        add(R.string.titile_adapter, R.string.titile_adapter_decription, CategoryActivity.class, CategoryActivity.TYPE_ADAPTER);
+        add(R.string.title_data, R.string.title_data_description, CategoryActivity.class, CategoryActivity.TYPE_DATA);
+        add(R.string.title_view, R.string.title_view_description, CategoryActivity.class, CategoryActivity.TYPE_VIEW);
+        add(R.string.title_animation, R.string.title_animation_description, CategoryActivity.class, CategoryActivity.TYPE_ANIMATION);
+        add(R.string.title_dialog, R.string.title_dialog_description, ActivityDialog.class);
+        add(R.string.title_viewpager_animation, R.string.title_viewpager_animation_description, ActivityShowView.class, ActivityShowView.TYPE_VIEW_PAGER_ANIMATION);
+        add(R.string.titile_infinite_adapter, R.string.titile_infinite_adapter_decription, ActivityShowView.class, ActivityShowView.TYPE_INFINITE_VIEWPAGER_ADAPTER);
+        add(R.string.title_file_expore, R.string.title_file_expore_decription, FileActivity.class);
+        add(R.string.title_picture_component, R.string.title_picture_component_decription, PictureSelectActivity.class);
     }
 
     @Override
@@ -102,6 +100,10 @@ public class MainActivity extends CurrentBaseActivity {
 
     public void add(String text, String description, Class<?> clazz, Object... objects) {
         arrayLists.add(new ActivityBean(text, description, clazz, objects));
+    }
+
+    public void add(@StringRes int text, @StringRes int description, Class<?> clazz, Object... objects) {
+        arrayLists.add(new ActivityBean(getString(text), getString(description), clazz, objects));
     }
 
 }
