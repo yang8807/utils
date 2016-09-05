@@ -12,82 +12,43 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.recyclerview.CommonAdapter;
 import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
-import com.magnify.yutils.IntentUtil;
-import com.magnify.yutils.StorageUtil;
-import com.yan.picture_select.ImagePickerConfiguration;
+import com.yan.picture_select.helper.ImagePickerHelper;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by heinigger on 16/8/20.
  */
-public class PictureSelectActivity extends CurrentBaseActivity {
-    private static final int REQUEST_CAMEARA = 0x34;
-    private static final int REQUEST_SINGLE_SELECT = 0x35;
-    private static final int REQUEST_MULTI_SELECT = 0x36;
+public class PictureSelectActivity extends CurrentBaseActivity implements ImagePickerHelper.OnFinishSelectListener, View.OnClickListener {
 
     private RecyclerView mRecyclerView;
-    private String fileName;
-    private File pictureFile;
+    private ImagePickerHelper mImagePickerHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_picture);
+
+        mImagePickerHelper = new ImagePickerHelper(self);
+        mImagePickerHelper.setOnFinishSelectListener(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(self));
-        //单选
-        findViewById(R.id.btn_single_select).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(self, ActivityPictureActivity.class);
-                ImagePickerConfiguration.getInstance().setType(ImagePickerConfiguration.ImageType.single);
-                startActivityForResult(intent, REQUEST_SINGLE_SELECT);
-            }
-        });
-        //多选
-        findViewById(R.id.btn_multi_select).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImagePickerConfiguration.getInstance().setType(ImagePickerConfiguration.ImageType.multi);
-                Intent intent = new Intent(self, ActivityPictureActivity.class);
-                startActivityForResult(intent, REQUEST_MULTI_SELECT);
-            }
-        });
-        findViewById(R.id.btn_camera).setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                fileName = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.getDefault()).format(new Date()) + ".jpg";// 照片命名
-                pictureFile = new File(StorageUtil.getDirDCIM(), fileName);
-                self.startActivityForResult(IntentUtil.camera(pictureFile), REQUEST_CAMEARA);
-            }
-        });
+        findViewById(R.id.btn_single_select).setOnClickListener(this);
+        findViewById(R.id.btn_multi_select).setOnClickListener(this);
+        findViewById(R.id.btn_camera).setOnClickListener(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            //相机拍照的时候,使用路径方式,会把data会返回空
-            if (requestCode == REQUEST_CAMEARA) {
-                dealCameraData();
-            } else if (requestCode == REQUEST_MULTI_SELECT || requestCode == REQUEST_SINGLE_SELECT) {
-                if (data != null)
-                    setPictureAdapter((ArrayList<String>) data.getSerializableExtra("data"));
-            }
-        }
+        if (mImagePickerHelper != null)
+            mImagePickerHelper.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    /**
-     * 设置浏览的适配器
-     */
-    private void setPictureAdapter(final ArrayList<String> datas) {
-        if (datas != null || !datas.isEmpty())
+    @Override
+    public void onFinishSelect(ArrayList<String> datas, int state) {
+        if (datas != null)
             mRecyclerView.setAdapter(new CommonAdapter<String>(self, R.layout.item_image_view, datas) {
                 @Override
                 protected void onPreCreate(ViewHolder viewHolder, View convertView) {
@@ -101,17 +62,15 @@ public class PictureSelectActivity extends CurrentBaseActivity {
             });
     }
 
-    /**
-     * 处理相机拍摄返回的数据
-     */
-    private void dealCameraData() {
-        if (pictureFile == null) {
-            pictureFile = new File(StorageUtil.getDirDCIM(), fileName);
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.btn_single_select) {
+            mImagePickerHelper.goSingleSelect(ActivityPictureActivity.class);
+        } else if (id == R.id.btn_multi_select) {
+            mImagePickerHelper.goMultiSelect(ActivityPictureActivity.class);
+        } else if (id == R.id.btn_camera) {
+            mImagePickerHelper.goCamera();
         }
-        //这里还要加一句通知文件更新图片的通知
-        self.sendBroadcast(IntentUtil.addToAlbum(pictureFile));
-        ArrayList<String> datas = new ArrayList<>();
-        datas.add(pictureFile.getAbsolutePath());
-        setPictureAdapter(datas);
     }
 }
