@@ -31,6 +31,7 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
     private View rly_parent;
     private ImageAdapter mImageAdapter;
     private OnSelectPictureListener onSelectPictureListener;
+    //选择文件夹的弹窗
     private SelectFoldersDialogFragment selectFoldersDialogFragment;
 
     @Nullable
@@ -66,7 +67,7 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
     public void onScanImageFinish(final List<ImageFloder> mImageFolders, final int totalCount) {
         mFolders = mImageFolders;
         mAllFolders = mImageFolders;
-        tvName.setText(String.format("所有图片 %d 张", totalCount));
+        tvName.setText(String.format(getString(R.string.browse_all_images), totalCount));
         mImageAdapter = new ImageAdapter(mFolders, getContext());
         if (onSelectPictureListener != null)
             mImageAdapter.setOnSelectPictureListner(onSelectPictureListener);
@@ -81,7 +82,7 @@ public class ImageFilterFragment extends Fragment implements View.OnClickListene
             public void onSelectFolders(int position) {
                 if (position < 0) {
                     mImageAdapter.setDatas(mAllFolders);
-                    tvName.setText(String.format("所有图片 %d 张", totalCount));
+                    tvName.setText(String.format(getString(R.string.browse_all_images), totalCount));
                 } else {
                     ImageFloder imageFloder = mAllFolders.get(position);
                     mImageAdapter.setDatas(imageFloder);

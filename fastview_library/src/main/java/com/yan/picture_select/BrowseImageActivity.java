@@ -39,6 +39,8 @@ public class BrowseImageActivity extends BaseActivity {
     public static String IMAGE_POSITION = "image_position";
     public static String IMAGEFOLDER_PATH = "image_folder_path";
     public static String IMAGE_CURRENT_IMAGE_PATH = "image_current_image_path";
+    //Transaction 执行过场动画执行的键
+    public static String TRANSATIOIN_IMAGE_VIEW = "transaction_image_view";
     public long time;
     private ImageView imageView;
     private List<ImageFloder> imageFloders;
@@ -113,7 +115,6 @@ public class BrowseImageActivity extends BaseActivity {
             protected List<String> getChild(ImageFloder imageFloder) {
                 return imageFloder.getAllImages();
             }
-
             @Override
             protected void convert(ViewHolder viewHolder, int position, final ImageFloder parent, final String child) {
                 viewHolder.displayImage("file://" + parent.getDir() + "/" + child, R.id.photoView)

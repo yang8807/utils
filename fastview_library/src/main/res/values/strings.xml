@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">fastview_library</string>
-
+    <string name="browse_all_images">所有图片 %d 张</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="picture_component_max_select">您最多只能选择%d</string>
     <string name="errorMsg">请设置布局文件,复写onIniViews()或者调用getPoupInstance(Context context, int layoutid)</string>
+
+
 </resources>

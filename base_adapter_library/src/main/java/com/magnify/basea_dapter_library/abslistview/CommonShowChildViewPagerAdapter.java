@@ -85,8 +85,8 @@ public abstract class CommonShowChildViewPagerAdapter<P, C> extends PagerAdapter
         View convertView = null;
         if (mViewCache.size() == 0) {
             convertView = this.mLayoutInflater.inflate(layoutId, null, false);
-            onPreCreate(viewHolder, convertView);
             viewHolder = new ViewHolder(mContext, convertView, container, position);
+            onPreCreate(viewHolder, convertView);
         } else {
             convertView = mViewCache.removeFirst();
             viewHolder = (ViewHolder) convertView.getTag();

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Point;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -90,15 +91,6 @@ public class IntentUtil {
         return intent;
     }
 
-    /**
-     * 打开Google Play上某个应用的页面
-     *
-     * @param packageName 应用包名
-     */
-    public static Intent googlePlay(String packageName) {
-        Uri uri = Uri.parse("market://details?id=" + packageName);
-        return new Intent(Intent.ACTION_VIEW, uri);
-    }
 
     /**
      * 分享文字<br>
@@ -190,6 +182,7 @@ public class IntentUtil {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         return intent;
     }
+
     public static Intent CropIntent(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
@@ -238,6 +231,16 @@ public class IntentUtil {
     }
 
     /**
+     * 打开Google Play上某个应用的页面
+     *
+     * @param packageName 应用包名
+     */
+    public static Intent googlePlay(String packageName) {
+        Uri uri = Uri.parse("market://details?id=" + packageName);
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    /**
      * 分享图片到朋友圈
      */
     public static boolean share2WeChatCircle(Context context, File file) {
@@ -281,9 +284,10 @@ public class IntentUtil {
         }
         return isAvliable;
     }
+
     /**
      * 直接分享图片给好友
-     * */
+     */
     public static boolean share2WeChatFriend(Context context, File file) {
         boolean isAvliable = isAvailable(context, WEIXIN_PACKAGE);
         if (isAvliable) {
@@ -301,6 +305,9 @@ public class IntentUtil {
         return isAvliable;
     }
 
+    /**
+     * 分享图片文件给qq
+     */
     public static boolean share2QQ(Context context, File file) {
         boolean isAvaliable = isAvailable(context, QQ_PACKAGE);
         if (isAvaliable) {
@@ -327,5 +334,45 @@ public class IntentUtil {
         }
         return false;
     }
+
+    /**
+     * 打开一个网页,类别是Intent.ACTION_VIEW
+     */
+    public Intent openBrowser(String url) {
+//        Uri uri = Uri.parse("http://www.baidu.com/");
+        Uri uri = Uri.parse(url);
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    /**
+     * 打开一个网页,类别是Intent.ACTION_VIEW
+     */
+    public Intent openBrowser(Uri uri) {
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    /**
+     * 打开地图并定位到一个点
+     */
+    public Intent openMap(Uri uri) {
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    /**
+     * 打开地图并定位到一个点
+     */
+    public Intent openMap(Point point) {
+        Uri uri = Uri.parse("geo:" + point.x + ":" + point.y);
+//        Uri uri = Uri.parse("geo:52.76,-79.0342");
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+    /**
+     * 卸载应用
+     * */
+    public Intent deleteApp(String packName) {
+        Uri uri = Uri.fromParts("package", packName, null);
+        return new Intent(Intent.ACTION_DELETE, uri);
+    }
+
 
 }

@@ -1,9 +1,7 @@
 package com.magnify.utils.ui.component;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,23 +14,25 @@ import com.magnify.utils.R;
 import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.yutils.IntentUtil;
 import com.magnify.yutils.StorageUtil;
-import com.magnify.yutils.data.ImageUtils;
 import com.yan.picture_select.ImagePickerConfiguration;
 
 import java.io.File;
-import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by heinigger on 16/8/20.
  */
 public class PictureSelectActivity extends CurrentBaseActivity {
-    private Uri uri;
     private static final int REQUEST_CAMEARA = 0x34;
     private static final int REQUEST_SINGLE_SELECT = 0x35;
     private static final int REQUEST_MULTI_SELECT = 0x36;
 
     private RecyclerView mRecyclerView;
+    private String fileName;
+    private File pictureFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,50 +62,56 @@ public class PictureSelectActivity extends CurrentBaseActivity {
 
             @Override
             public void onClick(View view) {
-                uri = Uri.parse("file://" + StorageUtil.getDirDCIM() + "/yanwu/" + "yanwu" + System.currentTimeMillis() + ".jpg");
-                startActivityForResult(IntentUtil.camera(), REQUEST_CAMEARA);
+                fileName = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.getDefault()).format(new Date()) + ".jpg";// 照片命名
+                pictureFile = new File(StorageUtil.getDirDCIM(), fileName);
+                self.startActivityForResult(IntentUtil.camera(pictureFile), REQUEST_CAMEARA);
             }
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && data != null) {
+        if (resultCode == RESULT_OK) {
+            //相机拍照的时候,使用路径方式,会把data会返回空
             if (requestCode == REQUEST_CAMEARA) {
-                dealCameraData(data);
+                dealCameraData();
             } else if (requestCode == REQUEST_MULTI_SELECT || requestCode == REQUEST_SINGLE_SELECT) {
-                dealSelectData(data);
+                if (data != null)
+                    setPictureAdapter((ArrayList<String>) data.getSerializableExtra("data"));
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void dealSelectData(Intent data) {
-        ArrayList<String> datas = (ArrayList<String>) data.getSerializableExtra("data");
-        mRecyclerView.setAdapter(new CommonAdapter<String>(self, R.layout.item_image_view, datas) {
-            @Override
-            protected void onPreCreate(ViewHolder viewHolder, View convertView) {
-                viewHolder.<TextView>getView(R.id.tv_description).setTextColor(Color.BLACK);
-            }
+    /**
+     * 设置浏览的适配器
+     */
+    private void setPictureAdapter(final ArrayList<String> datas) {
+        if (datas != null || !datas.isEmpty())
+            mRecyclerView.setAdapter(new CommonAdapter<String>(self, R.layout.item_image_view, datas) {
+                @Override
+                protected void onPreCreate(ViewHolder viewHolder, View convertView) {
+                    viewHolder.<TextView>getView(R.id.tv_description).setTextColor(Color.BLACK);
+                }
 
-            @Override
-            public void convert(ViewHolder holder, int position, String o) {
-                holder.displayImage(o, R.id.image).setText(R.id.tv_description, o);
-            }
-        });
-
+                @Override
+                public void convert(ViewHolder holder, int position, String o) {
+                    holder.displayImage(o, R.id.image).setText(R.id.tv_description, o);
+                }
+            });
     }
 
     /**
      * 处理相机拍摄返回的数据
      */
-    private void dealCameraData(Intent data) {
-        try {
-            ImageUtils.saveImageToSD(self, uri.getPath(), (Bitmap) data.getParcelableExtra("data"), 100);
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void dealCameraData() {
+        if (pictureFile == null) {
+            pictureFile = new File(StorageUtil.getDirDCIM(), fileName);
         }
-        IntentUtil.addToAlbum(new File(uri.getPath()));
-//        this.<ImageView>getView(R.id.cameraFile).setImageBitmap((Bitmap) data.getParcelableExtra("data"));
+        //这里还要加一句通知文件更新图片的通知
+        self.sendBroadcast(IntentUtil.addToAlbum(pictureFile));
+        ArrayList<String> datas = new ArrayList<>();
+        datas.add(pictureFile.getAbsolutePath());
+        setPictureAdapter(datas);
     }
 }

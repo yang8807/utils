@@ -19,8 +19,9 @@ public class ImagePickerConfiguration {
     //多选选择的数量
     private int selectCount = 9;
 
+    //多选模式,单选模式,浏览模式
     public enum ImageType {
-        multi, single
+        multi, single, browse
     }
 
     public ImagePickerConfiguration setType(ImageType type) {

@@ -94,7 +94,7 @@ public class ImageAdapter extends BaseShowChildAdapter<ImageFloder, String> impl
                 if (mSelectList.size() < ImagePickerConfiguration.getInstance().getSelectCount())
                     mSelectList.add(imagePath);
                 else
-                    ToastUtil.show(getContext(), String.format("您最多只能选择%d", ImagePickerConfiguration.getInstance().getSelectCount()));
+                    ToastUtil.show(getContext(), String.format(getContext().getString(R.string.picture_component_max_select), ImagePickerConfiguration.getInstance().getSelectCount()));
             }
             if (onSelectPictureListner != null) onSelectPictureListner.onSelectPicture(mSelectList);
             notifyDataSetChanged();
