@@ -8,6 +8,8 @@ import com.magnify.utils.base.CurrentBaseActivity;
 import com.magnify.utils.ui.fragment.ExactlyPagerAnimationFragmenmt;
 import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
 import com.magnify.utils.ui.fragment.SideBarFragment;
+import com.magnify.utils.ui.fragment.SwipeLayoutFragment;
+import com.magnify.utils.ui.fragment.SwipeMultiLayoutFragment;
 import com.yan.picture_select.ImageStickFragment;
 
 /**
@@ -31,6 +33,9 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER = 9;
     //file path
     public static final int TYPE_STICK_GRID_VIEW = 10;
+
+    public static final int TYPE_COMMOM_SINGLE_SWIPE = 11;
+    public static final int TYPE_COMMOM_MULTI_SWIPE_LAYOUT = 12;
     private int layout;
 
     @Override
@@ -59,6 +64,10 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(InfiniteAdapterFragment.class);
         } else if (TYPE_STICK_GRID_VIEW == type) {
             switchFragment(ImageStickFragment.class);
+        } else if (TYPE_COMMOM_SINGLE_SWIPE == type) {
+            switchFragment(SwipeLayoutFragment.class);
+        } else if (TYPE_COMMOM_MULTI_SWIPE_LAYOUT == type) {
+            switchFragment(SwipeMultiLayoutFragment.class);
         }
 
 

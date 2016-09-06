@@ -42,4 +42,10 @@
     <string name="sticky_grid_view">StickyGridView</string>
     <string name="sticky_grid_view_description">GridView嵌套头部</string>
 
+    <string name="title_single_swipe">单布局滑动删除适配器</string>
+    <string name="title_single_swipe_description">单布局滑动删除适配器CommomSwipeAdapter</string>
+
+    <string name="title_multi_swipe">(多)布局滑动删除适配器</string>
+    <string name="title_multi_swipe_description">(多)布局滑动删除适配器CommomSwipeAdapter</string>
+
 </resources>

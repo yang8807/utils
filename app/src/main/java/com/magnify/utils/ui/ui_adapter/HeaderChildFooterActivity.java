@@ -33,9 +33,9 @@ import java.util.HashMap;
 public class HeaderChildFooterActivity extends CurrentBaseActivity {
     private ListView listView;
     private SideBar mSideBar;
-    private PowerEditText editText;
     private HashMap<String, ArrayList<User>> sortUsers = new HashMap<>();
     private BaseHeaderChildFooterAdapter<Contact, User> mHeaderFooterAdapter;
+    private PowerEditText editText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

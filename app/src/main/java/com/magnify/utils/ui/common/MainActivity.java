@@ -70,6 +70,10 @@ public class MainActivity extends CurrentBaseActivity {
         add(R.string.titile_infinite_adapter, R.string.titile_infinite_adapter_decription, ActivityShowView.class, ActivityShowView.TYPE_INFINITE_VIEWPAGER_ADAPTER);
         add(R.string.title_file_expore, R.string.title_file_expore_decription, FileActivity.class);
         add(R.string.title_picture_component, R.string.title_picture_component_decription, PictureSelectActivity.class);
+
+        add(R.string.title_single_swipe, R.string.title_single_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_SINGLE_SWIPE);
+        add(R.string.title_multi_swipe, R.string.title_multi_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_MULTI_SWIPE_LAYOUT);
+
     }
 
     @Override

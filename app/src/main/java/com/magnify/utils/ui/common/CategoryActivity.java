@@ -99,6 +99,8 @@ public class CategoryActivity extends CurrentBaseActivity {
         add(R.string.title_throw_animation_layout, R.string.title_throw_animation_layout_description, ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);
         add(R.string.title_banner_looper_view, R.string.title_banner_looper_view_description, ActivityBannerView.class);
         add(R.string.sticky_grid_view, R.string.sticky_grid_view_description, ActivityShowView.class, ActivityShowView.TYPE_STICK_GRID_VIEW);
+        add(R.string.title_single_swipe, R.string.title_single_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_SINGLE_SWIPE);
+        add(R.string.title_multi_swipe, R.string.title_multi_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_MULTI_SWIPE_LAYOUT);
     }
 
     private void setAdapter() {
