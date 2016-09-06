@@ -25,7 +25,7 @@ public class SwipeLayoutFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View parentView = inflater.inflate(R.layout.activity_listview, container, false);
         mListView = (ListView) parentView.findViewById(R.id.listview);
-        mListView.setAdapter(new CommonBaseSwipeAdapter<User>(R.layout.adapter_base_swipe, R.id.swipe_layout, RandomUtil.createRandomUser(1000), getActivity()) {
+        mListView.setAdapter(new CommonBaseSwipeAdapter<User>(R.layout.adapter_base_swipe, R.id.swipe_layout, RandomUtil.createRandomUser(5000), getActivity()) {
             @Override
             protected void convert(int position, ViewHolder mViewHolders, View convertView, User item) {
                 mViewHolders.displayImage(item.getImageAvator(), R.id.img_avators).setText(R.id.tv_userName, item.getUserName()).setText(R.id.tv_phone, item.getPhone());

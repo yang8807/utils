@@ -50,7 +50,7 @@ public class SwipeMultiLayoutFragment extends BaseFragment {
         });
         ArrayList<Contact> contacts = new ArrayList<>();
         //创建数据,并将相同key的数据,放进同一个集合中
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 5000; i++) {
             User user = RandomUtil.createRandomUser();
             String sortKey = user.getSortKey();
             if (!sortUsers.containsKey(sortKey)) {
@@ -62,7 +62,7 @@ public class SwipeMultiLayoutFragment extends BaseFragment {
         for (String key : sortUsers.keySet()) {
             contacts.add(new Contact(sortUsers.get(key)));
         }
-
+        
         Collections.sort(contacts, new PinyinComparator());
         mSideBar.setAvaliableCharacters(sortUsers.keySet());
 
