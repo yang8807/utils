@@ -53,7 +53,8 @@ public class ExactlyPagerAnimationFragmenmt extends BaseFragment {
 
             @Override
             public void convert(ViewHolder viewHolder, int position, String o) {
-                viewHolder.displayImage(o, R.id.image).setText(R.id.tv_description, (String) bannerLoopView.getTag());
+                viewHolder.displayImage(o, R.id.image)
+                        .setText(R.id.tv_description, (String) bannerLoopView.getTag());
             }
 
             @Override

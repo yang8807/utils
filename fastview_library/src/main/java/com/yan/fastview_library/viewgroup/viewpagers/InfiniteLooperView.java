@@ -61,7 +61,6 @@ public class InfiniteLooperView<T> extends ViewPager {
     @Override
     public void addOnPageChangeListener(OnPageChangeListener listener) {
         //真的是superlistner,将这个添加到OnPagerListenner集合的问题
-        //super.addOnPageChangeListener(listener);
         this.externalOnPagerListeners.add(listener);
     }
 

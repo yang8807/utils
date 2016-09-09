@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -107,7 +108,7 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
     private void createDataNsetAdapter() {
         ArrayList<Contact> contacts = new ArrayList<>();
         //创建数据,并将相同key的数据,放进同一个集合中
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 5000; i++) {
             User user = RandomUtil.createRandomUser();
             String sortKey = user.getSortKey();
             if (!sortUsers.containsKey(sortKey)) {
@@ -124,8 +125,10 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
         mSideBar.setAvaliableCharacters(sortUsers.keySet());
 
         mHeaderFooterAdapter = new BaseHeaderChildFooterAdapter<Contact, User>(self, contacts, R.layout.item_header_layout, R.layout.item_child_layout, R.layout.item_footer_layout) {
+
+
             @Override
-            protected void convertChild(ViewHolder childHolder, int childPosition, User child, boolean isLastChild) {
+            protected void convertChild(ViewHolder childHolder, int groupPosition, int childPosition, User child, boolean isLastChild) {
                 childHolder.setText(R.id.tv_userName, child.getUserName())
                         .setText(R.id.tv_age, child.getSex() + "  " + child.getAddress())
                         .setText(R.id.tv_phone, child.getPhone())
@@ -158,10 +161,10 @@ public class HeaderChildFooterActivity extends CurrentBaseActivity {
             }
 
             @Override
-            public int getChildCount(Contact contact, int groupPosition) {
-                ArrayList<User> peopels = contact.getPeoples();
-                return peopels == null ? 0 : peopels.size();
+            public List<User> getChilds(Contact contact, int groupPosition) {
+                return contact.getPeoples();
             }
+
         };
         listView.setAdapter(mHeaderFooterAdapter);
     }

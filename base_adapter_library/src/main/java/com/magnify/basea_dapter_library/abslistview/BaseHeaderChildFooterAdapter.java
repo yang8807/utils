@@ -12,6 +12,7 @@ import com.magnify.basea_dapter_library.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by heinigger on 16/8/5.
@@ -84,9 +85,6 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         this.footerLayout = footerLayout;
         this.childLayout = childLayout;
         infalter = LayoutInflater.from(mContext);
-      /*  if (childLayout == footerLayout) {
-            throw new IllegalMonitorStateException("you are supported to use diffent layout");
-        }*/
         this.lastDataSize = groupDatas == null ? 0 : groupDatas.size();
         caculateTypePosition();
     }
@@ -227,6 +225,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                     convertView = infalter.inflate(childLayout, null);
                     childHolder = new ViewHolder(mContext, convertView, parent, childPosition);
                     convertView.setTag(childLayout, childHolder);
+                    onPreCreateChild(childHolder, convertView, position);
                     break;
                 case TYPE_FOOTER:
                     convertView = infalter.inflate(footerLayout, null);
@@ -256,7 +255,7 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
                 convertHeader(headerHolder, groupPosition, hf);
                 break;
             case TYPE_CHILD:
-                convertChild(childHolder, childPosition, getChild(hf, childPosition), getChildCount(hf, groupPosition) == childPosition + 1);
+                convertChild(childHolder, groupPosition, childPosition, getChild(hf, childPosition), getChildCount(hf, groupPosition) == childPosition + 1);
                 break;
             case TYPE_FOOTER:
                 convertFooter(footerHolder, groupPosition, hf);
@@ -266,8 +265,24 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
         return convertView;
     }
 
+    public void removeChild(int groupPosition, int childPosition) {
+        List<C> mChilds = getChilds(groupDatas.get(groupPosition), groupPosition);
+        if (mChilds != null && !mChilds.isEmpty()) {
+            mChilds.remove(childPosition);
+            forceNotifyDataSetChanged();
+        }
+    }
+
+    public void removeGroup(int groupPosition) {
+        groupDatas.remove(groupPosition);
+        forceNotifyDataSetChanged();
+    }
+
+    protected void onPreCreateChild(ViewHolder childHolder, View convertView, int position) {
+    }
+
     /*设置再中间的数据*/
-    protected abstract void convertChild(ViewHolder childHolder, int childPosition, C child, boolean isLastChild);
+    protected abstract void convertChild(ViewHolder childHolder, int groupPosition, int childPosition, C child, boolean isLastChild);
 
     /*设置底部的数据*/
     protected abstract void convertFooter(ViewHolder footerHolder, int groupPosition, HF hf);
@@ -278,8 +293,21 @@ public abstract class BaseHeaderChildFooterAdapter<HF, C> extends BaseAdapter {
     /*得到子Item*/
     protected abstract C getChild(HF hf, int childPosition);
 
+    public abstract List<C> getChilds(HF hf, int groupPosition);
+
     /*得到当前组的子类数量*/
-    public abstract int getChildCount(HF hf, int groupPosition);
+    public int getChildCount(HF hf, int groupPosition) {
+        List<C> mChilds = getChilds(hf, groupPosition);
+        return mChilds == null ? 0 : mChilds.size();
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public C getChild(int groupPosition, int childPosition) {
+        return getChild(groupDatas.get(groupPosition), childPosition);
+    }
 
     public int getChildPositionAtListView(String sortKey, String s) {
         if (TextUtils.isEmpty(sortKey) || TextUtils.isEmpty(s)) return -1;

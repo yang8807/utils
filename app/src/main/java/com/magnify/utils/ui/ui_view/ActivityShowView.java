@@ -10,6 +10,7 @@ import com.magnify.utils.ui.fragment.InfiniteAdapterFragment;
 import com.magnify.utils.ui.fragment.SideBarFragment;
 import com.magnify.utils.ui.fragment.SwipeLayoutFragment;
 import com.magnify.utils.ui.fragment.SwipeMultiLayoutFragment;
+import com.magnify.utils.ui.fragment.ViewPagerAnimationFragmenmt;
 import com.yan.picture_select.ImageStickFragment;
 
 /**
@@ -30,6 +31,7 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_SHOPCAR = 7;
     //ViewPager Animation
     public static final int TYPE_VIEW_PAGER_ANIMATION = 8;
+    public static final int TYPE_VIEW_PAGER_ANIMATION_NO_LOOPER = 13;
     public static final int TYPE_INFINITE_VIEWPAGER_ADAPTER = 9;
     //file path
     public static final int TYPE_STICK_GRID_VIEW = 10;
@@ -68,6 +70,8 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(SwipeLayoutFragment.class);
         } else if (TYPE_COMMOM_MULTI_SWIPE_LAYOUT == type) {
             switchFragment(SwipeMultiLayoutFragment.class);
+        } else if (TYPE_VIEW_PAGER_ANIMATION_NO_LOOPER == type) {
+            switchFragment(ViewPagerAnimationFragmenmt.class);
         }
 
 

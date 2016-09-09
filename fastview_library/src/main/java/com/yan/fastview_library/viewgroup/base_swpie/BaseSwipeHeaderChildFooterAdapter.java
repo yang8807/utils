@@ -237,6 +237,7 @@ public abstract class BaseSwipeHeaderChildFooterAdapter<HF, C> extends BaseAdapt
                     childHolder = new ViewHolder(mContext, convertView, parent, childPosition);
                     convertView.setTag(childLayout, childHolder);
                     mItemManger.initialize(convertView, position);
+                    onPreCreateChild(childHolder, convertView, position);
                     break;
                 case TYPE_FOOTER:
                     convertView = infalter.inflate(footerLayout, null);
@@ -267,7 +268,7 @@ public abstract class BaseSwipeHeaderChildFooterAdapter<HF, C> extends BaseAdapt
                 convertHeader(headerHolder, groupPosition, hf);
                 break;
             case TYPE_CHILD:
-                convertChild(childHolder, childPosition, getChild(hf, childPosition), getChildCount(hf, groupPosition) == childPosition + 1);
+                convertChild(childHolder, groupPosition, childPosition, getChild(hf, childPosition), getChildCount(hf, groupPosition) == childPosition + 1);
                 break;
             case TYPE_FOOTER:
                 convertFooter(footerHolder, groupPosition, hf);
@@ -277,10 +278,29 @@ public abstract class BaseSwipeHeaderChildFooterAdapter<HF, C> extends BaseAdapt
         return convertView;
     }
 
+
+    public void removeChild(int groupPosition, int childPosition) {
+        List<C> mChilds = getChilds(groupDatas.get(groupPosition), groupPosition);
+        if (mChilds != null && !mChilds.isEmpty()) {
+            mChilds.remove(childPosition);
+            //已经是最后一个孩子了,将数据删除
+            if (mChilds.isEmpty()) groupDatas.remove(groupPosition);
+            forceNotifyDataSetChanged();
+        }
+    }
+
+    public void removeGroup(int groupPosition) {
+        groupDatas.remove(groupPosition);
+        forceNotifyDataSetChanged();
+    }
+
+    protected void onPreCreateChild(ViewHolder childHolder, View convertView, int position) {
+    }
+
     public abstract int getSwipeLayoutResourceId(int position);
 
     /*设置再中间的数据*/
-    protected abstract void convertChild(ViewHolder childHolder, int childPosition, C child, boolean isLastChild);
+    protected abstract void convertChild(ViewHolder childHolder, int groupPosition, int childPosition, C child, boolean isLastChild);
 
     /*设置底部的数据*/
     protected abstract void convertFooter(ViewHolder footerHolder, int groupPosition, HF hf);
@@ -292,7 +312,12 @@ public abstract class BaseSwipeHeaderChildFooterAdapter<HF, C> extends BaseAdapt
     protected abstract C getChild(HF hf, int childPosition);
 
     /*得到当前组的子类数量*/
-    public abstract int getChildCount(HF hf, int groupPosition);
+    private int getChildCount(HF hf, int groupPosition) {
+        List<C> mChilds = getChilds(hf, groupPosition);
+        return mChilds == null ? 0 : mChilds.size();
+    }
+
+    public abstract List<C> getChilds(HF hf, int groupPosition);
 
     public int getChildPositionAtListView(String sortKey, String s) {
         if (TextUtils.isEmpty(sortKey) || TextUtils.isEmpty(s)) return -1;
@@ -312,13 +337,20 @@ public abstract class BaseSwipeHeaderChildFooterAdapter<HF, C> extends BaseAdapt
         return position;
     }
 
+    public C getChild(int groupPosition, int childPosition) {
+        return getChild(groupDatas.get(groupPosition), childPosition);
+    }
+
     /**
      * 获取再position上的sortKey
      */
     public String getSortKeyAtPosition(int position) {
         PositionInfo positionInfo = positions.get(position);
         return getGroupSortKey(position, groupDatas.get(positionInfo.getGroupPosition()));
+    }
 
+    public Context getContext() {
+        return mContext;
     }
 
     /*记录位置信息和类型*/
