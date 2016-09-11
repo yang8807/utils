@@ -9,4 +9,7 @@
 
     <string name="title_viewpager_animation">ViewPager中的切换动画</string>
     <string name="title_viewpager_animation_description">ViewPager切换动画</string>
+
+    <string name="title_favorite_animation">点赞动画</string>
+    <string name="title_favorite_animation_description">点赞动画</string>
 </resources>

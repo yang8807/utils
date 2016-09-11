@@ -38,6 +38,9 @@ public class ActivityShowView extends CurrentBaseActivity {
 
     public static final int TYPE_COMMOM_SINGLE_SWIPE = 11;
     public static final int TYPE_COMMOM_MULTI_SWIPE_LAYOUT = 12;
+    //点赞动画
+    public static final int TYPE_FAVPRIATE = 14;
+
     private int layout;
 
     @Override
@@ -72,6 +75,8 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(SwipeMultiLayoutFragment.class);
         } else if (TYPE_VIEW_PAGER_ANIMATION_NO_LOOPER == type) {
             switchFragment(ViewPagerAnimationFragmenmt.class);
+        } else if (TYPE_FAVPRIATE == type) {
+            layout = R.layout.view_favoriate_view;
         }
 
 

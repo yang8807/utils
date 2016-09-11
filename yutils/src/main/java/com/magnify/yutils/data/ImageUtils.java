@@ -11,6 +11,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -483,6 +485,45 @@ public class ImageUtils {
             e.printStackTrace();
         }
         return rotation;
+    }
+
+    /**
+     * 图片置灰
+     */
+    public static final Bitmap grey(Bitmap bitmap) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        Bitmap faceIconGreyBitmap = Bitmap
+                .createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(faceIconGreyBitmap);
+        Paint paint = new Paint();
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.setSaturation(0);
+        ColorMatrixColorFilter colorMatrixFilter = new ColorMatrixColorFilter(colorMatrix);
+        paint.setColorFilter(colorMatrixFilter);
+        canvas.drawBitmap(bitmap, 0, 0, paint);
+        return faceIconGreyBitmap;
+    }
+
+    public static final Bitmap createRGBImage(Drawable bitmap, int color) {
+        return ImageUtils.createRGBImage(ImageUtils.drawable2Bitmap(bitmap), color);
+    }
+
+    public static final Bitmap createRGBImage(Bitmap mBitmap, int mColor) {
+        Bitmap mAlphaBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Config.ARGB_8888);
+
+        Canvas mCanvas = new Canvas(mAlphaBitmap);
+        Paint mPaint = new Paint();
+
+        mPaint.setColor(mColor);
+        //从原位图中提取只包含alpha的位图
+        Bitmap alphaBitmap = mBitmap.extractAlpha();
+        //在画布上（mAlphaBitmap）绘制alpha位图
+        mCanvas.drawBitmap(alphaBitmap, 0, 0, mPaint);
+
+        return mAlphaBitmap;
     }
 
 

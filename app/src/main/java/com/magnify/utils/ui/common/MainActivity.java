@@ -74,6 +74,7 @@ public class MainActivity extends CurrentBaseActivity {
         add(R.string.title_single_swipe, R.string.title_single_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_SINGLE_SWIPE);
         add(R.string.title_multi_swipe, R.string.title_multi_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_MULTI_SWIPE_LAYOUT);
         add(R.string.title_viewpager_animation, R.string.title_viewpager_animation_description, ActivityShowView.class, ActivityShowView.TYPE_VIEW_PAGER_ANIMATION_NO_LOOPER);
+        add(R.string.title_favorite_animation, R.string.title_favorite_animation_description, ActivityShowView.class, ActivityShowView.TYPE_FAVPRIATE);
 
     }
 
