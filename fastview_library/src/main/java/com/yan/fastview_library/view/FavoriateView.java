@@ -122,18 +122,22 @@ public class FavoriateView extends ImageView implements View.OnClickListener {
             mPathMeasure.getPosTan(mFavoriteInfo.getDistance(), mCurrentDrawaPoint, null);
 //            LogUtils.v("mine", mCurrentDrawaPoint[0] + ":point.X-ponintY:" + mCurrentDrawaPoint[1]);
             Bitmap mBitmap = mFavoriteInfo.getBitmap();
-            if (mBitmap != null) {
-                Matrix matrix = new Matrix();
-                matrix.mapRect(new RectF(0, 0, mBitmap.getWidth() * mFavoriteInfo.getScale(), mBitmap.getHeight() * mFavoriteInfo.getScale()));
-                matrix.postScale(1 - mFavoriteInfo.getScale(), 1 - mFavoriteInfo.getScale());
-                Bitmap dstbmp = Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), matrix, true);
-                canvas.drawBitmap(dstbmp, mCurrentDrawaPoint[0] - dstbmp.getWidth() / 2, mCurrentDrawaPoint[1] - dstbmp.getWidth() / 2, mPaint);
-                if (mFavoriteInfo.isRemove()) {//资源回收
-                    mFavorites.remove(mFavoriteInfo);
-                    mFavoriteInfo.setBitmap(null);
-                    mBitmap.recycle();
+            try {
+                if (mBitmap != null && mFavoriteInfo.getScale() > 0) {
+                    Matrix matrix = new Matrix();
+                    matrix.mapRect(new RectF(0, 0, mBitmap.getWidth() * mFavoriteInfo.getScale(), mBitmap.getHeight() * mFavoriteInfo.getScale()));
+                    matrix.postScale(1 - mFavoriteInfo.getScale(), 1 - mFavoriteInfo.getScale());
+                    Bitmap dstbmp = Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), matrix, true);
+                    canvas.drawBitmap(dstbmp, mCurrentDrawaPoint[0] - dstbmp.getWidth() / 2, mCurrentDrawaPoint[1] - dstbmp.getWidth() / 2, mPaint);
+                    if (mFavoriteInfo.isRemove()) {//资源回收
+                        mFavorites.remove(mFavoriteInfo);
+                        mFavoriteInfo.setBitmap(null);
+                        mBitmap.recycle();
+                    }
+                    dstbmp.recycle();
                 }
-                dstbmp.recycle();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
