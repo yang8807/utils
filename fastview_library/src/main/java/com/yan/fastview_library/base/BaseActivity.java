@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yan.fastview_library.R;
+
 import java.util.List;
 
 /**
@@ -32,6 +34,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.frame_layout);
+        mContentId = R.id.frame_layout;
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         self = this;
     }

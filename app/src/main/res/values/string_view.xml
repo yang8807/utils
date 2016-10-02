@@ -48,4 +48,7 @@
     <string name="title_multi_swipe">(多)布局滑动删除适配器</string>
     <string name="title_multi_swipe_description">(多)布局滑动删除适配器CommomSwipeAdapter</string>
 
+    <string name="title_triangle_view">三角形nview,很多地方都会使用到</string>
+    <string name="title_triangle_view_description">(多)布局滑动删除适配器CommomSwipeAdapter</string>
+
 </resources>

@@ -1,8 +1,6 @@
 package com.magnify.yutils.view_utils;
 
-import android.graphics.Paint;
-
-/**
+import android.graphics.Paint;/**
  * Created by 黄艳武 on 2015/10/29.
  * Function:
  */
@@ -16,3 +14,4 @@ public class TextDrawUtils {
         return (int) (parentHeight / 2 - fm.descent + (fm.descent - fm.ascent) / 2);
     }
 }
+

@@ -4,6 +4,8 @@
 package com.magnify.yutils;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -140,6 +142,12 @@ public class ViewHelper {
             findView(ids[i]).setVisibility(visible);
         }
 
+    }
+    public static void setBackGroundDrawable(View view, Drawable mBackDrawabwle) {
+        if (Build.VERSION_CODES.JELLY_BEAN >= Build.VERSION.SDK_INT)
+            view.setBackground(mBackDrawabwle);
+        else
+            view.setBackgroundDrawable(mBackDrawabwle);
     }
 
 }

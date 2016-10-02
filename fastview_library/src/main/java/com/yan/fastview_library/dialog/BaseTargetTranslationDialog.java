@@ -13,7 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
 import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 
 /**
  * Created by 洒笑天涯 on 2016/6/17.
@@ -76,7 +76,7 @@ public abstract class BaseTargetTranslationDialog extends BaseDialog {
         targetLocation[0] = targetLocation[0] + targetView.getMeasuredWidth() / 2;
         targetLocation[1] = targetLocation[1] + targetView.getMeasuredHeight() / 2;
         Point point = DeviceUtil.getDisplaySize(getContext());
-        LogUtil.v("mine", "targetLocation:" + targetLocation[0] + ":" + targetLocation[1] + "--" + point.x + ":" + point.y);
+        LogUtils.v("mine", "targetLocation:" + targetLocation[0] + ":" + targetLocation[1] + "--" + point.x + ":" + point.y);
         return this;
     }
 

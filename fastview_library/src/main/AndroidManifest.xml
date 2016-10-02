@@ -8,6 +8,7 @@
 
         <activity android:name="com.yan.picture_select.BrowseImageActivity" />
         <activity android:name="com.yan.picture_select.NormalBrowseImageActivity" />
+        <activity android:name="com.yan.fastview_library.base.BaseActivity" />
     </application>
 
 </manifest>

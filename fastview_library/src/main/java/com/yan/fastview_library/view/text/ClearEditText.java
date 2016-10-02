@@ -15,7 +15,7 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
 import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.data.ImageUtils;
 import com.yan.fastview_library.R;
 
@@ -116,14 +116,14 @@ public class ClearEditText extends PowerEditText implements OnFocusChangeListene
         if (hasFoucs) {
             setClearIconVisible(s.length() > 0);
         }
-        LogUtil.v("mine", s.toString() + "onTextChanged");
+        LogUtils.v("mine", s.toString() + "onTextChanged");
     }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count,
                                   int after) {
         //The last text editor
-        LogUtil.v("mine", s.toString() + "beforeTextChanged");
+        LogUtils.v("mine", s.toString() + "beforeTextChanged");
     }
 
     @Override

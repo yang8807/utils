@@ -47,8 +47,8 @@ public class LogUtils {
     }
 
     /**
-     * 设置日志等级 例： LogUtil.setLevel(LogUtil.ALL);
-     * LogUitl.setLevel(LogUtil.VERBOSE);
+     * 设置日志等级 例： LogUtils.setLevel(LogUtils.ALL);
+     * LogUitl.setLevel(LogUtils.VERBOSE);
      *
      * @param level
      */

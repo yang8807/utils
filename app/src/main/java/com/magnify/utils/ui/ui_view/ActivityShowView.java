@@ -40,6 +40,7 @@ public class ActivityShowView extends CurrentBaseActivity {
     public static final int TYPE_COMMOM_MULTI_SWIPE_LAYOUT = 12;
     //点赞动画
     public static final int TYPE_FAVPRIATE = 14;
+    public static final int TYPE_TRIGANLE_VIEW = 15;
 
     private int layout;
 
@@ -77,9 +78,9 @@ public class ActivityShowView extends CurrentBaseActivity {
             switchFragment(ViewPagerAnimationFragmenmt.class);
         } else if (TYPE_FAVPRIATE == type) {
             layout = R.layout.view_favoriate_view;
+        }else if (TYPE_TRIGANLE_VIEW==type){
+            layout=R.layout.view_triagle_view;
         }
-
-
         setContentView(layout);
     }
 }

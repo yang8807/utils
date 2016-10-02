@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.data.ColorUtils;
 import com.yan.fastview_library.R;
 
@@ -121,7 +121,7 @@ public class BannerLooperIndicator extends View {
                     externalViewPager.setCurrentItem(index);
                 }
             });
-            LogUtil.v("mine", "点击的位置:" + index);
+            LogUtils.v("mine", "点击的位置:" + index);
         }
 
         //在这里处理一下点击事件

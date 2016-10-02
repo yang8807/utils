@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 import com.magnify.yutils.DeviceUtil;
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 import com.yan.fastview_library.R;
 
 /**
@@ -66,7 +66,7 @@ public class RippleCircleView extends View {
                     int alpha = (mRadius - mdrawabRadius[finalI]) * 255 / mRadius;
                     mPaints[finalI].setAlpha(alpha);
                     invalidate();
-                    LogUtil.v("mine", "animation is still ");
+                    LogUtils.v("mine", "animation is still ");
                 }
             });
             valueAnimators[i] = valueAnimator;

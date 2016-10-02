@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 
 import java.util.Random;
 
@@ -129,7 +129,7 @@ public class RippleCircleViews extends SurfaceView implements SurfaceHolder.Call
                     mPaint[i].setAlpha(mDrawableRaidus[i] * 255 / mRadius);
                     mCanvas.drawCircle(mCenterX, mCenterY, mDrawableRaidus[i], mPaint[i]);
                     if (mDrawableRaidus[i] >= mRadius) mDrawableRaidus[i] = mRadius;
-                    LogUtil.v("mine", "我不断的创建");
+                    LogUtils.v("mine", "我不断的创建");
                 }
             }
         } catch (Exception e) {

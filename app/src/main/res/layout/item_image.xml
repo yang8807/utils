@@ -6,6 +6,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
+        android:src="@drawable/ic_android_red_400_36dp"
         android:layout_height="50dp">
 
     </ImageView>

@@ -5,7 +5,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 
 /**
  * Created by heinigger on 16/8/22.
@@ -48,7 +48,7 @@ public class AdaptTextView extends TextView {
             int avaliableHeight = textHegiht - this.getPaddingBottom() - this.getPaddingTop();
             float trySize = maxTextSize;
             testPaint.setTextSize(trySize);
-            LogUtil.v("mine", testPaint.measureText(text) + ":" + availableWidth);
+            LogUtils.v("mine", testPaint.measureText(text) + ":" + availableWidth);
 
             while ((trySize > minTextSize) && getMaxLines() < (testPaint.measureText(text) / availableWidth + 0.5)) {
                 trySize -= 1;
@@ -57,7 +57,7 @@ public class AdaptTextView extends TextView {
                     break;
                 }
                 testPaint.setTextSize(trySize);
-                LogUtil.v("mine", testPaint.measureText(text) + ":" + availableWidth);
+                LogUtils.v("mine", testPaint.measureText(text) + ":" + availableWidth);
             }/*while ((trySize > minTextSize) && (testPaint.measureText(text) > availableWidth) && avaliableHeight >= DeviceUtil.sp2px(getContext(), trySize) * getLineCount()) {
                 trySize -= 1;
                 if (trySize <= minTextSize) {
@@ -65,7 +65,7 @@ public class AdaptTextView extends TextView {
                     break;
                 }
                 testPaint.setTextSize(trySize);
-                LogUtil.v("mine", testPaint.measureText(text) + ":" + availableWidth);
+                LogUtils.v("mine", testPaint.measureText(text) + ":" + availableWidth);
             }*/
             this.setTextSize(trySize);
         }

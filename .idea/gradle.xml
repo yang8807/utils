@@ -16,17 +16,7 @@
             <option value="$PROJECT_DIR$/yutils" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/base_adapter_library" />
-            <option value="$PROJECT_DIR$/datautils" />
-            <option value="$PROJECT_DIR$/fastview_library" />
-            <option value="$PROJECT_DIR$/onekeyshare" />
-            <option value="$PROJECT_DIR$/yutils" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

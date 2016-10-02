@@ -91,7 +91,8 @@
         <activity android:name=".ui.component.ActivityPictureActivity" />
         <activity android:name=".ui.component.PictureSelectActivity" />
         <activity android:name=".ui.ui_animation.ViewAnimationActivity" />
-        <activity android:name=".ui.ui_view.FileActivity"
+        <activity android:name=".ui.ui_view.FileActivity"/>
+        <activity android:name=".ui.ui_view.TagAdapterActvity"
             android:launchMode="standard"/>
         <activity
             android:name=".ui.ui_view.ActivityEditTextAtListView"

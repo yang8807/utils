@@ -18,7 +18,7 @@ import com.example.datautils.RandomUtil;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
-import com.magnify.yutils.LogUtil;
+import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.data.BitmapBlurHelper;
 import com.magnify.yutils.data.ImageUtils;
 import com.magnify.yutils.data.PreferencesUtil;
@@ -55,7 +55,7 @@ public class CurrentBaseActivity extends BaseActivity {
         //拖动左边,结束当前activity的操作帮助助手
         SwipeBackHelper.onCreate(this);
         object = (Object[]) getIntent().getSerializableExtra(OBJETS);
-        LogUtil.v("AActivity", "---" + self.getLocalClassName() + "---");
+        LogUtils.v("AActivity", "---" + self.getLocalClassName() + "---");
     }
 
     /**

@@ -23,6 +23,10 @@ public class AutoCompeleActivity extends CurrentBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actvity_auto_compelete);
+
+
+
+
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.auto_textview);
         autoCompleteTextView.setThreshold(0);
         autoCompleteTextView.setAdapter(new BaseAutoCompleteAdapter<User>(R.layout.item_child_layout, RandomUtil.createRandomUser(200), 50) {
