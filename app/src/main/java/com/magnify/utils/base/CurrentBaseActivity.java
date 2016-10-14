@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.example.datautils.RandomUtil;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.magnify.utils.R;
 import com.magnify.utils.bean.ActivityBean;
+import com.magnify.utils.ui.common.BaseFragmentContainerActivity;
 import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.data.BitmapBlurHelper;
 import com.magnify.yutils.data.ImageUtils;
@@ -123,11 +125,37 @@ public class CurrentBaseActivity extends BaseActivity {
     }
 
     public void startNewActivity(ActivityBean item) {
-        Intent intent = new Intent(self, item.getaClass());
+
+        Class classz = item.getaClass();
+        Class mSuperClassz = classz.getSuperclass();
+
+        Intent intent;
+
+        if (isGoBaseFragment(mSuperClassz)) {
+            intent = new Intent(self, BaseFragmentContainerActivity.class);
+            intent.putExtra(BaseFragmentContainerActivity.WHERE, item.getaClass());
+        } else
+            intent = new Intent(self, item.getaClass());
+
         intent.putExtra(CurrentBaseActivity.TITLE, item.getName());
         intent.putExtra(CurrentBaseActivity.SUBTITLE, item.getDescription());
         intent.putExtra(CurrentBaseActivity.OBJETS, item.getObject());
         startActivity(intent);
+    }
+
+    /**
+     * 跳转到默认的fragment的依赖页面
+     */
+    private boolean isGoBaseFragment(Class mSuperClassz) {
+        if (mSuperClassz != null) {
+            if (mSuperClassz.equals(Fragment.class)) {
+                return true;
+            } else {
+                return isGoBaseFragment(mSuperClassz.getSuperclass());
+            }
+        } else {
+            return false;
+        }
     }
 
     public Object[] getObjects() {

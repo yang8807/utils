@@ -30,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
     private Toast mToast;
     protected BaseActivity self;
     private int mContentId;
+    public final static String WHERE = "where_frgment";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +39,11 @@ public class BaseActivity extends AppCompatActivity {
         mContentId = R.id.frame_layout;
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         self = this;
+        Class clazz = (Class) getIntent().getSerializableExtra(WHERE);
+        if (clazz != null) {
+            switchFragment(clazz);
+        }
+
     }
 
     public <E extends View> E getView(@IdRes int viewId) {

@@ -14,9 +14,11 @@ import com.yan.fastview_library.base.BaseActivity;
 public abstract class BaseFragment extends Fragment {
 
 
+    public static final String OBJECTKEY = "Object_key";
     private Toast mToast;
 
     public static final String WHERE = "where";
+    private Object[] params;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -71,6 +73,14 @@ public abstract class BaseFragment extends Fragment {
         mToast.setText(s);
         mToast.setDuration(Toast.LENGTH_SHORT);
         mToast.show();
+    }
+
+    public boolean onBackPressed() {
+        return true;
+    }
+
+    public void setParams(Object[] params) {
+        this.params = params;
     }
 
     /*-------------------end:Activity中常用的操作,与整体架构无关------------------------------------------------*/
