@@ -1,6 +1,11 @@
 package com.magnify.yutils;
 
+import android.text.Spanned;
+
+import com.magnify.yutils.data.StringUtil;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by heinigger on 16/10/14.
@@ -19,7 +24,7 @@ public class StringFormatUtils {
     }
 
     /**
-     * 格式化的时候带默认值
+     * 格式化的时候带默认值,只能是%s
      */
     public StringFormatUtils format(String text, Object object, Object defaultValue) {
         if (object == null) {
@@ -38,8 +43,25 @@ public class StringFormatUtils {
         return this;
     }
 
-    public StringFormatUtils formatColor(String text, Object object, int color) {
+    public StringFormatUtils formatColor(String text, Object object, Object defaultValue, int color) {
+        if (object == null) {
+            formatDatas.add(new FormatSpanned(String.format(text, String.valueOf(defaultValue)), color));
+        } else
+            formatDatas.add(new FormatSpanned(String.format(text, String.valueOf(object)), color));
         return this;
+    }
+
+    /**
+     * 创建带有颜色的数组
+     */
+    public Spanned createSpanned() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int[] colors = new int[getAvaliableColorCount()];
+        for (int i = 0; i < formatDatas.size(); i++) {
+            FormatSpanned formatSpanned = formatDatas.get(i);
+            stringBuilder.append(formatSpanned.formatText);
+        }
+        return StringUtil.formatColor(stringBuilder.toString(), colors);
     }
 
     /**
@@ -48,12 +70,20 @@ public class StringFormatUtils {
     public String createString() {
         if (formatDatas != null && !formatDatas.isEmpty()) return "";
         StringBuilder stringBuilder = new StringBuilder();
-
         for (int i = 0; i < formatDatas.size(); i++) {
             stringBuilder.append(formatDatas.get(i).formatText);
         }
-
         return stringBuilder.toString();
+    }
+
+    public int getAvaliableColorCount() {
+        List<Integer> interger = new ArrayList<>();
+
+        for (int i = 0; i < formatDatas.size(); i++) {
+            int color = formatDatas.get(i).color;
+            if (color != 0) interger.add(color);
+        }
+        return interger.size();
     }
 
     private class FormatSpanned {

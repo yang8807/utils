@@ -20,7 +20,6 @@
     <declare-styleable name="FavoriateView">
         <attr name="fv_drwable" format="reference" />
         <attr name="fv_max_distance" format="dimension" />
-        <attr name="fv_max_count" format="integer" />
         <attr name="fv_duration" format="integer" />
     </declare-styleable>
 

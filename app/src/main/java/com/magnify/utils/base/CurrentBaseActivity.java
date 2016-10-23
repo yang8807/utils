@@ -125,7 +125,6 @@ public class CurrentBaseActivity extends BaseActivity {
     }
 
     public void startNewActivity(ActivityBean item) {
-
         Class classz = item.getaClass();
         Class mSuperClassz = classz.getSuperclass();
 
