@@ -16,15 +16,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_android_red_400_36dp"
-            app:fv_drwable="@drawable/ic_android_red_400_36dp" />
+            android:src="@mipmap/ic_android_red_400_36dp"
+            app:fv_drwable="@mipmap/ic_android_red_400_36dp" />
 
         <com.yan.fastview_library.view.FavoriateView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_perm_identity_green_500_36dp"
-            app:fv_drwable="@drawable/ic_perm_identity_green_500_36dp" />
+            android:src="@mipmap/ic_perm_identity_green_500_36dp"
+            app:fv_drwable="@mipmap/ic_perm_identity_green_500_36dp" />
 
         <com.yan.fastview_library.view.FavoriateView
             android:layout_width="wrap_content"
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_https_blue_600_36dp"
-            app:fv_drwable="@drawable/ic_https_blue_600_36dp" />
+            android:src="@mipmap/ic_https_blue_600_36dp"
+            app:fv_drwable="@mipmap/ic_https_blue_600_36dp" />
 
         <com.yan.fastview_library.view.FavoriateView
             android:layout_width="wrap_content"
@@ -52,9 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_chrome_reader_mode_white_36dp"
+            android:src="@mipmap/ic_chrome_reader_mode_white_36dp"
             android:tint="@color/loading_4"
-            app:fv_drwable="@drawable/ic_chrome_reader_mode_white_36dp" />
+            app:fv_drwable="@mipmap/ic_chrome_reader_mode_white_36dp" />
     </LinearLayout>
 
 </RelativeLayout>

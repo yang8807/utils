@@ -91,9 +91,9 @@ public class ActivityBannerView extends CurrentBaseActivity implements View.OnCl
 
                     }
                 },
-                R.drawable.ic_watch_later_blue_grey_700_36dp,
-                R.drawable.ic_perm_identity_green_500_36dp,
-                R.drawable.ic_https_blue_600_36dp);
+                R.mipmap.ic_watch_later_blue_grey_700_36dp,
+                R.mipmap.ic_perm_identity_green_500_36dp,
+                R.mipmap.ic_https_blue_600_36dp);
     }
 
     /**

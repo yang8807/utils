@@ -59,4 +59,10 @@
     <declare-styleable name="StickyGridHeadersGridView">
         <attr name="mAreHeadersSticky" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="FavoriateLayout">
+        <attr name="android:src" />
+        <attr name="src_size" format="dimension" />
+    </declare-styleable>
+
 </resources>

@@ -12,4 +12,7 @@
 
     <string name="title_favorite_animation">点赞动画</string>
     <string name="title_favorite_animation_description">点赞动画</string>
+
+    <string name="title_favorite_animation_layout">点赞动画_添加布局实现</string>
+    <string name="title_favorite_animation_layout_description">点赞动画_添加布局实现</string>
 </resources>

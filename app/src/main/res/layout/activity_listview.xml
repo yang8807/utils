@@ -9,7 +9,7 @@
         android:id="@+id/edit_query"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/ic_perm_identity_green_500_36dp"
+        android:drawableLeft="@mipmap/ic_perm_identity_green_500_36dp"
         android:drawablePadding="5dp"
         android:hint="请输入寻找的联系人"
         android:paddingLeft="5dp"

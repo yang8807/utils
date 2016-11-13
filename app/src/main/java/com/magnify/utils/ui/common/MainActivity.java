@@ -16,6 +16,7 @@ import com.magnify.utils.bean.ActivityBean;
 import com.magnify.utils.ui.ActivityDialog;
 import com.magnify.utils.ui.component.PictureSelectActivity;
 import com.magnify.utils.ui.fragment.DrawFragment;
+import com.magnify.utils.ui.fragment.ui.HeartFormFragment;
 import com.magnify.utils.ui.ui_adapter.HeaderChildFooterActivity;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
 import com.magnify.utils.ui.ui_view.FileActivity;
@@ -76,6 +77,7 @@ public class MainActivity extends CurrentBaseActivity {
         add(R.string.title_multi_swipe, R.string.title_multi_swipe_description, ActivityShowView.class, ActivityShowView.TYPE_COMMOM_MULTI_SWIPE_LAYOUT);
         add(R.string.title_viewpager_animation, R.string.title_viewpager_animation_description, ActivityShowView.class, ActivityShowView.TYPE_VIEW_PAGER_ANIMATION_NO_LOOPER);
         add(R.string.title_favorite_animation, R.string.title_favorite_animation_description, ActivityShowView.class, ActivityShowView.TYPE_FAVPRIATE);
+        add(R.string.title_favorite_animation_layout, R.string.title_favorite_animation_layout_description, HeartFormFragment.class);
         add("", "", DrawFragment.class);
 
     }
