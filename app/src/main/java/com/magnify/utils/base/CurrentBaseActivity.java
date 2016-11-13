@@ -23,7 +23,7 @@ import com.magnify.utils.ui.common.BaseFragmentContainerActivity;
 import com.magnify.yutils.LogUtils;
 import com.magnify.yutils.data.BitmapBlurHelper;
 import com.magnify.yutils.data.ImageUtils;
-import com.magnify.yutils.data.PreferencesUtil;
+import com.magnify.yutils.data.SPUtil;
 import com.yan.constants.Constants;
 import com.yan.fastview_library.base.BaseActivity;
 import com.yan.fastview_library.base.SingleInstanceManager;
@@ -68,7 +68,7 @@ public class CurrentBaseActivity extends BaseActivity {
         image_dog.setVisibility(RandomUtil.randomInt(2) % 2 == 0 ? View.VISIBLE : View.GONE);
         //图片模糊效果已经可以使用了
         if (bitmap == null) {
-            String localPaths = PreferencesUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
+            String localPaths = SPUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
             if (!TextUtils.isEmpty(localPaths)) {
                 bitmap = BitmapBlurHelper.doBlurJniArray(ImageUtils.scalePicture(localPaths, 500, 500), 3, false);
                 if (bitmap == null) {

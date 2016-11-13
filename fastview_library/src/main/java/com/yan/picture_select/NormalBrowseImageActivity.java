@@ -14,7 +14,7 @@ import com.magnify.basea_dapter_library.ViewHolder;
 import com.magnify.basea_dapter_library.abslistview.CommonViewPagerAdapter;
 import com.magnify.yutils.data.BitmapBlurHelper;
 import com.magnify.yutils.data.ImageUtils;
-import com.magnify.yutils.data.PreferencesUtil;
+import com.magnify.yutils.data.SPUtil;
 import com.yan.constants.Constants;
 import com.yan.fastview_library.R;
 import com.yan.fastview_library.base.BaseActivity;
@@ -39,7 +39,7 @@ public class NormalBrowseImageActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hack_view_pager);
-        String localPaths = PreferencesUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
+        String localPaths = SPUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
 
         if (!TextUtils.isEmpty(localPaths)) {
             imageView = (ImageView) findViewById(R.id.image_blur);
@@ -64,7 +64,7 @@ public class NormalBrowseImageActivity extends BaseActivity {
                     @Override
                     public void onClick(View view) {
                         String localPath = (String) view.getTag();
-                        PreferencesUtil.save(self, Constants.BROWSE_ACTIVITY_BACKGROUND, localPath);
+                        SPUtil.save(self, Constants.BROWSE_ACTIVITY_BACKGROUND, localPath);
                         ViewHolder.getImageLoaderInterface().displayImage(localPath, imageView);
                     }
                 });

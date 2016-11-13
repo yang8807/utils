@@ -19,7 +19,7 @@ import com.magnify.yutils.bean.ImageFloder;
 import com.magnify.yutils.data.BitmapBlurHelper;
 import com.magnify.yutils.data.FileUtils;
 import com.magnify.yutils.data.ImageUtils;
-import com.magnify.yutils.data.PreferencesUtil;
+import com.magnify.yutils.data.SPUtil;
 import com.yan.constants.Constants;
 import com.yan.fastview_library.R;
 import com.yan.fastview_library.base.BaseActivity;
@@ -61,7 +61,7 @@ public class BrowseImageActivity extends BaseActivity {
      * 扫描获取背景图片
      */
     private void showBackground() {
-        String localPaths = PreferencesUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
+        String localPaths = SPUtil.getString(self, Constants.BROWSE_ACTIVITY_BACKGROUND);
 
         if (!TextUtils.isEmpty(localPaths)) {
             imageView = (ImageView) findViewById(R.id.image_blur);
@@ -122,7 +122,7 @@ public class BrowseImageActivity extends BaseActivity {
                     @Override
                     public void onClick(View view) {
                         String localPath = (String) view.getTag();
-                        PreferencesUtil.save(self, Constants.BROWSE_ACTIVITY_BACKGROUND, localPath);
+                        SPUtil.save(self, Constants.BROWSE_ACTIVITY_BACKGROUND, localPath);
                         ViewHolder.getImageLoaderInterface().displayImage(localPath, imageView);
                     }
                 });

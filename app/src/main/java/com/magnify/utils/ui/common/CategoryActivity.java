@@ -25,7 +25,6 @@ import com.magnify.utils.ui.ui_utils.SaveToolAndPreferenceActivity;
 import com.magnify.utils.ui.ui_view.ActivityBannerView;
 import com.magnify.utils.ui.ui_view.ActivityEditTextAtListView;
 import com.magnify.utils.ui.ui_view.ActivityShowView;
-import com.magnify.utils.ui.ui_view.AdaptTextViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +92,6 @@ public class CategoryActivity extends CurrentBaseActivity {
         add(R.string.title_decorated_background, R.string.title_title_decorated_background_description, ActivityShowView.class, 4);
         add(R.string.title_textview_extends, R.string.title_textview_extends_description, ActivityShowView.class, ActivityShowView.TYPE_TEXTVIEW_EXTENDS);
         add(R.string.title_sidebar, R.string.title_sidebar_description, ActivityShowView.class, ActivityShowView.TYPE_SIDEBAR);
-        add(R.string.title_adapte_textview, R.string.title_adapte_textviewdescription, AdaptTextViewActivity.class);
         add(R.string.title_edittext_at_listview, R.string.title_edittext_at_listview_description, ActivityEditTextAtListView.class);
         add(R.string.title_ripple_view, R.string.title_ripple_view_description, ActivityShowView.class, ActivityShowView.TYPE_RIPPLE);
         add(R.string.title_throw_animation_layout, R.string.title_throw_animation_layout_description, ActivityShowView.class, ActivityShowView.TYPE_SHOPCAR);

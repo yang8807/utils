@@ -23,9 +23,6 @@
     <string name="title_sidebar">SideBar</string>
     <string name="title_sidebar_description">字母导航栏</string>
 
-    <string name="title_adapte_textview">AdaptTextView</string>
-    <string name="title_adapte_textviewdescription">字母导航栏</string>
-
     <string name="title_edittext_at_listview">EditText在ListView中</string>
     <string name="title_edittext_at_listview_description">EditText在ListView中</string>
 
