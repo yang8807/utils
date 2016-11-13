@@ -7,9 +7,6 @@ import android.support.annotation.NonNull;
 
 import com.yan.fastview_library.static_userful.ShapeType;
 
-/**
- *
- */
 public class DrawableUtils {
 
     public static StateListDrawable getStateCorRectDrawable(int color, int radius) {
