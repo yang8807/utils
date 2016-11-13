@@ -1,5 +1,8 @@
 package com.magnify.utils.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.datautils.RandomUtil;
 import com.example.datautils.User;
 import com.magnify.yutils.data.RandomCharUtils;
@@ -10,7 +13,7 @@ import java.util.Random;
 /**
  * Created by heinigger on 16/8/6.
  */
-public class Contact {
+public class Contact implements Parcelable {
     private String groupName = "";
     private ArrayList<User> peoples;
     private String footerName;
@@ -70,4 +73,39 @@ public class Contact {
     public String getSortKey() {
         return sortKey;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.groupName);
+        dest.writeList(this.peoples);
+        dest.writeString(this.footerName);
+        dest.writeString(this.count);
+        dest.writeString(this.sortKey);
+    }
+
+    protected Contact(Parcel in) {
+        this.groupName = in.readString();
+        this.peoples = new ArrayList<User>();
+        in.readList(this.peoples, User.class.getClassLoader());
+        this.footerName = in.readString();
+        this.count = in.readString();
+        this.sortKey = in.readString();
+    }
+
+    public static final Parcelable.Creator<Contact> CREATOR = new Parcelable.Creator<Contact>() {
+        @Override
+        public Contact createFromParcel(Parcel source) {
+            return new Contact(source);
+        }
+
+        @Override
+        public Contact[] newArray(int size) {
+            return new Contact[size];
+        }
+    };
 }
